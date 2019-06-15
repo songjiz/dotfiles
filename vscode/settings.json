@@ -1,0 +1,31 @@
+{
+    "editor.fontFamily": "Monaco",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.insertSpaces": true,
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.smoothScrolling": true,
+    "editor.tabSize": 2,
+    "files.trimTrailingWhitespace": true,
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "window.nativeTabs": true,
+    "window.zoomLevel": 0,
+    "workbench.activityBar.visible": false,
+    "workbench.colorTheme": "Monokai",
+    "workbench.editor.showTabs": false,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.statusBar.feedback.visible": false,
+    "[ruby]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "material-icon-theme.activeIconPack": "angular",
+    "material-icon-theme.opacity": 1,
+    "material-icon-theme.folders.theme": "classic",
+    "material-icon-theme.folders.color": "#90a4ae",
+    "material-icon-theme.saturation": 1
+}

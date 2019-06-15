@@ -1,0 +1,6 @@
+\timing on
+\x auto
+\set HISTCONTROL ignoredups
+\set HISTFILE ~/.psql_history- :DBNAME
+/* \set ECHO_HIDDEN on */
+\set COMP_KEYWORD_CASE upper

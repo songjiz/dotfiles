@@ -1,0 +1,4 @@
+# Mac
+COMMAND open -a "Google Chrome" %s
+#COMMAND open -a "Firefox" %s
+#COMMAND open -a "Safari" %s

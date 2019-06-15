@@ -1,0 +1,15 @@
+.DS_Store
+.keep
+tags
+tags.*
+*.swp
+tmp/
+plug.vim.old
+.fzf/
+
+*.crt
+*.cache
+*.chback
+Package Control.*
+!Package Control.sublime-settings
+

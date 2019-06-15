@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>line</tabTrigger>
+  <description> Special __LINE__ Statement </description>
+  <content><![CDATA[__LINE__]]></content>
+  <scope>source.ruby</scope>
+</snippet>

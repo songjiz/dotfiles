@@ -1,0 +1,172 @@
+snippet import "import (...)" b
+import (
+	"${1:package}"
+)
+endsnippet
+
+snippet package "package ..." b
+package ${1:main}
+endsnippet
+
+snippet interface "interface I { ... }"
+type ${1:Interface} interface {
+	${2:/* TODO: add methods */}
+}
+endsnippet
+
+snippet con "const XXX Type = ..."
+const ${1:NAME} ${2:Type} = ${0:0}
+endsnippet
+
+snippet cons "const (...)" b
+const (
+	${1:constant}${2/(.+)/ /}${2:type} = ${0:value}
+)
+endsnippet
+
+snippet iota "Iota constant generator" b
+const (
+	${1:constant}${2/(.+)/ /}${2:type} = iota
+	$0
+)
+endsnippet
+
+snippet ch "chan Type"
+chan ${0:int}
+endsnippet
+
+snippet select "select { case a := <-chan: ... }"
+select {
+case ${1:v1} := <-${2:chan1}
+	${0}
+}
+endsnippet
+
+snippet struct "type T struct { ... }" b
+type ${1:Struct} struct {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet interface "Interface declaration" b
+type ${1:Interface} interface {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet if "if ... { ... }" b
+if ${1:condition}${1/(.+)/ /}{
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet else "else { ... }"
+else {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet switch "switch x { ... }" b
+switch ${1:expression}${1/(.+)/ /}{
+case$0
+}
+endsnippet
+
+snippet case "case ..." b
+case ${1:value}
+	${0:${VISUAL}}
+endsnippet
+
+snippet default "default: ..."
+default:
+	${0:${VISUAL}}
+endsnippet
+
+snippet ft "fallthrough"
+fallthrough
+endsnippet
+
+snippet main "func main() { ... }" b
+func main() {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet func "func Function(...) { ... }" b
+func ${1:name}(${2:params})${3/(.+)/ /}${3:type} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet map "Map type" b
+map[${1:keytype}]${2:valtype}
+endsnippet
+
+snippet make "make(Type, size)"
+make(${1:[]string}, ${2:0})${0}
+endsnippet
+
+snippet : "var := value" b
+${1:name} := ${0:value}
+endsnippet
+
+snippet var "var x Type [= ...]" b
+var ${1:name}${2/(.+)/ /}${2:type}${3: = ${0:value}}
+endsnippet
+
+snippet vars "var ( ... )" b
+var (
+	${1:name}${2/(.+)/ /}${2:type}${3: = ${0:value} }
+)
+endsnippet
+
+snippet json "JSON field"
+\`json:"${1:displayName}"\`
+endsnippet
+
+snippet err "Basic error handling" b
+if err != nil {
+	log.${1:Fatal}(err)
+}
+endsnippet
+
+snippet df "defer someFunction()"
+defer ${1:func}(${2})
+${0}
+endsnippet
+
+snippet def "defer func() { ... }"
+defer func() {
+	${0:${VISUAL}}
+}()
+endsnippet
+
+snippet defr
+defer func() {
+	if err := recover(); err != nil {
+		${0:${VISUAL}}
+	}
+}()
+endsnippet
+
+snippet for "for ... { ... }"
+for ${1} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fi "for 0..N-1 { ... }" b
+for ${1:i} := 0; $1 < ${2:N}; $1++ {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fkv "for k, v := range items { ... }" b
+for ${2:k}, ${3:v} := range ${1} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet pn "panic()"
+panic("${0:msg}")
+endsnippet

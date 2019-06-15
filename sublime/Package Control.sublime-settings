@@ -1,0 +1,19 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"AlignTab",
+		"Case Conversion",
+		"Color Highlight",
+		"DocBlockr",
+		"Emmet",
+		"Package Control",
+		"Ruby Slim",
+		"SCSS",
+		"SideBarEnhancements"
+	]
+}

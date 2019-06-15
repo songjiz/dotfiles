@@ -1,0 +1,11 @@
+[
+  {
+    "class": "tabset_control",
+    // "tab_height": 28,
+    // "tab_overlab": 16
+  },
+  {
+    "class": "sidebar_label",
+    "font.size": 14
+  }
+]

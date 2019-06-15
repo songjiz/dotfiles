@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>priv</tabTrigger>
+  <description> private </description>
+  <content><![CDATA[private
+  $0]]></content>
+  <scope>source.ruby</scope>
+</snippet>

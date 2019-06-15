@@ -1,0 +1,14 @@
+// Settings in here override those in "Case Conversion/CaseConversion.sublime-settings",
+
+{
+  "acronyms": [
+    "HTML",
+    "CSS",
+    "HTTP",
+    "URL",
+    "GUI",
+    "UI",
+    "ID",
+    "APR"
+  ]
+}
