@@ -4,9 +4,12 @@ tags
 tags.*
 *.swp
 tmp/
+# vim
 plug.vim.old
 .fzf/
+plugged/
 
+# sublime
 *.crt
 *.cache
 *.chback
