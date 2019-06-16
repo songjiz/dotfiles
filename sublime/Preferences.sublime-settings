@@ -1,11 +1,12 @@
 {
 	"always_show_minimap_viewport": true,
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+	"color_scheme": "Packages/User/Monokai-Darker.tmTheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Monaco Nerd Font Mono",
-	"font_size": 19,
+	"font_size": 14,
 	"ignored_packages":
 	[
+		"0_package_control_loader",
 		"Vintage"
 	],
 	"rulers":
