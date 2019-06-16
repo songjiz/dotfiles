@@ -30,7 +30,7 @@ Plug 'tpope/vim-abolish'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'justinmk/vim-sneak'
-Plug 'justinmk/vim-dirvish'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'yggdroot/indentline'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'kshenoy/vim-signature'
@@ -855,28 +855,20 @@ command! -nargs=* GitConflicts :Ack '<<<<<<<' <CR>
 nnoremap <silent><F2> :GitConflicts<CR>
 " }}}
 
-" Dirvish {{{
-let g:dirvish_relative_paths = 1
-augroup dirvish_config
-  autocmd!
-  autocmd FileType dirvish nnoremap <silent><buffer> <C-v> :call dirvish#open('vsplit', 1)<CR>
-  autocmd FileType dirvish xnoremap <silent><buffer> <C-v> :call dirvish#open('vsplit', 1)<CR>
-  autocmd FileType dirvish nnoremap <silent><buffer> <C-x> :call dirvish#open('split', 1)<CR>
-  autocmd FileType dirvish xnoremap <silent><buffer> <C-x> :call dirvish#open('split', 1)<CR>
-  autocmd FileType dirvish nnoremap <silent><buffer> <C-t> :call dirvish#open('tabedit', 1)<CR>
-  autocmd FileType dirvish xnoremap <silent><buffer> <C-t> :call dirvish#open('tabedit', 1)<CR>
-augroup END
-" Override the netrw :Explore, :Sexplore, :Vexplore commands
-let g:loaded_netrwPlugin = 1
-command! -nargs=? -complete=dir Explore Dirvish <args>
-command! -nargs=? -complete=dir Sexplore belowright split | resize 30 | silent Dirvish <args>
-command! -nargs=? -complete=dir Vexplore leftabove vsplit | vertical resize 40 | silent Dirvish <args>
-nnoremap <silent><F1> :Sexplore %<CR>
-nnoremap <silent>- :Sexplore<CR>
+" NERDTree {{{
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+nnoremap <silent><F1> :NERDTreeToggle<CR>
+nnoremap <silent><Leader>n :NERDTreeToggle<CR>
+nnoremap <silent><Leader>v :NERDTreeFind<CR>
+" Automatically close a tab if the only remaining window is NerdTree
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " }}}
 
 " ale {{{
-let g:ale_sign_error = '' " ◉
+let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 let g:ale_set_signs = 0
 let g:ale_sign_column_always = 0
