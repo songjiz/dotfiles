@@ -67,6 +67,20 @@ set shiftround    " Indent to the nearest tabstop
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+function! s:expand_tab(size)
+  if a:size
+    setlocal expandtab
+    execute 'setlocal shiftwidth='.a:size
+    execute 'setlocal softtabstop='.a:size
+    execute 'setlocal tabstop='.a:size
+  else
+    setlocal noexpandtab
+    execute 'setlocal shiftwidth&vim'
+    execute 'setlocal softtabstop&vim'
+    execute 'setlocal tabstop&vim'
+  endif
+endfunction
+command! -nargs=* ExpandTab call <SID>expand_tab(<q-args>)
 " }}}
 
 " Windows {{{
