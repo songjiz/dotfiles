@@ -91,7 +91,7 @@ endif
 
 " Indent {{{
 set autoindent
-set smartindent
+" set smartindent
 " }}}
 
 " Seaching {{{
@@ -874,6 +874,7 @@ let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let NERDTreeWinSize = 24
 nnoremap <silent><F1> :NERDTreeToggle<CR>
 nnoremap <silent><Leader>n :NERDTreeToggle<CR>
 nnoremap <silent><Leader>v :NERDTreeFind<CR>
