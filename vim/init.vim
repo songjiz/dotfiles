@@ -31,6 +31,9 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'liuchengxu/vista.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'yggdroot/indentline'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'kshenoy/vim-signature'
@@ -183,7 +186,7 @@ set clipboard^=unnamed,unnamedplus
 " }}}
 
 " Wrap {{{
-set list
+set nolist
 set wrap
 set textwidth=79
 set formatoptions=qn1 " See :help fo-table
@@ -278,8 +281,9 @@ augroup common
   " autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
   " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 
-  autocmd InsertEnter * setlocal nocursorline nolist
-  autocmd InsertLeave * setlocal cursorline list
+  " autocmd InsertEnter * setlocal nocursorline nolist
+  " autocmd InsertLeave * setlocal cursorline list
+
   " Unset paste on InsertLeave
   autocmd InsertLeave * set nopaste
   autocmd FocusLost,TabLeave,BufLeave * silent! :wa | setlocal nocursorline
@@ -866,7 +870,6 @@ nmap \w <Plug>(FerretAckWord)
 nmap \s <Plug>(FerretAcks)
 nmap \r <Plug>(FerretAcks)
 command! -nargs=* GitConflicts :Ack '<<<<<<<' <CR>
-nnoremap <silent><F2> :GitConflicts<CR>
 " }}}
 
 " NERDTree {{{
@@ -880,6 +883,38 @@ nnoremap <silent><Leader>n :NERDTreeToggle<CR>
 nnoremap <silent><Leader>v :NERDTreeFind<CR>
 " Automatically close a tab if the only remaining window is NerdTree
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" }}}
+
+" vista & vim-lsp {{{
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'ctags'
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+      \   "function": "\uf794",
+      \   "variable": "\uf71b",
+      \  }
+let g:vista_executive_for = {
+      \ 'ruby': 'vim_lsp',
+      \ }
+
+if executable('solargraph')
+  autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'solargraph',
+        \ 'cmd': { server_info -> [&shell, &shellcmdflag, 'solargraph stdio'] },
+        \ 'initialization_options': { "diagnostics": "true" },
+        \ 'whitelist': ['ruby'],
+        \ })
+endif
+
+if executable('typescript-language-server')
+  autocmd User lsp_setup call lsp#register_server({
+      \ 'name': 'typescript-language-server',
+      \ 'cmd': { server_info -> [&shell, &shellcmdflag, 'typescript-language-server --stdio'] },
+      \ 'root_uri':{ server_info -> lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json')) },
+      \ 'whitelist': ['typescript', 'typescript.tsx', 'javascript', 'javascript.jsx'],
+      \ })
+endif
+nnoremap <silent><F2> :Vista!!<CR>
 " }}}
 
 " ale {{{
@@ -918,6 +953,19 @@ nnoremap <Leader>gp :Gpush<CR>
 nnoremap <Leader>gr :Gread<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>ge :Gedit<CR>
+
+" Plug wants to lazy load everything but Fugitive can't be lazy loaded.
+" Found this code at the link below.
+" @link https://github.com/junegunn/vim-plug/issues/164#issuecomment-366483364
+command! Gstatus call LazyLoadFugitive('Gstatus') command! Gdiff call LazyLoadFugitive('Gdiff')
+command! Glog call LazyLoadFugitive('Glog')
+command! Gblame call LazyLoadFugitive('Gblame')
+
+function! LazyLoadFugitive(cmd)
+  call plug#load('vim-fugitive')
+  call fugitive#detect(expand('%:pwd'))
+  exe a:cmd
+endfunction
 " }}}
 
 " Gitgutter {{{
