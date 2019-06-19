@@ -896,7 +896,7 @@ let g:vista#renderer#icons = {
 let g:vista_executive_for = {
       \ 'ruby': 'vim_lsp',
       \ }
-
+let g:lsp_diagnostics_enabled = 0
 if executable('solargraph')
   autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'solargraph',
