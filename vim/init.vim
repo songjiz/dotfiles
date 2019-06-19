@@ -901,7 +901,7 @@ if executable('solargraph')
   autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'solargraph',
         \ 'cmd': { server_info -> [&shell, &shellcmdflag, 'solargraph stdio'] },
-        \ 'initialization_options': { "diagnostics": "true" },
+        \ 'initialization_options': { "diagnostics": "false" },
         \ 'whitelist': ['ruby'],
         \ })
 endif
