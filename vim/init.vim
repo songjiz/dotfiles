@@ -886,7 +886,7 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " }}}
 
 " vista & vim-lsp {{{
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
@@ -1072,15 +1072,15 @@ let g:lightline.colorscheme='monokai'
 
 let g:lightline.component_function = {
       \ 'git': 'LightlineGit',
-      \ 'ale_lint': 'LightlineALELinterStatus',
+      \ 'lint': 'LightlineALELint',
       \ 'filesize': 'LightlineFileSize',
       \ }
 let g:lightline.active = {
-      \ 'left': [['mode', 'paste'], ['git', 'filename', 'readonly']],
-      \ 'right': [['lineinfo', 'percent'], ['noet', 'fileformat', 'fileencoding', 'filetype', 'filesize', 'ale_lint']],
+      \ 'left': [['mode', 'paste'], ['git', 'filename', 'readonly', 'modified']],
+      \ 'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'lint']],
       \ }
 let g:lightline.inactive = {
-      \ 'left': [['filename']],
+      \ 'left': [['filename', 'readonly', 'modified']],
       \ 'right': [['lineinfo'], ['percent']]
       \ }
 
@@ -1120,12 +1120,13 @@ endfunction
 function! LightlineGit()
   if exists("*fugitive#head")
     let branch = fugitive#head()
-    return strlen(branch) ? ' '. branch : ''
+  else
+    let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
   endif
-  return ''
+  return strlen(branch) ? ' '. branch : ''
 endfunction
 
-function! LightlineALELinterStatus() abort
+function! LightlineALELint() abort
   let l:indicator_warnings = get(g:, 'lightline#ale#indicator_warnings', 'W: ')
   let l:indicator_errors = get(g:, 'lightline#ale#indicator_errors', 'E: ')
   let l:indicator_ok = get(g:, 'lightline#ale#indicator_ok', 'OK')
