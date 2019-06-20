@@ -3,15 +3,15 @@
 #
 
 # General colors
-color default           253         235
+color default           253         234
 color cursor            default     236
-color status            250         235
+color status            250         234
 color title-focus       default     236
 color title-blur        default     236
 color delimiter         241         default
 color header            186         236             bold
 color section           186         default
-color line-number       102         235
+color line-number       102         234
 color id                208         default
 color date              203         default
 color author            141         default
@@ -68,7 +68,7 @@ color "AuthorDate: "    67          default
 color "Commit: "        141         default
 color "CommitDate: "    67          default
 color "Merge: "         161         default
-color diff-stat         166         235
+color diff-stat         166         234
 
 #
 # Variables
