@@ -30,6 +30,7 @@ Plug 'tpope/vim-abolish'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'wellle/targets.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'liuchengxu/vista.vim'
 Plug 'prabirshrestha/async.vim'
@@ -39,6 +40,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-gitgutter'
 Plug 'gko/vim-coloresque'
+Plug 'luochen1990/rainbow'
 Plug 'janko/vim-test'
 call plug#end()
 " }}}
@@ -195,7 +197,7 @@ set formatoptions=qn1 " See :help fo-table
 " Others {{{
 syntax on
 set title
-set showmode
+set noshowmode
 set hidden
 set showmatch
 set cursorline
@@ -249,7 +251,6 @@ if has('gui_running')
 endif
 
 set background=dark
-
 if !has("gui_running")
   let g:monokai_term_italic = 0
 endif
@@ -886,7 +887,7 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " }}}
 
 " vista & vim-lsp {{{
-" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_icon_indent = ["▸ ", ""]
 let g:vista_default_executive = 'ctags'
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
@@ -915,6 +916,13 @@ if executable('typescript-language-server')
       \ })
 endif
 nnoremap <silent><F2> :Vista!!<CR>
+" }}}
+
+" rainbow {{{
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+      \ 'ctermfgs': ['blue', 'yellow', 'cyan', 'magenta']
+      \ }
 " }}}
 
 " ale {{{
