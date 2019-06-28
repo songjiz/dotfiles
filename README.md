@@ -32,8 +32,8 @@ ln -s ~/.dotfiles/zshrc ~/.zshrc
 # Vim
 
 ```bash
-ln -s ~/.dotfiles/vimrc ~/.vimrc
 ln -s ~/.dotfiles/vim ~/.vim
+ln -s ~/.dotfiles/vim/init.vim ~/.vimrc
 ```
 
 # Sublime Text 3

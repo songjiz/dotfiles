@@ -1,7 +1,7 @@
 " vim-plug {{{
 let vimplug=expand('~/.vim/autoload/plug.vim')
 if !filereadable(vimplug)
-  echo "Installing Vim-Plug ..."
+  echo "Installing vim-plug ..."
   echo ""
   silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
@@ -205,7 +205,7 @@ set scrolloff=5
 
 set ttyfast
 set lazyredraw
-set regexpengine=1 " Some syntax files on the new regex engine cause vim to be slower
+" set regexpengine=1 " Some syntax files on the new regex engine cause vim to be slower
 
 " set colorcolumn=80,120
 
@@ -557,7 +557,7 @@ nnoremap <S-tab> <C-w>W
 " }}}
 
 " Quickly edit/reload the vimrc file {{{
-nnoremap <silent> <Leader>ec :e $MYVIMRC<CR>
+nnoremap <silent> <Leader>ec :vsp $MYVIMRC<CR>
 nnoremap <silent> <Leader>rc :so $MYVIMRC<CR>
 " }}}
 
@@ -578,6 +578,8 @@ nnoremap <silent> z9 :set foldlevel=9<CR>
 " zR — open all folds on current buffer
 " zj — cursor is moved to next fold
 " zk — cursor is moved to previous fold
+
+nnoremap <Space> za
 " }}}
 
 " Buffer {{{
@@ -979,6 +981,11 @@ endfunction
 " Gitgutter {{{
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_on_bufenter = 1
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_removed_first_line = '•'
+let g:gitgutter_sign_modified_removed = '•'
 nnoremap <silent><Leader>gg :GitGutterToggle<CR>
 " }}}
 

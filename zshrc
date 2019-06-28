@@ -115,6 +115,7 @@ alias reload="source $HOME/.zshrc"
 alias fuckgfw="vim ~/.config/clash/config.yml"
 alias export-proxy="export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:0"
 alias unset-proxy="unset https_proxy; unset https_proxy; unset all_proxy"
+alias dotfiles="cd ~/.dotfiles && vim"
 
 alias rce="rails credentials:edit"
 function rdmd() {
