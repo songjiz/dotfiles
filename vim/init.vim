@@ -21,7 +21,7 @@ Plug 'songjiz/vim-monokai'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -32,6 +32,7 @@ Plug 'AndrewRadev/tagalong.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'wellle/targets.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'lambdalisue/gina.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
@@ -200,7 +201,7 @@ set title
 set noshowmode
 set hidden
 set showmatch
-set cursorline
+set nocursorline
 set scrolloff=5
 
 set ttyfast
@@ -279,18 +280,18 @@ augroup common
         \ endif
 
   " Toggle line number
-  " autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
-  " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 
   " autocmd InsertEnter * setlocal nocursorline nolist
   " autocmd InsertLeave * setlocal cursorline list
 
   " Unset paste on InsertLeave
   autocmd InsertLeave * set nopaste
-  autocmd FocusLost,TabLeave,BufLeave * silent! :wa | setlocal nocursorline
+  " autocmd FocusLost,TabLeave,BufLeave * silent! :wa | setlocal nocursorline
 
   " Check for external changes and reload buffer
-  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if filereadable(bufname('%')) | checktime | setlocal cursorline
+  " autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if filereadable(bufname('%')) | checktime | setlocal cursorline
 
   " Delete trailing white spaces
   autocmd BufWritePre * :%s/\s\+$//e
@@ -922,9 +923,6 @@ nnoremap <silent><F2> :Vista!!<CR>
 
 " rainbow {{{
 let g:rainbow_active = 1
-let g:rainbow_conf = {
-      \ 'ctermfgs': ['blue', 'yellow', 'cyan', 'magenta']
-      \ }
 " }}}
 
 " ale {{{
@@ -954,28 +952,35 @@ let g:ale_lint_on_enter = 0
 " }}}
 
 " fugitive {{{
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gd :Gvdiff<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gl :Glog<CR>
-nnoremap <Leader>gp :Gpush<CR>
-nnoremap <Leader>gr :Gread<CR>
-nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <Leader>ge :Gedit<CR>
+" nnoremap <Leader>gs :Gstatus<CR>
+" nnoremap <Leader>gd :Gvdiff<CR>
+" nnoremap <Leader>gc :Gcommit<CR>
+" nnoremap <Leader>gb :Gblame<CR>
+" nnoremap <Leader>gl :Glog<CR>
+" nnoremap <Leader>gp :Gpush<CR>
+" nnoremap <Leader>gr :Gread<CR>
+" nnoremap <Leader>gw :Gwrite<CR>
+" nnoremap <Leader>ge :Gedit<CR>
 
 " Plug wants to lazy load everything but Fugitive can't be lazy loaded.
 " Found this code at the link below.
 " @link https://github.com/junegunn/vim-plug/issues/164#issuecomment-366483364
-command! Gstatus call LazyLoadFugitive('Gstatus') command! Gdiff call LazyLoadFugitive('Gdiff')
-command! Glog call LazyLoadFugitive('Glog')
-command! Gblame call LazyLoadFugitive('Gblame')
+" command! Gstatus call LazyLoadFugitive('Gstatus') command! Gdiff call LazyLoadFugitive('Gdiff')
+" command! Glog call LazyLoadFugitive('Glog')
+" command! Gblame call LazyLoadFugitive('Gblame')
 
-function! LazyLoadFugitive(cmd)
-  call plug#load('vim-fugitive')
-  call fugitive#detect(expand('%:pwd'))
-  exe a:cmd
-endfunction
+" function! LazyLoadFugitive(cmd)
+"  call plug#load('vim-fugitive')
+"  call fugitive#detect(expand('%:pwd'))
+"  exe a:cmd
+" endfunction
+" }}}
+
+" Gina {{{
+nnoremap <silent> <Leader>gs :Gina status<CR>
+nnoremap <silent> <Leader>gb :Gina blame<CR>
+nnoremap <silent> <Leader>gc :Gina commit<CR>
+nnoremap <silent> <Leader>gp :Gina push<CR>
 " }}}
 
 " Gitgutter {{{
@@ -1133,8 +1138,8 @@ function! LightlineColorschemeUpdate()
 endfunction
 
 function! LightlineGit()
-  if exists("*fugitive#head")
-    let branch = fugitive#head()
+  if exists("gina#component#repo#branch")
+    let branch = gina#component#repo#branch()
   else
     let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
   endif

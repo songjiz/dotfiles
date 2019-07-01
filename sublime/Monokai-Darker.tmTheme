@@ -991,6 +991,28 @@
 				<string>#CCCCCCFF</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>scope</key>
+			<string>col_DA532CFF</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#DA532CFF</string>
+				<key>foreground</key>
+				<string>#F6F6F6FF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>col_345995FF</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#345995FF</string>
+				<key>foreground</key>
+				<string>#D4D4D4FF</string>
+			</dict>
+		</dict>
 	</array>
 	<key>uuid</key>
 	<string>D8D5E82E-3D5B-46B5-B38E-8C841C21347D</string>
