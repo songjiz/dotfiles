@@ -388,6 +388,9 @@ nnoremap ][  ][zz
 " Recenter when jump back
 nnoremap <C-o> <C-o>zz
 nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap <C-f> <C-f>zz
+nnoremap <C-b> <C-b>zz
 
 " Center highlighted search
 nnoremap n  nzz
@@ -1137,13 +1140,15 @@ function! LightlineColorschemeUpdate()
 endfunction
 
 function! LightlineGit()
-  if exists("*gina#component#repo#branch")
-    let branch = gina#component#repo#branch()
-  elseif exists("*fugitive#head")
-    let branch = fugitive#head()
-  else
-    let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-  endif
+  " if exists("gina#component#repo#branch")
+  "   let branch = gina#component#repo#branch()
+  " elseif exists("*fugitive#head")
+  "   let branch = fugitive#head()
+  " else
+  "   https://github.com/fatih/vim-go/issues/71#issuecomment-394808485
+  "   let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+  " endif
+  let branch = gina#component#repo#branch()
   return strlen(branch) ? ' '. branch : ''
 endfunction
 
