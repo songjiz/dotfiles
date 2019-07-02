@@ -41,7 +41,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-gitgutter'
 Plug 'gko/vim-coloresque'
-Plug 'luochen1990/rainbow'
 Plug 'janko/vim-test'
 call plug#end()
 " }}}
@@ -919,10 +918,6 @@ if executable('typescript-language-server')
       \ })
 endif
 nnoremap <silent><F2> :Vista!!<CR>
-" }}}
-
-" rainbow {{{
-let g:rainbow_active = 1
 " }}}
 
 " ale {{{
