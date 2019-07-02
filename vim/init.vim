@@ -979,8 +979,10 @@ let g:ale_lint_on_enter = 0
 " Gina {{{
 nnoremap <silent> <Leader>gs :Gina status<CR>
 nnoremap <silent> <Leader>gb :Gina blame<CR>
+nnoremap <silent> <Leader>gd :Gina diff<CR>
 nnoremap <silent> <Leader>gc :Gina commit<CR>
-nnoremap <silent> <Leader>gp :Gina push<CR>
+nnoremap <silent> <Leader>ge :Gina edit %<CR>
+nnoremap <silent> <Leader>gw :Gina add %<CR>
 " }}}
 
 " Gitgutter {{{
@@ -1138,8 +1140,10 @@ function! LightlineColorschemeUpdate()
 endfunction
 
 function! LightlineGit()
-  if exists("gina#component#repo#branch")
+  if exists("*gina#component#repo#branch")
     let branch = gina#component#repo#branch()
+  elseif exists("*fugitive#head")
+    let branch = fugitive#head()
   else
     let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
   endif
