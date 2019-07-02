@@ -1,3 +1,15 @@
+snippet - "<% ${1} %>"
+<% ${1} %>
+endsnippet
+
+snippet -- "<%- ${1} %>"
+<%- ${1} %>
+endsnippet
+
+snippet # "<%# ${1} %>"
+<%# ${1} %>
+endsnippet
+
 snippet % "<% $0 %>"
 <% $0 %>
 endsnippet
@@ -87,8 +99,8 @@ snippet fta "f.text_area"
 <%= ${1:f}.text_area :${0:attribute} %>
 endsnippet
 
-snippet fcb "f.checkbox"
-<%= ${1:f}.checkbox :${0:attribute} %>
+snippet fcb "f.check_box"
+<%= ${1:f}.check_box :${0:attribute} %>
 endsnippet
 
 snippet ffile "f.file_field"

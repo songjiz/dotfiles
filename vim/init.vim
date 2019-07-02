@@ -134,7 +134,7 @@ set ruler
 " }}}
 
 " Command line {{{
-set showcmd
+" set showcmd
 set cmdheight=1
 set history=1000
 " }}}
@@ -205,6 +205,7 @@ set scrolloff=5
 
 set ttyfast
 set lazyredraw
+set redrawtime=10000
 " set regexpengine=1 " Some syntax files on the new regex engine cause vim to be slower
 
 " set colorcolumn=80,120
@@ -279,8 +280,8 @@ augroup common
         \ endif
 
   " Toggle line number
-  autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  " autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
+  " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 
   " autocmd InsertEnter * setlocal nocursorline nolist
   " autocmd InsertLeave * setlocal cursorline list
@@ -1005,6 +1006,7 @@ let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 let g:UltiSnipsEnableSnipMate = 0
 let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ['ultisnips']
 " }}}
 
 " completor {{{

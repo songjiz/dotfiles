@@ -91,6 +91,11 @@ alias ${1:new} ${2:existing}
 $0
 endsnippet
 
+snippet am "alias_method" b
+alias_method :${1:new_name}, :${2:old_name}
+$0
+endsnippet
+
 snippet ?: "Ternary Operator"
 ${1:condition} ? ${2:true} : ${3:false} $0
 endsnippet
@@ -214,4 +219,13 @@ snippet ###
 =begin
 	$0
 =end
+endsnippet
+
+snippet pry "binding.pry" b
+binding.pry
+$0
+endsnippet
+
+snippet lambda "Proc" b
+lambda { |${1:args}| ${2} }
 endsnippet

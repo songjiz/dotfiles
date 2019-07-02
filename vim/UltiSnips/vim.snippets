@@ -72,4 +72,11 @@ snippet exe "execute"
 execute ${1}
 endsnippet
 
+snippet cmd "command!" b
+command! ${1:command_name} call s:$1()
+function! s:$1() abort
+	${2:" code}
+endfunction
+endsnippet
+
 # vim:ft=snippets:
