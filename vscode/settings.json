@@ -12,7 +12,7 @@
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.shell.osx": "/bin/zsh",
   "window.nativeTabs": true,
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 2,
   "workbench.activityBar.visible": false,
   "workbench.colorTheme": "Monokai",
   "workbench.colorCustomizations": {

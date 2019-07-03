@@ -4,7 +4,7 @@ if !filereadable(vimplug)
   echo "Installing vim-plug ..."
   echo ""
   silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+  autocmd VimEnter * PlugInstall --sync | quit | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'maralla/completor.vim'
@@ -143,13 +143,27 @@ set history=1000
 set path+=**                    " Include all subfolders in file completions
 set wildmenu                    " Command line tab completion
 set wildmode=list:longest,full
-set completeopt=longest,menuone,preview,noinsert
+
+set completeopt+=longest
+set completeopt+=menuone
+set completeopt+=noinsert
+set completeopt-=preview
+
+set dictionary+=$HOME/.vim/dict/words
+set complete+=k
+set complete+=kspell
+
+" Popup Menu
+set pumheight=15  " Maximum number of items to show in popup menu
+" set pumblend=10   " Pesudo-blend effect for popup menu
 " }}}
 
 " Ignore files {{{
-set wildignore+=.DS_Store,*.keep,.git/**,.svn/**,.hg/**,tmp/**,*.log,.bundle/**,node_modules/**,tags
+set wildignore+=.DS_Store,*.keep,
+set wildignore+=.git/**,.svn/**,.hg/**,tmp/**,*.log,.bundle/**,node_modules/**,build/**
 set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*pyc,*.o,*.gem
 set wildignore+=*.jpg,*jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
+set wildignore+=tags
 " }}}
 
 " Undo {{{
@@ -213,7 +227,7 @@ set redrawtime=10000
 " Prefer vertical orientation when using :diffsplit
 set diffopt+=vertical
 
-set listchars=tab:»·,trail:·,extends:⟩,precedes:⟨,eol:↩
+set listchars=tab:»·,trail:·,extends:⟩,precedes:⟨,eol:↩,nbsp:+,nbsp:+
 set showbreak=↪
 
 set virtualedit=onemore
@@ -223,7 +237,7 @@ set viewoptions=folds,cursor,unix,slash
 " Auto write a file when leaveing a modified buffer
 set autoread
 set autowrite
-set updatetime=500
+set updatetime=1000
 
 " Enable true color
 if has('gui_running') && $COLORTERM ==# 'truecolor'
@@ -280,8 +294,8 @@ augroup common
         \ endif
 
   " Toggle line number
-  " autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
-  " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 
   " autocmd InsertEnter * setlocal nocursorline nolist
   " autocmd InsertLeave * setlocal cursorline list
@@ -319,17 +333,16 @@ nnoremap : ;
 vnoremap ; :
 
 " Alt key {{{
-if &term =~ 'xterm' && !has("gui_running")
-  " AutoPairs
-  "  <M-p> : Toggle Autopairs
-  "  <M-e> : Fast Wrap
-  "  <M-n> : Jump to next closed pair
-  "  <M-b> : BackInsert
+if !has('nvim') && &term =~ 'xterm' && !has("gui_running")
   execute "set <A-e>=\ee"
   execute "set <A-p>=\ep"
   execute "set <A-n>=\en"
   execute "set <A-b>=\eb"
   execute "set <A-f>=\ef"
+  execute "set <A-h>=\eh"
+  execute "set <A-j>=\ej"
+  execute "set <A-k>=\ek"
+  execute "set <A-l>=\el"
 endif
 " }}}
 " Let mark go to column
@@ -366,6 +379,12 @@ inoremap <C-e> <C-o>$
 inoremap <C-w> <C-g>u<C-w>
 inoremap <C-u> <C-g>u<C-u>
 
+" Resize windows using <Alt> and h,j,k,l
+nnoremap <silent> <M-h> <C-w><
+nnoremap <silent> <M-l> <C-w>>
+nnoremap <silent> <M-j> <C-W>-
+nnoremap <silent> <M-k> <C-W>+
+
 " Quit
 inoremap <C-q>     <ESC>:q<CR>
 nnoremap <C-q>     :q:<CR>
@@ -401,6 +420,17 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 nnoremap G  Gzz
 
+" Do not include white space character when using $ in visual mode
+vnoremap $ g_
+
+" Go to start or end of line easier
+nnoremap H ^
+nnoremap L $
+
+" Use <Cr> to select an item and do not add an annoying newline
+inoremap <expr> <Cr> ((pumvisible())?("\<C-Y>"):("\<Cr>"))
+" Use <Esc> to close auto-completion menu
+inoremap <expr> <Esc> ((pumvisible())?("\<C-e>"):("\<Esc>"))
 " }}}
 
 " Verb c Change
@@ -562,7 +592,7 @@ nnoremap <S-tab> <C-w>W
 
 " Quickly edit/reload the vimrc file {{{
 nnoremap <silent> <Leader>ec :vsp $MYVIMRC<CR>
-nnoremap <silent> <Leader>rc :so $MYVIMRC<CR>
+nnoremap <silent> <Leader>rc :silent update $MYVIMRC <Bar> source $MYVIMRC<CR>
 " }}}
 
 " Folding {{{
@@ -876,7 +906,6 @@ nmap \a <Plug>(FerretAck)
 nmap \w <Plug>(FerretAckWord)
 nmap \s <Plug>(FerretAcks)
 nmap \r <Plug>(FerretAcks)
-command! -nargs=* GitConflicts :Ack '<<<<<<<' <CR>
 " }}}
 
 " NERDTree {{{
