@@ -40,7 +40,6 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'yggdroot/indentline'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'kshenoy/vim-signature'
-Plug 'airblade/vim-gitgutter'
 Plug 'gko/vim-coloresque'
 Plug 'janko/vim-test'
 call plug#end()
@@ -1012,17 +1011,6 @@ nnoremap <silent> <Leader>gd :Gina diff<CR>
 nnoremap <silent> <Leader>gc :Gina commit<CR>
 nnoremap <silent> <Leader>ge :Gina edit %<CR>
 nnoremap <silent> <Leader>gw :Gina add %<CR>
-" }}}
-
-" Gitgutter {{{
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_on_bufenter = 1
-let g:gitgutter_sign_added = '•'
-let g:gitgutter_sign_modified = '•'
-let g:gitgutter_sign_removed = '•'
-let g:gitgutter_sign_removed_first_line = '•'
-let g:gitgutter_sign_modified_removed = '•'
-nnoremap <silent><Leader>gg :GitGutterToggle<CR>
 " }}}
 
 " Indentline {{{
