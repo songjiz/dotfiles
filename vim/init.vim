@@ -32,7 +32,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'wellle/targets.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'lambdalisue/gina.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'prabirshrestha/async.vim'
@@ -42,6 +41,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'kshenoy/vim-signature'
 Plug 'gko/vim-coloresque'
 Plug 'janko/vim-test'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 " }}}
 
@@ -315,7 +315,7 @@ augroup common
   autocmd CmdlineEnter /,\? :set hlsearch
   autocmd CmdlineLeave /,\? :set nohlsearch
 
-  autocmd BufWritePre * call <SID>auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+  autocmd BufWritePre,FileWritePre * silent! call <SID>auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
 
   " Automatic rename of tmux window
   if exists('$TMUX') && !exists('$NORENAME')
@@ -908,18 +908,23 @@ nmap \s <Plug>(FerretAcks)
 nmap \r <Plug>(FerretAcks)
 " }}}
 
-" NERDTree {{{
-let NERDTreeQuitOnOpen = 1
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeWinSize = 24
-nnoremap <silent><F1> :NERDTreeToggle<CR>
-nnoremap <silent><Leader>n :NERDTreeToggle<CR>
-nnoremap <silent><Leader>v :NERDTreeFind<CR>
-" Automatically close a tab if the only remaining window is NerdTree
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" }}}
+" netrw {{{
+let g:netrw_banner = 0
+let g:netrw_hide = 1
+let g:netrw_liststyle = 1
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 20
+let g:netrw_altv = 1
+let g:netrw_chgwin = 2
+nnoremap <silent><F1> :Vexplore<CR>
+augroup netrw
+  autocmd!
+  " Use `<C-c>` or `q` to close netrw window.
+  autocmd FileType netrw
+    \ nnoremap <silent><buffer> <C-c> :wincmd q<CR>
+augroup END
+
+"}}}
 
 " vista & vim-lsp {{{
 let g:vista_icon_indent = ["▸ ", ""]
@@ -1032,11 +1037,13 @@ let g:UltiSnipsSnippetDirectories = ['ultisnips']
 
 " completor {{{
 " Enable LSP
+let g:completor_debug = 1
 let g:completor_filetype_map = {
       \ 'ruby': { 'ft': 'lsp', 'cmd': 'solargraph stdio' },
       \ 'typescript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
       \ 'javascript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
-      \ 'javascript.jsx': {'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
+      \ 'javascript.jsx': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
+      \ 'rust': { 'ft': 'lsp', 'cmd': 'rls' }
       \ }
 
 function! s:check_back_space() abort
