@@ -898,6 +898,10 @@ imap <C-x><C-j> <plug>(fzf-complete-file-ag)
 imap <C-x><C-l> <plug>(fzf-complete-line)
 " }}}
 
+" matchup {{{
+let g:matchup_matchparen_status_offscreen = 0
+" }}}
+
 " sneak {{{
 let g:sneak#label=1
 let g:sneak#s_next = 1
