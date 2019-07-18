@@ -32,6 +32,7 @@ Plug 'AndrewRadev/tagalong.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'wellle/targets.vim'
 Plug 'lambdalisue/gina.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'liuchengxu/vista.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
@@ -363,9 +364,9 @@ imap jk <ESC>
 cnoremap jk <c-c>
 xnoremap jk <c-c>
 vnoremap v <ESC>
-if has('nvim')
-  tnoremap jk <C-\><C-n>
-endif
+" In terminal mode, <C-w> is leader key
+tnoremap jk <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
 
 " Insert mode navigation like terminal
 inoremap <C-b> <C-o>h
@@ -1026,6 +1027,17 @@ let g:ale_lint_on_enter = 0
 " endfunction
 " }}}
 
+" Gitgutter {{{
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_on_bufenter = 1
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_removed_first_line = '•'
+let g:gitgutter_sign_modified_removed = '•'
+noremap <silent><Leader>gg :GitGutterToggle<CR>
+" }}}
+
 " Gina {{{
 " https://github.com/lambdalisue/gina.vim/issues/96#issuecomment-319655413
 let g:gina#command#blame#formatter#format="%su%= by %au on %ti %ma%in"
@@ -1134,12 +1146,13 @@ let g:lightline.colorscheme='monokai'
 " let g:lightline#ale#indicator_ok = "\uf058 "
 
 let g:lightline.component_function = {
-      \ 'git': 'LightlineGit',
+      \ 'gitbranch': 'LightlineGitBranch',
+      \ 'githunks': 'LightlineGitHunks',
       \ 'lint': 'LightlineALELint',
       \ 'filesize': 'LightlineFileSize',
       \ }
 let g:lightline.active = {
-      \ 'left': [['mode', 'paste'], ['git', 'filename', 'readonly', 'modified']],
+      \ 'left': [['mode', 'paste'], ['gitbranch', 'githunks', 'filename', 'readonly', 'modified']],
       \ 'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'lint']],
       \ }
 let g:lightline.inactive = {
@@ -1173,16 +1186,32 @@ function! LightlineFileSize()
   endfor
 endfunction
 
-function! LightlineColorschemeUpdate()
+function! LightlineColorschemeUpdate() abort
   let g:lightline.colorscheme = g:colors_name
   call lightline#init()
   call lightline#colorscheme()
   call lightline#update()
 endfunction
 
-function! LightlineGit()
+function! LightlineGitBranch() abort
   let branch = gina#component#repo#branch()
   return strlen(branch) ? ' '. branch : ''
+endfunction
+
+function! LightlineGitHunks() abort
+  if !get(g:, 'gitgutter_enabled', 0)
+    return ''
+  end
+  let s:hunk_signs = get(g:, 'lightline#hunks#signs', ['+', '~', '-'])
+  let hunks = GitGutterGetHunkSummary()
+  let summary = ''
+
+  for i in [0, 1, 2]
+    if winwidth(0) > 100
+      let summary .= printf('%s%s', s:hunk_signs[i], hunks[i]).' '
+    endif
+  endfor
+  return summary
 endfunction
 
 function! LightlineALELint() abort
@@ -1201,7 +1230,11 @@ function! LightlineALELint() abort
     if l:counts.total == 0
       return l:indicator_ok
     else
-      return (l:all_non_errors == 0 ? '' : printf(l:indicator_warnings . '%d', all_non_errors)) . (l:all_errors == 0 ? '' : printf(l:indicator_errors . '%d', all_errors))
+      return (
+            \ l:all_non_errors == 0 ? '' :
+            \ printf(l:indicator_warnings . '%d', all_non_errors)) .
+            \ (l:all_errors == 0 ? '' : printf(l:indicator_errors . '%d', all_errors)
+            \ )
     endif
   endif
 endfunction
