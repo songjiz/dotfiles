@@ -21,7 +21,6 @@ Plug 'songjiz/vim-monokai'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -36,10 +35,9 @@ Plug 'lambdalisue/gina.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'yggdroot/indentline'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'kshenoy/vim-signature'
-Plug 'gko/vim-coloresque'
+Plug 'ap/vim-css-color'
 Plug 'janko/vim-test'
 Plug 'rust-lang/rust.vim'
 call plug#end()
@@ -147,7 +145,7 @@ set wildmode=list:longest,full
 set completeopt+=longest
 set completeopt+=menuone
 set completeopt+=noinsert
-set completeopt-=preview
+set completeopt+=preview
 
 set dictionary+=$HOME/.vim/dict/words
 set complete+=k
@@ -227,7 +225,7 @@ set redrawtime=10000
 " Prefer vertical orientation when using :diffsplit
 set diffopt+=vertical
 
-set listchars=tab:»·,trail:·,extends:⟩,precedes:⟨,eol:↩,nbsp:+,nbsp:+
+set listchars=tab:»·,trail:·,extends:⟩,precedes:⟨,eol:↩,nbsp:+
 set showbreak=↪
 
 set virtualedit=onemore
@@ -297,8 +295,8 @@ augroup common
   autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 
-  " autocmd InsertEnter * setlocal nocursorline nolist
-  " autocmd InsertLeave * setlocal cursorline list
+  autocmd InsertEnter * setlocal nocursorline nolist
+  autocmd InsertLeave * setlocal cursorline list
 
   " Unset paste on InsertLeave
   autocmd InsertLeave * set nopaste
@@ -588,6 +586,12 @@ nnoremap <S-tab> <C-w>W
 " 5) Ctrl-w |   To incsearch a window to its maximum width
 " 6) Ctrl-w >   To increase a window by one column
 " 7) Ctrl-w <   To decrease a window by one column
+
+ " 20<C-w>|     Set window width to 20 columns
+ " 10<C-w>>     Increase window width by 10 columns
+ " 10<C-w><     Decrease window width by 10 columns
+ " 10<C-w>+     Increase window height by 10 columns
+ " 10<C-w>-     Decrease window height by 10 columns
 " }}}
 
 " Quickly edit/reload the vimrc file {{{
@@ -919,11 +923,12 @@ let g:netrw_chgwin = 2
 nnoremap <silent><F1> :Vexplore<CR>
 augroup netrw
   autocmd!
-  " Use `<C-c>` or `q` to close netrw window.
+  " Use `<C-c>` to close netrw window.
   autocmd FileType netrw
     \ nnoremap <silent><buffer> <C-c> :wincmd q<CR>
+  " Delete netrw's buffer once it's hidden.
+  autocmd FileType netrw setlocal bufhidden=delete
 augroup END
-
 "}}}
 
 " vista & vim-lsp {{{
@@ -1010,20 +1015,19 @@ let g:ale_lint_on_enter = 0
 " }}}
 
 " Gina {{{
-nnoremap <silent> <Leader>gs :Gina status<CR>
+" https://github.com/lambdalisue/gina.vim/issues/96#issuecomment-319655413
+let g:gina#command#blame#formatter#format="%su%= by %au on %ti %ma%in"
+nnoremap <silent> <Leader>gs :Gina status --opener=split<CR>
 nnoremap <silent> <Leader>gb :Gina blame<CR>
-nnoremap <silent> <Leader>gd :Gina diff<CR>
+nnoremap <silent> <Leader>gd :Gina diff --opener=split<CR>
 nnoremap <silent> <Leader>gc :Gina commit<CR>
 nnoremap <silent> <Leader>ge :Gina edit %<CR>
 nnoremap <silent> <Leader>gw :Gina add %<CR>
-" }}}
 
-" Indentline {{{
-let g:indentLine_setColors = 1
-let g:indentLine_enabled = 1
-let g:indentLine_char = '┆'   "¦ ┆ │
-let g:indentLine_first_char = '┆'   "¦ ┆ │
-let g:indentLine_showFirstIndentLevel = 0
+augroup gina
+  autocmd!
+  autocmd FileType gina-blame,gina-status noremap <silent>q :bd<CR>
+augroup END
 " }}}
 
 " UltiSnips {{{
@@ -1165,14 +1169,6 @@ function! LightlineColorschemeUpdate()
 endfunction
 
 function! LightlineGit()
-  " if exists("gina#component#repo#branch")
-  "   let branch = gina#component#repo#branch()
-  " elseif exists("*fugitive#head")
-  "   let branch = fugitive#head()
-  " else
-  "   https://github.com/fatih/vim-go/issues/71#issuecomment-394808485
-  "   let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-  " endif
   let branch = gina#component#repo#branch()
   return strlen(branch) ? ' '. branch : ''
 endfunction
