@@ -921,6 +921,18 @@ let g:netrw_winsize = 20
 let g:netrw_altv = 1
 let g:netrw_chgwin = 2
 nnoremap <silent><F1> :Vexplore<CR>
+nnoremap - :call OpenDir('leftabove vsplit')<CR>
+
+function! OpenDir(cmd) abort
+  if expand('%') =~# '^$\|^term:[\/][\/]'
+    execute a:cmd '.'
+  else
+    execute a:cmd . '%:h | vertical resize ' . get(g:, 'netrw_winsize', 20)
+    let pattern = '^\%(|\)*' . escape(expand('#:t'), '.*[]~\') . '[/*|@=]\=\%($\|\t\)'
+    call search(pattern, 'wc')
+  endif
+endfunction
+
 augroup netrw
   autocmd!
   " Use `<C-c>` to close netrw window.
