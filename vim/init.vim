@@ -11,7 +11,6 @@ Plug 'maralla/completor.vim'
 Plug 'tmsvg/pear-tree'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
-Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'wincent/ferret'
@@ -218,7 +217,7 @@ set scrolloff=5
 
 set ttyfast
 set lazyredraw
-set redrawtime=10000
+set redrawtime=5000
 " set regexpengine=1 " Some syntax files on the new regex engine cause vim to be slower
 
 " set colorcolumn=80,120
@@ -268,14 +267,11 @@ set background=dark
 if !has("gui_running")
   let g:monokai_term_italic = 0
 endif
-colorscheme monokai
+try
+  colorscheme monokai
+catch
+endtry
 " }}}
-
-function! WhichHighlightGroup()
-  let l:s = synID(line('.'), col('.'), 1)
-  echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-endfunction
-" }}
 
 " Autocommands {{{
 augroup common
@@ -324,7 +320,6 @@ augroup common
 augroup END
 " }}}
 
-" Key mappings {{{
 " Key mappings {{{
 let mapleader = ','
 nnoremap ; :
@@ -517,6 +512,7 @@ nnoremap U <C-r>
 
 " Fast edit files in same directory
 cabbr <expr> %% fnameescape(expand("%:p:h"))
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 
 " Fast newlines {{{
 " use [<Space> and ]<Space> provided by unimpaired
@@ -561,6 +557,10 @@ nnoremap <silent> <C-t>o :tabonly<CR>
 " Window split {{{
 " 1) Ctrl-w s   Split
 " 2) Ctrl-w v   Vsplit
+nnoremap <silent><leader>sh :leftabove vnew<CR>
+nnoremap <silent><leader>sl :rightbelow vnew<CR>
+nnoremap <silent><leader>sk :leftabove new<CR>
+nnoremap <silent><leader>sj :rightbelow new<CR>
 " }}}
 
 " Window navigation {{{
@@ -576,7 +576,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <Tab>   <C-w>w
-nnoremap <S-tab> <C-w>W
+nnoremap <S-Tab> <C-w>W
 " }}}
 
 " Window resize {{{
@@ -596,7 +596,7 @@ nnoremap <S-tab> <C-w>W
 " }}}
 
 " Quickly edit/reload the vimrc file {{{
-nnoremap <silent> <Leader>ec :vsp $MYVIMRC<CR>
+nnoremap <silent> <Leader>vc :vsp $MYVIMRC<CR>
 nnoremap <silent> <Leader>rc :silent update $MYVIMRC <Bar> source $MYVIMRC<CR>
 " }}}
 
@@ -773,9 +773,11 @@ function! s:syntax_stack()
 endfunction
 command! SyntaxStack call <SID>syntax_stack()
 
+" }}}
+
 " Plugins config {{{
 
-" FZF  {{{
+" FZF {{{
 if executable('rg')
   let $FZF_DEFAULT_COMMAND='rg --vimgrep --files --hidden --follow --no-ignore-messages --glob "!.git/*"'
 elseif executable('ag')
@@ -980,65 +982,14 @@ endif
 nnoremap <silent><F2> :Vista!!<CR>
 " }}}
 
-" ale {{{
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
-let g:ale_set_signs = 0
-let g:ale_sign_column_always = 0
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
-" Run linters only when I save files
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-" }}}
-
-" commentary {{{
-"" }}}
-
 " emmet {{{
 " Press <Ctrl-Y>, to trigger
-" let g:user_emmet_mode='n'    "only enable normal mode functions.
-" let g:user_emmet_mode='inv'  "enable all functions, which is equal to
-" let g:user_emmet_mode='a'    "enable all function in all mode.
-" let g:user_emmet_leader_key='<C-Z>'
-" }}}
-
-" fugitive {{{
-" nnoremap <Leader>gs :Gstatus<CR>
-" nnoremap <Leader>gd :Gvdiff<CR>
-" nnoremap <Leader>gc :Gcommit<CR>
-" nnoremap <Leader>gb :Gblame<CR>
-" nnoremap <Leader>gl :Glog<CR>
-" nnoremap <Leader>gp :Gpush<CR>
-" nnoremap <Leader>gr :Gread<CR>
-" nnoremap <Leader>gw :Gwrite<CR>
-" nnoremap <Leader>ge :Gedit<CR>
-
-" Plug wants to lazy load everything but Fugitive can't be lazy loaded.
-" Found this code at the link below.
-" @link https://github.com/junegunn/vim-plug/issues/164#issuecomment-366483364
-" command! Gstatus call LazyLoadFugitive('Gstatus') command! Gdiff call LazyLoadFugitive('Gdiff')
-" command! Glog call LazyLoadFugitive('Glog')
-" command! Gblame call LazyLoadFugitive('Gblame')
-
-" function! LazyLoadFugitive(cmd)
-"  call plug#load('vim-fugitive')
-"  call fugitive#detect(expand('%:pwd'))
-"  exe a:cmd
-" endfunction
 " }}}
 
 " Gitgutter {{{
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_on_bufenter = 1
-let g:gitgutter_sign_added = '•'
-let g:gitgutter_sign_modified = '•'
-let g:gitgutter_sign_removed = '•'
-let g:gitgutter_sign_removed_first_line = '•'
-let g:gitgutter_sign_modified_removed = '•'
+let g:gitgutter_signs = 0
 noremap <silent><Leader>gg :GitGutterToggle<CR>
 " }}}
 
@@ -1139,7 +1090,6 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 2
 " }}}
 
-
 " lightline {{{
 let g:lightline={}
 let g:lightline.colorscheme='monokai'
@@ -1152,12 +1102,11 @@ let g:lightline.colorscheme='monokai'
 let g:lightline.component_function = {
       \ 'gitbranch': 'LightlineGitBranch',
       \ 'githunks': 'LightlineGitHunks',
-      \ 'lint': 'LightlineALELint',
       \ 'filesize': 'LightlineFileSize',
       \ }
 let g:lightline.active = {
-      \ 'left': [['mode', 'paste'], ['gitbranch', 'githunks', 'filename', 'readonly', 'modified']],
-      \ 'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'lint']],
+      \ 'left': [['mode', 'paste'], ['gitbranch', 'filename', 'readonly', 'modified']],
+      \ 'right': [['lineinfo'], ['percent'], ['githunks', 'fileformat', 'fileencoding', 'filetype']],
       \ }
 let g:lightline.inactive = {
       \ 'left': [['filename', 'readonly', 'modified']],
@@ -1167,9 +1116,6 @@ let g:lightline.inactive = {
 augroup Lightline
   autocmd!
   autocmd ColorScheme * call LightlineColorschemeUpdate()
-  autocmd User ALEJobStarted call lightline#update()
-  autocmd User ALELintPost call lightline#update()
-  autocmd User ALEFixPost call lightline#update()
 augroup END
 
 function! LightlineFileSize()
@@ -1203,44 +1149,16 @@ function! LightlineGitBranch() abort
 endfunction
 
 function! LightlineGitHunks() abort
-  if !get(g:, 'gitgutter_enabled', 0)
+  if !get(g:, 'gitgutter_enabled', 0) || winwidth(0) <= 100
     return ''
   end
   let s:hunk_signs = get(g:, 'lightline#hunks#signs', ['+', '~', '-'])
   let hunks = GitGutterGetHunkSummary()
   let summary = ''
-
   for i in [0, 1, 2]
-    if winwidth(0) > 100
-      let summary .= printf('%s%s', s:hunk_signs[i], hunks[i]).' '
-    endif
+    let summary .= printf('%s%s ', s:hunk_signs[i], hunks[i])
   endfor
-  return summary
-endfunction
-
-function! LightlineALELint() abort
-  let l:indicator_warnings = get(g:, 'lightline#ale#indicator_warnings', 'W: ')
-  let l:indicator_errors = get(g:, 'lightline#ale#indicator_errors', 'E: ')
-  let l:indicator_ok = get(g:, 'lightline#ale#indicator_ok', 'OK')
-  let l:indicator_checking = get(g:, 'lightline#ale#indicator_checking', 'Linting...')
-  let l:counts = ale#statusline#Count(bufnr(''))
-
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-
-  if ale#engine#IsCheckingBuffer(bufnr(''))
-    return l:indicator_checking
-  else
-    if l:counts.total == 0
-      return l:indicator_ok
-    else
-      return (
-            \ l:all_non_errors == 0 ? '' :
-            \ printf(l:indicator_warnings . '%d', all_non_errors)) .
-            \ (l:all_errors == 0 ? '' : printf(l:indicator_errors . '%d', all_errors)
-            \ )
-    endif
-  endif
+  return trim(summary)
 endfunction
 " }}}
 
