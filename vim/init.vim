@@ -8,7 +8,6 @@ if !filereadable(vimplug)
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'maralla/completor.vim'
-Plug 'tmsvg/pear-tree'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --bin' }
