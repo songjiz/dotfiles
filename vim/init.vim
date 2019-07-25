@@ -14,6 +14,7 @@ Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'wincent/ferret'
+Plug 'w0rp/ale'
 Plug 'junegunn/vim-easy-align'
 Plug 'itchyny/lightline.vim'
 Plug 'songjiz/vim-monokai'
@@ -25,9 +26,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-abolish'
-Plug 'andymass/vim-matchup'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'AndrewRadev/tagalong.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'wellle/targets.vim'
 Plug 'lambdalisue/gina.vim'
@@ -36,7 +34,6 @@ Plug 'liuchengxu/vista.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'kshenoy/vim-signature'
 Plug 'ap/vim-css-color'
 Plug 'janko/vim-test'
 Plug 'rust-lang/rust.vim'
@@ -60,7 +57,7 @@ set fileencodings=utf8,chinese,taiwan,japan,korea,ansi
 
 " Numbering {{{
 set number
-" set relativenumber
+set relativenumber
 " }}}
 
 " Tabs and Spaces {{{
@@ -86,15 +83,9 @@ endfunction
 command! -nargs=* ExpandTab call <SID>expand_tab(<q-args>)
 " }}}
 
-" Windows {{{
-if has('windows')
-  " set fillchars=vert:\  " Beautify vertical splits
-endif
-" }}}
-
 " Indent {{{
 set autoindent
-" set smartindent
+set smartindent
 " }}}
 
 " Seaching {{{
@@ -103,17 +94,13 @@ set hlsearch
 set ignorecase
 set smartcase
 set matchtime=1
-" Enables interactive search and replace
-if has('nvim')
-  set inccommand=split
-endif
-
 " }}}
 
 " No annoying {{{
 set noerrorbells
 set novisualbell
 set nospell
+set belloff=all
 " }}}
 
 " Split {{{
@@ -202,7 +189,8 @@ set clipboard^=unnamed,unnamedplus
 " Wrap {{{
 set nolist
 set wrap
-set textwidth=79
+set textwidth=80
+set colorcolumn=80
 set formatoptions=qn1 " See :help fo-table
 " }}}
 
@@ -218,15 +206,15 @@ set scrolloff=5
 set ttyfast
 set lazyredraw
 set redrawtime=5000
+set timeoutlen=500
 " set regexpengine=1 " Some syntax files on the new regex engine cause vim to be slower
-
-" set colorcolumn=80,120
 
 " Prefer vertical orientation when using :diffsplit
 set diffopt+=vertical
 
-set listchars=tab:»·,trail:·,extends:⟩,precedes:⟨,eol:↩,nbsp:+
-set showbreak=↪
+" set listchars=tab:»·,trail:·,extends:⟩,precedes:⟨,eol:↩,nbsp:+
+set listchars=tab:»·,trail:·
+" set showbreak=↪
 
 set virtualedit=onemore
 set viewoptions=folds,cursor,unix,slash
@@ -263,14 +251,17 @@ if has('gui_running')
   " set transparency=5
 endif
 
-set background=dark
+set background=light
 if !has("gui_running")
   let g:monokai_term_italic = 0
 endif
 try
-  colorscheme monokai
+  colorscheme PaperColor
 catch
 endtry
+
+" Enable built-in matchit plugin
+runtime macros/matchit.vim
 " }}}
 
 " Autocommands {{{
@@ -292,8 +283,8 @@ augroup common
   autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 
-  autocmd InsertEnter * setlocal nocursorline nolist
-  autocmd InsertLeave * setlocal cursorline list
+  autocmd InsertEnter * setlocal nolist
+  autocmd InsertLeave * setlocal list
 
   " Unset paste on InsertLeave
   autocmd InsertLeave * set nopaste
@@ -513,6 +504,8 @@ nnoremap U <C-r>
 " Fast edit files in same directory
 cabbr <expr> %% fnameescape(expand("%:p:h"))
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
 " Fast newlines {{{
 " use [<Space> and ]<Space> provided by unimpaired
@@ -552,6 +545,24 @@ nnoremap <silent> <C-t>a :tabfirst<CR>
 nnoremap <silent> <C-t>z :tablast<CR>
 nnoremap <silent> <C-t>m :tabmove<SPACE>
 nnoremap <silent> <C-t>o :tabonly<CR>
+
+" Merge a tab into a split in the previous window
+command! MergeTab call s:merge_tab()
+function! s:merge_tab() abort
+  if tabpagenr() == 1
+    return
+  endif
+  let bufferName = bufname("%")
+  if tabpagenr("$") == tabpagenr()
+    close!
+  else
+    close!
+    tabprev
+  endif
+  split
+  execute "buffer " . bufferName
+endfunction
+nnoremap <silent><C-w>u :MergeTab<CR> "<C-w>T move buffer to new tab
 " }}}
 
 " Window split {{{
@@ -644,6 +655,21 @@ cnoremap w!! w !sudo tee % > /dev/null<CR>
 nnoremap <Leader><Space> <C-^>
 " }}}
 
+" Rename current file
+command! RenameFile call s:rename_file()
+function! s:rename_file() abort
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+nnoremap <Leader>n :RenameFile<CR>
+
+command! FuckGFW :tabe ~/.config/clash/config.yaml
+
 " Quickfix window {{{
 nnoremap <silent> <Leader>co :copen<CR>zz
 nnoremap <silent> <Leader>cw :cwindow<CR>zz
@@ -696,6 +722,7 @@ command! ToggleQf call <SID>toggle_qf()
 nnoremap <silent> <F4> :ToggleQf<CR>
 " }}}
 
+command! Todo call <SID>todo()
 function! s:todo()
   let entries = []
   for cmd in [
@@ -716,9 +743,9 @@ function! s:todo()
     copen
   endif
 endfunction
-command! Todo call <SID>todo()
 nnoremap <silent> <F3> :Todo<CR>
 
+command! -bang Profile call s:profile(<bang>0)
 function! s:profile(bang)
   if a:bang
     profile pause
@@ -729,8 +756,8 @@ function! s:profile(bang)
     profile file *
   endif
 endfunction
-command! -bang Profile call s:profile(<bang>0)
 
+command! GitRoot call s:git_root()
 function! s:git_root()
   let l:root = systemlist('git rev-parse --show-toplevel')[0]
   if v:shell_error
@@ -740,8 +767,8 @@ function! s:git_root()
     echo 'Changed directory to: ' . l:root
   endif
 endfunction
-command! GitRoot call s:git_root()
 
+command! -nargs=* SaveMacro call <SID>save_macro(<f-args>)
 function! s:save_macro(name, file)
   let content = eval('@'.a:name)
   if !empty(content)
@@ -749,15 +776,15 @@ function! s:save_macro(name, file)
     echom len(content) . " bytes save to ". a:file
   endif
 endfunction
-command! -nargs=* SaveMacro call <SID>save_macro(<f-args>)
 
+command! -nargs=* LoadMacro call <SID>load_macro(<f-args>)
 function! s:load_macro(file, name)
   let data = join(readfile(a:file), "\n")
   call setreg(a:name, data, 'c')
   echom "Macro loaded to @". a:name
 endfunction
-command! -nargs=* LoadMacro call <SID>load_macro(<f-args>)
 
+command! -bang AutoMkdir call <SID>auto_mkdir(expand('%:p:h'), <bang>0)
 function s:auto_mkdir(dir, force)
   if !isdirectory(a:dir)
     if a:force || confirm("'" . a:dir . "' does not exist. Create?", "&Yes\n&No", 2)
@@ -766,12 +793,10 @@ function s:auto_mkdir(dir, force)
   endif
 endfunction
 
-command! -bang AutoMkdir call <SID>auto_mkdir(expand('%:p:h'), <bang>0)
-
+command! SyntaxStack call <SID>syntax_stack()
 function! s:syntax_stack()
   echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ' > ')
 endfunction
-command! SyntaxStack call <SID>syntax_stack()
 
 " }}}
 
@@ -802,11 +827,6 @@ let g:fzf_action = {
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
 
-" In Neovim, you can set up fzf window using a Vim command
-" let g:fzf_layout = { 'window': 'enew' }
-" let g:fzf_layout = { 'window': '-tabnew' }
-" let g:fzf_layout = { 'window': '20split enew' }
-
 " Customize fzf colors to match your color scheme
 let g:fzf_colors = {
       \ 'fg':      ['fg', 'Normal'],
@@ -824,23 +844,6 @@ let g:fzf_colors = {
       \ 'header':  ['fg', 'Comment']
       \ }
 
-" Working only When fzf starts in a terminal buffer
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=228 ctermbg=236
-  highlight fzf2 ctermfg=228 ctermbg=236
-  highlight fzf3 ctermfg=228 ctermbg=236
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-
-augroup FZF
-  autocmd!
-  autocmd! FileType fzf
-  if has('nvim') || has('gui_running')
-    autocmd! User FzfStatusLine call <SID>fzf_statusline()
-  endif
-augroup END
-
 command! -bang -nargs=? -complete=dir Files
       \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
@@ -851,14 +854,6 @@ command! -bang -nargs=* Ag
       \           : fzf#vim#with_preview('right:50%', '?'),
       \   <bang>0
       \ )
-
-" command! -bang -nargs=* Ack
-"       \ call fzf#vim#ag(
-"       \   <q-args>,
-"       \   <bang>0 ? fzf#vim#with_preview('up:60%')
-"       \           : fzf#vim#with_preview('right:50%', '?'),
-"       \   <bang>0
-"       \ )
 
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
@@ -898,10 +893,6 @@ imap <C-x><C-k> <plug>(fzf-complete-word)
 imap <C-x><C-f> <plug>(fzf-complete-path)
 imap <C-x><C-j> <plug>(fzf-complete-file-ag)
 imap <C-x><C-l> <plug>(fzf-complete-line)
-" }}}
-
-" matchup {{{
-let g:matchup_matchparen_status_offscreen = 0
 " }}}
 
 " sneak {{{
@@ -982,6 +973,19 @@ endif
 nnoremap <silent><F2> :Vista!!<CR>
 " }}}
 
+" ale {{{
+ let g:ale_set_signs = 1
+ let g:ale_sign_column_always = 0
+ let g:ale_sign_error = ''
+ let g:ale_sign_warning = ''
+ let g:ale_echo_msg_error_str = 'E'
+ let g:ale_echo_msg_warning_str = 'W'
+ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+ let g:ale_set_loclist = 0
+ let g:ale_set_quickfix = 0
+ let g:ale_set_highlights = 0
+ " }}}
+
 " emmet {{{
 " Press <Ctrl-Y>, to trigger
 " }}}
@@ -1014,8 +1018,9 @@ let g:UltiSnipsExpandTrigger = "<C-e>"
 let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 let g:UltiSnipsEnableSnipMate = 0
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsSnippetDirectories = ['ultisnips']
+nnoremap <Leader>sn :UltiSnipsEdit<CR>
 " }}}
 
 " completor {{{
@@ -1041,10 +1046,10 @@ inoremap <silent><expr> <TAB>
       \ completor#do('complete')
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-noremap <silent> <leader>d :call completor#do('definition')<CR>
-noremap <silent> <leader>c :call completor#do('doc')<CR>
-noremap <silent> <leader>f :call completor#do('format')<CR>
-noremap <silent> <leader>s :call completor#do('hover')<CR>
+" noremap <silent> <leader>d :call completor#do('definition')<CR>
+" noremap <silent> <leader>c :call completor#do('doc')<CR>
+" noremap <silent> <leader>f :call completor#do('format')<CR>
+" noremap <silent> <leader>s :call completor#do('hover')<CR>
 " }}}
 
 " Multiple Cursors {{{
@@ -1056,25 +1061,12 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<ESC>'
 " }}}
 
-" test {{{
-if has('nvim')
-  let test#strategy = "neovim"
-else
-  let test#strategy = "dispatch"
-endif
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR><Paste>
-" }}}
-
-" signature {{{
-" m[a-zA-Z] add mark
-" " '[a-zA-Z] go to mark
-" " m<Space>  del all marks
-nnoremap <Leader>mm :SignatureToggle<CR>
-nnoremap <Leader>mr :SignatureRefresh<CR>
+" vim-test {{{
+nnoremap <silent> t<C-n> :TestNearest<CR>
+nnoremap <silent> t<C-f> :TestFile<CR>
+nnoremap <silent> t<C-s> :TestSuite<CR>
+nnoremap <silent> t<C-l> :TestLast<CR>
+nnoremap <silent> t<C-g> :TestVisit<CR>
 " }}}
 
 " easy-align {{{
@@ -1092,7 +1084,7 @@ let g:vim_markdown_new_list_item_indent = 2
 
 " lightline {{{
 let g:lightline={}
-let g:lightline.colorscheme='monokai'
+let g:lightline.colorscheme='PaperColor'
 
 " let g:lightline#ale#indicator_checking = "\uf141"
 " let g:lightline#ale#indicator_warnings = "\uf071"
@@ -1102,11 +1094,12 @@ let g:lightline.colorscheme='monokai'
 let g:lightline.component_function = {
       \ 'gitbranch': 'LightlineGitBranch',
       \ 'githunks': 'LightlineGitHunks',
+      \ 'alelint': 'LightlineALELint',
       \ 'filesize': 'LightlineFileSize',
       \ }
 let g:lightline.active = {
-      \ 'left': [['mode', 'paste'], ['gitbranch', 'filename', 'readonly', 'modified']],
-      \ 'right': [['lineinfo'], ['percent'], ['githunks', 'fileformat', 'fileencoding', 'filetype']],
+      \ 'left': [['mode', 'paste'], ['gitbranch', 'filename', 'githunks', 'readonly', 'modified']],
+      \ 'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'alelint']],
       \ }
 let g:lightline.inactive = {
       \ 'left': [['filename', 'readonly', 'modified']],
@@ -1160,6 +1153,40 @@ function! LightlineGitHunks() abort
   endfor
   return trim(summary)
 endfunction
+
+function! LightlineALELint() abort
+  if !exists(':ALE') || winwidth(0) <= 100
+    return ''
+  endif
+  let l:indicator_warnings = get(g:, 'lightline#ale#indicator_warnings', 'W:')
+  let l:indicator_errors = get(g:, 'lightline#ale#indicator_errors', 'E:')
+  let l:indicator_ok = get(g:, 'lightline#ale#indicator_ok', 'OK')
+  let l:indicator_linting = get(g:, 'lightline#ale#indicator_linting', 'Linting...')
+  let l:counts = ale#statusline#Count(bufnr(''))
+
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+
+  if ale#engine#IsCheckingBuffer(bufnr(''))
+    return l:indicator_linting
+  else
+    if l:counts.total == 0
+      return l:indicator_ok
+    else
+      return (
+            \ l:all_non_errors == 0 ? '' :
+            \ printf(l:indicator_warnings . '%d', all_non_errors)) .
+            \ (l:all_errors == 0 ? '' : printf(l:indicator_errors . '%d', all_errors)
+            \ )
+    endif
+  endif
+endfunction
+" }}}
+
+" Local config {{{
+if filereadable($HOME . '/.vimrc.local')
+  source $HOME . '/.vimrc.local'
+endif
 " }}}
 
 " vim: sw=2 sts=2 tw=0 fdm=marker
