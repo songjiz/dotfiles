@@ -1,12 +1,15 @@
+set nocompatible
+
 " vim-plug {{{
-let vimplug=expand('~/.vim/autoload/plug.vim')
-if !filereadable(vimplug)
+if !filereadable(expand('~/.vim/autoload/plug.vim'))
   echo "Installing vim-plug ..."
   echo ""
-  silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !\curl -fLo ~/.vim/autoload/plug.vim
+          \ --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | quit | source $MYVIMRC
 endif
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/pack')
 Plug 'maralla/completor.vim'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
@@ -18,6 +21,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'itchyny/lightline.vim'
 Plug 'songjiz/vim-monokai'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'nanotech/jellybeans.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -29,17 +33,11 @@ Plug 'justinmk/vim-sneak'
 Plug 'wellle/targets.vim'
 Plug 'lambdalisue/gina.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'liuchengxu/vista.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'ap/vim-css-color'
 Plug 'janko/vim-test'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 " }}}
-
-set nocompatible
 
 " Filetype {{{
 filetype on
@@ -118,13 +116,12 @@ set ruler
 " }}}
 
 " Command line {{{
-" set showcmd
+set showcmd
 set cmdheight=1
 set history=1000
 " }}}
 
 " Completion {{{
-set path+=**                    " Include all subfolders in file completions
 set wildmenu                    " Command line tab completion
 set wildmode=list:longest,full
 
@@ -171,14 +168,11 @@ silent! call MakePath(&directory)
 silent! call MakePath('~/.vim/tmp/log/')
 " }}}
 
-" Folding and Concealing {{{
+" Folding {{{
 set nofoldenable
-set foldlevelstart=99 " unfold everything by default
-set foldmethod=marker
-set foldnestmax=2
+set foldmethod=indent
+set foldnestmax=3
 set foldcolumn=0
-
-set conceallevel=0    " Don't conceal anything
 " }}}
 
 " Clipboard {{{
@@ -206,7 +200,6 @@ set ttyfast
 set lazyredraw
 set redrawtime=5000
 set timeoutlen=500
-" set regexpengine=1 " Some syntax files on the new regex engine cause vim to be slower
 
 " Prefer vertical orientation when using :diffsplit
 set diffopt+=vertical
@@ -219,8 +212,8 @@ set virtualedit=onemore
 set viewoptions=folds,cursor,unix,slash
 
 " Auto read file when a file is changed from outside
-" Auto write a file when leaveing a modified buffer
 set autoread
+" Auto write a file when leaveing a modified buffer
 set autowrite
 set updatetime=1000
 
@@ -250,12 +243,14 @@ if has('gui_running')
   " set transparency=5
 endif
 
-set background=light
-if !has("gui_running")
-  let g:monokai_term_italic = 0
-endif
+set background=dark
+let g:jellybeans_overrides = {
+      \ 'ColorColumn': { 'ctermfg': '', 'ctermbg': 'red' },
+      \ 'VertSplit':   { 'ctermfg': '777777', 'ctermbg': 'none' },
+      \ 'SignColumn':  { 'ctermbg': 'none' },
+      \ }
 try
-  colorscheme PaperColor
+  colorscheme jellybeans
 catch
 endtry
 
@@ -283,14 +278,7 @@ augroup common
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 
   autocmd InsertEnter * setlocal nolist
-  autocmd InsertLeave * setlocal list
-
-  " Unset paste on InsertLeave
-  autocmd InsertLeave * set nopaste
-  " autocmd FocusLost,TabLeave,BufLeave * silent! :wa | setlocal nocursorline
-
-  " Check for external changes and reload buffer
-  " autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if filereadable(bufname('%')) | checktime | setlocal cursorline
+  autocmd InsertLeave * setlocal list nopaste
 
   " Delete trailing white spaces
   autocmd BufWritePre * :%s/\s\+$//e
@@ -329,6 +317,7 @@ if !has('nvim') && &term =~ 'xterm' && !has("gui_running")
   execute "set <A-l>=\el"
 endif
 " }}}
+
 " Let mark go to column
 nnoremap ' `
 
@@ -336,19 +325,18 @@ nnoremap ! :!
 nnoremap Q @q
 
 " Search {{{
-" Clear highlighted searches
-nnoremap <silent> <Leader>/ :nohlsearch<CR>
+nnoremap <silent> // :nohlsearch<CR> " Clear highlighted searches
 " }}}
 
 " Toglle paste mode
 set pastetoggle=<F5>
-" nnoremap <silent> <F5> :set invpaste<CR>
 
 " Map for Escape key
 imap jk <ESC>
 cnoremap jk <c-c>
 xnoremap jk <c-c>
 vnoremap v <ESC>
+
 " In terminal mode, <C-w> is leader key
 tnoremap jk <C-\><C-n>
 tnoremap <ESC> <C-\><C-n>
@@ -363,24 +351,20 @@ inoremap <C-e> <C-o>$
 inoremap <C-w> <C-g>u<C-w>
 inoremap <C-u> <C-g>u<C-u>
 
+" Ctrl-j/k navigation in popups
+inoremap <expr> <C-j> (pumvisible()?"\<C-n>":"\<C-j>")
+inoremap <expr> <C-k> (pumvisible()?"\<C-p>":"\<C-k>")
+
 " Resize windows using <Alt> and h,j,k,l
 nnoremap <silent> <M-h> <C-w><
 nnoremap <silent> <M-l> <C-w>>
 nnoremap <silent> <M-j> <C-W>-
 nnoremap <silent> <M-k> <C-W>+
 
-" Quit
-inoremap <C-q>     <ESC>:q<CR>
-nnoremap <C-q>     :q:<CR>
-vnoremap <C-Q>     <ESC>
-xnoremap <C-Q>     <ESC>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>Q :qa!<CR>
-
 " qq to record, Q to replay
 nnoremap Q @q
 
-" Center screen after navigation {{{
+" Center screen after navigation
 nnoremap }   }zz
 nnoremap {   {zz
 nnoremap ]]  ]]zz
@@ -410,57 +394,8 @@ vnoremap $ g_
 " Go to start or end of line easier
 nnoremap H ^
 nnoremap L $
-
-" Use <Cr> to select an item and do not add an annoying newline
-inoremap <expr> <Cr> ((pumvisible())?("\<C-Y>"):("\<Cr>"))
-" Use <Esc> to close auto-completion menu
-inoremap <expr> <Esc> ((pumvisible())?("\<C-e>"):("\<Esc>"))
-" }}}
-
-" Verb c Change
-" 1) cw     - change to next word
-" 2) cc     - change entire line
-" 3) ce     - change from cursor to end of word
-" 4) c$     - change to end of line
-" 5) ci"    - change inside of double quotes
-" 6) ca"    - change around double quotes
-" 7) cfx    - change until next found occurrence of letter x(search forward)
-" 8) cFx    - change until next found occurrence of letter x(search backward)
-" 9) cis    - change inside sentence
-" 10) ci}   - change inside block
-" 11) cip   - change inside paragraph
-" 12) c/foo - change until next occurence of 'foo'
-
-" Verb v - Visual
-" 1) vap - select paragraph
-" 2) V   - select line
-" 3) vfx - select until next found occurence of letter x(search forward)
-" 3) vFx - select until next found occurence of letter x(search backward)
-
-" CTRL
-" 1) v visual block mode
-" 2) w window adjustments
-" 3) r redo
-" 4) b back one full screen
-" 5) f forward one full screen
-" 6) d forward half screen
-" 7) u back half screen
-" 8) [ built in <esc> mapping
-
-" Change case
-" 1) ~     change the case of current character
-" 2) guu   change current line from upper to lower
-" 3) gUU   change current LINE from lower to upper
-" 4) guw   change to end of current WORD from upper to lower
-" 5) guaw  change all of current WORD to lower
-" 6) gUw   change to end of current WORD from lower to upper
-" 7) gUaw  change all of current WORD to upper
-" 8) g~~   Invert case to entire line
-
-" gn/gN (n is forward, N is backward)
-" run '/foo' to search the word 'foo', then type 'cgn', type the contents of
-" replacement, then <Esc>, now press 'n.' to repeat the change for each
-" subsequent match.
+noremap B ^
+noremap E $
 
 " Automatically jump to a file at the correct line number
 noremap <Leader>gf :vertical botright wincmd F<CR>
@@ -479,16 +414,8 @@ inoremap <UP>    <NOP>
 inoremap <DOWN>  <NOP>
 inoremap <LEFT>  <NOP>
 inoremap <RIGHT> <NOP>
-" cnoremap <UP>    <NOP>
-" cnoremap <DOWN>  <NOP>
-" cnoremap <LEFT>  <NOP>
-" cnoremap <RIGHT> <NOP>
 
 nnoremap <silent> <Leader>bg :let &background = (&background == "dark"? "light" : "dark")<CR>
-
-" Move to begin/end of line
-noremap B ^
-noremap E $
 
 " Copy the text from the cursor position to the end of line(like 'D' and 'C')
 nnoremap Y y$
@@ -505,12 +432,6 @@ cabbr <expr> %% fnameescape(expand("%:p:h"))
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
-
-" Fast newlines {{{
-" use [<Space> and ]<Space> provided by unimpaired
-" nnoremap <Leader>O O<Esc>j
-" nnoremap <Leader>o o<Esc>k
-" }}}
 
 " Move cursor in command mode {{{
 " just like in terminal
@@ -529,11 +450,9 @@ vnoremap < <gv
 vnoremap > >gv
 xnoremap <S-Tab> <gv
 xnoremap <Tab> >gv
-inoremap <S-Tab> <C-d>
 " }}}
 
 " Tab navigation {{{
-" just like window navigation (<C-w> is for window)
 nnoremap <silent> <C-t><SPACE> gT
 nnoremap <silent> <C-t>k :tabprevious<CR>
 nnoremap <silent> <C-t>p :tabprevious<CR>
@@ -574,35 +493,12 @@ nnoremap <silent><leader>sj :rightbelow new<CR>
 " }}}
 
 " Window navigation {{{
-" 1) Ctrl-w j   Move to down window
-" 2) Ctrl-w k   Move to up window
-" 3) Ctrl-w h   Move to left window
-" 4) Ctrl-w l   Move to right window
-" 5) Ctrl-w R   Swap top/bottom or left/right split
-" 6) Ctrl-w T   Break out current window into a new tabview
-" 7) Ctrl-w o   Close every window in the current tabview but the current one
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <Tab>   <C-w>w
 nnoremap <S-Tab> <C-w>W
-" }}}
-
-" Window resize {{{
-" 1) Ctrl-w =   To resize all windows to equal dimensions based on their splits
-" 2) Ctrl-w -   To decrease a window by one row
-" 3) Ctrl-w +   To increase a window by one row
-" 4) Ctrl-w _   To increase a window to its maximum height
-" 5) Ctrl-w |   To incsearch a window to its maximum width
-" 6) Ctrl-w >   To increase a window by one column
-" 7) Ctrl-w <   To decrease a window by one column
-
- " 20<C-w>|     Set window width to 20 columns
- " 10<C-w>>     Increase window width by 10 columns
- " 10<C-w><     Decrease window width by 10 columns
- " 10<C-w>+     Increase window height by 10 columns
- " 10<C-w>-     Decrease window height by 10 columns
 " }}}
 
 " Quickly edit/reload the vimrc file {{{
@@ -621,13 +517,6 @@ nnoremap <silent> z6 :set foldlevel=6<CR>
 nnoremap <silent> z7 :set foldlevel=7<CR>
 nnoremap <silent> z8 :set foldlevel=8<CR>
 nnoremap <silent> z9 :set foldlevel=9<CR>
-" zc — close the fold (where your cursor is positioned)
-" zM — close all folds on current buffer
-" zo — open the fold (where your cursor is positioned)
-" zR — open all folds on current buffer
-" zj — cursor is moved to next fold
-" zk — cursor is moved to previous fold
-
 nnoremap <Space> za
 " }}}
 
@@ -635,7 +524,6 @@ nnoremap <Space> za
 nnoremap <silent> <Leader>bn :bn<CR>
 nnoremap <silent> ]b         :bn<CR>
 nnoremap <silent> [b         :bp<CR>
-nnoremap <silent> [B         :bp<CR>
 nnoremap <silent> <Leader>bp :bp<CR>
 nnoremap <silent> <Leader>bf :bf<CR>
 nnoremap <silent> <Leader>bl :bl<CR>
@@ -647,11 +535,19 @@ nnoremap <silent> <Leader>x  :x!<CR>
 nnoremap <silent> <Leader>bd :bd!<CR>         " Close current buffer(Delete crrent buffer).
 nnoremap <silent> <Leader>ba :1,bd!<CR>       " Close all buffers(Delete all buffer).
 nnoremap <silent> <Leader>bo :silent w <BAR> :silent %bd <BAR> e#<CR> " Close all others buffers except current one
+
 " Save file as root.
 cnoremap w!! w !sudo tee % > /dev/null<CR>
 
 " Toggle between last open buffers
 nnoremap <Leader><Space> <C-^>
+
+command! Q q
+command! Qall qall
+command! QA qall
+command! E e
+command! W w
+command! Wq wq
 " }}}
 
 " Rename current file
@@ -695,6 +591,7 @@ else
 endif
 
 " Toggle quickfix window.
+command! ToggleQf call <SID>toggle_qf()
 function! s:toggle_qf()
   for i in range(1, winnr('$'))
     let bnum = winbufnr(i)
@@ -703,12 +600,11 @@ function! s:toggle_qf()
       return
     endif
   endfor
-
   copen
 endfunction
-command! ToggleQf call <SID>toggle_qf()
 
-" ferret support this feature
+nnoremap <silent> <F4> :ToggleQf<CR>
+
 " function! QuickfixRemove()
 "   let curqfidx = line('.') - 1
 "   let qfall = getqflist()
@@ -718,31 +614,7 @@ command! ToggleQf call <SID>toggle_qf()
 "   copen
 " endfunction
 
-nnoremap <silent> <F4> :ToggleQf<CR>
 " }}}
-
-command! Todo call <SID>todo()
-function! s:todo()
-  let entries = []
-  for cmd in [
-        \ 'git grep -niI -e TODO -e FIXME -e XXX 2> /dev/null',
-        \ 'grep -rniI -e TODO -e FIXME -e XXX * 2> /dev/null'
-        \ ]
-    let lines = split(system(cmd), '\n')
-    if v:shell_error != 0 | continue | endif
-    for line in lines
-      let [fname, lno, text] = matchlist(line, '^\([^:]*\):\([^:]*\):\(.*\)')[1:3]
-      call add(entries, { 'filename': fname, 'lnum': lno, 'text': text })
-    endfor
-    break
-  endfor
-
-  if !empty(entries)
-    call setqflist(entries)
-    copen
-  endif
-endfunction
-nnoremap <silent> <F3> :Todo<CR>
 
 command! -bang Profile call s:profile(<bang>0)
 function! s:profile(bang)
@@ -783,7 +655,7 @@ function! s:load_macro(file, name)
   echom "Macro loaded to @". a:name
 endfunction
 
-command! -bang AutoMkdir call <SID>auto_mkdir(expand('%:p:h'), <bang>0)
+command! -bang AutoMkDir call <SID>auto_mkdir(expand('%:p:h'), <bang>0)
 function s:auto_mkdir(dir, force)
   if !isdirectory(a:dir)
     if a:force || confirm("'" . a:dir . "' does not exist. Create?", "&Yes\n&No", 2)
@@ -796,7 +668,6 @@ command! SyntaxStack call <SID>syntax_stack()
 function! s:syntax_stack()
   echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ' > ')
 endfunction
-
 " }}}
 
 " Plugins config {{{
@@ -894,6 +765,54 @@ imap <C-x><C-j> <plug>(fzf-complete-file-ag)
 imap <C-x><C-l> <plug>(fzf-complete-line)
 " }}}
 
+" completor {{{
+let g:completor_filetype_map = {
+      \ 'ruby': { 'ft': 'lsp', 'cmd': 'solargraph stdio' },
+      \ 'typescript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
+      \ 'javascript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
+      \ 'javascript.jsx': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
+      \ 'rust': { 'ft': 'lsp', 'cmd': 'rls' }
+      \ }
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" }}}
+
+" surround {{{
+" Surroud with #{ruby interpolation}.
+map ,# ysiw#
+vmap ,# c#{<C-R>"}<ESC>
+
+" Surround a word with "double quotes".
+map ," ysiwd"
+vmap ," c"<C-R>""<ESC>
+
+" Surround a word with 'single quotes'.
+map ,' ysiwd'
+vmap ,' c'<C-R>"'<ESC>
+
+" Surround with (parens) or ( parens ).
+map ,( ysiw(
+map ,) ysiw)
+vmap ,( c( <C-R>" )<ESC>
+vmap ,) c(<C-R>")<ESC>
+
+" Surround with [brackets] or [ brackets ]
+map ,[ ysiw[
+map ,] ysiw]
+vmap ,[ c[ <C-R>" ]<ESC>
+vmap ,] c[<C-R>"]<ESC>
+
+" Surround with {braces} or { braces }
+map ,{ ysiw{
+map ,} ysiw}
+vmap ,{ c{ <C-R>" }<ESC>
+vmap ,} c{<C-R>"}<ESC>
+
+map ,` ysiw`
+" }}}
+
 " sneak {{{
 let g:sneak#label=1
 let g:sneak#s_next = 1
@@ -940,38 +859,6 @@ augroup netrw
 augroup END
 "}}}
 
-" vista & vim-lsp {{{
-let g:vista_icon_indent = ["▸ ", ""]
-let g:vista_default_executive = 'ctags'
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
-      \   "function": "\uf794",
-      \   "variable": "\uf71b",
-      \  }
-let g:vista_executive_for = {
-      \ 'ruby': 'vim_lsp',
-      \ }
-let g:lsp_diagnostics_enabled = 0
-if executable('solargraph')
-  autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'solargraph',
-        \ 'cmd': { server_info -> [&shell, &shellcmdflag, 'solargraph stdio'] },
-        \ 'initialization_options': { "diagnostics": "false" },
-        \ 'whitelist': ['ruby'],
-        \ })
-endif
-
-if executable('typescript-language-server')
-  autocmd User lsp_setup call lsp#register_server({
-      \ 'name': 'typescript-language-server',
-      \ 'cmd': { server_info -> [&shell, &shellcmdflag, 'typescript-language-server --stdio'] },
-      \ 'root_uri':{ server_info -> lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json')) },
-      \ 'whitelist': ['typescript', 'typescript.tsx', 'javascript', 'javascript.jsx'],
-      \ })
-endif
-nnoremap <silent><F2> :Vista!!<CR>
-" }}}
-
 " ale {{{
  let g:ale_set_signs = 1
  let g:ale_sign_column_always = 0
@@ -984,10 +871,6 @@ nnoremap <silent><F2> :Vista!!<CR>
  let g:ale_set_quickfix = 0
  let g:ale_set_highlights = 0
  " }}}
-
-" emmet {{{
-" Press <Ctrl-Y>, to trigger
-" }}}
 
 " Gitgutter {{{
 let g:gitgutter_override_sign_column_highlight = 0
@@ -1008,56 +891,18 @@ nnoremap <silent> <Leader>gw :Gina add %<CR>
 
 augroup gina
   autocmd!
-  autocmd FileType gina-blame,gina-status noremap <silent>q :bd<CR>
+  autocmd FileType gina-blame,gina-status,diff noremap <silent>q :bd<CR>
 augroup END
 " }}}
 
 " UltiSnips {{{
-let g:UltiSnipsExpandTrigger = "<C-e>"
+let g:UltiSnipsExpandTrigger = "<C-l>"
 let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 let g:UltiSnipsEnableSnipMate = 0
-let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetDirectories = ['ultisnips']
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 nnoremap <Leader>sn :UltiSnipsEdit<CR>
-" }}}
-
-" completor {{{
-" Enable LSP
-let g:completor_debug = 1
-let g:completor_filetype_map = {
-      \ 'ruby': { 'ft': 'lsp', 'cmd': 'solargraph stdio' },
-      \ 'typescript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
-      \ 'javascript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
-      \ 'javascript.jsx': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
-      \ 'rust': { 'ft': 'lsp', 'cmd': 'rls' }
-      \ }
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:completor_auto_trigger = 0
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ completor#do('complete')
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" noremap <silent> <leader>d :call completor#do('definition')<CR>
-" noremap <silent> <leader>c :call completor#do('doc')<CR>
-" noremap <silent> <leader>f :call completor#do('format')<CR>
-" noremap <silent> <leader>s :call completor#do('hover')<CR>
-" }}}
-
-" Multiple Cursors {{{
-let g:multi_cursor_use_default_mapping=0  " Turn off default key mappings
-let g:multi_cursor_start_key='<Leader>mc' " Switch to multicursor mode with ,mc
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<ESC>'
 " }}}
 
 " vim-test {{{
@@ -1083,7 +928,7 @@ let g:vim_markdown_new_list_item_indent = 2
 
 " lightline {{{
 let g:lightline={}
-let g:lightline.colorscheme='PaperColor'
+let g:lightline.colorscheme='jellybeans'
 
 " let g:lightline#ale#indicator_checking = "\uf141"
 " let g:lightline#ale#indicator_warnings = "\uf071"
@@ -1182,9 +1027,11 @@ function! LightlineALELint() abort
 endfunction
 " }}}
 
+" }}}
+
 " Local config {{{
-if filereadable($HOME . '/.vimrc.local')
-  source $HOME . '/.vimrc.local'
+if filereadable(expand('~/.vimrc.local'))
+  source $HOME/.vimrc.local
 endif
 " }}}
 
