@@ -929,12 +929,6 @@ let g:vim_markdown_new_list_item_indent = 2
 " lightline {{{
 let g:lightline={}
 let g:lightline.colorscheme='jellybeans'
-
-" let g:lightline#ale#indicator_checking = "\uf141"
-" let g:lightline#ale#indicator_warnings = "\uf071"
-" let g:lightline#ale#indicator_errors = "\uf05e"
-" let g:lightline#ale#indicator_ok = "\uf058 "
-
 let g:lightline.component_function = {
       \ 'gitbranch': 'LightlineGitBranch',
       \ 'githunks': 'LightlineGitHunks',
