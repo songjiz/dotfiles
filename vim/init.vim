@@ -162,10 +162,13 @@ set undodir=$HOME/.vim/tmp/undo/
 set backupdir=$HOME/.vim/tmp/backup/
 set directory=$HOME/.vim/tmp/swap/
 
-silent! call MakePath(&undodir)
-silent! call MakePath(&backupdir)
-silent! call MakePath(&directory)
-silent! call MakePath('~/.vim/tmp/log/')
+let g:log_dir=$HOME . '/.vim/tmp/log/'
+let g:sessons_dir=$HOME . '/.vim/tmp/sessions/'
+silent! call mkdir(iconv(&undodir, &encoding, &termencoding), 'p')
+silent! call mkdir(iconv(&backupdir, &encoding, &termencoding), 'p')
+silent! call mkdir(iconv(&directory, &encoding, &termencoding), 'p')
+silent! call mkdir(iconv(g:log_dir, &encoding, &termencoding), 'p')
+silent! call mkdir(iconv(g:sessons_dir, &encoding, &termencoding), 'p')
 " }}}
 
 " Folding {{{
@@ -180,11 +183,14 @@ set clipboard^=unnamed,unnamedplus
 " }}}
 
 " Wrap {{{
-set nolist
+set list
 set wrap
 set textwidth=80
 set colorcolumn=80
 set formatoptions=qn1 " See :help fo-table
+" set listchars=tab:»·,trail:·,extends:❯,precedes:❮,eol:↩,nbsp:+
+set listchars=tab:»·,trail:·,extends:❯,precedes:❮,nbsp:+
+set showbreak=↪
 " }}}
 
 " Others {{{
@@ -203,10 +209,6 @@ set timeoutlen=500
 
 " Prefer vertical orientation when using :diffsplit
 set diffopt+=vertical
-
-" set listchars=tab:»·,trail:·,extends:⟩,precedes:⟨,eol:↩,nbsp:+
-set listchars=tab:»·,trail:·
-" set showbreak=↪
 
 set virtualedit=onemore
 set viewoptions=folds,cursor,unix,slash
@@ -548,6 +550,11 @@ command! QA qall
 command! E e
 command! W w
 command! Wq wq
+
+" session
+nnoremap <Leader>ss :mksession! ~/.vim/tmp/sessions/
+nnoremap <Leader>rs :source ~/.vim/tmp/sessions/
+nnoremap <Leader>ds :!rm ~/.vim/tmp/sessions/
 " }}}
 
 " Rename current file
