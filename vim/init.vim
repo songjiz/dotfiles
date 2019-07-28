@@ -19,9 +19,7 @@ Plug 'wincent/ferret'
 Plug 'w0rp/ale'
 Plug 'junegunn/vim-easy-align'
 Plug 'itchyny/lightline.vim'
-Plug 'songjiz/vim-monokai'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'nanotech/jellybeans.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -246,13 +244,8 @@ if has('gui_running')
 endif
 
 set background=dark
-let g:jellybeans_overrides = {
-      \ 'ColorColumn': { 'ctermfg': '', 'ctermbg': 'red' },
-      \ 'VertSplit':   { 'ctermfg': '777777', 'ctermbg': 'none' },
-      \ 'SignColumn':  { 'ctermbg': 'none' },
-      \ }
 try
-  colorscheme jellybeans
+  colorscheme PaperColor
 catch
 endtry
 
@@ -935,7 +928,7 @@ let g:vim_markdown_new_list_item_indent = 2
 
 " lightline {{{
 let g:lightline={}
-let g:lightline.colorscheme='jellybeans'
+let g:lightline.colorscheme='PaperColor'
 let g:lightline.component_function = {
       \ 'gitbranch': 'LightlineGitBranch',
       \ 'githunks': 'LightlineGitHunks',
