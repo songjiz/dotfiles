@@ -507,6 +507,7 @@ nnoremap <S-Tab> <C-w>W
 
 " Quickly edit/reload the vimrc file {{{
 nnoremap <silent> <Leader>vc :vsp $MYVIMRC<CR>
+nnoremap <silent> <Leader>vu :vsp $HOME/.vimrc.local<CR>
 nnoremap <silent> <Leader>rc :silent update $MYVIMRC <Bar> source $MYVIMRC<CR>
 " }}}
 
