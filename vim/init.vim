@@ -804,11 +804,11 @@ map ,# ysiw#
 vmap ,# c#{<C-R>"}<ESC>
 
 " Surround a word with "double quotes".
-map ," ysiwd"
+map ," ysiw"
 vmap ," c"<C-R>""<ESC>
 
 " Surround a word with 'single quotes'.
-map ,' ysiwd'
+map ,' ysiw'
 vmap ,' c'<C-R>"'<ESC>
 
 " Surround with (parens) or ( parens ).
