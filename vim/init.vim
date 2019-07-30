@@ -26,6 +26,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-abolish'
 Plug 'justinmk/vim-sneak'
 Plug 'wellle/targets.vim'
@@ -34,6 +35,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'janko/vim-test'
 Plug 'rust-lang/rust.vim'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-bundler'
 call plug#end()
 " }}}
 
@@ -139,7 +143,7 @@ set pumheight=15  " Maximum number of items to show in popup menu
 
 " Ignore files {{{
 set wildignore+=.DS_Store,*.keep,
-set wildignore+=.git/**,.svn/**,.hg/**,tmp/**,*.log,.bundle/**,node_modules/**,build/**
+set wildignore+=.git/**,.svn/**,.hg/**,tmp/**,*.log,.bundle/**,node_modules/**,build/**,vendor/gems/*
 set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*pyc,*.o,*.gem
 set wildignore+=*.jpg,*jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
 set wildignore+=tags
@@ -159,6 +163,9 @@ set noswapfile
 set undodir=$HOME/.vim/tmp/undo/
 set backupdir=$HOME/.vim/tmp/backup/
 set directory=$HOME/.vim/tmp/swap/
+
+" Set tags directory
+set tags=./tags
 
 let g:log_dir=$HOME . '/.vim/tmp/log/'
 let g:sessons_dir=$HOME . '/.vim/tmp/sessions/'
@@ -186,9 +193,7 @@ set wrap
 set textwidth=80
 set colorcolumn=80
 set formatoptions=qn1 " See :help fo-table
-" set listchars=tab:»·,trail:·,extends:❯,precedes:❮,eol:↩,nbsp:+
-set listchars=tab:»·,trail:·,extends:❯,precedes:❮,nbsp:+
-set showbreak=↪
+set listchars=tab:»\ ,trail:·,extends:›,precedes:‹,nbsp:·
 " }}}
 
 " Others {{{
@@ -243,9 +248,9 @@ if has('gui_running')
   " set transparency=5
 endif
 
-set background=dark
 try
   colorscheme PaperColor
+  set background=dark
 catch
 endtry
 
@@ -328,8 +333,9 @@ set pastetoggle=<F5>
 
 " Map for Escape key
 imap jk <ESC>
-cnoremap jk <c-c>
-xnoremap jk <c-c>
+imap kj <ESC>
+cmap jk <C-c>
+cmap kj <C-c>
 vnoremap v <ESC>
 
 " In terminal mode, <C-w> is leader key
@@ -422,6 +428,9 @@ noremap k gk
 " u is undo, U is redo
 nnoremap U <C-r>
 
+" Reload current file
+nnoremap <C-e> :e#<CR>
+
 " Fast edit files in same directory
 cabbr <expr> %% fnameescape(expand("%:p:h"))
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
@@ -513,23 +522,19 @@ nnoremap <silent> z7 :set foldlevel=7<CR>
 nnoremap <silent> z8 :set foldlevel=8<CR>
 nnoremap <silent> z9 :set foldlevel=9<CR>
 nnoremap <Space> za
+vnoremap <space> zf"{{{}}}
 " }}}
 
 " Buffer {{{
-nnoremap <silent> <Leader>bn :bn<CR>
+nnoremap <silent> <C-p> :bp<CR>
+nnoremap <silent> <C-n> :bn<CR>
 nnoremap <silent> ]b         :bn<CR>
 nnoremap <silent> [b         :bp<CR>
-nnoremap <silent> <Leader>bp :bp<CR>
-nnoremap <silent> <Leader>bf :bf<CR>
-nnoremap <silent> <Leader>bl :bl<CR>
 nnoremap <silent> <Leader>bw :w<CR>:bd<CR>
 nnoremap <silent> <Leader>bd :bd!<CR>
 nnoremap <silent> <Leader>w  :w!<CR>
 nnoremap <silent> <Leader>q  :q!<CR>
 nnoremap <silent> <Leader>x  :x!<CR>
-nnoremap <silent> <Leader>bd :bd!<CR>         " Close current buffer(Delete crrent buffer).
-nnoremap <silent> <Leader>ba :1,bd!<CR>       " Close all buffers(Delete all buffer).
-nnoremap <silent> <Leader>bo :silent w <BAR> :silent %bd <BAR> e#<CR> " Close all others buffers except current one
 
 " Save file as root.
 cnoremap w!! w !sudo tee % > /dev/null<CR>
@@ -734,7 +739,6 @@ command! -bang -nargs=* Rg
       \ )
 
 nnoremap <silent> <Leader><Leader> :FZF -m<CR>
-nnoremap <silent> <C-p>        :FZF -m<CR>
 nnoremap <silent> <Leader>ff   :Files<CR>
 nnoremap <silent> <Leader>fgf  :GFiles<CR>
 nnoremap <silent> <Leader>fgs  :GFiles?<CR>
@@ -773,10 +777,24 @@ let g:completor_filetype_map = {
       \ 'javascript.jsx': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
       \ 'rust': { 'ft': 'lsp', 'cmd': 'rls' }
       \ }
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+let g:completor_auto_trigger = 0
+let g:completor_min_chars = 1
+function! Tab_Or_Complete() abort
+  " If completor is already open the `tab` cycles through suggested completions.
+  if pumvisible()
+    return "\<C-N>"
+  " If completor is not open and we are in the middle of typing a word then
+  " `tab` opens completor menu.
+  elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^[[:keyword:][:ident:]]'
+    return "\<C-R>=completor#do('complete')\<CR>"
+  else
+    " If we aren't typing a word and we press `tab` simply do the normal `tab`
+    " action.
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <Tab> Tab_Or_Complete()
 " }}}
 
 " surround {{{
