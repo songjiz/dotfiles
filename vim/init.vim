@@ -955,7 +955,7 @@ let g:lightline.component_function = {
       \ 'filesize': 'LightlineFileSize',
       \ }
 let g:lightline.active = {
-      \ 'left': [['mode', 'paste'], ['gitbranch', 'filename', 'githunks', 'readonly', 'modified']],
+      \ 'left': [['mode', 'paste'], ['gitbranch', 'filename'], ['githunks', 'readonly', 'modified']],
       \ 'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'alelint']],
       \ }
 let g:lightline.inactive = {
