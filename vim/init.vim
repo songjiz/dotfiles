@@ -10,7 +10,7 @@ if !filereadable(expand('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | quit | source $MYVIMRC
 endif
 call plug#begin('~/.vim/pack')
-Plug 'maralla/completor.vim'
+" Plug 'maralla/completor.vim'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --bin' }
@@ -92,6 +92,7 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+set infercase
 set matchtime=1
 " }}}
 
@@ -138,7 +139,6 @@ set complete+=kspell
 
 " Popup Menu
 set pumheight=15  " Maximum number of items to show in popup menu
-" set pumblend=10   " Pesudo-blend effect for popup menu
 " }}}
 
 " Ignore files {{{
@@ -164,8 +164,7 @@ set undodir=$HOME/.vim/tmp/undo/
 set backupdir=$HOME/.vim/tmp/backup/
 set directory=$HOME/.vim/tmp/swap/
 
-" Set tags directory
-set tags=./tags
+set tags=./tags;tags
 
 let g:log_dir=$HOME . '/.vim/tmp/log/'
 let g:sessons_dir=$HOME . '/.vim/tmp/sessions/'
@@ -290,11 +289,15 @@ augroup common
 
   autocmd BufWritePre,FileWritePre * silent! call <SID>auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
 
-  " Automatic rename of tmux window
-  if exists('$TMUX') && !exists('$NORENAME')
-    autocmd BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
-    autocmd VimLeave * call system('tmux set-window automatic-rename on')
-  endif
+  autocmd FileType help,gina-blame,gina-status,diff,qf nnoremap <buffer><silent>q :bd<CR>
+  autocmd FileType qf setlocal colorcolumn&
+
+  " Auto switch to insert mode when focusing on terminal window
+  autocmd BufWinEnter,BufEnter,WinEnter *
+        \ if &buftype == "terminal" |
+        \ setlocal colorcolumn& |
+        \ silent! normal i |
+        \ endif
 augroup END
 " }}}
 
@@ -340,27 +343,32 @@ vnoremap v <ESC>
 
 " In terminal mode, <C-w> is leader key
 tnoremap jk <C-\><C-n>
-tnoremap <ESC> <C-\><C-n>
+tnoremap <C-[> <C-\><C-n>
+tnoremap <C-]> <C-\><C-n>
+tnoremap <A-j> <C-w>j
+tnoremap <A-k> <C-w>k
+tnoremap <A-l> <C-w>l
+tnoremap <A-h> <C-w>h
 
 " Insert mode navigation like terminal
 inoremap <C-b> <C-o>h
 inoremap <C-f> <C-o>l
-inoremap <M-b> <C-o>b
-inoremap <M-f> <C-o>e
+inoremap <A-b> <C-o>b
+inoremap <A-f> <C-o>e
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 inoremap <C-w> <C-g>u<C-w>
 inoremap <C-u> <C-g>u<C-u>
 
 " Ctrl-j/k navigation in popups
-inoremap <expr> <C-j> (pumvisible()?"\<C-n>":"\<C-j>")
-inoremap <expr> <C-k> (pumvisible()?"\<C-p>":"\<C-k>")
+inoremap <expr> <C-j> (pumvisible() ? "\<C-n>" : "\<C-j>")
+inoremap <expr> <C-k> (pumvisible() ? "\<C-p>" : "\<C-k>")
 
-" Resize windows using <Alt> and h,j,k,l
-nnoremap <silent> <M-h> <C-w><
-nnoremap <silent> <M-l> <C-w>>
-nnoremap <silent> <M-j> <C-W>-
-nnoremap <silent> <M-k> <C-W>+
+" Resize windows using <Ctrl> and h,j,k,l
+nnoremap <silent> <C-h> <C-w><
+nnoremap <silent> <C-l> <C-w>>
+nnoremap <silent> <C-j> <C-W>-
+nnoremap <silent> <C-k> <C-W>+
 
 " qq to record, Q to replay
 nnoremap Q @q
@@ -497,10 +505,10 @@ nnoremap <silent><leader>sj :rightbelow new<CR>
 " }}}
 
 " Window navigation {{{
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <silent> <A-h> <C-w>h
+nnoremap <silent> <A-l> <C-w>l
+nnoremap <silent> <A-j> <C-W>j
+nnoremap <silent> <A-k> <C-W>k
 nnoremap <Tab>   <C-w>w
 nnoremap <S-Tab> <C-w>W
 " }}}
@@ -770,33 +778,33 @@ imap <C-x><C-j> <plug>(fzf-complete-file-ag)
 imap <C-x><C-l> <plug>(fzf-complete-line)
 " }}}
 
-" completor {{{
-let g:completor_filetype_map = {
-      \ 'ruby': { 'ft': 'lsp', 'cmd': 'solargraph stdio' },
-      \ 'typescript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
-      \ 'javascript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
-      \ 'javascript.jsx': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
-      \ 'rust': { 'ft': 'lsp', 'cmd': 'rls' }
-      \ }
-let g:completor_auto_trigger = 0
-let g:completor_min_chars = 1
-function! Tab_Or_Complete() abort
-  " If completor is already open the `tab` cycles through suggested completions.
-  if pumvisible()
-    return "\<C-N>"
-  " If completor is not open and we are in the middle of typing a word then
-  " `tab` opens completor menu.
-  elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^[[:keyword:][:ident:]]'
-    return "\<C-R>=completor#do('complete')\<CR>"
-  else
-    " If we aren't typing a word and we press `tab` simply do the normal `tab`
-    " action.
-    return "\<Tab>"
-  endif
-endfunction
-inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent><expr> <Tab> Tab_Or_Complete()
-" }}}
+" " completor {{{
+" let g:completor_filetype_map = {
+"       \ 'ruby': { 'ft': 'lsp', 'cmd': 'solargraph stdio' },
+"       \ 'typescript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
+"       \ 'javascript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
+"       \ 'javascript.jsx': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
+"       \ 'rust': { 'ft': 'lsp', 'cmd': 'rls' }
+"       \ }
+" let g:completor_auto_trigger = 0
+" let g:completor_min_chars = 1
+" function! Tab_Or_Complete() abort
+"   " If completor is already open the `tab` cycles through suggested completions.
+"   if pumvisible()
+"     return "\<C-N>"
+"   " If completor is not open and we are in the middle of typing a word then
+"   " `tab` opens completor menu.
+"   elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^[[:keyword:][:ident:]]'
+"     return "\<C-R>=completor#do('complete')\<CR>"
+"   else
+"     " If we aren't typing a word and we press `tab` simply do the normal `tab`
+"     " action.
+"     return "\<Tab>"
+"   endif
+" endfunction
+" inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <silent><expr> <Tab> Tab_Or_Complete()
+" " }}}
 
 " surround {{{
 " Surroud with #{ruby interpolation}.
@@ -850,7 +858,7 @@ nmap \r <Plug>(FerretAcks)
 " netrw {{{
 let g:netrw_banner = 0
 let g:netrw_hide = 1
-let g:netrw_liststyle = 1
+let g:netrw_liststyle = 0
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 20
 let g:netrw_altv = 1
@@ -889,6 +897,9 @@ augroup END
  let g:ale_set_loclist = 0
  let g:ale_set_quickfix = 0
  let g:ale_set_highlights = 0
+
+nmap <silent> [g <Plug>(ale_previous_wrap)
+nmap <silent> ]g <Plug>(ale_next_wrap)
  " }}}
 
 " Gitgutter {{{
@@ -907,15 +918,11 @@ nnoremap <silent> <Leader>gd :Gina diff --opener=split<CR>
 nnoremap <silent> <Leader>gc :Gina commit<CR>
 nnoremap <silent> <Leader>ge :Gina edit %<CR>
 nnoremap <silent> <Leader>gw :Gina add %<CR>
-
-augroup gina
-  autocmd!
-  autocmd FileType gina-blame,gina-status,diff noremap <silent>q :bd<CR>
-augroup END
 " }}}
 
 " UltiSnips {{{
-let g:UltiSnipsExpandTrigger = "<C-l>"
+" let g:UltiSnipsExpandTrigger = "<C-l>"
+let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 let g:UltiSnipsEnableSnipMate = 0
