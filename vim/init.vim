@@ -10,7 +10,6 @@ if !filereadable(expand('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | quit | source $MYVIMRC
 endif
 call plug#begin('~/.vim/pack')
-" Plug 'maralla/completor.vim'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --bin' }
@@ -363,6 +362,8 @@ inoremap <C-u> <C-g>u<C-u>
 " Ctrl-j/k navigation in popups
 inoremap <expr> <C-j> (pumvisible() ? "\<C-n>" : "\<C-j>")
 inoremap <expr> <C-k> (pumvisible() ? "\<C-p>" : "\<C-k>")
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Resize windows using <Ctrl> and h,j,k,l
 nnoremap <silent> <C-h> <C-w><
@@ -778,60 +779,32 @@ imap <C-x><C-j> <plug>(fzf-complete-file-ag)
 imap <C-x><C-l> <plug>(fzf-complete-line)
 " }}}
 
-" " completor {{{
-" let g:completor_filetype_map = {
-"       \ 'ruby': { 'ft': 'lsp', 'cmd': 'solargraph stdio' },
-"       \ 'typescript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
-"       \ 'javascript': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
-"       \ 'javascript.jsx': { 'ft': 'lsp', 'cmd': 'typescript-language-server --stdio' },
-"       \ 'rust': { 'ft': 'lsp', 'cmd': 'rls' }
-"       \ }
-" let g:completor_auto_trigger = 0
-" let g:completor_min_chars = 1
-" function! Tab_Or_Complete() abort
-"   " If completor is already open the `tab` cycles through suggested completions.
-"   if pumvisible()
-"     return "\<C-N>"
-"   " If completor is not open and we are in the middle of typing a word then
-"   " `tab` opens completor menu.
-"   elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^[[:keyword:][:ident:]]'
-"     return "\<C-R>=completor#do('complete')\<CR>"
-"   else
-"     " If we aren't typing a word and we press `tab` simply do the normal `tab`
-"     " action.
-"     return "\<Tab>"
-"   endif
-" endfunction
-" inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <silent><expr> <Tab> Tab_Or_Complete()
-" " }}}
-
 " surround {{{
-" Surroud with #{ruby interpolation}.
-map ,# ysiw#
+" with #{ruby interpolation}.
+map ,# ysiw}i#<C-o>%<ESC>
 vmap ,# c#{<C-R>"}<ESC>
 
-" Surround a word with "double quotes".
+" with "double quotes".
 map ," ysiw"
 vmap ," c"<C-R>""<ESC>
 
-" Surround a word with 'single quotes'.
+" with 'single quotes'.
 map ,' ysiw'
 vmap ,' c'<C-R>"'<ESC>
 
-" Surround with (parens) or ( parens ).
+" with (parens) or ( parens ).
 map ,( ysiw(
 map ,) ysiw)
 vmap ,( c( <C-R>" )<ESC>
 vmap ,) c(<C-R>")<ESC>
 
-" Surround with [brackets] or [ brackets ]
+" with [brackets] or [ brackets ]
 map ,[ ysiw[
 map ,] ysiw]
 vmap ,[ c[ <C-R>" ]<ESC>
 vmap ,] c[<C-R>"]<ESC>
 
-" Surround with {braces} or { braces }
+" with {braces} or { braces }
 map ,{ ysiw{
 map ,} ysiw}
 vmap ,{ c{ <C-R>" }<ESC>
@@ -921,10 +894,9 @@ nnoremap <silent> <Leader>gw :Gina add %<CR>
 " }}}
 
 " UltiSnips {{{
-" let g:UltiSnipsExpandTrigger = "<C-l>"
 let g:UltiSnipsExpandTrigger = "<Tab>"
-let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 let g:UltiSnipsEnableSnipMate = 0
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
