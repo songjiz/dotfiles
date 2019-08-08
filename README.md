@@ -8,16 +8,11 @@ Install dependencies
 
 ```bash
 brew install ctags
+# brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install ripgrep
 # brew install the_silver_searcher
 brew install fzf
 brew install bat
-```
-
-# Bash
-
-```bash
-ln -s ~/.dotfiles/bash_profile ~/.bash_profile
 ```
 
 # zsh
@@ -33,7 +28,7 @@ ln -s ~/.dotfiles/zshrc ~/.zshrc
 
 ```bash
 ln -s ~/.dotfiles/vim ~/.vim
-ln -s ~/.dotfiles/vim/init.vim ~/.vimrc
+ln -s ~/.dotfiles/vimrc ~/.vimrc
 ```
 
 # Sublime Text 3

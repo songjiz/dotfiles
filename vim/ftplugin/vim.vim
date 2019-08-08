@@ -1,7 +1,4 @@
-augroup vim
-  autocmd!
-  autocmd FileType vim setlocal expandtab
-  autocmd FileType vim setlocal shiftwidth=4
-  autocmd FileType vim setlocal softtabstop=4
-  autocmd FileType vim setlocal tabstop=4
-augroup END
+setlocal expandtab
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal tabstop=4

@@ -1,0 +1,20 @@
+command! -bang Profile call s:profile(<bang>0)
+
+function! s:profile(bang) abort
+  if a:bang
+    call profile#pause()
+  else
+    call profile#start()
+  endif
+endfunction
+
+function! profile#pause() abort
+  profile pause
+  noautocmd qall
+endfunction
+
+function! profile#start() abort
+  profile start ~/.vim/cache/profile.log
+  profile func *
+  profile file *
+endfunction

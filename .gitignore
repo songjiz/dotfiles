@@ -10,6 +10,7 @@ plug.vim.old
 plugged/
 pack/
 .netrwhist
+cache/
 
 # sublime
 *.crt
