@@ -17,6 +17,9 @@ function! lightline#file_size() abort
 endfunction
 
 function! lightline#git_branch() abort
+  if !exists('g:loaded_gina')
+    return ''
+  endif
   let branch = gina#component#repo#branch()
   return strlen(branch) ? ' '. branch : ''
 endfunction

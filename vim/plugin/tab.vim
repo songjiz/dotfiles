@@ -1,5 +1,5 @@
 command! -nargs=* ExpandTab call <SID>expand_tab(<q-args>)
-function! s:expand_tab(size)
+function! s:expand_tab(size) abort
   if a:size
     setlocal expandtab
     execute 'setlocal shiftwidth='.a:size

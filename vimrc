@@ -1,10 +1,50 @@
+" Basic {{{
 set nocompatible
 " Don't show startup splash screen
 set shortmess+=I
 
+syntax on
+set title
+set noshowmode
+set hidden
+set showmatch
+set nocursorline
+set nojoinspaces
+set scrolloff=3
+
+set signcolumn=no
+
+set ttyfast
+set lazyredraw
+set timeoutlen=500
+set ttimeoutlen=100
+" Disable automatic commenting on newline
+set formatoptions-=cro
+
+" Prefer vertical orientation when using :diffsplit
+set diffopt+=vertical
+
+" Auto read file when a file is changed from outside
+set autoread
+" Auto write a file when leaveing a modified buffer
+set autowrite
+" set updatetime=1000
+
+" No annoying
+set noerrorbells
+set novisualbell
+set nospell
+set belloff=all
+
+" Clipboard
+set clipboard^=unnamed,unnamedplus
+" }}}
+
+" Plugins {{{
 if filereadable(expand('~/.vim/pack.vim'))
   source ~/.vim/pack.vim
 endif
+" }}}
 
 " Filetype {{{
 filetype on
@@ -24,13 +64,17 @@ set number
 set relativenumber
 " }}}
 
-" Tabs and Spaces {{{
+" Tabs And Spaces {{{
 set smarttab      " Tabs at the beginning of a line
 set expandtab     " Use space instead of tab
 set shiftround    " Indent to the nearest tabstop
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+
+set backspace+=indent
+set backspace+=eol
+set backspace+=start
 " }}}
 
 " Indent {{{
@@ -46,23 +90,9 @@ set smartcase
 set infercase
 " }}}
 
-" No annoying {{{
-set noerrorbells
-set novisualbell
-set nospell
-set belloff=all
-" }}}
-
 " Split {{{
 set splitbelow
 set splitright
-" }}}
-
-" Backspace {{{
-set backspace+=indent
-set backspace+=eol
-set backspace+=start
-set whichwrap+=<,>,h,l,[,]
 " }}}
 
 " Status line {{{
@@ -87,29 +117,25 @@ set completeopt+=preview
 
 " set dictionary+=~/.vim/dict/words
 set tags=./tags;
-set complete+=k
-set complete+=kspell
-set pumheight=15
+set pumheight=10
 " }}}
 
-" Ignore files {{{
+" Ignore Files {{{
 set wildignore+=.DS_Store,*.keep,
-set wildignore+=.git/**,.svn/**,.hg/**,tmp/**,*.log,.bundle/**,node_modules/**,build/**,vendor/gems/*
+set wildignore+=.git/**,.svn/**,.hg/**,tmp/**,*.log,.bundle/**,node_modules/**,build/**,dist/**,target/**,vendor/gems/*
 set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*pyc,*.o,*.gem
 set wildignore+=*.jpg,*jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
 set wildignore+=tags
 " }}}
 
-" Swap {{{
+" Session | Swap | Undo | Backup {{{
 set noswapfile
 set directory^=~/.vim/cache/swap//
 if has('win32') || has('win64')
   set directory-=~/.vim/cache/swap//
   set directory^=~/vimfiles/cache/swap//
 endif
-" }}}
 
-" Undo {{{
 set undofile
 set undoreload=1000
 set undolevels=1000
@@ -118,9 +144,7 @@ if has('win32') || has('win64')
   set undodir-=~/.vim/cache/undo//
   set undodir^=~/vimfiles/cache/undo//
 endif
-" }}}
 
-" Backup {{{
 set nobackup
 set nowritebackup
 set backupdir^=~/.vim/cache/backup//
@@ -136,15 +160,11 @@ if !has('unix')
   set backupskip-=/dev/shm/*
   set backupskip-=/var/tmp/*
 endif
-" }}}
 
-" Session {{{
 let g:session_dir='~/.vim/cache/sessions//'
 set sessionoptions-=localoptions  " No buffer options or mappings
 set sessionoptions-=options       " No global options or mappings
-" }}}
 
-" Make directories {{{
 silent! call mkdir(iconv(&undodir, &encoding, &termencoding), 'p')
 silent! call mkdir(iconv(&backupdir, &encoding, &termencoding), 'p')
 silent! call mkdir(iconv(&directory, &encoding, &termencoding), 'p')
@@ -158,49 +178,17 @@ set foldnestmax=3
 set foldcolumn=0
 " }}}
 
-" Clipboard {{{
-set clipboard^=unnamed,unnamedplus
-" }}}
-
 " Wrap {{{
 set list
 set wrap
+set whichwrap+=<,>,h,l,[,]
 set textwidth=79
 set colorcolumn=80
 set listchars=tab:»\ ,trail:·,extends:›,precedes:‹,nbsp:·
 set showbreak=↪
 " }}}
 
-" Others {{{
-syntax on
-set title
-set noshowmode
-set hidden
-set showmatch
-set nocursorline
-set nojoinspaces
-set scrolloff=3
-
-set signcolumn=no
-
-set ttyfast
-set lazyredraw
-set timeoutlen=500
-set ttimeoutlen=100
-" Disable automatic commenting on newline
-set formatoptions-=cro
-
-" Prefer vertical orientation when using :diffsplit
-set diffopt+=vertical
-
-set virtualedit=onemore
-set viewoptions=folds,cursor,unix,slash
-
-" Auto read file when a file is changed from outside
-set autoread
-" Auto write a file when leaveing a modified buffer
-set autowrite
-set updatetime=1000
+" Theme {{{
 
 " Enable true color
 if has('gui_running') && $COLORTERM ==# 'truecolor'
@@ -265,9 +253,6 @@ augroup common
   " Automatically treat .es6 extension files as javascript
   autocmd BufRead,BufNewFile *.es6 setfiletype javascript
   autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} setfiletype markdown
-  " Don't show fold sign column
-  autocmd WinEnter,WinLeave,BufRead,BufWrite * setlocal foldcolumn=0
-
 
   " Restore cursor to file position in previous editing session
   autocmd BufWinEnter *
@@ -278,6 +263,8 @@ augroup common
   " Toggle line number
   " autocmd BufLeave,FocusLost,InsertEnter *  setlocal norelativenumber
   " autocmd BufEnter,FocusGained,InsertLeave * setlocal relativenumber
+
+  " autocmd BufEnter,FocusGained * call lightline#enable()
 
   autocmd InsertEnter * setlocal nolist
   autocmd InsertLeave * setlocal list nopaste
@@ -303,11 +290,15 @@ augroup common
 augroup END
 " }}}
 
-" Key mappings {{{
+" Key Mappings {{{
 let mapleader = ','
 nnoremap ; :
 nnoremap : ;
 vnoremap ; :
+
+" Ctrl-j/k navigation in popups
+inoremap <expr> <C-j> (pumvisible() ? "\<C-n>" : "\<C-j>")
+inoremap <expr> <C-k> (pumvisible() ? "\<C-p>" : "\<C-k>")
 
 " Alt key {{{
 if !has('nvim') && &term =~ 'xterm' && !has("gui_running")
@@ -362,9 +353,6 @@ inoremap <C-e> <C-o>$
 inoremap <C-w> <C-g>u<C-w>
 inoremap <C-u> <C-g>u<C-u>
 
-" Ctrl-j/k navigation in popups
-inoremap <expr> <C-j> (pumvisible() ? "\<C-n>" : "\<C-j>")
-inoremap <expr> <C-k> (pumvisible() ? "\<C-p>" : "\<C-k>")
 
 " Resize windows using <Ctrl> and h,j,k,l
 nnoremap <silent> <C-h> <C-w><
@@ -405,8 +393,8 @@ vnoremap $ g_
 " Go to start or end of line easier
 nnoremap H ^
 nnoremap L $
-noremap B ^
-noremap E $
+" noremap B ^
+" noremap E $
 
 " Automatically jump to a file at the correct line number
 noremap <Leader>gf :vertical botright wincmd F<CR>
@@ -464,6 +452,7 @@ vnoremap < <gv
 vnoremap > >gv
 xnoremap <S-Tab> <gv
 xnoremap <Tab> >gv
+nnoremap \<Tab> :ExpandTab<Space>
 " }}}
 
 " Tab navigation {{{
@@ -510,18 +499,17 @@ nnoremap <silent> <Leader>rc :silent update $MYVIMRC <Bar> source $MYVIMRC<CR>
 " }}}
 
 " Folding {{{
-nnoremap <silent> z0 :set foldlevel=0<CR>
-nnoremap <silent> z1 :set foldlevel=1<CR>
-nnoremap <silent> z2 :set foldlevel=2<CR>
-nnoremap <silent> z3 :set foldlevel=3<CR>
-nnoremap <silent> z4 :set foldlevel=4<CR>
-nnoremap <silent> z5 :set foldlevel=5<CR>
-nnoremap <silent> z6 :set foldlevel=6<CR>
-nnoremap <silent> z7 :set foldlevel=7<CR>
-nnoremap <silent> z8 :set foldlevel=8<CR>
-nnoremap <silent> z9 :set foldlevel=9<CR>
-nnoremap <Space> za
-vnoremap <space> zf"{{{}}}
+" nnoremap <silent> z0 :setlocal foldlevel=0<CR>
+" nnoremap <silent> z1 :set foldlevel=1<CR>
+" nnoremap <silent> z2 :set foldlevel=2<CR>
+" nnoremap <silent> z3 :set foldlevel=3<CR>
+" nnoremap <silent> z4 :set foldlevel=4<CR>
+" nnoremap <silent> z5 :set foldlevel=5<CR>
+" nnoremap <silent> z6 :set foldlevel=6<CR>
+" nnoremap <silent> z7 :set foldlevel=7<CR>
+" nnoremap <silent> z8 :set foldlevel=8<CR>
+" nnoremap <silent> z9 :set foldlevel=9<CR>
+nnoremap <silent> <Space> za
 " }}}
 
 " Buffer {{{
@@ -542,7 +530,7 @@ cnoremap w!! w !sudo tee % > /dev/null<CR>
 nnoremap <Leader><Space> <C-^>
 
 command! Q q
-command! Qall qall
+command! Qa qall
 command! QA qall
 command! E e
 command! W w
@@ -571,19 +559,15 @@ nnoremap [l :lprev<CR>zz
 
 if executable('rg')
   let s:rg_cmd = "rg --hidden --follow --smart-case --no-ignore-messages"
-  let s:rg_ignore = split(&wildignore, ',') + [
-        \ 'node_modules', 'target', 'build', 'dist', '.stack-work'
-        \ ]
+  let s:rg_ignore = split(&wildignore, ',')
   let s:rg_cmd .= " --glob '!{'" . shellescape(join(s:rg_ignore, ',')) . "'}'"
   let &grepprg=s:rg_cmd . ' --vimgrep'
   let &grepformat='%f:%l:%c:%m'
-  let $FZF_DEFAULT_COMMAND = s:rg_cmd . ' --files'
+  let $FZF_DEFAULT_COMMAND=s:rg_cmd . ' --vimgrep --files'
 else
   let &grepprg="grep -n --with-filename -I -R"
   let &grepformat='%f:%l:%m'
 endif
-
-nmap <silent> <F4> <Plug>(QfToggle)
 " }}}
 
 command! SyntaxStack call <SID>syntax_stack()
@@ -595,11 +579,6 @@ endfunction
 " Plugins config {{{
 
 " FZF {{{
-if executable('rg')
-  let $FZF_DEFAULT_COMMAND='rg --vimgrep --files --hidden --follow --no-ignore-messages --glob "!.git/*"'
-elseif executable('ag')
-  let $FZF_DEFAULT_COMMAND='ag --hidden -l -g ""'
-endif
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
 
 " Jump to the existing window if possible
@@ -673,6 +652,7 @@ nnoremap <silent> <Leader>fbt  :BTags<CR>
 nnoremap <silent> <Leader>fm   :Maps<CR>
 nnoremap <silent> <Leader>f'   :Marks<CR>
 nnoremap <silent> <Leader>fw   :Windows<CR>
+nnoremap \w :Rg <C-r><C-w><CR>
 
 " Mapping selecting mappings
 nmap <leader><Tab> <plug>(fzf-maps-n)
@@ -680,10 +660,10 @@ xmap <leader><Tab> <plug>(fzf-maps-x)
 omap <leader><Tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
-imap <C-x><C-k> <plug>(fzf-complete-word)
-imap <C-x><C-f> <plug>(fzf-complete-path)
-imap <C-x><C-j> <plug>(fzf-complete-file-ag)
-imap <C-x><C-l> <plug>(fzf-complete-line)
+" imap <C-x><C-k> <plug>(fzf-complete-word)
+" imap <C-x><C-f> <plug>(fzf-complete-path)
+" imap <C-x><C-j> <plug>(fzf-complete-file-ag)
+" imap <C-x><C-l> <plug>(fzf-complete-line)
 " }}}
 
 " surround {{{
@@ -718,16 +698,6 @@ vmap ,{ c{ <C-R>" }<ESC>
 vmap ,} c{<C-R>"}<ESC>
 
 map ,` ysiw`
-" }}}
-
-" ferret {{{
-let g:FerrerLazyInit = 1
-let g:FerretAutojump = 1
-
-nmap \a <Plug>(FerretAck)
-nmap \w <Plug>(FerretAckWord)
-nmap \s <Plug>(FerretAcks)
-nmap \r <Plug>(FerretAcks)
 " }}}
 
 " netrw {{{
@@ -800,43 +770,18 @@ nmap <Leader>= <Plug>(LiveEasyAlign)
 xmap <Leader>= <Plug>(LiveEasyAlign)
 " }}}
 
-" vim-markdown {{{
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_new_list_item_indent = 2
-" }}}
-
 " lightline {{{
 let g:lightline={}
 let g:lightline.colorscheme='jellybeans'
 let g:lightline.component_function = {
       \ 'gitbranch': 'lightline#git_branch',
       \ 'githunks': 'lightline#git_hunks',
-      \ 'alelint': 'lightline#ale_lint',
-      \ 'filesize': 'lightline#file_size',
+      \ 'alelint': 'lightline#ale_lint'
       \ }
 let g:lightline.active = {
-      \ 'left': [['mode', 'paste'], ['gitbranch', 'filename'], ['githunks', 'readonly', 'modified']],
+      \ 'left': [['mode', 'paste'], ['gitbranch', 'githunks', 'filename']],
       \ 'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'alelint']],
       \ }
-let g:lightline.inactive = {
-      \ 'left': [['filename', 'readonly', 'modified']],
-      \ 'right': [['lineinfo'], ['percent']]
-      \ }
-
-augroup Lightline
-  autocmd!
-  autocmd ColorScheme * call <SID>lightline_update_colorscheme()
-augroup END
-
-function! s:lightline_update_colorscheme()
-  let g:lightline.colorscheme = g:colors_name
-  call lightline#init()
-  call lightline#colorscheme()
-  call lightline#update()
-endfunction
-" }}}
-
 " }}}
 
 " Local config {{{
