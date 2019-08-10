@@ -1,10 +1,7 @@
-if exists('g:qfloc_loaded') || &compatible
+if exists('g:loaded_qfloc') || &compatible
   finish
 endif
-let g:qfloc_loaded = 1
-
-let s:cpoptions = &cpoptions
-set cpoptions&vim
+let g:loaded_qfloc = 1
 
 nnoremap <silent> <Plug>(qfloc-cclear) :<C-u>call qfloc#cclear()<CR>
 nnoremap <silent> <Plug>(qfloc-lclear) :<C-u>call qfloc#lclear()<CR>
@@ -20,6 +17,3 @@ augroup qfloc
   autocmd QuickfixCmdPost nested [^l]* cwindow
   autocmd QuickfixCmdPost nested l*    lwindow
 augroup END
-
-let &cpoptions = s:cpoptions
-unlet s:cpoptions

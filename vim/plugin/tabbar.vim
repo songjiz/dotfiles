@@ -1,5 +1,9 @@
-command! MergeTab call s:merge_tab()
-function! s:merge_tab() abort
+if exists('g:loaded_tabbar')
+  finish
+endif
+let g:loaded_tabbar = 1
+
+function! tabbar#merge() abort
   if tabpagenr() == 1
     return
   endif
@@ -13,4 +17,4 @@ function! s:merge_tab() abort
   split
   execute "buffer " . bufferName
 endfunction
-nnoremap <Plug>(MergeTab) :<C-U>call <SID>merge_tab()<CR>
+nnoremap <Plug>(tabbar-merge) :<C-U>call tabbar#merge()<CR>

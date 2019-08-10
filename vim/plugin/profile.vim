@@ -1,3 +1,8 @@
+if exists('g:profile_loaded')
+  finish
+endif
+let g:profile_loaded = 1
+
 command! -bang Profile call s:profile(<bang>0)
 
 function! s:profile(bang) abort

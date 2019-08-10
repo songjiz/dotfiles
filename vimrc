@@ -362,6 +362,9 @@ nnoremap <silent> <C-k> <C-W>+
 
 " qq to record, Q to replay
 nnoremap Q @q
+nnoremap <leader>ms :MacroSave<Space>
+nnoremap <leader>ml :MacroLoad<Space>
+nnoremap <leader>md :MacroDel<Space>
 
 " Center screen after navigation
 nnoremap }   }zz
@@ -453,7 +456,6 @@ vnoremap < <gv
 vnoremap > >gv
 xnoremap <S-Tab> <gv
 xnoremap <Tab> >gv
-nnoremap \<Tab> :ExpandTab<Space>
 " }}}
 
 " Tab navigation {{{
@@ -470,7 +472,7 @@ nnoremap <silent> <C-t>m :tabm<SPACE>
 nnoremap <silent> <C-t>o :tabo<CR>
 
 " <C-w>T move buffer to new tab, <C-w>U merge a tab into a split in the previous window
-nmap <silent><C-w>U <Plug>(MergeTab)
+nmap <silent><C-w>U <Plug>(tabbar-merge)
 " }}}
 
 " Window split {{{
@@ -543,7 +545,7 @@ nnoremap <Leader>rs :source ~/.vim/cache/sessions/
 nnoremap <Leader>ds :!rm ~/.vim/cache/sessions/
 " }}}
 
-nmap <silent><Leader>n <Plug>(RenameBuffer)
+nmap <silent><Leader>n <Plug>(rename-buffer)
 
 command! FuckGFW :tabe ~/.config/clash/config.yaml
 
@@ -744,6 +746,7 @@ nnoremap <silent> <Leader>gd :Gina diff --opener=split<CR>
 nnoremap <silent> <Leader>gc :Gina commit<CR>
 nnoremap <silent> <Leader>ge :Gina edit %<CR>
 nnoremap <silent> <Leader>gw :Gina add %<CR>
+nnoremap <silent> <Leader>gr :GitRoot<CR>
 " }}}
 
 " UltiSnips {{{

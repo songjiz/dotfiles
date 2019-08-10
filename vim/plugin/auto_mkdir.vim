@@ -1,4 +1,8 @@
-command! -bang -nargs=* AutoMkDir call auto_mkdir#try(expand('%:p:h'), <bang>0)
+if exists('g:loaded_auto_mkdir')
+  finish
+endif
+
+let g:loaded_auto_mkdir = 1
 
 function! auto_mkdir#try(dir, force) abort
   if !isdirectory(a:dir)
