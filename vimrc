@@ -16,8 +16,8 @@ set signcolumn=no
 
 set ttyfast
 set lazyredraw
-set timeoutlen=500
-set ttimeoutlen=100
+" set timeoutlen=500
+" set ttimeoutlen=100
 " Disable automatic commenting on newline
 set formatoptions-=cro
 
@@ -751,7 +751,6 @@ let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 let g:UltiSnipsEnableSnipMate = 0
 let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 nnoremap <Leader>sn :UltiSnipsEdit<CR>
 " }}}
 
