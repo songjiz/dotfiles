@@ -432,6 +432,7 @@ nnoremap <C-e> :e#<CR>
 " Fast edit files in same directory
 cabbr <expr> %% fnameescape(expand("%:p:h"))
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <leader>t :tabe <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
