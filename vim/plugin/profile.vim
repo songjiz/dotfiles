@@ -1,7 +1,7 @@
-if exists('g:profile_loaded')
+if exists('g:loaded_profile')
   finish
 endif
-let g:profile_loaded = 1
+let g:loaded_profile = 1
 
 command! -bang Profile call s:profile(<bang>0)
 

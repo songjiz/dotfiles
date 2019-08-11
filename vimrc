@@ -545,7 +545,7 @@ nnoremap <Leader>rs :source ~/.vim/cache/sessions/
 nnoremap <Leader>ds :!rm ~/.vim/cache/sessions/
 " }}}
 
-nmap <silent><Leader>n <Plug>(rename-buffer)
+nmap <silent><Leader>n <Plug>(rename-file)
 
 command! FuckGFW :tabe ~/.config/clash/config.yaml
 
@@ -746,7 +746,7 @@ nnoremap <silent> <Leader>gd :Gina diff --opener=split<CR>
 nnoremap <silent> <Leader>gc :Gina commit<CR>
 nnoremap <silent> <Leader>ge :Gina edit %<CR>
 nnoremap <silent> <Leader>gw :Gina add %<CR>
-nnoremap <silent> <Leader>gr :GitRoot<CR>
+nmap <silent> <Leader>gr <Plug>(git-root)
 " }}}
 
 " UltiSnips {{{
