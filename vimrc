@@ -264,7 +264,7 @@ augroup common
   " autocmd BufLeave,FocusLost,InsertEnter *  setlocal norelativenumber
   " autocmd BufEnter,FocusGained,InsertLeave * setlocal relativenumber
 
-  " autocmd BufEnter,FocusGained * call lightline#enable()
+  autocmd BufEnter,FocusGained * call lightline#update()
 
   autocmd InsertEnter * setlocal nolist
   autocmd InsertLeave * setlocal list nopaste
@@ -291,10 +291,7 @@ augroup END
 " }}}
 
 " Key Mappings {{{
-let mapleader = ','
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
+let mapleader = "\<Space>"
 
 " Ctrl-j/k navigation in popups
 inoremap <expr> <C-j> (pumvisible() ? "\<C-n>" : "\<C-j>")
@@ -311,6 +308,8 @@ if !has('nvim') && &term =~ 'xterm' && !has("gui_running")
   execute "set <A-j>=\ej"
   execute "set <A-k>=\ek"
   execute "set <A-l>=\el"
+  execute "set <A-t>=\et"
+  execute "set <A-]>=\e]"
 endif
 " }}}
 
@@ -395,14 +394,12 @@ vnoremap $ g_
 
 " Go to start or end of line easier
 nnoremap H ^
-nnoremap L $
-" noremap B ^
-" noremap E $
+nnoremap L g_
 
 " Automatically jump to a file at the correct line number
 noremap <Leader>gf :vertical botright wincmd F<CR>
 " Jump to definition in vertical split
-nnoremap <Leader>] <C-W>v<C-]>
+nnoremap <A-]> <C-W>v<C-]>
 
 " Select all
 noremap <C-a> ggVG<CR>
@@ -461,23 +458,18 @@ xnoremap <Tab> >gv
 " Tab navigation {{{
 nnoremap <silent><Tab>   gt
 nnoremap <silent><S-Tab> gT
-nnoremap <silent> <C-t>k :tabp<CR>
-nnoremap <silent> <C-t>p :tabp<CR>
-nnoremap <silent> <C-t>j :tabn<CR>
-nnoremap <silent> <C-t>n :tabn<CR>
-nnoremap <silent> <C-t>c :tabc<CR>
-nnoremap <silent> <C-t>a :tabf<CR>
-nnoremap <silent> <C-t>z :tabl<CR>
-nnoremap <silent> <C-t>m :tabm<SPACE>
-nnoremap <silent> <C-t>o :tabo<CR>
+nnoremap <silent><A-t>k :tabp<CR>
+nnoremap <silent><A-t>p :tabp<CR>
+nnoremap <silent><A-t>j :tabn<CR>
+nnoremap <silent><A-t>n :tabn<CR>
+nnoremap <silent><A-t>c :tabc<CR>
+nnoremap <silent><A-t>o :tabo<CR>
 
 " <C-w>T move buffer to new tab, <C-w>U merge a tab into a split in the previous window
 nmap <silent><C-w>U <Plug>(tabbar-merge)
 " }}}
 
 " Window split {{{
-" 1) Ctrl-w s   Split
-" 2) Ctrl-w v   Vsplit
 nnoremap <silent><leader>sh :leftabove vnew<CR>
 nnoremap <silent><leader>sl :rightbelow vnew<CR>
 nnoremap <silent><leader>sk :leftabove new<CR>
@@ -499,20 +491,6 @@ inoremap <silent><A-l> <C-\><C-N><C-w>l
 nnoremap <silent> <Leader>vc :tabe $MYVIMRC<CR>
 nnoremap <silent> <Leader>vu :tabe ~/.vimrc.local<CR>
 nnoremap <silent> <Leader>rc :silent update $MYVIMRC <Bar> source $MYVIMRC<CR>
-" }}}
-
-" Folding {{{
-" nnoremap <silent> z0 :setlocal foldlevel=0<CR>
-" nnoremap <silent> z1 :set foldlevel=1<CR>
-" nnoremap <silent> z2 :set foldlevel=2<CR>
-" nnoremap <silent> z3 :set foldlevel=3<CR>
-" nnoremap <silent> z4 :set foldlevel=4<CR>
-" nnoremap <silent> z5 :set foldlevel=5<CR>
-" nnoremap <silent> z6 :set foldlevel=6<CR>
-" nnoremap <silent> z7 :set foldlevel=7<CR>
-" nnoremap <silent> z8 :set foldlevel=8<CR>
-" nnoremap <silent> z9 :set foldlevel=9<CR>
-nnoremap <silent> <Space> za
 " }}}
 
 " Buffer {{{
@@ -671,36 +649,36 @@ omap <leader><Tab> <plug>(fzf-maps-o)
 
 " surround {{{
 " with #{ruby interpolation}.
-map ,# ysiw}i#<C-o>%<ESC>
-vmap ,# c#{<C-R>"}<ESC>
+map <leader># ysiw}i#<C-o>%<ESC>
+vmap <leader># c#{<C-R>"}<ESC>
 
 " with "double quotes".
-map ," ysiw"
-vmap ," c"<C-R>""<ESC>
+map <leader>" ysiw"
+vmap <leader>" c"<C-R>""<ESC>
 
 " with 'single quotes'.
-map ,' ysiw'
-vmap ,' c'<C-R>"'<ESC>
+map <leader>' ysiw'
+vmap <leader>' c'<C-R>"'<ESC>
 
 " with (parens) or ( parens ).
-map ,( ysiw(
-map ,) ysiw)
-vmap ,( c( <C-R>" )<ESC>
-vmap ,) c(<C-R>")<ESC>
+map <leader>( ysiw(
+map <leader>) ysiw)
+vmap <leader>( c( <C-R>" )<ESC>
+vmap <leader>) c(<C-R>")<ESC>
 
 " with [brackets] or [ brackets ]
-map ,[ ysiw[
-map ,] ysiw]
-vmap ,[ c[ <C-R>" ]<ESC>
-vmap ,] c[<C-R>"]<ESC>
+map <leader>[ ysiw[
+map <leader>] ysiw]
+vmap <leader>[ c[ <C-R>" ]<ESC>
+vmap <leader>] c[<C-R>"]<ESC>
 
 " with {braces} or { braces }
-map ,{ ysiw{
-map ,} ysiw}
-vmap ,{ c{ <C-R>" }<ESC>
-vmap ,} c{<C-R>"}<ESC>
+map <leader>{ ysiw{
+map <leader>} ysiw}
+vmap <leader>{ c{ <C-R>" }<ESC>
+vmap <leader>} c{<C-R>"}<ESC>
 
-map ,` ysiw`
+map <leader>` ysiw`
 " }}}
 
 " netrw {{{
@@ -728,7 +706,7 @@ let g:ale_set_highlights = 0
 
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
- " }}}
+" }}}
 
 " Gitgutter {{{
 let g:gitgutter_override_sign_column_highlight = 0
@@ -750,47 +728,79 @@ nmap <silent> <Leader>gr <Plug>(git-root)
 " }}}
 
 " UltiSnips {{{
-let g:UltiSnipsExpandTrigger = "<Tab>"
-let g:UltiSnipsJumpForwardTrigger = "<Tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
-let g:UltiSnipsEnableSnipMate = 0
-let g:UltiSnipsEditSplit="vertical"
-nnoremap <Leader>sn :UltiSnipsEdit<CR>
-" }}}
+function! SweetTab(direction) abort
+  if !pumvisible()
+    call UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res == 0
+      let col = col('.') - 1
+      if !col || getline('.')[col - 1] !~ '\k'
+        if a:direction == 'forward'
+          return "\<Tab>"
+        else
+          return "\<C-d>"
+        endif
+      else
+        if a:direction == 'forward'
+          return "\<C-n>"
+        else
+          return "\<C-p>"
+        endif
+      endif
+    else
+      return ''
+    endif
+  else
+    if a:direction == 'forward'
+      return "\<C-n>"
+    else
+      return "\<C-p>"
+    endif
+  endif
+endfunction
+inoremap <silent><Tab> <C-r>=SweetTab('forward')<CR>
+inoremap <silent><S-Tab> <C-r>=SweetTab('backward')<CR>
 
-" vim-test {{{
-nnoremap <silent> t<C-n> :TestNearest<CR>
-nnoremap <silent> t<C-f> :TestFile<CR>
-nnoremap <silent> t<C-s> :TestSuite<CR>
-nnoremap <silent> t<C-l> :TestLast<CR>
-nnoremap <silent> t<C-g> :TestVisit<CR>
-" }}}
+  let g:UltiSnipsExpandTrigger = "<C-l>"
+  let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+  let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+  let g:UltiSnipsEnableSnipMate = 0
+  let g:UltiSnipsEditSplit="vertical"
+  nnoremap <Leader>sn :UltiSnipsEdit<CR>
+  " }}}
 
-" easy-align {{{
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-nmap <Leader>= <Plug>(LiveEasyAlign)
-xmap <Leader>= <Plug>(LiveEasyAlign)
-" }}}
+  " vim-test {{{
+  nnoremap <silent> t<C-n> :TestNearest<CR>
+  nnoremap <silent> t<C-f> :TestFile<CR>
+  nnoremap <silent> t<C-s> :TestSuite<CR>
+  nnoremap <silent> t<C-l> :TestLast<CR>
+  nnoremap <silent> t<C-g> :TestVisit<CR>
+  " }}}
 
-" lightline {{{
-let g:lightline={}
-let g:lightline.colorscheme='jellybeans'
-let g:lightline.component_function = {
-      \ 'gitbranch': 'lightline#git_branch',
-      \ 'githunks': 'lightline#git_hunks',
-      \ 'alelint': 'lightline#ale_lint'
-      \ }
-let g:lightline.active = {
-      \ 'left': [['mode', 'paste'], ['gitbranch', 'githunks', 'filename']],
-      \ 'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'alelint']],
-      \ }
-" }}}
+  " easy-align {{{
+  xmap ga <Plug>(EasyAlign)
+  nmap ga <Plug>(EasyAlign)
+  nmap <Leader>= <Plug>(LiveEasyAlign)
+  xmap <Leader>= <Plug>(LiveEasyAlign)
+  " }}}
 
-" Local config {{{
-if filereadable(expand('~/.vimrc.local'))
-  source  ~/.vimrc.local
-endif
-" }}}
+  " lightline {{{
+  let g:lightline={}
+  let g:lightline.colorscheme='jellybeans'
+  let g:lightline.component_function = {
+        \ 'gitbranch': 'lightline#git_branch',
+        \ 'githunks': 'lightline#git_hunks',
+        \ 'alelint': 'lightline#ale_lint'
+        \ }
+  let g:lightline.active = {
+        \ 'left': [['mode', 'paste'], ['gitbranch', 'githunks', 'filename']],
+        \ 'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'alelint']],
+        \ }
+  " }}}
 
-" vim: sw=2 sts=2 tw=0 fdm=marker
+  " Local config {{{
+  if filereadable(expand('~/.vimrc.local'))
+    source  ~/.vimrc.local
+  endif
+  " }}}
+
+  " vim: sw=2 sts=2 tw=0 fdm=marker
