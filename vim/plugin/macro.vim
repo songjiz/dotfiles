@@ -8,6 +8,7 @@ if !exists('g:macro_dir')
 endif
 
 command! -nargs=* MacroSave call macro#save(<f-args>)
+nnoremap plug(macro-save) :MacroSave<Space>
 function! macro#save(name, file) abort
   let content = eval('@' . a:name)
   if !empty(content)
@@ -20,6 +21,7 @@ function! macro#save(name, file) abort
 endfunction
 
 command! -nargs=* MacroLoad call macro#load(<f-args>)
+nnoremap plug(macro-load) :MacroLoad<Space>
 function! macro#load(file, name) abort
   let data = join(readfile(s:path(a:file)), "\n")
   call setreg(a:name, data, 'c')
@@ -27,6 +29,7 @@ function! macro#load(file, name) abort
 endfunction
 
 command! -nargs=* MacroDel call macro#delete(<f-args>)
+nnoremap plug(macro-del) :MacroDel<Space>
 function! macro#delete(file) abort
   if delete(s:path(a:file)) == 0
     echom "Deleted " . a:file

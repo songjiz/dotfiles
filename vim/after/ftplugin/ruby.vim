@@ -4,4 +4,5 @@ setlocal softtabstop=2
 setlocal tabstop=2
 setlocal textwidth=120
 setlocal iskeyword+=!
+setlocal formatoptions-=or
 setlocal omnifunc=rubycomplete#Complete
