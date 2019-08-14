@@ -1,18 +1,18 @@
 {
   "editor.fontFamily": "Monaco",
   "editor.fontLigatures": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
   "editor.insertSpaces": true,
-  // "editor.scrollbar.horizontal": "hidden",
-  // "editor.scrollbar.vertical": "hidden",
+  "editor.minimap.enabled": false,
+  "editor.mouseWheelZoom": true,
   "editor.smoothScrolling": true,
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": false,
+  "search.location": "panel",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.shell.osx": "/bin/zsh",
   "window.nativeTabs": true,
-  "window.zoomLevel": 2,
   "workbench.activityBar.visible": false,
   "workbench.colorTheme": "Monokai",
   "workbench.colorCustomizations": {
@@ -23,11 +23,7 @@
       "statusBar.background": "#303030"
     }
   },
-  "workbench.editor.showTabs": false,
-  "workbench.editor.tabSizing": "shrink",
-  "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.feedback.visible": false,
   "[ruby]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true
@@ -41,9 +37,9 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "material-icon-theme.activeIconPack": "none",
-  "material-icon-theme.opacity": 1,
-  "material-icon-theme.folders.theme": "none",
-  "material-icon-theme.folders.color": "#90a4ae",
-  "material-icon-theme.saturation": 1
+  "window.zoomLevel": 1,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.showTabs": false,
+  "workbench.iconTheme": "vs-minimal"
 }

@@ -17,10 +17,14 @@ function! lightline#file_size() abort
 endfunction
 
 function! lightline#git_branch() abort
-  if !exists('g:loaded_gina')
+  if exists('g:loaded_fugitive')
+    " let branch = fugitive#statusline()
+    let branch = fugitive#head()
+  elseif exists('g:loaded_gina')
+    let branch = gina#component#repo#branch()
+  else
     return ''
   endif
-  let branch = gina#component#repo#branch()
   return strlen(branch) ? ' '. branch : ''
 endfunction
 

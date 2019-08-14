@@ -14,6 +14,7 @@ set signcolumn=no
 
 set ttyfast
 set lazyredraw
+set redrawtime=5000
 set ttimeout
 set timeoutlen=500
 set ttimeoutlen=1
@@ -449,6 +450,7 @@ vnoremap < <gv
 vnoremap > >gv
 xnoremap <S-Tab> <gv
 xnoremap <Tab> >gv
+nnoremap <leader>i mmgg=G`m
 " }}}
 
 " Tab navigation {{{
@@ -679,16 +681,22 @@ let g:gitgutter_signs = 0
 noremap <silent><leader>gg :GitGutterToggle<CR>
 " }}}
 
-" Gina {{{
-" https://github.com/lambdalisue/gina.vim/issues/96#issuecomment-319655413
-let g:gina#command#blame#formatter#format="%su%= by %au on %ti %ma%in"
-nnoremap <silent> <leader>gs :Gina status --opener=split<CR>
-nnoremap <silent> <leader>gb :Gina blame<CR>
-nnoremap <silent> <leader>gd :Gina diff --opener=split<CR>
-nnoremap <silent> <leader>gc :Gina commit<CR>
-nnoremap <silent> <leader>ge :Gina edit %<CR>
-nnoremap <silent> <leader>gw :Gina add %<CR>
-nmap <silent> <leader>gr <plug>(git-root)
+" fugitive {{{
+nnoremap <silent><leader>gs :Gstatus<CR>
+nnoremap <silent><leader>gb :Gblame<CR>
+nnoremap <silent><leader>gc :Gcommit<CR>
+nnoremap <silent><leader>gm :Gmerge<CR>
+nnoremap <silent><leader>gr :Gread<CR>
+nnoremap <silent><leader>gw :Gwrite<CR>
+nnoremap <silent><leader>gd :Gdiffsplit<CR>
+nnoremap <silent><leader>gD :Gdelete<CR>
+nnoremap <silent><leader>gp :Gpush<CR>
+nnoremap <silent><leader>gl :Gpull<CR>
+nnoremap <silent><leader>gf :Gfetch<CR>
+nnoremap <silent><leader>ge :Gedit<CR>
+nnoremap <silent><leader>gcl :Gclog<CR>
+nnoremap <silent><leader>gll :Gllog<CR>
+nmap <silent><leader>gR <plug>(git-root)
 " }}}
 
 " UltiSnips {{{
@@ -697,6 +705,7 @@ let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 let g:UltiSnipsEnableSnipMate = 0
 let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ['ultisnips']
 nnoremap <leader>sn :UltiSnipsEdit<CR>
 " }}}
 
