@@ -15,7 +15,8 @@ endfunction
 
 function! profile#pause() abort
   profile pause
-  noautocmd qall
+  " noautocmd qall
+  execute 'tabe ~/.vim/cache/profile.log'
 endfunction
 
 function! profile#start() abort

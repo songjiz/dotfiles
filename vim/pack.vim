@@ -9,7 +9,6 @@ endif
 
 call plug#begin('~/.vim/pack')
 Plug 'SirVer/ultisnips'
-Plug 'tmsvg/pear-tree'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -32,6 +31,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-bundler'
+Plug 'tmsvg/pear-tree'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'slim-template/vim-slim'

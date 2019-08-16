@@ -68,6 +68,10 @@ snippet set "set"
 set ${1:setting} = ${0:value}
 endsnippet
 
+snippet set "setl"
+setlocal ${1:setting} = ${0:value}
+endsnippet
+
 snippet exe "execute"
 execute ${1}
 endsnippet
@@ -77,6 +81,10 @@ command! ${1:command_name} call s:$1()
 function! s:$1() abort
 	${2:" code}
 endfunction
+endsnippet
+
+snippet : "key:value"
+'${1:key}': '${0:value}'
 endsnippet
 
 # vim:ft=snippets:

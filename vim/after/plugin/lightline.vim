@@ -17,6 +17,9 @@ function! lightline#file_size() abort
 endfunction
 
 function! lightline#git_branch() abort
+  if winwidth(0) < 120
+    return ''
+  endif
   if exists('g:loaded_fugitive')
     " let branch = fugitive#statusline()
     let branch = fugitive#head()
@@ -29,7 +32,7 @@ function! lightline#git_branch() abort
 endfunction
 
 function! lightline#git_hunks() abort
-  if !get(g:, 'gitgutter_enabled', 0) || winwidth(0) <= 100
+  if !get(g:, 'gitgutter_enabled', 0) || winwidth(0) <= 120
     return ''
   end
   let s:hunk_signs = get(g:, 'lightline#hunks#signs', ['+', '~', '-'])
@@ -41,10 +44,7 @@ function! lightline#git_hunks() abort
   return trim(summary)
 endfunction
 
-function! lightline#ale_lint() abort
-  if !exists(':ALE') || winwidth(0) <= 100
-    return ''
-  endif
+function! lightline#ale_status() abort
   let l:indicator_warnings = get(g:, 'lightline#ale#indicator_warnings', 'W:')
   let l:indicator_errors = get(g:, 'lightline#ale#indicator_errors', 'E:')
   let l:indicator_ok = get(g:, 'lightline#ale#indicator_ok', 'OK')

@@ -16,7 +16,7 @@ set ttyfast
 set lazyredraw
 set redrawtime=5000
 set ttimeout
-set timeoutlen=500
+set timeoutlen=1000
 set ttimeoutlen=1
 
 " Prefer vertical orientation when using :diffsplit
@@ -35,89 +35,64 @@ set belloff=all
 
 " Clipboard
 set clipboard^=unnamed,unnamedplus
-" }}}
 
-" Plugins {{{
-if filereadable(expand('~/.vim/pack.vim'))
-  source ~/.vim/pack.vim
-endif
-" }}}
-
-" Filetype {{{
+" Filetype
 filetype on
 filetype plugin on
 filetype indent on
-" }}}
 
-" Encoding {{{
+" Encoding
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf8
-" }}}
 
-" Numbering {{{
 set number
 set relativenumber
-" }}}
 
-" Tabs And Spaces {{{
-set smarttab      " Tabs at the beginning of a line
-set expandtab     " Use space instead of tab
-set shiftround    " Indent to the nearest tabstop
+" Tabs And Spaces
+set smarttab
+set expandtab
+set shiftround
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-
 set backspace=indent,eol,start
-" }}}
 
-" Indent {{{
+" Indent
 set autoindent
 set smartindent
-" }}}
 
-" Seaching {{{
+" Seaching
 set incsearch
 set hlsearch
 set ignorecase
 set smartcase
 set infercase
 set gdefault
-" }}}
 
-" Split {{{
+" Split
 set splitbelow
 set splitright
-" }}}
 
-" Status line {{{
+" Status line
 set laststatus=2
 set ruler
-" }}}
 
-" Command line {{{
+" Command line
 set showcmd
 set cmdheight=1
 set history=1000
-" }}}
 
-" Completion {{{
+" Completion
 set wildmenu
 set wildmode=list:longest,full
-
-" set completeopt+=longest
-" set completeopt+=menuone
-" set completeopt-=noselect
-" set completeopt-=noinsert
-" set completeopt+=preview
+set pumheight=10
 
 " set dictionary+=~/.vim/dict/words
-set tags=./tags;
-set pumheight=10
-" }}}
+set tags^=./tags;
 
-" Ignore Files {{{
+" Ignore Files
 set wildignore+=.DS_Store,*.keep,
 set wildignore+=.git/**,.svn/**,.hg/**,
 set wildignore+=tmp/**,*.log,
@@ -125,9 +100,8 @@ set wildignore+=.bundle/**,node_modules/**,build/**,dist/**,target/**,vendor/gem
 set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*pyc,*.o,*.gem,
 set wildignore+=*.jpg,*jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf,
 set wildignore+=tags,
-" }}}
 
-" Session | Swap | Undo | Backup {{{
+" Session | Swap | Undo | Backup
 set noswapfile
 set directory^=~/.vim/cache/swap//
 if has('win32') || has('win64')
@@ -168,25 +142,29 @@ silent! call mkdir(iconv(&undodir, &encoding, &termencoding), 'p')
 silent! call mkdir(iconv(&backupdir, &encoding, &termencoding), 'p')
 silent! call mkdir(iconv(&directory, &encoding, &termencoding), 'p')
 silent! call mkdir(iconv(expand(g:session_dir), &encoding, &termencoding), 'p')
-" }}}
 
-" Folding {{{
+" Folding
 set nofoldenable
 set foldnestmax=3
-" }}}
 
-" Wrap {{{
+" Wrap
 set list
 set wrap
 set whichwrap+=<,>,[,]
 set textwidth=79
-set colorcolumn=80
-set listchars=tab:»\ ,trail:·,extends:›,precedes:‹,nbsp:·
+set colorcolumn=100
+" set listchars=tab:»·,trail:·,extends:›,precedes:‹,nbsp:·
+set listchars=tab:»·,trail:·,nbsp:·
 set showbreak=↪
 " }}}
 
-" Theme {{{
+" Plugins {{{
+if filereadable(expand('~/.vim/pack.vim'))
+  source ~/.vim/pack.vim
+endif
+" }}}
 
+" Theme {{{
 " Enable true color
 if has('gui_running') && $COLORTERM ==# 'truecolor'
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -233,7 +211,7 @@ let g:jellybeans_use_term_background_color = 1
 let g:jellybeans_overrides = {
       \ 'VertSplit':   { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
       \ }
-
+set background=dark
 try
   colorscheme jellybeans
 catch
@@ -246,6 +224,7 @@ highlight link  ColorColumn CursorLine
 " Autocommands {{{
 augroup common
   autocmd!
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
   autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype markdown
 
   " Disable automatic commenting on newline
@@ -258,6 +237,7 @@ augroup common
         \ endif
 
   autocmd BufEnter,FocusGained * call lightline#update()
+  autocmd BufEnter,FocusGained,CursorHold,CursorHoldI * checktime
 
   autocmd InsertEnter * setlocal nolist
   autocmd InsertLeave * setlocal list nopaste
@@ -286,25 +266,19 @@ augroup END
 " Key Mappings {{{
 let mapleader = ","
 
-" Ctrl-j/k navigation in popups
-inoremap <expr> <C-j> (pumvisible() ? "\<C-n>" : "\<C-j>")
-inoremap <expr> <C-k> (pumvisible() ? "\<C-p>" : "\<C-k>")
+" Alt key (Must disable 'Use Option as Meta Key' in terminal.app)
+" ˙ <A-h>
+" ∆ <A-j>
+" ˚ <A-k>
+" ¬ <A-l>
+" ƒ <A-f>
+" ∫ <A-b>
+" “ <A-]>
 
-" Alt key {{{
-if !has('nvim') && &term =~ 'xterm' && !has("gui_running")
-  execute "set <A-e>=\ee"
-  execute "set <A-p>=\ep"
-  execute "set <A-n>=\en"
-  execute "set <A-b>=\eb"
-  execute "set <A-f>=\ef"
-  execute "set <A-h>=\eh"
-  execute "set <A-j>=\ej"
-  execute "set <A-k>=\ek"
-  execute "set <A-l>=\el"
-  execute "set <A-t>=\et"
-  execute "set <A-]>=\e]"
-endif
-" }}}
+" Ctrl-j/k navigation in popups
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+" inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Let mark go to column
 nnoremap ' `
@@ -313,35 +287,27 @@ nnoremap ; :
 nnoremap : ;
 nnoremap ! :!
 
-" Search {{{
-" Clear highlighted searches
-nnoremap <silent> // :nohlsearch<CR>
-" }}}
-
 " Toglle paste mode
 set pastetoggle=<F5>
 
 " Map for Escape key
-imap jk <ESC>
-imap kj <ESC>
-cmap jk <C-c>
-cmap kj <C-c>
+imap jj <ESC>
+cmap jj <C-c>
 vmap v  <ESC>
 
 " In terminal mode, <C-w> is leader key
-tnoremap jk <C-\><C-n>
-tnoremap kj <C-\><C-n>
+tnoremap jj <C-\><C-n>
 tnoremap <C-[> <C-\><C-n>
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap ∆ <C-w>j
+tnoremap ˚ <C-w>k
+tnoremap ˙ <C-w>h
+tnoremap ¬ <C-w>l
 
 " Insert mode navigation like terminal
 inoremap <C-b> <C-o>h
 inoremap <C-f> <C-o>l
-inoremap <A-b> <C-o>b
-inoremap <A-f> <C-o>e
+inoremap ∫ <C-o>b
+inoremap ƒ <C-o>e
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 inoremap <C-w> <C-g>u<C-w>
@@ -352,6 +318,22 @@ nnoremap <silent> <C-h> <C-w><
 nnoremap <silent> <C-l> <C-w>>
 nnoremap <silent> <C-j> <C-W>-
 nnoremap <silent> <C-k> <C-W>+
+
+" Window split
+nnoremap <silent><leader>sh :leftabove vnew<CR>
+nnoremap <silent><leader>sl :rightbelow vnew<CR>
+nnoremap <silent><leader>sk :leftabove new<CR>
+nnoremap <silent><leader>sj :rightbelow new<CR>
+
+" Window navigation
+nnoremap <silent>˙ <C-w>h
+nnoremap <silent>¬ <C-w>l
+nnoremap <silent>∆ <C-W>j
+nnoremap <silent>˚ <C-W>k
+inoremap <silent>˙ <C-\><C-N><C-w>h
+inoremap <silent>∆ <C-\><C-N><C-w>j
+inoremap <silent>˚ <C-\><C-N><C-w>k
+inoremap <silent>¬ <C-\><C-N><C-w>l
 
 " qq to record, Q to replay
 nnoremap Q @q
@@ -395,8 +377,8 @@ nnoremap gf <C-w>vgf
 vnoremap gf <C-w>vgf
 nnoremap gF <C-w>vgF
 vnoremap gF <C-w>vgF
-" Jump to definition in vertical split
-nnoremap <A-]> <C-W>v<C-]>
+" <A-]> Jump to definition in vertical split
+nnoremap “ <C-W>v<C-]>
 
 " Select all
 noremap <C-a> ggVG<CR>
@@ -423,9 +405,6 @@ noremap k gk
 " u is undo, U is redo
 nnoremap U <C-r>
 
-" Reload current file
-nnoremap <C-e> :e#<CR>
-
 " Fast edit files in same directory
 cabbr <expr> %% fnameescape(expand("%:p:h"))
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
@@ -433,8 +412,7 @@ nnoremap <leader>t :tabe <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
-" Move cursor in command mode {{{
-" just like in terminal
+" Move cursor in command mode like in terminal
 cnoremap <C-j> <Down>
 cnoremap <C-k> <UP>
 cnoremap <C-a> <HOME>
@@ -443,55 +421,33 @@ cnoremap <C-p> <UP>
 cnoremap <C-n> <DOWN>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
-" }}}
 
-" Indenting {{{
+" Indenting
 vnoremap < <gv
 vnoremap > >gv
 xnoremap <S-Tab> <gv
 xnoremap <Tab> >gv
 nnoremap <leader>i mmgg=G`m
-" }}}
 
-" Tab navigation {{{
+" Tab navigation
 nnoremap <silent><Tab>   gt
 nnoremap <silent><S-Tab> gT
 
-" <C-w>T move buffer to new tab, <C-w>U merge a tab into a split in the previous window
+" <C-w>T move buffer to new tab
+" <C-w>U merge a tab into a split in the previous window
 nmap <silent><C-w>U <plug>(tabbar-merge)
-" }}}
 
-" Window split {{{
-nnoremap <silent><leader>sh :leftabove vnew<CR>
-nnoremap <silent><leader>sl :rightbelow vnew<CR>
-nnoremap <silent><leader>sk :leftabove new<CR>
-nnoremap <silent><leader>sj :rightbelow new<CR>
-" }}}
-
-" Window navigation {{{
-nnoremap <silent><A-h> <C-w>h
-nnoremap <silent><A-l> <C-w>l
-nnoremap <silent><A-j> <C-W>j
-nnoremap <silent><A-k> <C-W>k
-inoremap <silent><A-h> <C-\><C-N><C-w>h
-inoremap <silent><A-j> <C-\><C-N><C-w>j
-inoremap <silent><A-k> <C-\><C-N><C-w>k
-inoremap <silent><A-l> <C-\><C-N><C-w>l
-" }}}
-
-" Quickly edit/reload the vimrc file {{{
+" Quickly edit/reload the vimrc file
 nnoremap <silent> <leader>vc :tabe $MYVIMRC<CR>
 nnoremap <silent> <leader>vu :tabe ~/.vimrc.local<CR>
 nnoremap <silent> <leader>rc :silent update $MYVIMRC <Bar> source $MYVIMRC<CR>
-" }}}
 
-" Buffer {{{
+" Buffer
 nnoremap <silent> <C-p> :bp<CR>
 nnoremap <silent> <C-n> :bn<CR>
-nnoremap <silent> ]b         :bn<CR>
-nnoremap <silent> [b         :bp<CR>
 nnoremap <silent> <leader>bw :w<CR>:bd<CR>
-nnoremap <silent> <leader>bd :bd!<CR>
+nnoremap <silent> <leader>bd :w<CR>:bd!<CR>
+nnoremap <silent> <leader>ba :1,bd!<CR>
 nnoremap <silent> <leader>w  :w!<CR>
 nnoremap <silent> <leader>q  :q!<CR>
 nnoremap <silent> <leader>x  :x!<CR>
@@ -513,23 +469,18 @@ command! Wq wq
 nnoremap <leader>ss :mksession! ~/.vim/cache/sessions/
 nnoremap <leader>rs :source ~/.vim/cache/sessions/
 nnoremap <leader>ds :!rm ~/.vim/cache/sessions/
-" }}}
 
 nmap <silent><leader>n <plug>(rename-file)
 
 command! FuckGFW :tabe ~/.config/clash/config.yaml
 
-" Quickfix window {{{
+" Quickfix / Localtion List
 nnoremap <silent> <leader>cw :cwindow<CR>
 nnoremap <silent> <leader>lw :lwindow<CR>
 nnoremap <silent> <leader>co :copen<CR>
 nnoremap <silent> <leader>lo :lopen<CR>
 nnoremap <silent> <leader>cc :cclose<CR>
 nnoremap <silent> <leader>lc :lclose<CR>
-nnoremap <silent> <leader>cn :cnext<CR>zz
-nnoremap <silent> <leader>ln :lnext<CR>zz
-nnoremap <silent> <leader>cp :cprev<CR>zz
-nnoremap <silent> <leader>lp :lprev<CR>zz
 nnoremap ]q :cnext<CR>zz
 nnoremap [q :cprev<CR>zz
 nnoremap ]l :lnext<CR>zz
@@ -546,13 +497,12 @@ else
   let &grepprg="grep -n --with-filename -I -R"
   let &grepformat='%f:%l:%m'
 endif
-" }}}
 
 " }}}
 
 " Plugins config {{{
 
-" FZF {{{
+" FZF
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
 
 " Jump to the existing window if possible
@@ -595,25 +545,26 @@ command! -bang -nargs=* Grep call
       \ )
 
 nnoremap <silent> <leader><leader> :Files<CR>
-nnoremap <silent> <leader>fgf  :GFiles<CR>
-nnoremap <silent> <leader>fgs  :GFiles?<CR>
-nnoremap <silent> <leader>fc   :Commits<CR>
-nnoremap <silent> <leader>fbc  :BCommits<CR>
+nnoremap <silent> <leader>fG   :GFiles<CR>
+nnoremap <silent> <leader>fg   :GFiles?<CR>
+nnoremap <silent> <leader>fC   :Commits<CR>
+nnoremap <silent> <leader>fc   :BCommits<CR>
 nnoremap <silent> <leader>bb   :Buffers<CR>
 nnoremap <silent> <leader>f;   :Commands<CR>
 nnoremap <silent> <leader>fk   :Helptags<CR>
 nnoremap <silent> <leader>fh   :History<CR>
-nnoremap <silent> <leader>fl   :Lines<CR>
-nnoremap <silent> <leader>fbl  :BLines<CR>
-nnoremap <silent> <leader>ft   :Tags<CR>
-nnoremap <silent> <leader>fbt  :BTags<CR>
+nnoremap <silent> <leader>fL   :Lines<CR>
+nnoremap <silent> <leader>fl   :BLines<CR>
+nnoremap <silent> <leader>fT   :Tags<CR>
+nnoremap <silent> <leader>ft   :BTags<CR>
 nnoremap <silent> <leader>fm   :Maps<CR>
 nnoremap <silent> <leader>f'   :Marks<CR>
 nnoremap <silent> <leader>fw   :Windows<CR>
 nnoremap \w :Grep <C-r><C-w><CR>
-" }}}
+vnoremap \v ""y:Grep <C-R>=escape(@", '/\')<CR><CR>
+nnoremap \\ :Grep<Space>
 
-" surround {{{
+" surround
 " with #{ruby interpolation}.
 map <leader># ysiw}i#<C-o>%<ESC>
 vmap <leader># c#{<C-R>"}<ESC>
@@ -645,9 +596,18 @@ vmap <leader>{ c{ <C-R>" }<ESC>
 vmap <leader>} c{<C-R>"}<ESC>
 
 map <leader>` ysiw`
-" }}}
 
-" netrw {{{
+" pear-tree
+let g:pear_tree_pairs = {
+            \ '(': {'closer': ')'},
+            \ '[': {'closer': ']'},
+            \ '{': {'closer': '}'},
+            \ "'": {'closer': "'"},
+            \ '"': {'closer': '"'},
+            \ '<': {'closer': '>'}
+            \ }
+
+" netrw
 let g:netrw_banner = 0
 let g:netrw_hide = 1
 let g:netrw_liststyle = 1
@@ -656,9 +616,9 @@ let g:netrw_winsize = 20
 let g:netrw_altv = 1
 let g:netrw_chgwin = 2
 nnoremap <silent><F1> :Vexplore<CR>
-"}}}
+nnoremap <silent><leader>o :Vexplore<CR>
 
-" ale {{{
+" ale
 let g:ale_set_signs = 1
 let g:ale_sign_column_always = 0
 let g:ale_sign_error = ''
@@ -669,19 +629,18 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
+let g:ale_linters_explicit = 1
+let g:ruby_path = ''
+nmap <silent><leader>ap <plug>(ale_previous_wrap)
+nmap <silent><leader>an <plug>(ale_next_wrap)
 
-nmap <silent> [g <plug>(ale_previous_wrap)
-nmap <silent> ]g <plug>(ale_next_wrap)
-" }}}
-
-" Gitgutter {{{
+" Gitgutter
+let g:gitgutter_enabled = 0
 let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_on_bufenter = 1
 let g:gitgutter_signs = 0
 noremap <silent><leader>gg :GitGutterToggle<CR>
-" }}}
 
-" fugitive {{{
+" fugitive
 nnoremap <silent><leader>gs :Gstatus<CR>
 nnoremap <silent><leader>gb :Gblame<CR>
 nnoremap <silent><leader>gc :Gcommit<CR>
@@ -697,9 +656,8 @@ nnoremap <silent><leader>ge :Gedit<CR>
 nnoremap <silent><leader>gcl :Gclog<CR>
 nnoremap <silent><leader>gll :Gllog<CR>
 nmap <silent><leader>gR <plug>(git-root)
-" }}}
 
-" UltiSnips {{{
+" UltiSnips
 let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
@@ -707,36 +665,40 @@ let g:UltiSnipsEnableSnipMate = 0
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = ['ultisnips']
 nnoremap <leader>sn :UltiSnipsEdit<CR>
-" }}}
 
-" vim-test {{{
+" vim-test
 nnoremap <silent> t<C-n> :TestNearest<CR>
 nnoremap <silent> t<C-f> :TestFile<CR>
 nnoremap <silent> t<C-s> :TestSuite<CR>
 nnoremap <silent> t<C-l> :TestLast<CR>
 nnoremap <silent> t<C-g> :TestVisit<CR>
-" }}}
 
-" easy-align {{{
+" easy-align
 xmap ga <plug>(EasyAlign)
 nmap ga <plug>(EasyAlign)
 nmap <leader>= <plug>(LiveEasyAlign)
 xmap <leader>= <plug>(LiveEasyAlign)
-" }}}
 
-" lightline {{{
-let g:lightline={}
-let g:lightline.colorscheme='jellybeans'
-let g:lightline.component_function = {
-      \ 'gitbranch': 'lightline#git_branch',
-      \ 'githunks': 'lightline#git_hunks',
-      \ 'alelint': 'lightline#ale_lint'
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'component_function': {
+      \   'gitbranch': 'lightline#git_branch',
+      \   'githunks': 'lightline#git_hunks',
+      \   'alestatus': 'lightline#ale_status',
+      \ },
+      \ 'active': {
+      \   'left': [
+      \     ['mode', 'paste'],
+      \     ['gitbranch', 'githunks', 'filename']
+      \   ],
+      \   'right': [
+      \     ['lineinfo'],
+      \     ['percent'],
+      \     ['fileencoding', 'filetype', 'alestatus']
+      \   ],
+      \ },
       \ }
-let g:lightline.active = {
-      \ 'left': [['mode', 'paste'], ['gitbranch', 'githunks', 'filename']],
-      \ 'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype', 'alelint']],
-      \ }
-" }}}
 
 " Local config {{{
 if filereadable(expand('~/.vimrc.local'))
