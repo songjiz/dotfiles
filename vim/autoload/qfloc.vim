@@ -41,17 +41,17 @@ function! qfloc#lclear() abort
 endfunction
 
 function! qfloc#cyank(sp) range abort
-  let filenames = map(getqflist()[a:firstline - 1 : a:lastline -1], {_, entry -> bufname(entry.bufnr)})
+  let filenames = map(getqflist()[a:firstline - 1 : a:lastline -1], { _, entry -> bufname(entry.bufnr) })
   call sort(filenames)
   call uniq(filenames)
-  setreg('*', join(filenames, a:sp))
+  call setreg('*', join(filenames, a:sp))
 endfunction
 
-function! qfloc#lyank(...) range abort
-  let filenames = map(getloclist(0)[a:firstline - 1 : a:lastline -1], {_, entry -> bufname(entry.bufnr)})
+function! qfloc#lyank(sp) range abort
+  let filenames = map(getloclist(0)[a:firstline - 1 : a:lastline -1], { _, entry -> bufname(entry.bufnr) })
   call sort(filenames)
   call uniq(filenames)
-  setreg('*', join(filenames, a:sp))
+  call setreg('*', join(filenames, a:sp))
 endfunction
 
 function! s:is_qf() abort
