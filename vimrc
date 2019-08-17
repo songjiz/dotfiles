@@ -209,7 +209,7 @@ let g:PaperColor_Theme_Options = {
       \ }
 let g:jellybeans_use_term_background_color = 1
 let g:jellybeans_overrides = {
-      \ 'VertSplit':   { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
+      \ 'VertSplit': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
       \ }
 set background=dark
 try
@@ -676,8 +676,8 @@ nnoremap <silent> t<C-g> :TestVisit<CR>
 " easy-align
 xmap ga <plug>(EasyAlign)
 nmap ga <plug>(EasyAlign)
-nmap <leader>= <plug>(LiveEasyAlign)
-xmap <leader>= <plug>(LiveEasyAlign)
+nmap <leader>ga <plug>(LiveEasyAlign)
+xmap <leader>ga <plug>(LiveEasyAlign)
 
 " lightline
 let g:lightline = {

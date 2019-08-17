@@ -5,5 +5,6 @@ setlocal tabstop=2
 setlocal textwidth=120
 setlocal iskeyword+=!
 setlocal formatoptions-=or
+setlocal regexpengine=1
 
 let b:ale_linters = ['rubocop', 'solargraph']

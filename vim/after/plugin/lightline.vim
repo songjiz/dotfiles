@@ -17,7 +17,7 @@ function! lightline#file_size() abort
 endfunction
 
 function! lightline#git_branch() abort
-  if winwidth(0) < 120
+  if winwidth(0) < 100
     return ''
   endif
   if exists('g:loaded_fugitive')
@@ -32,7 +32,7 @@ function! lightline#git_branch() abort
 endfunction
 
 function! lightline#git_hunks() abort
-  if !get(g:, 'gitgutter_enabled', 0) || winwidth(0) <= 120
+  if !get(g:, 'gitgutter_enabled', 0) || winwidth(0) <= 100
     return ''
   end
   let s:hunk_signs = get(g:, 'lightline#hunks#signs', ['+', '~', '-'])
