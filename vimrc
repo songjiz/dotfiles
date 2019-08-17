@@ -221,7 +221,7 @@ highlight clear ColorColumn
 highlight link  ColorColumn CursorLine
 " }}}
 
-" Autocommands {{{
+" Auto Commands {{{
 augroup common
   autocmd!
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC

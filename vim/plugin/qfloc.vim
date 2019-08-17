@@ -12,8 +12,10 @@ nnoremap <silent> <Plug>(qfloc-lundo) :<C-u>call qfloc#lundo()<CR>
 
 augroup qfloc
   autocmd!
-  " autocmd QuickFixCmdPost cgetexpr cwindow
-  " autocmd QuickFixCmdPost lgetexpr lwindow
-  autocmd QuickfixCmdPost nested [^l]* cwindow
-  autocmd QuickfixCmdPost nested l*    lwindow
+  autocmd QuickFixCmdPost [^l]* nested cwindow
+  autocmd QuickFixCmdPost l*    nested lwindow
+
+  if exists('##QuitPre')
+    autocmd QuitPre * nested if &filetype != 'qf' | silent! lclose | endif
+  endif
 augroup END
