@@ -1,3 +1,9 @@
+" Plugins {{{
+if filereadable(expand('~/.vim/pack.vim'))
+  source ~/.vim/pack.vim
+endif
+" }}}
+
 " Basic {{{
 set nocompatible
 " Don't show startup splash screen
@@ -93,13 +99,13 @@ set pumheight=10
 set tags^=./tags;
 
 " Ignore Files
-set wildignore+=.DS_Store,*.keep,
-set wildignore+=.git/**,.svn/**,.hg/**,
-set wildignore+=tmp/**,*.log,
-set wildignore+=.bundle/**,node_modules/**,build/**,dist/**,target/**,vendor/gems/*
-set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*pyc,*.o,*.gem,
-set wildignore+=*.jpg,*jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf,
-set wildignore+=tags,
+set wildignore+=.DS_Store,*.keep,*.swp,*.bak,*.log
+set wildignore+=.git,.svn,.hg
+set wildignore+=.bundle,node_modules,build,dist,target,tmp
+set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*pyc,*.o,*.gem
+set wildignore+=*.jpg,*jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
+set wildignore+=*.ttf,*.otf
+set wildignore+=tags
 
 " Session | Swap | Undo | Backup
 set noswapfile
@@ -153,15 +159,8 @@ set wrap
 set whichwrap+=<,>,[,]
 set textwidth=79
 set colorcolumn=100
-" set listchars=tab:»·,trail:·,extends:›,precedes:‹,nbsp:·
-set listchars=tab:»·,trail:·,nbsp:·
+set listchars=tab:»·,trail:·,extends:›,precedes:‹,nbsp:·
 set showbreak=↪
-" }}}
-
-" Plugins {{{
-if filereadable(expand('~/.vim/pack.vim'))
-  source ~/.vim/pack.vim
-endif
 " }}}
 
 " Theme {{{
@@ -225,7 +224,7 @@ highlight link  ColorColumn CursorLine
 augroup common
   autocmd!
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
-  autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype markdown
+  autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} setlocal filetype markdown
 
   " Disable automatic commenting on newline
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
@@ -298,16 +297,28 @@ vmap v  <ESC>
 " In terminal mode, <C-w> is leader key
 tnoremap jj <C-\><C-n>
 tnoremap <C-[> <C-\><C-n>
-tnoremap ∆ <C-w>j
-tnoremap ˚ <C-w>k
-tnoremap ˙ <C-w>h
-tnoremap ¬ <C-w>l
+if has('mac')
+  tnoremap ∆ <C-w>j
+  tnoremap ˚ <C-w>k
+  tnoremap ˙ <C-w>h
+  tnoremap ¬ <C-w>l
+else
+  tnoremap <A-j> <C-w>j
+  tnoremap <A-k> <C-w>k
+  tnoremap <A-h> <C-w>h
+  tnoremap <A-l> <C-w>l
+endif
 
 " Insert mode navigation like terminal
 inoremap <C-b> <C-o>h
 inoremap <C-f> <C-o>l
-inoremap ∫ <C-o>b
-inoremap ƒ <C-o>e
+if has('mac')
+  inoremap ∫ <C-o>b
+  inoremap ƒ <C-o>e
+else
+  inoremap <A-b> <C-o>b
+  inoremap <A-e> <C-o>e
+endif
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 inoremap <C-w> <C-g>u<C-w>
@@ -326,14 +337,25 @@ nnoremap <silent><leader>sk :leftabove new<CR>
 nnoremap <silent><leader>sj :rightbelow new<CR>
 
 " Window navigation
-nnoremap <silent>˙ <C-w>h
-nnoremap <silent>¬ <C-w>l
-nnoremap <silent>∆ <C-W>j
-nnoremap <silent>˚ <C-W>k
-inoremap <silent>˙ <C-\><C-N><C-w>h
-inoremap <silent>∆ <C-\><C-N><C-w>j
-inoremap <silent>˚ <C-\><C-N><C-w>k
-inoremap <silent>¬ <C-\><C-N><C-w>l
+if has('mac')
+  nnoremap <silent>˙ <C-w>h
+  nnoremap <silent>¬ <C-w>l
+  nnoremap <silent>∆ <C-W>j
+  nnoremap <silent>˚ <C-W>k
+  inoremap <silent>˙ <C-\><C-N><C-w>h
+  inoremap <silent>∆ <C-\><C-N><C-w>j
+  inoremap <silent>˚ <C-\><C-N><C-w>k
+  inoremap <silent>¬ <C-\><C-N><C-w>l
+else
+  nnoremap <silent><A-h> <C-w>h
+  nnoremap <silent><A-l> <C-w>l
+  nnoremap <silent><A-j> <C-W>j
+  nnoremap <silent><A-k> <C-W>k
+  inoremap <silent><A-h> <C-\><C-N><C-w>h
+  inoremap <silent><A-j> <C-\><C-N><C-w>j
+  inoremap <silent><A-k> <C-\><C-N><C-w>k
+  inoremap <silent><A-l> <C-\><C-N><C-w>l
+end
 
 " qq to record, Q to replay
 nnoremap Q @q
@@ -378,7 +400,11 @@ vnoremap gf <C-w>vgf
 nnoremap gF <C-w>vgF
 vnoremap gF <C-w>vgF
 " <A-]> Jump to definition in vertical split
-nnoremap “ <C-W>v<C-]>
+if has('mac')
+  nnoremap “ <C-W>v<C-]>
+else
+  nnoremap <A-]> <C-W>v<C-]>
+endif
 
 " Select all
 noremap <C-a> ggVG<CR>
@@ -425,8 +451,8 @@ cnoremap <C-b> <Left>
 " Indenting
 vnoremap < <gv
 vnoremap > >gv
-xnoremap <S-Tab> <gv
-xnoremap <Tab> >gv
+xnoremap < <gv
+xnoremap > >gv
 nnoremap <leader>i mmgg=G`m
 
 " Tab navigation
@@ -441,6 +467,9 @@ nmap <silent><C-w>U <plug>(tabbar-merge)
 nnoremap <silent> <leader>vc :tabe $MYVIMRC<CR>
 nnoremap <silent> <leader>vu :tabe ~/.vimrc.local<CR>
 nnoremap <silent> <leader>rc :silent update $MYVIMRC <Bar> source $MYVIMRC<CR>
+nnoremap <silent> <leader>pi :source $MYVIMRC <Bar> PlugInstall<CR>
+nnoremap <silent> <leader>pu :source $MYVIMRC <Bar> PlugUpdate<CR>
+nnoremap <silent> <leader>pc :source $MYVIMRC <Bar> PlugClean<CR>
 
 " Buffer
 nnoremap <silent> <C-p> :bp<CR>
@@ -457,6 +486,8 @@ cnoremap w!! w !sudo tee % > /dev/null<CR>
 
 " Toggle between last open buffers
 nnoremap <leader><Space> <C-^>
+
+nnoremap <silent><leader><CR> :nohlsearch<CR>
 
 command! Q q
 command! Qa qall
@@ -549,6 +580,7 @@ nnoremap <silent> <leader>fG   :GFiles<CR>
 nnoremap <silent> <leader>fg   :GFiles?<CR>
 nnoremap <silent> <leader>fC   :Commits<CR>
 nnoremap <silent> <leader>fc   :BCommits<CR>
+nnoremap <silent> <leader>fb   :Buffers<CR>
 nnoremap <silent> <leader>bb   :Buffers<CR>
 nnoremap <silent> <leader>f;   :Commands<CR>
 nnoremap <silent> <leader>fk   :Helptags<CR>
@@ -630,7 +662,6 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
 let g:ale_linters_explicit = 1
-let g:ruby_path = ''
 nmap <silent><leader>ap <plug>(ale_previous_wrap)
 nmap <silent><leader>an <plug>(ale_next_wrap)
 
