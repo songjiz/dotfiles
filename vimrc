@@ -654,8 +654,8 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
 let g:ale_linters_explicit = 1
-nmap <silent><leader>ap <plug>(ale_previous_wrap)
-nmap <silent><leader>an <plug>(ale_next_wrap)
+nmap <silent><leader>aF <plug>(ale_previous_wrap)
+nmap <silent><leader>af <plug>(ale_next_wrap)
 
 " Gitgutter
 let g:gitgutter_enabled = 0
