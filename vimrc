@@ -251,7 +251,7 @@ augroup common
 
   autocmd BufWritePre,FileWritePre * silent! call auto_mkdir#try(expand('<afile>:p:h'), v:cmdbang)
 
-  autocmd FileType help,gina-blame,gina-status,diff,qf,netrw nnoremap <buffer><silent>q :bd<CR>
+  autocmd FileType help,diff,qf,netrw nnoremap <buffer><silent>gq :bd<CR>
 
   " Auto switch to insert mode when focusing on terminal window
   autocmd BufWinEnter,BufEnter,WinEnter *
