@@ -96,7 +96,7 @@ set wildmode=list:longest,full
 set pumheight=10
 
 " set dictionary+=~/.vim/dict/words
-set tags^=./tags;
+set tags^=./tags;,tags
 
 " Ignore Files
 set wildignore+=.DS_Store,*.keep,*.swp,*.bak,*.log
@@ -539,7 +539,7 @@ let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
 " Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " Command to generate tags file
-let g:fzf_tags_command = 'noglob ctags -R'
+let g:fzf_tags_command = 'noglob ctags --extras=+f -R'
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -596,6 +596,8 @@ nnoremap \w :Grep <C-r><C-w><CR>
 vnoremap \v ""y:Grep <C-R>=escape(@", '/\')<CR><CR>
 nnoremap \\ :Grep<Space>
 
+nnoremap <leader>rt :!ctags --extras=+f -R *<CR><CR>
+
 " surround
 " with #{ruby interpolation}.
 map <leader># ysiw}i#<C-o>%<ESC>
@@ -628,16 +630,6 @@ vmap <leader>{ c{ <C-R>" }<ESC>
 vmap <leader>} c{<C-R>"}<ESC>
 
 map <leader>` ysiw`
-
-" pear-tree
-let g:pear_tree_pairs = {
-            \ '(': {'closer': ')'},
-            \ '[': {'closer': ']'},
-            \ '{': {'closer': '}'},
-            \ "'": {'closer': "'"},
-            \ '"': {'closer': '"'},
-            \ '<': {'closer': '>'}
-            \ }
 
 " netrw
 let g:netrw_banner = 0
