@@ -209,8 +209,8 @@ let g:PaperColor_Theme_Options = {
 let g:jellybeans_use_term_background_color = 1
 let g:jellybeans_overrides = {
       \ 'VertSplit': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
+      \ 'CursorLineNr': { 'ctermfg': '214', '256ctermfg': '214' },
       \ }
-set background=dark
 try
   colorscheme jellybeans
 catch
