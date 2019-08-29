@@ -53,6 +53,7 @@ set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf8
 
+" Line Number
 set number
 set relativenumber
 
