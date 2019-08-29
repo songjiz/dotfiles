@@ -72,7 +72,7 @@ prompt pure
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rbenv tmux rails)
+plugins=(git rbenv cargo tmux rails)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,8 +86,9 @@ export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
+export PATH="$HOME/.cargo/bin:$PATH"
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -110,12 +111,46 @@ export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 alias e="vim"
 alias v="vim"
 alias vi="vim"
-alias svim="sudo vim"
 alias reload="source $HOME/.zshrc"
-alias fuckgfw="vim ~/.config/clash/config.yml"
+alias fuckgfw="vim ~/.config/clash/config.yaml"
 alias export-proxy="export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:0"
 alias unset-proxy="unset https_proxy; unset https_proxy; unset all_proxy"
 alias dotfiles="cd ~/.dotfiles && vim"
+# the_silver_searcher alias
+alias ag="ag -p $HOME/.ignore"
+
+alias cl="curl -L"
+# Follow redirects and download as original name
+alias clo="curl -O -L"
+# Show Headers
+alias clh="curl -D - -so /dev/null"
+
+# Permission
+alias x="chmod +x"
+alias 000="chmod 000" # ---------- (nobody)
+alias 640="chmod 640" # -rw-r----- (user: rw, group: r, other: -)
+alias 644="chmod 644" # -rw-r--r-- (user: rw, group: r, other: -)
+alias 755="chmod 755" # -rwxr-xr-x (user: rwx, group: rx, other: x)
+alias 775="chmod 775" # -rwxrwxr-x (user: rwx, group: rwx, other: rx)
+alias mx="chmod a+x"  # ---x--x--x (user: --x, group: --x, other: --x)
+alias ux="chmod u+x"  # ---x------ (user: --x, group: -, other: -)
+
+alias ttop="top -R -F -s 10 -o rsize"
+
+# Short and human-readable directory listing
+alias dud="du -d 1 -h"
+# Short and human-readable file listing
+alias duf="du -sh *"
+
+# Show SSH key and generate it if necessary
+function ssh-key() {
+  local file="$HOME/.ssh/id_rsa.pub"
+  if [ ! -f "$file" ]; then
+    ssh-keygen -t rsa
+  fi
+
+  cat "$file"
+}
 
 alias rce="rails credentials:edit"
 function rdmd() {
@@ -125,4 +160,4 @@ function rdmu() {
   rake db:migrate:up VERSION=$@
 }
 
-alias aws-tokyo-1="ssh ubuntu@52.198.200.40"
+alias aws-tokyo-1="ssh ubuntu@54.238.170.219"

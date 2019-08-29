@@ -251,7 +251,7 @@ augroup common
 
   autocmd BufWritePre,FileWritePre * silent! call auto_mkdir#try(expand('<afile>:p:h'), v:cmdbang)
 
-  autocmd FileType help,diff,qf,netrw nnoremap <buffer><silent>gq :bd<CR>
+  autocmd FileType help,diff nnoremap <buffer><silent>gq :bd<CR>
 
   " Auto switch to insert mode when focusing on terminal window
   autocmd BufWinEnter,BufEnter,WinEnter *
@@ -639,8 +639,7 @@ let g:netrw_browse_split = 4
 let g:netrw_winsize = 20
 let g:netrw_altv = 1
 let g:netrw_chgwin = 2
-nnoremap <silent><F1> :Vexplore<CR>
-nnoremap <silent><leader>o :Vexplore<CR>
+nnoremap - :Vexplore<CR>
 
 " ale
 let g:ale_set_signs = 1
