@@ -8,7 +8,7 @@ nnoremap <silent> <buffer> t <C-w><CR><C-w>T
 nnoremap <silent> <buffer> gq :bd<CR>
 
 if !empty(getloclist(0))
-  nnoremap <silent> <buffer> O <CR>:lclose<CR>
+  nnoremap <silent> <buffer> O <CR>zz:lclose<CR>
   nnoremap <silent> <buffer> dd :call qfloc#ldelete()<CR>
   vnoremap <silent> <buffer> dd :call qfloc#ldelete()<CR>
   vnoremap <silent> <buffer> d  :call qfloc#ldelete()<CR>
@@ -19,7 +19,7 @@ if !empty(getloclist(0))
   nnoremap <silent> <buffer> yj :call qfloc#lyank("\n")<CR>
   vnoremap <silent> <buffer> yj :call qfloc#lyank("\n")<CR>
 else
-  nnoremap <silent> <buffer> O <CR>:cclose<CR>
+  nnoremap <silent> <buffer> O <CR>zz:cclose<CR>
   nnoremap <silent> <buffer> dd :call qfloc#cdelete()<CR>
   vnoremap <silent> <buffer> dd :call qfloc#cdelete()<CR>
   vnoremap <silent> <buffer> d  :call qfloc#cdelete()<CR>
