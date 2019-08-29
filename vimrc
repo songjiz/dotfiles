@@ -453,7 +453,7 @@ vnoremap < <gv
 vnoremap > >gv
 xnoremap < <gv
 xnoremap > >gv
-nnoremap <leader>i mmgg=G`m
+nnoremap g= mmgg=G`m
 
 " Tab navigation
 nnoremap <silent><Tab>   gt
