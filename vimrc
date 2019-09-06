@@ -210,7 +210,7 @@ let g:PaperColor_Theme_Options = {
 let g:jellybeans_use_term_background_color = 1
 let g:jellybeans_overrides = {
       \ 'VertSplit': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
-      \ 'CursorLineNr': { 'ctermfg': '214', '256ctermfg': '214' },
+      \ 'CursorLineNr': { 'ctermfg': '107', '256ctermfg': '107' },
       \ }
 try
   colorscheme jellybeans
@@ -322,8 +322,6 @@ else
 endif
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
-inoremap <C-w> <C-g>u<C-w>
-inoremap <C-u> <C-g>u<C-u>
 
 " Resize windows using <Ctrl> and h,j,k,l
 nnoremap <silent> <C-h> <C-w><
