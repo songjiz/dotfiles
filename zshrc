@@ -12,7 +12,6 @@ ZSH_THEME=""
 
 # oh-my-zsh overrides the prompt, so Pure must be activated after `source $ZSH/oh-my-zsh.sh`
 autoload -U promptinit; promptinit
-PURE_PROMPT_SYMBOL="%{$fg_bold[blue]%}›%{$reset_color%}%{$fg_bold[red]%}›%{$reset_color%}%{$fg_bold[green]%}›%{$reset_color%}"
 prompt pure
 
 # Set list of themes to pick from when loading at random
