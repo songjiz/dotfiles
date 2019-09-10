@@ -4,7 +4,6 @@
   "editor.fontSize": 16,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
-  "editor.mouseWheelZoom": true,
   "editor.smoothScrolling": true,
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": false,
@@ -20,7 +19,9 @@
       "editor.background": "#1C1C1C",
       "sideBar.background": "#1C1C1C",
       "sideBarSectionHeader.background": "#303030",
-      "statusBar.background": "#303030"
+      "statusBar.background": "#303030",
+      "editorOverviewRuler.border": "#1c1c1c",
+      "scrollbarSlider.background": "#1c1c1c"
     }
   },
   "workbench.startupEditor": "newUntitledFile",
@@ -40,5 +41,6 @@
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.showTabs": false,
-  "workbench.iconTheme": "vs-minimal"
+  "workbench.iconTheme": "vs-minimal",
+  "window.zoomLevel": 0
 }

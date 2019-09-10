@@ -12,6 +12,7 @@ ZSH_THEME=""
 
 # oh-my-zsh overrides the prompt, so Pure must be activated after `source $ZSH/oh-my-zsh.sh`
 autoload -U promptinit; promptinit
+PURE_PROMPT_SYMBOL="%{$fg_bold[blue]%}›%{$reset_color%}%{$fg_bold[red]%}›%{$reset_color%}%{$fg_bold[green]%}›%{$reset_color%}"
 prompt pure
 
 # Set list of themes to pick from when loading at random
@@ -116,8 +117,6 @@ alias fuckgfw="vim ~/.config/clash/config.yaml"
 alias export-proxy="export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:0"
 alias unset-proxy="unset https_proxy; unset https_proxy; unset all_proxy"
 alias dotfiles="cd ~/.dotfiles && vim"
-# the_silver_searcher alias
-alias ag="ag -p $HOME/.ignore"
 
 alias cl="curl -L"
 # Follow redirects and download as original name
@@ -159,5 +158,3 @@ function rdmd() {
 function rdmu() {
   rake db:migrate:up VERSION=$@
 }
-
-alias aws-tokyo-1="ssh ubuntu@54.238.170.219"
