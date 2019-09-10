@@ -1,25 +1,21 @@
 {
-	"always_show_minimap_viewport": true,
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
-	"disable_custom_title_bar": true,
-	"ensure_newline_at_eof_on_save": true,
-	"font_face": "Monaco Nerd Font Mono",
-	"font_size": 21,
-	"ignored_packages":
-	[
-		"Vintage"
-	],
-	"rulers":
-	[
-		80,
-		120
-	],
-	"spacegray_fileicons": false,
-	"spacegray_sidebar_font_normal": true,
-	"spacegray_sidebar_tree_normal": true,
-	"spacegray_tabs_normal": true,
-	"tab_size": 2,
-	"theme": "Default.sublime-theme",
-	"translate_tabs_to_spaces": true,
-	"trim_automatic_white_space": true
+  "always_show_minimap_viewport": true,
+  "color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+  "disable_custom_title_bar": true,
+  "ensure_newline_at_eof_on_save": true,
+  "font_face": "FantasqueSansMono Nerd Font Mono",
+  "font_size": 20,
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
+  "rulers":
+  [
+    80,
+    120
+  ],
+  "tab_size": 2,
+  "theme": "Default.sublime-theme",
+  "translate_tabs_to_spaces": true,
+  "trim_automatic_white_space": true
 }
