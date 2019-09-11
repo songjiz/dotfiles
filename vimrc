@@ -197,22 +197,25 @@ endif
 
 let g:PaperColor_Theme_Options = {
       \   'theme': {
-      \     'default.dark': {
-      \       'override': {
-      \         'folded_bg': ['#303030', '236'],
-      \         'folded_fg': ['#808080', '244']
+      \     'default': {
+      \       'allow_italic': 1,
+      \       'dark': {
+      \         'override': {
+      \           'folded_bg': ['#303030', '236'],
+      \           'folded_fg': ['#808080', '244']
+      \         }
+      \       },
+      \       'light': {
+      \         'override': {
+      \           'folded_bg': ['#E4E4E4', '254'],
+      \           'folded_fg': ['#808080', '244']
+      \         }
       \       }
       \     },
-      \     'default.light': {
-      \       'override': {
-      \         'folded_bg': ['#E4E4E4', '254'],
-      \         'folded_fg': ['#808080', '244']
-      \       }
-      \     }
       \   }
       \ }
 let g:jellybeans_use_term_background_color = 1
-let g:jellybeans_use_term_italics=1
+let g:jellybeans_use_term_italics = 1
 let g:jellybeans_overrides = {
       \ 'VertSplit': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
       \ }
