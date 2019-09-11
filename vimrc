@@ -181,9 +181,13 @@ let &t_SR.="\e[4 q"
 let &t_EI.="\e[2 q"
 let &t_te.="\e[0 q"
 
+" Support italics
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
 if has('gui_running')
   " it is necessary to escape the space
-  set guifont=Monaco\ Nerd\ Font:h14
+  set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h14
   " remove all scroll bar
   set guioptions=
   set columns=160
@@ -208,6 +212,7 @@ let g:PaperColor_Theme_Options = {
       \   }
       \ }
 let g:jellybeans_use_term_background_color = 1
+let g:jellybeans_use_term_italics=1
 let g:jellybeans_overrides = {
       \ 'VertSplit': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
       \ }
