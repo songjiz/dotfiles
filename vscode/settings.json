@@ -13,7 +13,6 @@
   "terminal.integrated.shell.osx": "/bin/zsh",
   "window.nativeTabs": true,
   "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Monokai",
   "workbench.colorCustomizations": {
     "[Monokai]": {
       "editor.background": "#1C1C1C",
@@ -40,7 +39,10 @@
   },
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.tabSizing": "shrink",
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": true,
   "workbench.iconTheme": "vs-minimal",
-  "window.zoomLevel": 0
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "jellybeans",
+  "terminal.integrated.fontSize": 18,
+  "workbench.sideBar.location": "left"
 }

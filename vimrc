@@ -217,7 +217,7 @@ let g:PaperColor_Theme_Options = {
 let g:jellybeans_use_term_background_color = 1
 let g:jellybeans_use_term_italics = 1
 let g:jellybeans_overrides = {
-      \ 'VertSplit': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
+      \ 'VertSplit': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' }
       \ }
 try
   colorscheme jellybeans
@@ -232,7 +232,6 @@ highlight link  ColorColumn CursorLine
 augroup common
   autocmd!
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
-  autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} setlocal filetype markdown
 
   " Disable automatic commenting on newline
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
@@ -243,7 +242,7 @@ augroup common
         \   exe "silent! normal! g`\"" |
         \ endif
 
-  autocmd BufEnter,FocusGained * call lightline#update()
+  " autocmd BufEnter,FocusGained * call lightline#update()
   autocmd BufEnter,FocusGained,CursorHold,CursorHoldI * checktime
 
   autocmd InsertEnter * setlocal nolist
@@ -259,7 +258,7 @@ augroup common
 
   autocmd BufWritePre,FileWritePre * silent! call auto_mkdir#try(expand('<afile>:p:h'), v:cmdbang)
 
-  autocmd FileType help,diff nnoremap <buffer><silent>gq :bd<CR>
+  autocmd FileType help,diff,vim-plug nnoremap <buffer><silent>gq :bd<CR>
 
   " Auto switch to insert mode when focusing on terminal window
   autocmd BufWinEnter,BufEnter,WinEnter *
@@ -706,6 +705,10 @@ xmap ga <plug>(EasyAlign)
 nmap ga <plug>(EasyAlign)
 nmap <leader>ga <plug>(LiveEasyAlign)
 xmap <leader>ga <plug>(LiveEasyAlign)
+
+" indentLine
+let g:indentLine_char = '┊'
+let g:indentLine_enabled = 1
 
 " lightline
 let g:lightline = {
