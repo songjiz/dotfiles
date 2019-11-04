@@ -28,7 +28,8 @@ function! lightline#git_branch() abort
   else
     return ''
   endif
-  return strlen(branch) ? ' '. branch : ''
+  " return strlen(branch) ? ' '. branch : ''
+  return strlen(branch) ? branch : ''
 endfunction
 
 function! lightline#git_hunks() abort

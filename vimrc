@@ -165,15 +165,6 @@ set showbreak=↪
 " }}}
 
 " Theme {{{
-" Enable true color
-if has('gui_running') && $COLORTERM ==# 'truecolor'
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-else
-  set t_Co=256
-endif
-
 " Show block cursor in Normal mode and line cursor in Insert mode
 let &t_ti.="\e[2 q"
 let &t_SI.="\e[6 q"
@@ -184,16 +175,6 @@ let &t_te.="\e[0 q"
 " Support italics
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
-
-if has('gui_running')
-  " it is necessary to escape the space
-  set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h14
-  " remove all scroll bar
-  set guioptions=
-  set columns=160
-  set lines=45
-  " set transparency=5
-endif
 
 let g:PaperColor_Theme_Options = {
       \   'theme': {
@@ -214,16 +195,27 @@ let g:PaperColor_Theme_Options = {
       \     },
       \   }
       \ }
+
 let g:jellybeans_use_term_background_color = 1
 let g:jellybeans_use_term_italics = 1
 let g:jellybeans_overrides = {
       \ 'VertSplit': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' }
       \ }
-try
-  colorscheme jellybeans
-catch
-endtry
 
+let g:material_theme_style = 'darker' " default | palenight | ocean | lighter | darker
+let g:material_terminal_italics = 1
+
+let g:one_allow_italics = 1
+set background=dark
+" Enable true color
+if has('gui_running') || $COLORTERM ==# 'truecolor'
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  " set termguicolors
+else
+  set t_Co=256
+endif
+colorscheme Tomorrow-Night
 highlight clear ColorColumn
 highlight link  ColorColumn CursorLine
 " }}}
@@ -721,12 +713,12 @@ let g:lightline = {
       \ 'active': {
       \   'left': [
       \     ['mode', 'paste'],
-      \     ['gitbranch', 'githunks', 'filename']
+      \     ['githunks', 'filename']
       \   ],
       \   'right': [
       \     ['lineinfo'],
       \     ['percent'],
-      \     ['fileencoding', 'filetype', 'alestatus']
+      \     ['gitbranch', 'fileencoding', 'filetype', 'alestatus']
       \   ],
       \ },
       \ }
