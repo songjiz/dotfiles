@@ -1,10 +1,10 @@
 {
 	"always_show_minimap_viewport": true,
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_scheme": "Packages/User/Tomorrow Night.sublime-color-scheme",
 	"disable_custom_title_bar": true,
 	"ensure_newline_at_eof_on_save": true,
-	"font_face": "FantasqueSansMono Nerd Font Mono",
-	"font_size": 20,
+	"font_face": "Input",
+	"font_size": 18,
 	"ignored_packages":
 	[
 		"Vintage"

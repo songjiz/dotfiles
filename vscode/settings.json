@@ -1,5 +1,5 @@
 {
-  "editor.fontFamily": "FantasqueSansMono Nerd Font Mono",
+  "editor.fontFamily": "Input",
   "editor.fontLigatures": true,
   "editor.fontSize": 20,
   "editor.insertSpaces": true,
@@ -11,6 +11,7 @@
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.fontSize": 18,
   "window.nativeTabs": true,
   "workbench.activityBar.visible": false,
   "workbench.colorCustomizations": {
@@ -40,9 +41,9 @@
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.showTabs": true,
-  "workbench.iconTheme": "vs-minimal",
+  "workbench.iconTheme": "material-icon-theme",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "jellybeans",
-  "terminal.integrated.fontSize": 18,
-  "workbench.sideBar.location": "left"
+  "workbench.sideBar.location": "left",
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.colorTheme": "Tomorrow Night"
 }
