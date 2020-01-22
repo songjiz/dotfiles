@@ -35,6 +35,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'slim-template/vim-slim'
 Plug 'cespare/vim-toml'
+
+Plug 'crusoexia/vim-monokai'
+Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
 " Enable built-in matchit plugin

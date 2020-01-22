@@ -176,37 +176,6 @@ let &t_te.="\e[0 q"
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
-let g:PaperColor_Theme_Options = {
-      \   'theme': {
-      \     'default': {
-      \       'allow_italic': 1,
-      \       'dark': {
-      \         'override': {
-      \           'folded_bg': ['#303030', '236'],
-      \           'folded_fg': ['#808080', '244']
-      \         }
-      \       },
-      \       'light': {
-      \         'override': {
-      \           'folded_bg': ['#E4E4E4', '254'],
-      \           'folded_fg': ['#808080', '244']
-      \         }
-      \       }
-      \     },
-      \   }
-      \ }
-
-let g:jellybeans_use_term_background_color = 1
-let g:jellybeans_use_term_italics = 1
-let g:jellybeans_overrides = {
-      \ 'VertSplit': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' }
-      \ }
-
-let g:material_theme_style = 'darker' " default | palenight | ocean | lighter | darker
-let g:material_terminal_italics = 1
-
-let g:one_allow_italics = 1
-set background=dark
 " Enable true color
 if has('gui_running') || $COLORTERM ==# 'truecolor'
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -215,9 +184,11 @@ if has('gui_running') || $COLORTERM ==# 'truecolor'
 else
   set t_Co=256
 endif
-colorscheme Tomorrow-Night
-highlight clear ColorColumn
+set background=light
+colorscheme default
+highlight clear VertSplit
 highlight link  ColorColumn CursorLine
+highlight LineNr guibg=NONE ctermbg=NONE
 " }}}
 
 " Auto Commands {{{
@@ -704,7 +675,6 @@ let g:indentLine_enabled = 1
 
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
       \ 'component_function': {
       \   'gitbranch': 'lightline#git_branch',
       \   'githunks': 'lightline#git_hunks',
