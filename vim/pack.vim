@@ -37,7 +37,7 @@ Plug 'slim-template/vim-slim'
 Plug 'cespare/vim-toml'
 
 Plug 'crusoexia/vim-monokai'
-Plug 'gruvbox-community/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 " Enable built-in matchit plugin

@@ -160,7 +160,7 @@ set wrap
 set whichwrap+=<,>,[,]
 set textwidth=79
 set colorcolumn=100
-set listchars=tab:»·,trail:·,extends:›,precedes:‹,nbsp:·
+set listchars=tab:›·,trail:·,extends:»,precedes:«,nbsp:∅
 set showbreak=↪
 " }}}
 
@@ -178,17 +178,28 @@ let &t_ZR="\e[23m"
 
 " Enable true color
 if has('gui_running') || $COLORTERM ==# 'truecolor'
+  set termguicolors
+else
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  " set termguicolors
-else
   set t_Co=256
 endif
 set background=light
-colorscheme default
-highlight clear VertSplit
-highlight link  ColorColumn CursorLine
-highlight LineNr guibg=NONE ctermbg=NONE
+let g:PaperColor_Theme_Options = {
+      \   'theme': {
+      \     'default.light': {
+      \       'allow_italic': 1,
+      \       'allow_bold': 0,
+      \       'transparent_background': 0
+      \     },
+      \     'default.dark': {
+      \       'allow_italic': 1,
+      \       'allow_bold': 0,
+      \       'transparent_background': 0
+      \     }
+      \   }
+      \ }
+colorscheme PaperColor
 " }}}
 
 " Auto Commands {{{
@@ -485,16 +496,24 @@ nnoremap [q :cprev<CR>zz
 nnoremap ]l :lnext<CR>zz
 nnoremap [l :lprev<CR>zz
 
+" Define how the output of rg must be parsed:
+"
+"               ┌ filename
+"               │  ┌ line nr
+"               │  │  ┌ column nr
+"               │  │  │  ┌ error message
+"               │  │  │  │
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+"   │
+"   └ default value:  %f:%l:%m,%f:%l%m,%f  %l%m
 if executable('rg')
-  let s:rg_cmd = "rg --hidden --follow --smart-case --no-ignore-messages"
+  let s:rg_cmd = "rg --hidden --follow --smart-case --no-ignore-messages --vimgrep"
   let s:rg_ignore = split(&wildignore, ',')
   let s:rg_cmd .= " --glob '!{'" . shellescape(join(s:rg_ignore, ',')) . "'}'"
-  let &grepprg=s:rg_cmd . ' --vimgrep'
-  let &grepformat='%f:%l:%c:%m'
-  let $FZF_DEFAULT_COMMAND=s:rg_cmd . ' --vimgrep --files'
+  let &grepprg=s:rg_cmd
+  let $FZF_DEFAULT_COMMAND=s:rg_cmd . ' --files'
 else
   let &grepprg="grep -n --with-filename -I -R"
-  let &grepformat='%f:%l:%m'
 endif
 
 " }}}
@@ -520,6 +539,7 @@ let g:fzf_action = {
 " Default fzf layout
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors = {
@@ -544,6 +564,7 @@ command! -bang -nargs=* Grep call
       \ )
 
 nnoremap <silent> <leader><leader> :Files<CR>
+nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <leader>fG   :GFiles<CR>
 nnoremap <silent> <leader>fg   :GFiles?<CR>
 nnoremap <silent> <leader>fC   :Commits<CR>
@@ -675,6 +696,7 @@ let g:indentLine_enabled = 1
 
 " lightline
 let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
       \ 'component_function': {
       \   'gitbranch': 'lightline#git_branch',
       \   'githunks': 'lightline#git_hunks',
