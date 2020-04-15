@@ -87,6 +87,7 @@ set matchpairs+=‘:’
 " Split
 set splitbelow
 set splitright
+set diffopt+=vertical
 
 " Status line
 set laststatus=2
@@ -233,8 +234,8 @@ augroup common
   autocmd InsertEnter * setlocal nolist
   autocmd InsertLeave * setlocal list nopaste
 
-  " autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
-  " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 
   " Delete trailing white spaces
   autocmd BufWritePre * :%s/\s\+$//e
@@ -703,24 +704,33 @@ xmap <leader>ga <plug>(LiveEasyAlign)
 let g:indentLine_enabled = 1
 
 " lightline
+let g:lightline_enable_icons = 1
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
-      \ 'component_function': {
-      \   'gitbranch': 'lightline#git_branch',
-      \   'githunks': 'lightline#git_hunks',
-      \   'alestatus': 'lightline#ale_status',
-      \ },
-      \ 'active': {
-      \   'left': [
-      \     ['mode', 'paste'],
-      \     ['githunks', 'filename']
-      \   ],
-      \   'right': [
-      \     ['lineinfo'],
-      \     ['percent'],
-      \     ['gitbranch', 'fileencoding', 'filetype', 'alestatus']
-      \   ],
-      \ },
+      \   'colorscheme': 'aurora',
+      \   'component': {
+      \     'lineinfo': '%4l,%-3v',
+      \   },
+      \   'component_function': {
+      \     'gitbranch': 'lightline#git_branch',
+      \     'githunks': 'lightline#git_hunks',
+      \     'alestatus': 'lightline#ale_status',
+      \     'readonly': 'lightline#readonly',
+      \     'abspath': 'lightline#abs_path',
+      \     'filename': 'lightline#file_name'
+      \   },
+      \   'active': {
+      \     'left': [
+      \       ['mode', 'paste'],
+      \       ['readonly', 'filename'],
+      \       ['abspath']
+      \     ],
+      \     'right': [
+      \       ['alestatus'],
+      \       ['lineinfo'],
+      \       ['percent'],
+      \       ['gitbranch', 'fileencoding', 'filetype']
+      \     ],
+      \   },
       \ }
 
 " Local config {{{

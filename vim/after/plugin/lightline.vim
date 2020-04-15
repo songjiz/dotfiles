@@ -1,3 +1,20 @@
+function! lightline#readonly() abort
+  return &readonly ? '' : ''
+endfunction
+
+function! lightline#file_name() abort
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  return &modified ? filename . ' ✎' : filename
+endfunction
+
+function! lightline#abs_path() abort
+  let path = substitute(expand('%:p'), $HOME, '~', 'g')
+  if 2.6*len(path) > winwidth(0)
+    let path = pathshorten(path)
+  endif
+  return path
+endfunction
+
 function! lightline#file_size() abort
   let l:bytes = getfsize(expand('%'))
   if l:bytes < 0
@@ -17,32 +34,24 @@ function! lightline#file_size() abort
 endfunction
 
 function! lightline#git_branch() abort
-  if winwidth(0) < 100
-    return ''
-  endif
-  if exists('g:loaded_fugitive')
-    " let branch = fugitive#statusline()
+  if exists('*fugitive#head')
     let branch = fugitive#head()
-  elseif exists('g:loaded_gina')
-    let branch = gina#component#repo#branch()
-  else
-    return ''
+    return strlen(branch) ? ''. branch : ''
   endif
-  " return strlen(branch) ? ' '. branch : ''
-  return strlen(branch) ? branch : ''
+  return ''
 endfunction
 
 function! lightline#git_hunks() abort
-  if !get(g:, 'gitgutter_enabled', 0) || winwidth(0) <= 100
-    return ''
-  end
-  let s:hunk_signs = get(g:, 'lightline#hunks#signs', ['+', '~', '-'])
-  let hunks = GitGutterGetHunkSummary()
-  let summary = ''
-  for i in [0, 1, 2]
-    let summary .= printf('%s%s ', s:hunk_signs[i], hunks[i])
-  endfor
-  return trim(summary)
+  if exists('*GitGutterGetHunkSummary')
+    let s:hunk_signs = get(g:, 'lightline#hunks#signs', ['+', '~', '-'])
+    let hunks = GitGutterGetHunkSummary()
+    let summary = ''
+    for i in [0, 1, 2]
+      let summary .= printf('%s%s', s:hunk_signs[i], hunks[i])
+    endfor
+    return trim(summary)
+  endif
+  return ''
 endfunction
 
 function! lightline#ale_status() abort
@@ -60,6 +69,7 @@ function! lightline#ale_status() abort
   else
     if l:counts.total == 0
       return l:indicator_ok
+
     else
       return (
             \ l:all_non_errors == 0 ? '' :
