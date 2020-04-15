@@ -26,7 +26,7 @@ set timeoutlen=1000
 set ttimeoutlen=1
 
 " Prefer vertical orientation when using :diffsplit
-set diffopt+=vertical
+" set diffopt+=vertical
 
 " Auto read file when a file is changed from outside
 set autoread
@@ -77,6 +77,12 @@ set ignorecase
 set smartcase
 set infercase
 set gdefault
+set matchpairs+=<:>
+set matchpairs+=《:》
+set matchpairs+=（:）
+set matchpairs+=【:】
+set matchpairs+=“:”
+set matchpairs+=‘:’
 
 " Split
 set splitbelow
@@ -105,7 +111,13 @@ set wildignore+=.git,.svn,.hg
 set wildignore+=.bundle,node_modules,build,dist,target,tmp
 set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*pyc,*.o,*.gem
 set wildignore+=*.jpg,*jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
+set wildignore+=*.wav,*.mp3,*.ogg,*.pcm
+set wildignore+=*.mp4,*.avi,*.flv,*.mov,*.mkv,*.swf,*.swc
 set wildignore+=*.ttf,*.otf
+set wildignore+=*.so,*.dll,*.swp,*.egg,*.jar,*.class,*.pyc,*.pyo,*.bin,*.dex
+set wildignore+=*.zip,*.7z,*.rar,*.gz,*.tar,*.gzip,*.bz2,*.tgz,*.xz
+set wildignore+=*.ppt,*.pptx,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
+set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
 set wildignore+=tags
 
 " Session | Swap | Undo | Backup
@@ -208,7 +220,7 @@ augroup common
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 
   " Disable automatic commenting on newline
-  autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+  " autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
   " Restore cursor to file position in previous editing session
   autocmd BufWinEnter *
@@ -216,16 +228,16 @@ augroup common
         \   exe "silent! normal! g`\"" |
         \ endif
 
-  " autocmd BufEnter,FocusGained * call lightline#update()
-  autocmd BufEnter,FocusGained,CursorHold,CursorHoldI * checktime
+  autocmd FocusGained * checktime
 
   autocmd InsertEnter * setlocal nolist
   autocmd InsertLeave * setlocal list nopaste
 
+  " autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  " autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+
   " Delete trailing white spaces
   autocmd BufWritePre * :%s/\s\+$//e
-
-  autocmd VimResized * :wincmd =
 
   autocmd CmdlineEnter /,\? :set hlsearch
   autocmd CmdlineLeave /,\? :set nohlsearch
@@ -235,11 +247,8 @@ augroup common
   autocmd FileType help,diff,vim-plug nnoremap <buffer><silent>gq :bd<CR>
 
   " Auto switch to insert mode when focusing on terminal window
-  autocmd BufWinEnter,BufEnter,WinEnter *
-        \ if &buftype == "terminal" |
-        \ setlocal colorcolumn& |
-        \ silent! normal i |
-        \ endif
+  autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
+  autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! IndentLinesDisable | endif
 augroup END
 " }}}
 
@@ -538,8 +547,8 @@ let g:fzf_action = {
 
 " Default fzf layout
 " - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" let g:fzf_layout = { 'down': '40%' }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors = {
@@ -691,7 +700,6 @@ nmap <leader>ga <plug>(LiveEasyAlign)
 xmap <leader>ga <plug>(LiveEasyAlign)
 
 " indentLine
-let g:indentLine_char = '┊'
 let g:indentLine_enabled = 1
 
 " lightline

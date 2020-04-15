@@ -87,4 +87,10 @@ snippet : "key:value"
 '${1:key}': '${0:value}'
 endsnippet
 
+snippet header
+" File: ${1:`!v expand('%:t')`}
+" Author: ${2:`git config --global user.name`}
+" Description: ${0: "Description}
+endsnippet
+
 # vim:ft=snippets:
