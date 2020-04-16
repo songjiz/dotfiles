@@ -268,7 +268,7 @@ let mapleader = ","
 " Ctrl-j/k navigation in popups
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-" inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Let mark go to column
 nnoremap ' `
@@ -461,8 +461,8 @@ nnoremap <silent> <leader>pu :source $MYVIMRC <Bar> PlugUpdate<CR>
 nnoremap <silent> <leader>pc :source $MYVIMRC <Bar> PlugClean<CR>
 
 " Buffer
-nnoremap <silent> <C-p> :bp<CR>
-nnoremap <silent> <C-n> :bn<CR>
+nnoremap <silent> <leader>bp :bp<CR>
+nnoremap <silent> <leader>bn :bn<CR>
 nnoremap <silent> <leader>bw :w<CR>:bd<CR>
 nnoremap <silent> <leader>bd :w<CR>:bd!<CR>
 nnoremap <silent> <leader>ba :1,bd!<CR>
@@ -704,7 +704,6 @@ xmap <leader>ga <plug>(LiveEasyAlign)
 let g:indentLine_enabled = 1
 
 " lightline
-let g:lightline_enable_icons = 1
 let g:lightline = {
       \   'colorscheme': 'aurora',
       \   'component': {
