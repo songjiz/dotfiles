@@ -703,7 +703,7 @@ let g:indentLine_enabled = 1
 let g:lightline = {
       \   'colorscheme': 'aurora',
       \   'component': {
-      \     'lineinfo': '%4l,%-3v',
+      \     'lineinfo': '%l,%v',
       \   },
       \   'component_function': {
       \     'gitbranch': 'lightline#git_branch',
