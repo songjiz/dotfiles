@@ -362,10 +362,6 @@ nnoremap ][  ][zz
 
 " Recenter when jump back
 nnoremap <C-o> <C-o>zz
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
-nnoremap <C-f> <C-f>zz
-nnoremap <C-b> <C-b>zz
 
 " Center highlighted search
 nnoremap n  nzz
