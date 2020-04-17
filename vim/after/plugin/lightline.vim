@@ -15,30 +15,13 @@ function! lightline#abs_path() abort
   return path
 endfunction
 
-function! lightline#file_size() abort
-  let l:bytes = getfsize(expand('%'))
-  if l:bytes < 0
-    return ''
-  endif
-
-  let l:factor = 1
-  for l:unit in ['B', 'K', 'M', 'G']
-    let l:next_factor = l:factor * 1024
-    if l:bytes < l:next_factor
-      let l:number_str = printf('%.2f', (l:bytes * 1.0) / l:factor)
-      let l:number_str = substitute(l:number_str, '\v\.?0+$', '', '')
-      return l:number_str . l:unit
-    endif
-    let l:factor = l:next_factor
-  endfor
-endfunction
-
 function! lightline#git_branch() abort
   if exists('*fugitive#head')
     let branch = fugitive#head()
-    return strlen(branch) ? ''. branch : ''
+  else
+    let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
   endif
-  return ''
+  return strlen(branch) ? ''. branch : ''
 endfunction
 
 function! lightline#git_hunks() abort
