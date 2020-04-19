@@ -5,12 +5,14 @@
 	],
 	"installed_packages":
 	[
-		"A File Icon",
 		"AlignTab",
+		"Babel",
+		"BracketHighlighter",
 		"Case Conversion",
 		"Color Highlight",
 		"DocBlockr",
 		"Emmet",
+		"Nord",
 		"Package Control",
 		"Ruby Slim",
 		"SCSS",

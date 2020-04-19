@@ -25,8 +25,8 @@ set ttimeout
 set timeoutlen=1000
 set ttimeoutlen=1
 
-" Prefer vertical orientation when using :diffsplit
-" set diffopt+=vertical
+" Prefer vertical orientation
+set diffopt+=vertical
 
 " Auto read file when a file is changed from outside
 set autoread
@@ -87,7 +87,6 @@ set matchpairs+=‘:’
 " Split
 set splitbelow
 set splitright
-set diffopt+=vertical
 
 " Status line
 set laststatus=2
@@ -197,22 +196,25 @@ else
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set t_Co=256
 endif
-set background=light
+set background=dark
 let g:PaperColor_Theme_Options = {
       \   'theme': {
       \     'default.light': {
       \       'allow_italic': 1,
       \       'allow_bold': 0,
-      \       'transparent_background': 0
+      \       'transparent_background': 1
       \     },
       \     'default.dark': {
       \       'allow_italic': 1,
       \       'allow_bold': 0,
-      \       'transparent_background': 0
+      \       'transparent_background': 1
       \     }
       \   }
       \ }
-colorscheme PaperColor
+let g:one_allow_italics = 1
+colorscheme nord
+highlight clear SignColumn
+highlight SignColumn ctermbg=NONE guibg=NONE
 " }}}
 
 " Auto Commands {{{
@@ -593,39 +595,6 @@ nnoremap \\ :Grep<Space>
 
 nnoremap <leader>rt :!ctags --extras=+f -R *<CR><CR>
 
-" surround
-" with #{ruby interpolation}.
-map <leader># ysiw}i#<C-o>%<ESC>
-vmap <leader># c#{<C-R>"}<ESC>
-
-" with "double quotes".
-map <leader>" ysiw"
-vmap <leader>" c"<C-R>""<ESC>
-
-" with 'single quotes'.
-map <leader>' ysiw'
-vmap <leader>' c'<C-R>"'<ESC>
-
-" with (parens) or ( parens ).
-map <leader>( ysiw(
-map <leader>) ysiw)
-vmap <leader>( c( <C-R>" )<ESC>
-vmap <leader>) c(<C-R>")<ESC>
-
-" with [brackets] or [ brackets ]
-map <leader>[ ysiw[
-map <leader>] ysiw]
-vmap <leader>[ c[ <C-R>" ]<ESC>
-vmap <leader>] c[<C-R>"]<ESC>
-
-" with {braces} or { braces }
-map <leader>{ ysiw{
-map <leader>} ysiw}
-vmap <leader>{ c{ <C-R>" }<ESC>
-vmap <leader>} c{<C-R>"}<ESC>
-
-map <leader>` ysiw`
-
 " netrw
 let g:netrw_banner = 0
 let g:netrw_hide = 1
@@ -701,7 +670,7 @@ let g:indentLine_enabled = 1
 
 " lightline
 let g:lightline = {
-      \   'colorscheme': 'aurora',
+      \   'colorscheme': 'nord',
       \   'component': {
       \     'lineinfo': '%l,%v',
       \   },

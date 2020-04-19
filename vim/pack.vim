@@ -37,8 +37,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'slim-template/vim-slim'
 Plug 'cespare/vim-toml'
 
-Plug 'crusoexia/vim-monokai'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 " Enable built-in matchit plugin
