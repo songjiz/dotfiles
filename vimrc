@@ -467,6 +467,7 @@ nnoremap <silent> <leader>ba :1,bd!<CR>
 nnoremap <silent> <leader>w  :w!<CR>
 nnoremap <silent> <leader>q  :q!<CR>
 nnoremap <silent> <leader>x  :x!<CR>
+nnoremap <silent> <leader>lb :ls<CR>:b<SPACE>
 
 " Save file as root.
 cnoremap w!! w !sudo tee % > /dev/null<CR>
