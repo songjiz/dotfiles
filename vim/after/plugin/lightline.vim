@@ -1,13 +1,4 @@
-function! lightline#readonly() abort
-  return &readonly ? '' : ''
-endfunction
-
-function! lightline#file_name() abort
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  return &modified ? filename . ' ✎' : filename
-endfunction
-
-function! lightline#abs_path() abort
+function! lightline#absPath() abort
   let path = substitute(expand('%:p'), $HOME, '~', 'g')
   if 2.6*len(path) > winwidth(0)
     let path = pathshorten(path)
@@ -15,16 +6,15 @@ function! lightline#abs_path() abort
   return path
 endfunction
 
-function! lightline#git_branch() abort
+function! lightline#gitBranch() abort
   if exists('*fugitive#head')
-    let branch = fugitive#head()
+    return fugitive#head()
   else
-    let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
   endif
-  return strlen(branch) ? ''. branch : ''
 endfunction
 
-function! lightline#git_hunks() abort
+function! lightline#gitHunks() abort
   if exists('*GitGutterGetHunkSummary')
     let s:hunk_signs = get(g:, 'lightline#hunks#signs', ['+', '~', '-'])
     let hunks = GitGutterGetHunkSummary()
@@ -37,7 +27,7 @@ function! lightline#git_hunks() abort
   return ''
 endfunction
 
-function! lightline#ale_status() abort
+function! lightline#aleStatus() abort
   let l:indicator_warnings = get(g:, 'lightline#ale#indicator_warnings', 'W:')
   let l:indicator_errors = get(g:, 'lightline#ale#indicator_errors', 'E:')
   let l:indicator_ok = get(g:, 'lightline#ale#indicator_ok', 'OK')
@@ -52,7 +42,6 @@ function! lightline#ale_status() abort
   else
     if l:counts.total == 0
       return l:indicator_ok
-
     else
       return (
             \ l:all_non_errors == 0 ? '' :

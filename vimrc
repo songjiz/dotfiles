@@ -673,28 +673,22 @@ let g:indentLine_enabled = 1
 " lightline
 let g:lightline = {
       \   'colorscheme': 'nord',
-      \   'component': {
-      \     'lineinfo': '%l,%v',
-      \   },
       \   'component_function': {
-      \     'gitbranch': 'lightline#git_branch',
-      \     'githunks': 'lightline#git_hunks',
-      \     'alestatus': 'lightline#ale_status',
-      \     'readonly': 'lightline#readonly',
-      \     'abspath': 'lightline#abs_path',
-      \     'filename': 'lightline#file_name'
+      \     'gitBranch': 'lightline#gitBranch',
+      \     'gitHunks': 'lightline#gitHunks',
+      \     'aleStatus': 'lightline#aleStatus',
+      \     'absPath': 'lightline#absPath',
       \   },
       \   'active': {
       \     'left': [
       \       ['mode', 'paste'],
       \       ['readonly', 'filename'],
-      \       ['abspath']
+      \       ['absPath']
       \     ],
       \     'right': [
-      \       ['alestatus'],
-      \       ['lineinfo'],
-      \       ['percent'],
-      \       ['gitbranch', 'fileencoding', 'filetype']
+      \       ['lineinfo', 'aleStatus'],
+      \       ['filetype', 'percent'],
+      \       ['gitBranch', 'fileencoding'],
       \     ],
       \   },
       \ }
