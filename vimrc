@@ -290,6 +290,7 @@ vmap v  <ESC>
 " In terminal mode, <C-w> is leader key
 tnoremap jj <C-\><C-n>
 tnoremap <C-[> <C-\><C-n>
+cmap vt vertical terminal
 if has('mac')
   tnoremap ∆ <C-w>j
   tnoremap ˚ <C-w>k
