@@ -16,11 +16,12 @@ set nocursorline
 set nojoinspaces
 set scrolloff=3
 
-set signcolumn=no
+set signcolumn=yes
 
 set ttyfast
 set lazyredraw
-set redrawtime=5000
+set redrawtime=1000
+set updatetime=100
 set ttimeout
 set timeoutlen=1000
 set ttimeoutlen=1
@@ -670,6 +671,9 @@ xmap <leader>ga <plug>(LiveEasyAlign)
 " indentLine
 let g:indentLine_enabled = 1
 
+" gitgutter
+let g:gitgutter_enabled = 1
+
 " lightline
 let g:lightline = {
       \   'colorscheme': 'nord',
@@ -688,7 +692,8 @@ let g:lightline = {
       \     'right': [
       \       ['lineinfo', 'aleStatus'],
       \       ['filetype', 'percent'],
-      \       ['gitBranch', 'fileencoding'],
+      \       ['gitHunks', 'fileencoding'],
+      \       ['gitBranch']
       \     ],
       \   },
       \ }
