@@ -36,6 +36,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'slim-template/vim-slim'
 Plug 'cespare/vim-toml'
+Plug 'reedes/vim-pencil'
+Plug 'tpope/vim-markdown'
 
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'arcticicestudio/nord-vim'

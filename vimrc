@@ -21,7 +21,7 @@ set signcolumn=yes
 set ttyfast
 set lazyredraw
 set redrawtime=1000
-set updatetime=100
+set updatetime=1000
 set ttimeout
 set timeoutlen=1000
 set ttimeoutlen=1
@@ -582,7 +582,7 @@ nmap <silent><leader>aF <plug>(ale_previous_wrap)
 nmap <silent><leader>af <plug>(ale_next_wrap)
 
 " Gitgutter
-let g:gitgutter_enabled = 0
+let g:gitgutter_enabled = 1
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_signs = 0
 noremap <silent><leader>gg :GitGutterToggle<CR>
@@ -629,9 +629,6 @@ xmap <leader>ga <plug>(LiveEasyAlign)
 " indentLine
 let g:indentLine_enabled = 1
 
-" gitgutter
-let g:gitgutter_enabled = 1
-
 " lightline
 let g:lightline = {
       \   'colorscheme': 'nord',
@@ -639,7 +636,7 @@ let g:lightline = {
       \     'gitBranch': 'lightline#gitBranch',
       \     'gitHunks': 'lightline#gitHunks',
       \     'aleStatus': 'lightline#aleStatus',
-      \     'absPath': 'lightline#absPath',
+      \     'absPath': 'lightline#absPath'
       \   },
       \   'active': {
       \     'left': [
