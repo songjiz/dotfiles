@@ -16,7 +16,7 @@ set nocursorline
 set nojoinspaces
 set scrolloff=3
 
-set signcolumn=yes
+set signcolumn=no
 
 set ttyfast
 set lazyredraw
@@ -120,6 +120,42 @@ set wildignore+=*.zip,*.7z,*.rar,*.gz,*.tar,*.gzip,*.bz2,*.tgz,*.xz
 set wildignore+=*.ppt,*.pptx,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
 set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
 set wildignore+=tags
+
+" Swap
+set swapfile
+set directory=~/.vim/cache/swap//
+if has('win32') || has('win64')
+  set directory-=~/.vim/cache/swap//
+  set directory=~/vimfiles/cache/swap//
+endif
+silent! call mkdir(iconv(&directory, &encoding, &termencoding), 'p')
+
+" Undo
+set undofile
+set undoreload=1000
+set undolevels=1000
+set undodir=~/.vim/cache/undo//
+if has('win32') || has('win64')
+  set undodir-=~/.vim/cache/undo//
+  set undodir=~/vimfiles/cache/undo//
+endif
+silent! call mkdir(iconv(&undodir, &encoding, &termencoding), 'p')
+
+" Backup
+set backup
+set backupdir=~/.vim/cache/backup//
+if has('win32') || has('win64')
+  set backupdir-=~/.vim/cache/backup
+  set backupdir=~/vimfiles/cache/backup
+endif
+silent! call mkdir(iconv(&backupdir, &encoding, &termencoding), 'p')
+
+set backupskip^=/dev/shm/*  " Shared memory RAM disk
+set backupskip^=/var/tmp/*  " Debian's $TMPDIR for sudoedit(8)
+if !has('unix')
+  set backupskip-=/dev/shm/*
+  set backupskip-=/var/tmp/*
+endif
 
 " Folding
 set nofoldenable
@@ -480,7 +516,7 @@ if executable('rg')
   let s:rg_ignore = split(&wildignore, ',')
   let s:rg_cmd .= " --glob '!{'" . shellescape(join(s:rg_ignore, ',')) . "'}'"
   let &grepprg=s:rg_cmd
-  let $FZF_DEFAULT_COMMAND=s:rg_cmd . ' --files'
+  let $FZF_DEFAULT_COMMAND=s:rg_cmd . ' --files 2> /tmp/fzf-rg.log'
 else
   let &grepprg="grep -n --with-filename -I -R"
 endif
@@ -567,7 +603,7 @@ let g:netrw_chgwin = 2
 nnoremap - :Vexplore<CR>
 
 " ale
-let g:ale_set_signs = 1
+let g:ale_set_signs = 0
 let g:ale_sign_column_always = 0
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
@@ -578,6 +614,7 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
 let g:ale_linters_explicit = 1
+let g:ale_lint_delay = 1000
 nmap <silent><leader>aF <plug>(ale_previous_wrap)
 nmap <silent><leader>af <plug>(ale_next_wrap)
 
