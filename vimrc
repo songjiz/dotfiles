@@ -121,48 +121,6 @@ set wildignore+=*.ppt,*.pptx,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
 set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
 set wildignore+=tags
 
-" Session | Swap | Undo | Backup
-set noswapfile
-set directory^=~/.vim/cache/swap//
-if has('win32') || has('win64')
-  set directory-=~/.vim/cache/swap//
-  set directory^=~/vimfiles/cache/swap//
-endif
-
-set undofile
-set undoreload=1000
-set undolevels=1000
-set undodir^=~/.vim/cache/undo//
-if has('win32') || has('win64')
-  set undodir-=~/.vim/cache/undo//
-  set undodir^=~/vimfiles/cache/undo//
-endif
-
-set nobackup
-set nowritebackup
-set backupdir^=~/.vim/cache/backup//
-if has('win32') || has('win64')
-  set backupdir-=~/.vim/cache/backup
-  set backupdir^=~/vimfiles/cache/backup
-endif
-
-" Add some paths not to back up
-set backupskip^=/dev/shm/*  " Shared memory RAM disk
-set backupskip^=/var/tmp/*  " Debian's $TMPDIR for sudoedit(8)
-if !has('unix')
-  set backupskip-=/dev/shm/*
-  set backupskip-=/var/tmp/*
-endif
-
-let g:session_dir='~/.vim/cache/sessions//'
-set sessionoptions-=localoptions  " No buffer options or mappings
-set sessionoptions-=options       " No global options or mappings
-
-silent! call mkdir(iconv(&undodir, &encoding, &termencoding), 'p')
-silent! call mkdir(iconv(&backupdir, &encoding, &termencoding), 'p')
-silent! call mkdir(iconv(&directory, &encoding, &termencoding), 'p')
-silent! call mkdir(iconv(expand(g:session_dir), &encoding, &termencoding), 'p')
-
 " Folding
 set nofoldenable
 set foldnestmax=3
