@@ -16,12 +16,12 @@ set nocursorline
 set nojoinspaces
 set scrolloff=3
 
-set signcolumn=no
+set signcolumn=yes
 
 set ttyfast
 set lazyredraw
 set redrawtime=1000
-set updatetime=1000
+set updatetime=400
 set ttimeout
 set timeoutlen=1000
 set ttimeoutlen=1
@@ -444,7 +444,7 @@ nnoremap <silent><S-Tab> gT
 
 " <C-w>T move buffer to new tab
 " <C-w>U merge a tab into a split in the previous window
-nmap <silent><C-w>U <plug>(tabbar-merge)
+nmap <silent><C-w>U <Plug>(tabbar-merge)
 
 " Quickly edit/reload the vimrc file
 nnoremap <silent> <leader>vc :tabe $MYVIMRC<CR>
@@ -485,7 +485,7 @@ nnoremap <leader>ss :mksession! ~/.vim/cache/sessions/
 nnoremap <leader>rs :source ~/.vim/cache/sessions/
 nnoremap <leader>ds :!rm ~/.vim/cache/sessions/
 
-nmap <silent><leader>n <plug>(rename-file)
+nmap <silent><leader>n <Plug>(rename-file)
 
 command! FuckGFW :tabe ~/.config/clash/config.yaml
 
@@ -615,14 +615,17 @@ let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
 let g:ale_linters_explicit = 1
 let g:ale_lint_delay = 1000
-nmap <silent><leader>aF <plug>(ale_previous_wrap)
-nmap <silent><leader>af <plug>(ale_next_wrap)
+nmap <silent><leader>aF <Plug>(ale_previous_wrap)
+nmap <silent><leader>af <Plug>(ale_next_wrap)
 
 " Gitgutter
 let g:gitgutter_enabled = 1
 let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_signs = 0
-noremap <silent><leader>gg :GitGutterToggle<CR>
+let g:gitgutter_signs = 1
+nnoremap <silent><leader>gg :GitGutterToggle<CR>
+nnoremap <silent><leader>hs :GitGutterStageHunk<CR>
+nnoremap <silent><leader>hu :GitGutterUndoHunk<CR>
+nnoremap <silent><leader>hp :GitGutterPreviewHunk<CR>
 
 " fugitive
 nnoremap <silent><leader>gs :Gstatus<CR>
@@ -639,7 +642,7 @@ nnoremap <silent><leader>gf :Gfetch<CR>
 nnoremap <silent><leader>ge :Gedit<CR>
 nnoremap <silent><leader>gcl :Gclog<CR>
 nnoremap <silent><leader>gll :Gllog<CR>
-nmap <silent><leader>gR <plug>(git-root)
+nmap <silent><leader>gR <Plug>(git-root)
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger = "<Tab>"
@@ -658,10 +661,10 @@ nnoremap <silent> t<C-l> :TestLast<CR>
 nnoremap <silent> t<C-g> :TestVisit<CR>
 
 " easy-align
-xmap ga <plug>(EasyAlign)
-nmap ga <plug>(EasyAlign)
-nmap <leader>ga <plug>(LiveEasyAlign)
-xmap <leader>ga <plug>(LiveEasyAlign)
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+nmap <leader>ga <Plug>(LiveEasyAlign)
+xmap <leader>ga <Plug>(LiveEasyAlign)
 
 " indentLine
 let g:indentLine_enabled = 1
