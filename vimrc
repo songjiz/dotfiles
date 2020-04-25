@@ -673,7 +673,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 let g:UltiSnipsEnableSnipMate = 0
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = ['ultisnips']
-nnoremap <Leader>sn :UltiSnipsEdit<CR>
+nnoremap <Leader>es :UltiSnipsEdit<CR>
 
 " vim-test
 nnoremap <silent> t<C-n> :wa\|:TestNearest<CR>
