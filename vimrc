@@ -247,6 +247,9 @@ augroup common
   " Auto switch to insert mode when focusing on terminal window
   autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
   autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! IndentLinesDisable | endif
+
+  " Close vim if the only window left open is a NERDTree
+  autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 " }}}
 
@@ -614,15 +617,11 @@ nmap <silent><Leader>sd <Plug>DashSearch
 nmap <silent>gx <Plug>(openbrowser-smart-search)
 vmap <silent>gx <Plug>(openbrowser-smart-search)
 
-" netrw
-let g:netrw_banner = 0
-let g:netrw_hide = 1
-let g:netrw_liststyle = 1
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 20
-let g:netrw_altv = 1
-let g:netrw_chgwin = 2
-nnoremap - :Vexplore<CR>
+" NERDTree
+let g:loaded_netrwPlugin = 1
+let NERDTreeMinimalUI = 1
+nnoremap <silent> <Leader>nn :NERDTreeToggle<CR>
+nnoremap <silent> - :NERDTreeFind<CR>
 
 " ale
 let g:ale_set_signs = 0
