@@ -21,7 +21,7 @@ set signcolumn=yes
 set ttyfast
 set lazyredraw
 set redrawtime=1000
-set updatetime=400
+" set updatetime=400
 set ttimeout
 set timeoutlen=1000
 set ttimeoutlen=1
@@ -318,10 +318,10 @@ nnoremap <silent> <C-j> <C-W>-
 nnoremap <silent> <C-k> <C-W>+
 
 " Window split
-nnoremap <silent><leader>sh :leftabove vnew<CR>
-nnoremap <silent><leader>sl :rightbelow vnew<CR>
-nnoremap <silent><leader>sk :leftabove new<CR>
-nnoremap <silent><leader>sj :rightbelow new<CR>
+nnoremap <silent><Leader>sh :leftabove vnew<CR>
+nnoremap <silent><Leader>sl :rightbelow vnew<CR>
+nnoremap <silent><Leader>sk :leftabove new<CR>
+nnoremap <silent><Leader>sj :rightbelow new<CR>
 
 " Window navigation
 if has('mac')
@@ -343,12 +343,21 @@ else
   inoremap <silent><A-k> <C-\><C-N><C-w>k
   inoremap <silent><A-l> <C-\><C-N><C-w>l
 end
+nnoremap <silent><Leader>1 :1wincmd w<CR>
+nnoremap <silent><Leader>2 :2wincmd w<CR>
+nnoremap <silent><Leader>3 :3wincmd w<CR>
+nnoremap <silent><Leader>4 :4wincmd w<CR>
+nnoremap <silent><Leader>5 :5wincmd w<CR>
+nnoremap <silent><Leader>6 :6wincmd w<CR>
+nnoremap <silent><Leader>7 :7wincmd w<CR>
+nnoremap <silent><Leader>8 :8wincmd w<CR>
+nnoremap <silent><Leader>9 :9wincmd w<CR>
 
 " qq to record, Q to replay
 nnoremap Q @q
-nmap <leader>ms plug(macro-save)
-nmap <leader>ml plug(macro-load)
-nmap <leader>md plug(macro-del)
+nmap <Leader>ms plug(macro-save)
+nmap <Leader>ml plug(macro-load)
+nmap <Leader>md plug(macro-del)
 
 " Center screen after navigation
 nnoremap }   }zz
@@ -402,7 +411,7 @@ inoremap <DOWN>  <NOP>
 inoremap <LEFT>  <NOP>
 inoremap <RIGHT> <NOP>
 
-nnoremap <silent> <leader>bg :let &background = (&background == "dark"? "light" : "dark")<CR>
+nnoremap <silent> <Leader>bg :let &background = (&background == "dark"? "light" : "dark")<CR>
 
 " Copy the text from the cursor position to the end of line(like 'D' and 'C')
 nnoremap Y y$
@@ -416,10 +425,10 @@ nnoremap U <C-r>
 
 " Fast edit files in same directory
 cabbr <expr> %% fnameescape(expand("%:p:h"))
-nnoremap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-nnoremap <leader>t :tabe <C-R>=expand("%:p:h") . '/'<CR>
-nnoremap <leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
-nnoremap <leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <Leader>t :tabe <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
 " Move cursor in command mode like in terminal
 cnoremap <C-j> <Down>
@@ -447,31 +456,31 @@ nnoremap <silent><S-Tab> gT
 nmap <silent><C-w>U <Plug>(tabbar-merge)
 
 " Quickly edit/reload the vimrc file
-nnoremap <silent> <leader>vc :tabe $MYVIMRC<CR>
-nnoremap <silent> <leader>vu :tabe ~/.vimrc.local<CR>
-nnoremap <silent> <leader>rc :silent update $MYVIMRC <Bar> source $MYVIMRC<CR>
-nnoremap <silent> <leader>pi :source $MYVIMRC <Bar> PlugInstall<CR>
-nnoremap <silent> <leader>pu :source $MYVIMRC <Bar> PlugUpdate<CR>
-nnoremap <silent> <leader>pc :source $MYVIMRC <Bar> PlugClean<CR>
+nnoremap <silent> <Leader>vc :tabe $MYVIMRC<CR>
+nnoremap <silent> <Leader>vu :tabe ~/.vimrc.local<CR>
+nnoremap <silent> <Leader>rc :silent update $MYVIMRC <Bar> source $MYVIMRC<CR>
+nnoremap <silent> <Leader>pi :source $MYVIMRC <Bar> PlugInstall<CR>
+nnoremap <silent> <Leader>pu :source $MYVIMRC <Bar> PlugUpdate<CR>
+nnoremap <silent> <Leader>pc :source $MYVIMRC <Bar> PlugClean<CR>
 
 " Buffer
-nnoremap <silent> <leader>bp :bp<CR>
-nnoremap <silent> <leader>bn :bn<CR>
-nnoremap <silent> <leader>bw :w<CR>:bd<CR>
-nnoremap <silent> <leader>bd :w<CR>:bd!<CR>
-nnoremap <silent> <leader>ba :1,bd!<CR>
-nnoremap <silent> <leader>w  :w!<CR>
-nnoremap <silent> <leader>q  :q!<CR>
-nnoremap <silent> <leader>x  :x!<CR>
-nnoremap <silent> <leader>lb :ls<CR>:b<SPACE>
+nnoremap <silent> <Leader>bp :bp<CR>
+nnoremap <silent> <Leader>bn :bn<CR>
+nnoremap <silent> <Leader>bw :w<CR>:bd<CR>
+nnoremap <silent> <Leader>bd :w<CR>:bd!<CR>
+nnoremap <silent> <Leader>ba :1,bd!<CR>
+nnoremap <silent> <Leader>w  :w!<CR>
+nnoremap <silent> <Leader>q  :q!<CR>
+nnoremap <silent> <Leader>x  :x!<CR>
+nnoremap <silent> <Leader>lb :ls<CR>:b<SPACE>
 
 " Save file as root.
 cnoremap w!! w !sudo tee % > /dev/null<CR>
 
 " Toggle between last open buffers
-nnoremap <leader><Space> <C-^>
+nnoremap <Leader><Space> <C-^>
 
-nnoremap <silent><leader><CR> :nohlsearch<CR>
+nnoremap <silent><Leader><CR> :nohlsearch<CR>
 
 command! Q q
 command! Qa qall
@@ -481,21 +490,21 @@ command! W w
 command! Wq wq
 
 " session
-nnoremap <leader>ss :mksession! ~/.vim/cache/sessions/
-nnoremap <leader>rs :source ~/.vim/cache/sessions/
-nnoremap <leader>ds :!rm ~/.vim/cache/sessions/
+nnoremap <Leader>ss :mksession! ~/.vim/cache/sessions/
+nnoremap <Leader>rs :source ~/.vim/cache/sessions/
+nnoremap <Leader>ds :!rm ~/.vim/cache/sessions/
 
-nmap <silent><leader>n <Plug>(rename-file)
+nmap <silent><Leader>n <Plug>(rename-file)
 
 command! FuckGFW :tabe ~/.config/clash/config.yaml
 
 " Quickfix / Localtion List
-nnoremap <silent> <leader>cw :cwindow<CR>
-nnoremap <silent> <leader>lw :lwindow<CR>
-nnoremap <silent> <leader>co :copen<CR>
-nnoremap <silent> <leader>lo :lopen<CR>
-nnoremap <silent> <leader>cc :cclose<CR>
-nnoremap <silent> <leader>lc :lclose<CR>
+nnoremap <silent> <Leader>cw :cwindow<CR>
+nnoremap <silent> <Leader>lw :lwindow<CR>
+nnoremap <silent> <Leader>co :copen<CR>
+nnoremap <silent> <Leader>lo :lopen<CR>
+nnoremap <silent> <Leader>cc :cclose<CR>
+nnoremap <silent> <Leader>lc :lclose<CR>
 nnoremap ]q :cnext<CR>zz
 nnoremap [q :cprev<CR>zz
 nnoremap ]l :lnext<CR>zz
@@ -568,29 +577,37 @@ command! -bang -nargs=* Grep call
       \ &grepprg.' --color=always '.shellescape(<q-args>), 1, <bang>0
       \ )
 
-nnoremap <silent> <leader><leader> :Files<CR>
+nnoremap <silent> <Leader><leader> :Files<CR>
 nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <leader>fG   :GFiles<CR>
-nnoremap <silent> <leader>fg   :GFiles?<CR>
-nnoremap <silent> <leader>fC   :Commits<CR>
-nnoremap <silent> <leader>fc   :BCommits<CR>
-nnoremap <silent> <leader>fb   :Buffers<CR>
-nnoremap <silent> <leader>bb   :Buffers<CR>
-nnoremap <silent> <leader>f;   :Commands<CR>
-nnoremap <silent> <leader>fk   :Helptags<CR>
-nnoremap <silent> <leader>fh   :History<CR>
-nnoremap <silent> <leader>fL   :Lines<CR>
-nnoremap <silent> <leader>fl   :BLines<CR>
-nnoremap <silent> <leader>fT   :Tags<CR>
-nnoremap <silent> <leader>ft   :BTags<CR>
-nnoremap <silent> <leader>fm   :Maps<CR>
-nnoremap <silent> <leader>f'   :Marks<CR>
-nnoremap <silent> <leader>fw   :Windows<CR>
+nnoremap <silent> <Leader>fG   :GFiles<CR>
+nnoremap <silent> <Leader>fg   :GFiles?<CR>
+nnoremap <silent> <Leader>fC   :Commits<CR>
+nnoremap <silent> <Leader>fc   :BCommits<CR>
+nnoremap <silent> <Leader>fb   :Buffers<CR>
+nnoremap <silent> <Leader>bb   :Buffers<CR>
+nnoremap <silent> <Leader>f;   :Commands<CR>
+nnoremap <silent> <Leader>fk   :Helptags<CR>
+nnoremap <silent> <Leader>fh   :History<CR>
+nnoremap <silent> <Leader>fL   :Lines<CR>
+nnoremap <silent> <Leader>fl   :BLines<CR>
+nnoremap <silent> <Leader>fT   :Tags<CR>
+nnoremap <silent> <Leader>ft   :BTags<CR>
+nnoremap <silent> <Leader>fm   :Maps<CR>
+nnoremap <silent> <Leader>f'   :Marks<CR>
+nnoremap <silent> <Leader>fw   :Windows<CR>
 nnoremap \w :Grep <C-r><C-w><CR>
 vnoremap \v ""y:Grep <C-R>=escape(@", '/\')<CR><CR>
 nnoremap \\ :Grep<Space>
 
-nnoremap <leader>rt :!ctags --extras=+f -R *<CR><CR>
+nnoremap <Leader>rt :!ctags --extras=+f -R *<CR><CR>
+
+" dash
+nmap <silent><Leader>ds <Plug>DashSearch
+nmap <silent><Leader>sd <Plug>DashSearch
+
+" open-browser
+nmap <silent>gx <Plug>(openbrowser-smart-search)
+vmap <silent>gx <Plug>(openbrowser-smart-search)
 
 " netrw
 let g:netrw_banner = 0
@@ -615,34 +632,35 @@ let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
 let g:ale_linters_explicit = 1
 let g:ale_lint_delay = 1000
-nmap <silent><leader>aF <Plug>(ale_previous_wrap)
-nmap <silent><leader>af <Plug>(ale_next_wrap)
+nmap <silent><Leader>aF <Plug>(ale_previous_wrap)
+nmap <silent><Leader>af <Plug>(ale_next_wrap)
 
 " Gitgutter
 let g:gitgutter_enabled = 1
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_signs = 1
-nnoremap <silent><leader>gg :GitGutterToggle<CR>
-nnoremap <silent><leader>hs :GitGutterStageHunk<CR>
-nnoremap <silent><leader>hu :GitGutterUndoHunk<CR>
-nnoremap <silent><leader>hp :GitGutterPreviewHunk<CR>
+nnoremap <silent><Leader>gg :GitGutterToggle<CR>
+nnoremap <silent><Leader>hs :GitGutterStageHunk<CR>
+nnoremap <silent><Leader>hu :GitGutterUndoHunk<CR>
+nnoremap <silent><Leader>hp :GitGutterPreviewHunk<CR>
 
 " fugitive
-nnoremap <silent><leader>gs :Gstatus<CR>
-nnoremap <silent><leader>gb :Gblame<CR>
-nnoremap <silent><leader>gc :Gcommit<CR>
-nnoremap <silent><leader>gm :Gmerge<CR>
-nnoremap <silent><leader>gr :Gread<CR>
-nnoremap <silent><leader>gw :Gwrite<CR>
-nnoremap <silent><leader>gd :Gdiffsplit<CR>
-nnoremap <silent><leader>gD :Gdelete<CR>
-nnoremap <silent><leader>gp :Gpush<CR>
-nnoremap <silent><leader>gl :Gpull<CR>
-nnoremap <silent><leader>gf :Gfetch<CR>
-nnoremap <silent><leader>ge :Gedit<CR>
-nnoremap <silent><leader>gcl :Gclog<CR>
-nnoremap <silent><leader>gll :Gllog<CR>
-nmap <silent><leader>gR <Plug>(git-root)
+nnoremap <silent><Leader>gs :Gstatus<CR>
+nnoremap <silent><Leader>gb :Gblame<CR>
+nnoremap <silent><Leader>gB :GBrowse<CR>
+nnoremap <silent><Leader>gc :Gcommit<CR>
+nnoremap <silent><Leader>gm :Gmerge<CR>
+nnoremap <silent><Leader>gr :Gread<CR>
+nnoremap <silent><Leader>gw :Gwrite<CR>
+nnoremap <silent><Leader>gd :Gdiffsplit<CR>
+nnoremap <silent><Leader>gD :Gdelete<CR>
+nnoremap <silent><Leader>gp :Gpush<CR>
+nnoremap <silent><Leader>gl :Gpull<CR>
+nnoremap <silent><Leader>gf :Gfetch<CR>
+nnoremap <silent><Leader>ge :Gedit<CR>
+nnoremap <silent><Leader>gcl :Gclog<CR>
+nnoremap <silent><Leader>gll :Gllog<CR>
+nmap <silent><Leader>gR <Plug>(git-root)
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger = "<Tab>"
@@ -651,7 +669,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 let g:UltiSnipsEnableSnipMate = 0
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = ['ultisnips']
-nnoremap <leader>sn :UltiSnipsEdit<CR>
+nnoremap <Leader>sn :UltiSnipsEdit<CR>
 
 " vim-test
 nnoremap <silent> t<C-n> :TestNearest<CR>
@@ -663,15 +681,20 @@ nnoremap <silent> t<C-g> :TestVisit<CR>
 " easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-nmap <leader>ga <Plug>(LiveEasyAlign)
-xmap <leader>ga <Plug>(LiveEasyAlign)
+nmap <Leader>ga <Plug>(LiveEasyAlign)
+xmap <Leader>ga <Plug>(LiveEasyAlign)
 
 " indentLine
 let g:indentLine_enabled = 1
+let g:indentLine_char = '⋮'
 
 " lightline
 let g:lightline = {
       \   'colorscheme': 'nord',
+      \   'component': {
+      \     'lineinfo': '%3l,%-2v',
+      \     'winnr': '❐ %{winnr()}',
+      \   },
       \   'component_function': {
       \     'gitBranch': 'lightline#gitBranch',
       \     'gitHunks': 'lightline#gitHunks',
@@ -686,7 +709,8 @@ let g:lightline = {
       \     ],
       \     'right': [
       \       ['lineinfo', 'aleStatus'],
-      \       ['filetype', 'percent'],
+      \       ['percent'],
+      \       ['filetype', 'winnr'],
       \       ['gitHunks', 'fileencoding'],
       \       ['gitBranch']
       \     ],
