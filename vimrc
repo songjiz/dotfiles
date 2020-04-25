@@ -6,6 +6,7 @@ endif
 
 " Basic {{{
 set nocompatible
+set title
 " Don't show startup splash screen
 set shortmess+=I
 
@@ -20,8 +21,8 @@ set signcolumn=yes
 
 set ttyfast
 set lazyredraw
-set redrawtime=1000
-" set updatetime=400
+set redrawtime=2000
+set updatetime=100
 set ttimeout
 set timeoutlen=1000
 set ttimeoutlen=1
@@ -104,7 +105,7 @@ set wildmode=list:longest,full
 set pumheight=10
 
 " set dictionary+=~/.vim/dict/words
-set tags^=./tags;,tags
+set tags=.git/tags,tags
 
 " Ignore Files
 set wildignore+=.DS_Store,*.keep,*.swp,*.bak,*.log
@@ -122,7 +123,7 @@ set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
 set wildignore+=tags
 
 " Swap
-set swapfile
+set noswapfile
 set directory=~/.vim/cache/swap//
 if has('win32') || has('win64')
   set directory-=~/.vim/cache/swap//
@@ -142,7 +143,8 @@ endif
 silent! call mkdir(iconv(&undodir, &encoding, &termencoding), 'p')
 
 " Backup
-set backup
+set nobackup
+set nowritebackup
 set backupdir=~/.vim/cache/backup//
 if has('win32') || has('win64')
   set backupdir-=~/.vim/cache/backup
@@ -252,6 +254,11 @@ augroup END
 
 " Key Mappings {{{
 let mapleader = ","
+
+nnoremap gK K
+" J is join, K is break
+" A space is replaced with a carriage return; otherwise a carriage return is inserted.
+nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 
 " Alt key (Must disable 'Use Option as Meta Key' in terminal.app)
 " ˙ <A-h>
@@ -672,11 +679,11 @@ let g:UltiSnipsSnippetDirectories = ['ultisnips']
 nnoremap <Leader>sn :UltiSnipsEdit<CR>
 
 " vim-test
-nnoremap <silent> t<C-n> :TestNearest<CR>
-nnoremap <silent> t<C-f> :TestFile<CR>
-nnoremap <silent> t<C-s> :TestSuite<CR>
-nnoremap <silent> t<C-l> :TestLast<CR>
-nnoremap <silent> t<C-g> :TestVisit<CR>
+nnoremap <silent> t<C-n> :wa\|:TestNearest<CR>
+nnoremap <silent> t<C-f> :wa\|:TestFile<CR>
+nnoremap <silent> t<C-s> :wa\|:TestSuite<CR>
+nnoremap <silent> t<C-l> :wa\|:TestLast<CR>
+nnoremap <silent> t<C-g> :wa\|:TestVisit<CR>
 
 " easy-align
 xmap ga <Plug>(EasyAlign)
@@ -692,8 +699,7 @@ let g:indentLine_char = '⋮'
 let g:lightline = {
       \   'colorscheme': 'nord',
       \   'component': {
-      \     'lineinfo': '%3l,%-2v',
-      \     'winnr': '❐ %{winnr()}',
+      \     'lineinfo': '%l,%-v',
       \   },
       \   'component_function': {
       \     'gitBranch': 'lightline#gitBranch',
@@ -709,8 +715,7 @@ let g:lightline = {
       \     ],
       \     'right': [
       \       ['lineinfo', 'aleStatus'],
-      \       ['percent'],
-      \       ['filetype', 'winnr'],
+      \       ['filetype', 'percent'],
       \       ['gitHunks', 'fileencoding'],
       \       ['gitBranch']
       \     ],

@@ -7,8 +7,10 @@ function! lightline#absPath() abort
 endfunction
 
 function! lightline#gitBranch() abort
-  if exists('*fugitive#head')
+  if exists('*FugitiveHead')
     return fugitive#head()
+  elseif exists('*fugitive#head')
+    return FugitiveHead()
   else
     return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
   endif
