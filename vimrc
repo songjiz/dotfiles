@@ -244,8 +244,6 @@ augroup common
 
   autocmd BufWritePre,FileWritePre * silent! call auto_mkdir#try(expand('<afile>:p:h'), v:cmdbang)
 
-  autocmd FileType help,diff,vim-plug nnoremap <buffer><silent>gq :bd<CR>
-
   " Auto switch to insert mode when focusing on terminal window
   autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
   autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! IndentLinesDisable | endif
@@ -694,6 +692,7 @@ xmap <Leader>ga <Plug>(LiveEasyAlign)
 " indentLine
 let g:indentLine_enabled = 1
 let g:indentLine_char = '⋮'
+nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
 
 " lightline
 let g:lightline = {
