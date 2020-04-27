@@ -209,7 +209,7 @@ let g:PaperColor_Theme_Options = {
       \   }
       \ }
 let g:one_allow_italics = 1
-colorscheme nord
+colorscheme codedark
 highlight clear SignColumn
 highlight SignColumn ctermbg=NONE guibg=NONE
 " }}}
@@ -695,7 +695,7 @@ nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
 
 " lightline
 let g:lightline = {
-      \   'colorscheme': 'nord',
+      \   'colorscheme': 'aurora',
       \   'component': {
       \     'lineinfo': '%l,%-v',
       \   },

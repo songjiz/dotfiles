@@ -48,6 +48,7 @@ Plug 'reedes/vim-pencil'
 
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'arcticicestudio/nord-vim'
+Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
 " Enable built-in matchit plugin

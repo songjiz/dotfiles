@@ -23,8 +23,6 @@
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 6,
   "window.autoDetectColorScheme": true,
-  "workbench.preferredLightColorTheme": "Nord",
-  "workbench.preferredDarkColorTheme": "Nord",
   "window.nativeTabs": true,
-  "workbench.colorTheme": "Nord"
+  "workbench.preferredLightColorTheme": "Default Dark+"
 }
