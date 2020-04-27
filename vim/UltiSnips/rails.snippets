@@ -20,23 +20,39 @@ accepts_nested_attributes_for :${1:model}
 endsnippet
 
 snippet bt "belongs_to" b
-belongs_to :${1:model}
+belongs_to :${0:model}
 endsnippet
 
 snippet hm "has_many" b
-has_many :${1:models}
+has_many :${0:models}
+endsnippet
+
+snippet hmd "has_many dependent" b
+has_many :${1:other}s, class_name: '${2:$1}', foreign_key: '${3:$1}_id', dependent: :destroy
+endsnippet
+
+snippet hmt "has_many through" b
+has_many :${1:object}, through: :${0:object}
+endsnippet
+
+snippet habtm "has_and_belongs_to_many" b
+has_and_belongs_to_many :${1:object}, join_table: '${2:table_name}', foreign_key: '${3}_id'
 endsnippet
 
 snippet ho "has_one" b
-has_one :${1:model}
+has_one :${0:model}
+endsnippet
+
+snippet hod "has_one dependent" b
+has_one :${1:object}, dependent: :${0:destroy}
 endsnippet
 
 snippet fk "foreign_key"
-foreign_key: '${1:model}_id'
+foreign_key: '${0:model}_id'
 endsnippet
 
 snippet pk "primary_key"
-primary_key: '${1:model}_id'
+primary_key: '${0:model}_id'
 endsnippet
 
 snippet ca "class_attribute" b
@@ -46,4 +62,119 @@ class_attribute :${1:attr},
 								${6:instance_writer: ${7:true},}
 								${8:instance_predicate: ${9:true},}
 								${10:default: ${11:nil}}
+endsnippet
+
+# ActiveRecord Callbacks
+snippet bv "before_validation" b
+before_validation :${0:method}
+endsnippet
+
+snippet av "after_validation" b
+after_validation :${0:method}
+endsnippet
+
+snippet bs "before_save" b
+before_save :${0:method}
+endsnippet
+
+snippet ars "around_save" b
+around_save :${0:method}
+endsnippet
+
+snippet bc "before_create" b
+before_create :${0:method}
+endsnippet
+
+snippet arc "around_create" b
+around_create :${0:method}
+endsnippet
+
+snippet ac "after_create" b
+after_create :${0:method}
+endsnippet
+
+snippet as "after_save" b
+after_save :${0:method}
+endsnippet
+
+snippet acm "after_commit" b
+after_commit :${0:method}
+endsnippet
+
+snippet ar "after_rollback" b
+after_rollback :${0:method}
+endsnippet
+
+snippet bu "before_update" b
+before_update :${0:method}
+endsnippet
+
+snippet aru "around_update" b
+around_update :${0:method}
+endsnippet
+
+snippet au "after_update" b
+after_update :${0:method}
+endsnippet
+
+snippet bd "before_destroy" b
+before_destroy :${0:method}
+endsnippet
+
+snippet ard "around_destroy" b
+around_destroy :${0:method}
+endsnippet
+
+snippet ad "after_destroy" b
+after_destroy :${0:method}
+endsnippet
+
+snippet acc "after_create_commit" b
+after_create_commit :${0:method}
+endsnippet
+
+snippet asc "after_save_commit" b
+after_save_commit :${0:method}
+endsnippet
+
+snippet auc "after_update_commit" b
+after_update_commit :${0:method}
+endsnippet
+
+snippet adc "after_destroy_commit" b
+after_destroy_commit :${0:method}
+endsnippet
+
+snippet ai "after_initialize" b
+after_initialize :${0:method}
+endsnippet
+
+snippet af "after_find" b
+after_find :${0:method}
+endsnippet
+
+snippet at "after_touch" b
+after_touch :${0:method}
+endsnippet
+
+# Action Controller Filters
+snippet ba "before_action" b
+before_action :${0:method}
+endsnippet
+
+snippet sba "skip_before_action" b
+skip_before_action :${0:method}
+endsnippet
+
+snippet aa "after_action" b
+after_action :${0:method}
+endsnippet
+
+# I18n
+snippet i18 "I18n.t" b
+I18n.t('${1:type.key}')
+endsnippet
+
+snippet t "I18n.t" b
+I18n.t('${1:type.key}')
 endsnippet

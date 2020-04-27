@@ -1,3 +1,11 @@
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  let l:s = synID(line('.'), col('.'), 1)
+  echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfunc
+
 " Plugins {{{
 if filereadable(expand('~/.vim/pack.vim'))
   source ~/.vim/pack.vim
@@ -560,8 +568,8 @@ let g:fzf_action = {
 
 " Default fzf layout
 " - down / up / left / right
-" let g:fzf_layout = { 'down': '40%' }
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'up': '80%' }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors = {
@@ -697,19 +705,20 @@ nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
 let g:lightline = {
       \   'colorscheme': 'aurora',
       \   'component': {
+      \     'percent': '%p%%',
       \     'lineinfo': '%l,%-v',
       \   },
       \   'component_function': {
       \     'gitBranch': 'lightline#gitBranch',
       \     'gitHunks': 'lightline#gitHunks',
       \     'aleStatus': 'lightline#aleStatus',
-      \     'absPath': 'lightline#absPath'
+      \     'absolutepath': 'lightline#absPath'
       \   },
       \   'active': {
       \     'left': [
       \       ['mode', 'paste'],
       \       ['readonly', 'filename'],
-      \       ['absPath']
+      \       ['absolutepath']
       \     ],
       \     'right': [
       \       ['lineinfo', 'aleStatus'],
@@ -718,6 +727,17 @@ let g:lightline = {
       \       ['gitBranch']
       \     ],
       \   },
+      \   'inactive': {
+      \     'left': [
+      \       ['filename'],
+      \       ['absolutepath']
+      \     ],
+      \     'right': [
+      \       ['lineinfo'],
+      \       ['filetype', 'percent'],
+      \       ['fileencoding']
+      \     ]
+      \   }
       \ }
 
 " Local config {{{
