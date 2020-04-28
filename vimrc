@@ -324,6 +324,9 @@ nnoremap <silent> <C-h> <C-w><
 nnoremap <silent> <C-l> <C-w>>
 nnoremap <silent> <C-j> <C-W>-
 nnoremap <silent> <C-k> <C-W>+
+" zoom-in/out
+nnoremap <silent>Zi <C-w>_ \| <C-w>\|
+noremap  <silent>Zo <C-w>=
 
 " Window split
 nnoremap <silent><Leader>sh :leftabove vnew<CR>

@@ -15,6 +15,10 @@ respond_to do |format|
 end
 endsnippet
 
+snippet fm "format.xxx" b
+format.${1:html|json|js} { ${0} }
+endsnippet
+
 snippet anaf "accepts_nested_attributes_for" b
 accepts_nested_attributes_for :${1:model}
 endsnippet
@@ -178,3 +182,164 @@ endsnippet
 snippet t "I18n.t" b
 I18n.t('${1:type.key}')
 endsnippet
+
+# CRUD
+snippet index "def index ; end" b
+def index
+	@${1:model} = ${2:ModelClass}.all
+
+	respond_to do |format|
+		format.html # index.html.erb
+		format.json { render json: @$1s }
+	end
+end
+endsnippet
+
+snippet show "def show ; end" b
+def show
+	@${1:model} = ${2:ModelClass}.find(params[:id])
+end
+endsnippet
+
+snippet new "def new ; end" b
+def new
+	@${1:model} = ${2:ModelClass}.new
+end
+endsnippet
+
+snippet create "def create ; end" b
+def create
+	@${1:model} = ${2:ModelClass}.new($1_params)
+	respond_to do |format|
+		if @$1.save
+			flash[:notice] = '$2 was successfully created.'
+			format.html { redirect_to(@$1) }
+			format.json { render json: @$1, status: :created, location: @$1 }
+		else
+			format.html { render action: 'new' }
+			format.json { render json: @$1.errors, status: :unprocessable_entity }
+		end
+	end
+end
+endsnippet
+
+snippet edit "def edit ; end" b
+def	edit
+	@${1:model} = ${2:ModelClass}.find(prams[:id])
+end
+endsnippet
+
+snippet update "def update ; end" b
+def update
+	@${1:model} = ${2:ModelClass}.find(params[:id])
+	respond_to do |format|
+		if @$1.update($1_params)
+			flash[:notice] = '$2 was successfully updated.'
+			format.html { redirect_to(@$1) }
+			format.json { head :ok }
+		else
+			format.html { render action: 'edit' }
+			format.json { render json: @$1.errors, status: :unprocessable_entity }
+		end
+	end
+end
+endsnippet
+
+snippet destroy "def destroy ; end" b
+def destroy
+	@${1:model} = ${2:ModelClass}.find(params[:id])
+	@$1.destroy
+
+	respond_to do |format|
+		format.html { redirect_to($1s_url) }
+		format.json { head :ok }
+	end
+end
+endsnippet
+
+snippet crud "All actions" b
+def index
+	@${1:model} = ${2:ModelClass}.all
+
+	respond_to do |format|
+		format.html # index.html.erb
+		format.json { render json: @$1s }
+	end
+end
+
+def show
+	@$1 = $2.find(params[:id])
+end
+
+def new
+	@$1 = $2.new
+end
+
+def create
+	@$1 = $2.new($1_params)
+	respond_to do |format|
+		if @$1.save
+			flash[:notice] = '$2 was successfully created.'
+			format.html { redirect_to(@$1) }
+			format.json { render json: @$1, status: :created, location: @$1 }
+		else
+			format.html { render action: 'new' }
+			format.json { render json: @$1.errors, status: :unprocessable_entity }
+		end
+	end
+end
+
+def	edit
+	@$1 = $2.find(prams[:id])
+end
+
+def update
+	@$1 = $2.find(params[:id])
+	respond_to do |format|
+		if @$1.update($1_params)
+			flash[:notice] = '$2 was successfully updated.'
+			format.html { redirect_to(@$1) }
+			format.json { head :ok }
+		else
+			format.html { render action: 'edit' }
+			format.json { render json: @$1.errors, status: :unprocessable_entity }
+		end
+	end
+end
+
+def destroy
+	@$1 = $2.find(params[:id])
+	@$1.destroy
+
+	respond_to do |format|
+		format.html { redirect_to($1s_url) }
+		format.json { head :ok }
+	end
+end
+endsnippet
+
+# logger
+snippet log "Rails.logger.verb" b
+Rails.logger.${1:debug} ${0}
+endsnippet
+
+snippet debug "logger.debug" b
+logger.debug { '${1:message}' }
+endsnippet
+
+snippet info "logger.info" b
+logger.info { '${1:message}' }
+endsnippet
+
+snippet warn "logger.warn" b
+logger.warn { '${1:message}' }
+endsnippet
+
+snippet fatal "logger.fatal" b
+logger.fatal { '${1:message}' }
+endsnippet
+
+snippet error "logger.error" b
+logger.error { '${1:message}' }
+endsnippet
+
