@@ -536,7 +536,7 @@ if executable('rg')
   let s:rg_ignore = split(&wildignore, ',')
   let s:rg_cmd .= " --glob '!{'" . shellescape(join(s:rg_ignore, ',')) . "'}'"
   let &grepprg=s:rg_cmd
-  let $FZF_DEFAULT_COMMAND=s:rg_cmd . ' --files 2> /tmp/fzf-rg.log'
+  let $FZF_DEFAULT_COMMAND=s:rg_cmd . ' --files'
 else
   let &grepprg="grep -n --with-filename -I -R"
 endif
@@ -546,7 +546,7 @@ endif
 " Plugins config {{{
 
 " FZF
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --bind ctrl-a:select-all,ctrl-d:deselect-all'
 
 " Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -561,10 +561,20 @@ let g:fzf_action = {
       \ 'ctrl-y': { lines -> setreg('*', join(lines, "\n")) }
       \ }
 
-" Default fzf layout
-" - down / up / left / right
-let g:fzf_layout = { 'up': '80%' }
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" TODO: (2020-04-29)
+" Status line does not update properly when fzf in popup window.
+" see: https://github.com/itchyny/lightline.vim/issues/449
+let g:fzf_layout = {
+      \   'up': '80%',
+      \   'window': {
+      \     'width': 0.9,
+      \     'height': 0.8,
+      \     'yoffset': 0.5,
+      \     'xoffset': 0.5,
+      \     'highlight': 'Constant',
+      \     'border': 'sharp'
+      \   }
+      \ }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors = {
@@ -588,8 +598,8 @@ command! -bang -nargs=* Grep call
       \ &grepprg.' --color=always '.shellescape(<q-args>), 1, <bang>0
       \ )
 
+nnoremap <silent> <C-p> :FZF<CR>
 nnoremap <silent> <Leader><leader> :Files<CR>
-nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <Leader>fG   :GFiles<CR>
 nnoremap <silent> <Leader>fg   :GFiles?<CR>
 nnoremap <silent> <Leader>fC   :Commits<CR>

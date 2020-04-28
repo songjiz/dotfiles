@@ -10,7 +10,7 @@ endif
 call plug#begin('~/.vim/pack')
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
-Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
 Plug 'junegunn/vim-easy-align'
