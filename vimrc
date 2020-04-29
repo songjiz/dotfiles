@@ -254,7 +254,7 @@ augroup END
 " }}}
 
 " Key Mappings {{{
-let mapleader = ","
+let mapleader = "\<Space>"
 
 nnoremap gK K
 " J is join, K is break
@@ -278,8 +278,6 @@ inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
 " Let mark go to column
 nnoremap ' `
 
-nnoremap ; :
-nnoremap : ;
 nnoremap ! :!
 
 " Toglle paste mode
@@ -598,8 +596,7 @@ command! -bang -nargs=* Grep call
       \ &grepprg.' --color=always '.shellescape(<q-args>), 1, <bang>0
       \ )
 
-nnoremap <silent> <C-p> :FZF<CR>
-nnoremap <silent> <Leader><leader> :Files<CR>
+nnoremap <silent> <C-p>        :Files<CR>
 nnoremap <silent> <Leader>fG   :GFiles<CR>
 nnoremap <silent> <Leader>fg   :GFiles?<CR>
 nnoremap <silent> <Leader>fC   :Commits<CR>
@@ -621,6 +618,9 @@ vnoremap \v ""y:Grep <C-R>=escape(@", '/\')<CR><CR>
 nnoremap \\ :Grep<Space>
 
 nnoremap <Leader>rt :!ctags --extras=+f -R *<CR><CR>
+
+" sneak
+let g:sneak#lebel = 1
 
 " dash
 nmap <silent><Leader>ds <Plug>DashSearch
