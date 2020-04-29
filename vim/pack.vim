@@ -10,7 +10,7 @@ endif
 call plug#begin('~/.vim/pack')
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
-Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
 Plug 'junegunn/vim-easy-align'
@@ -49,6 +49,7 @@ Plug 'reedes/vim-pencil'
 
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'glts/vim-textobj-comment'
 
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'arcticicestudio/nord-vim'

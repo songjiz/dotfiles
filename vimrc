@@ -256,6 +256,24 @@ augroup END
 " Key Mappings {{{
 let mapleader = "\<Space>"
 
+" line textobject il,al
+xnoremap il g_o^
+onoremap il :<C-u>normal vil<CR>
+xnoremap al $o0
+onoremap al :<C-u>normal val<CR>
+
+" buffer textobjects i%,a%
+xnoremap i% :<C-u>let z = @/\|1;/^./kz<CR>G??<CR>:let @/ = z<CR>V'z
+onoremap i% :<C-u>normal vi%<CR>
+xnoremap a% GoggV
+onoremap a% :<C-u>normal va%<CR>
+
+" comment textobjects i/,a/
+omap a/ <Plug>(textobj-comment-a)
+xmap a/ <Plug>(textobj-comment-a)
+omap i/ <Plug>(textobj-comment-i)
+xmap i/ <Plug>(textobj-comment-i)
+
 nnoremap gK K
 " J is join, K is break
 " A space is replaced with a carriage return; otherwise a carriage return is inserted.
@@ -278,6 +296,8 @@ inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
 " Let mark go to column
 nnoremap ' `
 
+nnoremap ; :
+nnoremap : ;
 nnoremap ! :!
 
 " Toglle paste mode
@@ -400,12 +420,9 @@ nnoremap gf <C-w>vgf
 vnoremap gf <C-w>vgf
 nnoremap gF <C-w>vgF
 vnoremap gF <C-w>vgF
-" <A-]> Jump to definition in vertical split
-if has('mac')
-  nnoremap “ <C-W>v<C-]>
-else
-  nnoremap <A-]> <C-W>v<C-]>
-endif
+
+" <C-]> Jump to definition in vertical split
+nnoremap <C-]> <C-W>v<C-]>zz
 
 " Select all
 noremap <C-a> ggVG<CR>
@@ -419,6 +436,20 @@ inoremap <UP>    <NOP>
 inoremap <DOWN>  <NOP>
 inoremap <LEFT>  <NOP>
 inoremap <RIGHT> <NOP>
+cnoremap <UP>    <NOP>
+cnoremap <DOWN>  <NOP>
+cnoremap <LEFT>  <NOP>
+cnoremap <RIGHT> <NOP>
+
+" Move cursor in command mode like in terminal
+cnoremap <C-j> <Down>
+cnoremap <C-k> <UP>
+cnoremap <C-a> <HOME>
+cnoremap <C-e> <END>
+cnoremap <C-p> <UP>
+cnoremap <C-n> <DOWN>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
 
 nnoremap <silent> <Leader>bg :let &background = (&background == "dark"? "light" : "dark")<CR>
 
@@ -434,20 +465,10 @@ nnoremap U <C-r>
 
 " Fast edit files in same directory
 cabbr <expr> %% fnameescape(expand("%:p:h"))
-nnoremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-nnoremap <Leader>t :tabe <C-R>=expand("%:p:h") . '/'<CR>
-nnoremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
-nnoremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
-
-" Move cursor in command mode like in terminal
-cnoremap <C-j> <Down>
-cnoremap <C-k> <UP>
-cnoremap <C-a> <HOME>
-cnoremap <C-e> <END>
-cnoremap <C-p> <UP>
-cnoremap <C-n> <DOWN>
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
+nnoremap <Leader>e :e <C-R>=fnameescape(expand("%:p:h")) . '/'<CR>
+nnoremap <Leader>t :tabe <C-R>=fnameescape(expand("%:p:h")) . '/'<CR>
+nnoremap <Leader>s :sp <C-R>=fnameescape(expand("%:p:h")) . '/'<CR>
+nnoremap <Leader>v :vsp <C-R>=fnameescape(expand("%:p:h")) . '/'<CR>
 
 " Indenting
 vnoremap < <gv
@@ -462,7 +483,7 @@ nnoremap <silent><S-Tab> gT
 
 " <C-w>T move buffer to new tab
 " <C-w>U merge a tab into a split in the previous window
-nmap <silent><C-w>U <Plug>(tabbar-merge)
+nnoremap <silent><C-w>U :TabMerge<CR>
 
 " Quickly edit/reload the vimrc file
 nnoremap <silent> <Leader>vc :tabe $MYVIMRC<CR>
@@ -499,11 +520,13 @@ command! W w
 command! Wq wq
 
 " session
-nnoremap <Leader>ss :mksession! ~/.vim/cache/sessions/
-nnoremap <Leader>rs :source ~/.vim/cache/sessions/
-nnoremap <Leader>ds :!rm ~/.vim/cache/sessions/
+let g:session_dir = '$HOME/.vim/cache/sessions'
+nnoremap <Leader>ss :mksession! <C-R>=expand(g:session_dir) . '/'<CR>
+nnoremap <Leader>sr :source <C-R>=expand(g:session_dir) . '/'<CR>
+nnoremap <Leader>sd :!rm <C-R>=expand(g:session_dir) . '/'<CR>
+silent! call mkdir(iconv(expand(g:session_dir), &encoding, &termencoding), 'p')
 
-nmap <silent><Leader>n <Plug>(rename-file)
+nmap <silent><Leader>n <Plug>(rename-buf)
 
 command! FuckGFW :tabe ~/.config/clash/config.yaml
 
@@ -621,10 +644,10 @@ nnoremap <Leader>rt :!ctags --extras=+f -R *<CR><CR>
 
 " sneak
 let g:sneak#lebel = 1
+let g:sneak#s_next = 1
 
 " dash
 nmap <silent><Leader>ds <Plug>DashSearch
-nmap <silent><Leader>sd <Plug>DashSearch
 
 " open-browser
 nmap <silent>gx <Plug>(openbrowser-smart-search)

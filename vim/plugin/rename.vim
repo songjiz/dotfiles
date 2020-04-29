@@ -1,4 +1,5 @@
-function! s:rename() abort
+command! Rename call <SID>Rename()
+function! s:Rename() abort
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'), 'file')
   if new_name != '' && new_name != old_name
@@ -7,4 +8,4 @@ function! s:rename() abort
     redraw!
   endif
 endfunction
-nnoremap <Plug>(rename-file) :<C-U>call <SID>rename()<CR>
+nnoremap <Plug>(rename-buf) :<C-U>call <SID>Rename()<CR>

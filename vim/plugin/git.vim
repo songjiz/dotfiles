@@ -1,6 +1,5 @@
-command! GitRoot call <SID>git_root()
-
-function! s:git_root() abort
+command! GitRoot call <SID>GitRoot()
+function! s:GitRoot() abort
   let l:root = systemlist('git rev-parse --show-toplevel')[0]
   if v:shell_error
     echohl ErrorMsg
@@ -11,4 +10,4 @@ function! s:git_root() abort
     echo 'Changed directory to: ' . l:root
   endif
 endfunction
-nnoremap <silent> <Plug>(git-root) :<C-u>call <SID>git_root()<CR>
+nnoremap <silent> <Plug>(git-root) :<C-U>call <SID>GitRoot()<CR>

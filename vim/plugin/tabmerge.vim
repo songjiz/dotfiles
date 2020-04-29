@@ -1,9 +1,10 @@
-if exists('g:loaded_tabbar')
+if exists('g:loaded_TabMergePlugin')
   finish
 endif
-let g:loaded_tabbar = 1
+let g:loaded_TabMergePlugin = 1
 
-function! tabbar#merge() abort
+command! TabMerge call s:TabMerge()
+function! s:TabMerge() abort
   if tabpagenr() == 1
     return
   endif
@@ -17,4 +18,5 @@ function! tabbar#merge() abort
   split
   execute "buffer " . bufferName
 endfunction
-nnoremap <Plug>(tabbar-merge) :<C-U>call tabbar#merge()<CR>
+
+nnoremap <Plug>(tab-merge) :<C-U>call <SID>TabMerge()<CR>
