@@ -219,9 +219,6 @@ augroup common
   autocmd!
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 
-  " Disable automatic commenting on newline
-  " autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
-
   " Restore cursor to file position in previous editing session
   autocmd BufWinEnter *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -242,7 +239,7 @@ augroup common
   autocmd CmdlineEnter /,\? :set hlsearch
   autocmd CmdlineLeave /,\? :set nohlsearch
 
-  autocmd BufWritePre,FileWritePre * silent! call auto_mkdir#try(expand('<afile>:p:h'), v:cmdbang)
+  autocmd BufWritePre,FileWritePre * silent! call mkdir(iconv(expand('<afile>:p:h'), &encoding, &termencoding), 'p')
 
   " Auto switch to insert mode when focusing on terminal window
   autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
@@ -256,7 +253,7 @@ augroup END
 " Key Mappings {{{
 let mapleader = "\<Space>"
 
-" line textobject il,al
+" line textobjects il,al
 xnoremap il g_o^
 onoremap il :<C-u>normal vil<CR>
 xnoremap al $o0
@@ -300,7 +297,7 @@ nnoremap ; :
 nnoremap : ;
 nnoremap ! :!
 
-" Toglle paste mode
+" Toggle paste mode
 set pastetoggle=<F5>
 
 " Map for Escape key
@@ -386,6 +383,7 @@ nnoremap <silent><Leader>9 :9wincmd w<CR>
 nnoremap Q @q
 nmap <Leader>ms plug(macro-save)
 nmap <Leader>ml plug(macro-load)
+nmap <Leader>mr plug(macro-load)
 nmap <Leader>md plug(macro-del)
 
 " Center screen after navigation
@@ -519,12 +517,12 @@ command! E e
 command! W w
 command! Wq wq
 
-" session
-let g:session_dir = '$HOME/.vim/cache/sessions'
-nnoremap <Leader>ss :mksession! <C-R>=expand(g:session_dir) . '/'<CR>
-nnoremap <Leader>sr :source <C-R>=expand(g:session_dir) . '/'<CR>
-nnoremap <Leader>sd :!rm <C-R>=expand(g:session_dir) . '/'<CR>
-silent! call mkdir(iconv(expand(g:session_dir), &encoding, &termencoding), 'p')
+" sessions
+let g:sessions_dir = '$HOME/.vim/cache/sessions'
+nnoremap <Leader>ss :mksession! <C-R>=expand(g:sessions_dir) . '/'<CR>
+nnoremap <Leader>sr :source <C-R>=expand(g:sessions_dir) . '/'<CR>
+nnoremap <Leader>sd :!rm <C-R>=expand(g:sessions_dir) . '/'<CR>
+silent! call mkdir(iconv(expand(g:sessions_dir), &encoding, &termencoding), 'p')
 
 nmap <silent><Leader>n <Plug>(rename-buf)
 
@@ -542,8 +540,6 @@ nnoremap [q :cprev<CR>zz
 nnoremap ]l :lnext<CR>zz
 nnoremap [l :lprev<CR>zz
 
-" Define how the output of rg must be parsed:
-"
 "               ┌ filename
 "               │  ┌ line nr
 "               │  │  ┌ column nr
@@ -553,13 +549,13 @@ set grepformat=%f:%l:%c:%m,%f:%l:%m
 "   │
 "   └ default value:  %f:%l:%m,%f:%l%m,%f  %l%m
 if executable('rg')
-  let s:rg_cmd = "rg --hidden --follow --smart-case --no-ignore-messages --vimgrep"
+  let s:rg_cmd = "rg --hidden --follow --smart-case --no-ignore-messages --vimgrep "
   let s:rg_ignore = split(&wildignore, ',')
   let s:rg_cmd .= " --glob '!{'" . shellescape(join(s:rg_ignore, ',')) . "'}'"
-  let &grepprg=s:rg_cmd
+  let &grepprg = s:rg_cmd . ' '
   let $FZF_DEFAULT_COMMAND=s:rg_cmd . ' --files'
 else
-  let &grepprg="grep -n --with-filename -I -R"
+  let &grepprg="grep -n --with-filename -I -R "
 endif
 
 " }}}
@@ -574,7 +570,7 @@ let g:fzf_buffers_jump = 1
 " Command to generate tags file
 let g:fzf_tags_command = 'noglob ctags --extras=+f -R'
 
-" This is the default extra key bindings
+" Extra key bindings
 let g:fzf_action = {
       \ 'ctrl-t': 'tabedit',
       \ 'ctrl-x': 'split',
@@ -597,7 +593,7 @@ let g:fzf_layout = {
       \   }
       \ }
 
-" Customize fzf colors to match your color scheme
+" Customize fzf colors to match color scheme
 let g:fzf_colors = {
       \ 'fg':      ['fg', 'Normal'],
       \ 'bg':      ['bg', 'Normal'],
@@ -616,7 +612,9 @@ let g:fzf_colors = {
 
 command! -bang -nargs=* Grep call
       \ fzf#vim#grep(
-      \ &grepprg.' --color=always '.shellescape(<q-args>), 1, <bang>0
+      \   &grepprg . ' --color=always ' . shellescape(<q-args>),
+      \   1,
+      \   <bang>0
       \ )
 
 nnoremap <silent> <C-p>        :Files<CR>

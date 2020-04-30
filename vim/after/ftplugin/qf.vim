@@ -10,7 +10,6 @@ nnoremap <silent> <buffer> gq :bd<CR>
 if !empty(getloclist(0))
   nnoremap <silent> <buffer> O <CR>zz:lclose<CR>
   nnoremap <silent> <buffer> dd :call qfloc#ldelete()<CR>
-  vnoremap <silent> <buffer> dd :call qfloc#ldelete()<CR>
   vnoremap <silent> <buffer> d  :call qfloc#ldelete()<CR>
   nnoremap <silent> <buffer> cc :call qlloc#lclear()<CR>
   nnoremap <silent> <buffer> u :call qfloc#lundo()<CR>
@@ -21,7 +20,6 @@ if !empty(getloclist(0))
 else
   nnoremap <silent> <buffer> O <CR>zz:cclose<CR>
   nnoremap <silent> <buffer> dd :call qfloc#cdelete()<CR>
-  vnoremap <silent> <buffer> dd :call qfloc#cdelete()<CR>
   vnoremap <silent> <buffer> d  :call qfloc#cdelete()<CR>
   nnoremap <silent> <buffer> cc :call qfloc#cclear()<CR>
   nnoremap <silent> <buffer> u :call qfloc#cundo()<CR>

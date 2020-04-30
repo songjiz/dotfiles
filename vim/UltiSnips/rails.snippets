@@ -162,16 +162,52 @@ after_touch :${0:method}
 endsnippet
 
 # Action Controller Filters
+snippet ara "around_action" b
+around_action :${0:method}
+endsnippet
+
 snippet ba "before_action" b
 before_action :${0:method}
+endsnippet
+
+snippet aa "after_action" b
+after_action :${0:method}
+endsnippet
+
+snippet sara "skip_around_action" b
+skip_around_action :${0:method}
 endsnippet
 
 snippet sba "skip_before_action" b
 skip_before_action :${0:method}
 endsnippet
 
-snippet aa "after_action" b
-after_action :${0:method}
+snippet saa "skip_after_action" b
+skip_after_action :${0:method}
+endsnippet
+
+snippet para "prepend_around_action" b
+prepend_around_action :${0:method}
+endsnippet
+
+snippet pba "prepend_before_action" b
+prepend_before_action :${0:method}
+endsnippet
+
+snippet paa "prepend_after_action" b
+prepend_after_action :${0:method}
+endsnippet
+
+snippet aara "append_around_action" b
+append_around_action :${0:metho}
+endsnippet
+
+snippet aba "append_before_action" b
+append_before_action :${0:method}
+endsnippet
+
+snippet aaa "append_after_action" b
+append_after_action :${0:method}
 endsnippet
 
 # I18n
