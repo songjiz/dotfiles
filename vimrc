@@ -655,17 +655,17 @@ nnoremap <Leader>rt :!ctags --extras=+f -R *<CR><CR>
 " vim-lsc
 let g:lsc_enable_diagnostics = v:false
 let g:lsc_auto_map = {
-      \ 'GoToDefinition': ['<Leader>gd', '<C-]>'],
-      \ 'GoToDefinitionSplit': ['<Leader>gD', '<C-w>]', '<C-w><C-]'],
+      \ 'GoToDefinition': '<C-]>',
+      \ 'GoToDefinitionSplit': ['<C-w>]', '<C-w><C-]'],
       \ 'ShowHover': v:true,
-      \ 'FindReferences': '<Leader>gr',
-      \ 'NextReference': '<Leader>gn',
-      \ 'PreviousReference': '<Leader>gp',
-      \ 'FindImplementations': '<Leader>gi',
-      \ 'FindCodeActions': '<Leader>ga',
-      \ 'Rename': '<Leader>gR',
-      \ 'DocumentSymbol': '<Leader>gs',
-      \ 'WorkspaceSymbol': '<Leader>gS',
+      \ 'FindReferences': '<C-g>r',
+      \ 'NextReference': '<C-g>n',
+      \ 'PreviousReference': '<C-g>p',
+      \ 'FindImplementations': '<C-g>i',
+      \ 'FindCodeActions': '<C-g>a',
+      \ 'Rename': '<C-g>R',
+      \ 'DocumentSymbol': '<C-g>s',
+      \ 'WorkspaceSymbol': '<C-g>S',
       \ 'Completion': 'completefunc',
       \ }
 
