@@ -517,6 +517,18 @@ command! E e
 command! W w
 command! Wq wq
 
+" folding
+noremap <silent>z0 :set foldlevel=0<CR>
+noremap <silent>z1 :set foldlevel=1<CR>
+noremap <silent>z2 :set foldlevel=2<CR>
+noremap <silent>z3 :set foldlevel=3<CR>
+noremap <silent>z4 :set foldlevel=4<CR>
+noremap <silent>z5 :set foldlevel=5<CR>
+noremap <silent>z6 :set foldlevel=6<CR>
+noremap <silent>z7 :set foldlevel=7<CR>
+noremap <silent>z8 :set foldlevel=8<CR>
+noremap <silent>z9 :set foldlevel=9<CR>
+
 " sessions
 let g:sessions_dir = '$HOME/.vim/cache/sessions'
 nnoremap <Leader>ss :mksession! <C-R>=expand(g:sessions_dir) . '/'<CR>
@@ -640,6 +652,38 @@ nnoremap \\ :Grep<Space>
 
 nnoremap <Leader>rt :!ctags --extras=+f -R *<CR><CR>
 
+" vim-lsc
+let g:lsc_enable_diagnostics = v:false
+let g:lsc_auto_map = {
+      \ 'GoToDefinition': ['<Leader>gd', '<C-]>'],
+      \ 'GoToDefinitionSplit': ['<Leader>gD', '<C-w>]', '<C-w><C-]'],
+      \ 'ShowHover': v:true,
+      \ 'FindReferences': '<Leader>gr',
+      \ 'NextReference': '<Leader>gn',
+      \ 'PreviousReference': '<Leader>gp',
+      \ 'FindImplementations': '<Leader>gi',
+      \ 'FindCodeActions': '<Leader>ga',
+      \ 'Rename': '<Leader>gR',
+      \ 'DocumentSymbol': '<Leader>gs',
+      \ 'WorkspaceSymbol': '<Leader>gS',
+      \ 'Completion': 'completefunc',
+      \ }
+
+" let g:lsc_preview_split_direction = 'bellow'
+let g:lsc_hover_popup = v:false
+
+let g:lsc_server_commands = {
+      \ 'ruby': 'solargraph stdio',
+      \ 'javascript': 'typescript-language-server --stdio',
+      \ 'css': 'css-languageserver --stdio'
+      \ }
+
+augroup lsc
+  autocmd!
+  " automatically close the documentation window.
+  autocmd CompleteDone * silent! pclose
+augroup END
+
 " sneak
 let g:sneak#lebel = 1
 let g:sneak#s_next = 1
@@ -738,6 +782,7 @@ let g:lightline = {
       \     'gitBranch': 'lightline#gitBranch',
       \     'gitHunks': 'lightline#gitHunks',
       \     'aleStatus': 'lightline#aleStatus',
+      \     'lscStatus': 'lightline#lscStatus',
       \     'absolutepath': 'lightline#absPath'
       \   },
       \   'active': {
@@ -747,7 +792,8 @@ let g:lightline = {
       \       ['absolutepath']
       \     ],
       \     'right': [
-      \       ['lineinfo', 'aleStatus'],
+      \       ['lscStatus', 'aleStatus'],
+      \       ['lineinfo'],
       \       ['filetype', 'percent'],
       \       ['gitHunks', 'fileencoding'],
       \       ['gitBranch']

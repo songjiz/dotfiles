@@ -13,6 +13,7 @@ Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
+Plug 'natebosch/vim-lsc'
 Plug 'junegunn/vim-easy-align'
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
