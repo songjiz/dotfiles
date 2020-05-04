@@ -792,8 +792,8 @@ let g:lightline = {
       \       ['absolutepath']
       \     ],
       \     'right': [
-      \       ['lscStatus', 'aleStatus'],
-      \       ['lineinfo'],
+      \       ['aleStatus'],
+      \       ['lineinfo', 'lscStatus'],
       \       ['filetype', 'percent'],
       \       ['gitHunks', 'fileencoding'],
       \       ['gitBranch']

@@ -30,25 +30,27 @@ function! lightline#gitHunks() abort
 endfunction
 
 function! lightline#aleStatus() abort
-  let l:indicator_warnings = get(g:, 'lightline#ale#indicator_warnings', 'W:')
-  let l:indicator_errors = get(g:, 'lightline#ale#indicator_errors', 'E:')
-  let l:indicator_ok = get(g:, 'lightline#ale#indicator_ok', 'OK')
-  let l:indicator_linting = get(g:, 'lightline#ale#indicator_linting', 'Linting...')
+  let l:ale_status_indicators = get(g:, 'lightline#ale#status_indicators', {
+          \ 'ok': 'OK',
+          \ 'warning': 'W:',
+          \ 'error': 'E:',
+          \ 'running': '...'
+          \ })
   let l:counts = ale#statusline#Count(bufnr(''))
 
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
 
   if ale#engine#IsCheckingBuffer(bufnr(''))
-    return l:indicator_linting
+    return '[' . l:ale_status_indicators['running'] . ']'
   else
     if l:counts.total == 0
-      return l:indicator_ok
+      return '['. l:ale_status_indicators['ok'] . ']'
     else
       return (
             \ l:all_non_errors == 0 ? '' :
-            \ printf(l:indicator_warnings . '%d', all_non_errors)) .
-            \ (l:all_errors == 0 ? '' : printf(l:indicator_errors . '%d', all_errors)
+            \ printf('[' . l:ale_status_indicators['warning'] . '%d]', all_non_errors)) .
+            \ (l:all_errors == 0 ? '' : printf('[' . l:ale_status_indicators['error'] . '%d]', all_errors)
             \ )
     endif
   endif
