@@ -674,8 +674,9 @@ let g:lsc_hover_popup = v:false
 
 let g:lsc_server_commands = {
       \ 'ruby': 'solargraph stdio',
-      \ 'javascript': 'typescript-language-server --stdio',
-      \ 'css': 'css-languageserver --stdio'
+      \ 'javascript': 'javascript-typescript-stdio',
+      \ 'css': 'css-languageserver --stdio',
+      \ 'rust': 'rls'
       \ }
 
 augroup lsc
