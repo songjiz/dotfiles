@@ -419,12 +419,6 @@ vnoremap gf <C-w>vgf
 nnoremap gF <C-w>vgF
 vnoremap gF <C-w>vgF
 
-" <C-]> Jump to definition in vertical split
-nnoremap <C-]> <C-W>v<C-]>zz
-
-" Select all
-noremap <C-a> ggVG<CR>
-
 " Disable arrow keys
 noremap  <Up>    <NOP>
 noremap  <Down>  <NOP>
