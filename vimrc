@@ -15,7 +15,7 @@ set noshowmode
 set showmatch
 set nocursorline
 set nojoinspaces
-set scrolloff=3
+set scrolloff=5
 
 set signcolumn=yes
 
@@ -102,9 +102,8 @@ set history=1000
 " Completion
 set wildmenu
 set wildmode=list:longest,full
-set pumheight=10
+set pumheight=12
 
-" set dictionary+=~/.vim/dict/words
 set tags=.git/tags,tags
 
 " Ignore Files
@@ -245,8 +244,13 @@ augroup common
   autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
   autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! IndentLinesDisable | endif
 
+  " IndentLine plugin bug???
+  autocmd BufRead,BufEnter,BufNewFile * IndentLinesReset
+
   " Close vim if the only window left open is a NERDTree
   autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+  autocmd FileType * execute 'setlocal dictionary='.expand($HOME.'/.vim/dict/'.&filetype.'.dict')
 augroup END
 " }}}
 
@@ -569,12 +573,12 @@ endif
 " Plugins config {{{
 
 " FZF
-let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --bind ctrl-a:select-all,ctrl-d:deselect-all'
+let $FZF_DEFAULT_OPTS = "--layout=reverse --inline-info --bind ctrl-a:select-all,ctrl-d:deselect-all"
 
 " Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " Command to generate tags file
-let g:fzf_tags_command = 'noglob ctags --extras=+f -R'
+let g:fzf_tags_command = 'noglob ctags -R'
 
 " Extra key bindings
 let g:fzf_action = {
@@ -646,39 +650,6 @@ nnoremap \\ :Grep<Space>
 
 nnoremap <Leader>rt :!ctags --extras=+f -R *<CR><CR>
 
-" vim-lsc
-let g:lsc_enable_diagnostics = v:false
-let g:lsc_auto_map = {
-      \ 'GoToDefinition': '<C-]>',
-      \ 'GoToDefinitionSplit': ['<C-w>]', '<C-w><C-]'],
-      \ 'ShowHover': v:true,
-      \ 'FindReferences': '<C-g>r',
-      \ 'NextReference': '<C-g>n',
-      \ 'PreviousReference': '<C-g>p',
-      \ 'FindImplementations': '<C-g>i',
-      \ 'FindCodeActions': '<C-g>a',
-      \ 'Rename': '<C-g>R',
-      \ 'DocumentSymbol': '<C-g>s',
-      \ 'WorkspaceSymbol': '<C-g>S',
-      \ 'Completion': 'completefunc',
-      \ }
-
-" let g:lsc_preview_split_direction = 'bellow'
-let g:lsc_hover_popup = v:false
-
-let g:lsc_server_commands = {
-      \ 'ruby': 'solargraph stdio',
-      \ 'javascript': 'javascript-typescript-stdio',
-      \ 'css': 'css-languageserver --stdio',
-      \ 'rust': 'rls'
-      \ }
-
-augroup lsc
-  autocmd!
-  " automatically close the documentation window.
-  autocmd CompleteDone * silent! pclose
-augroup END
-
 " sneak
 let g:sneak#lebel = 1
 let g:sneak#s_next = 1
@@ -743,7 +714,6 @@ nmap <silent><Leader>gR <Plug>(git-root)
 let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
-let g:UltiSnipsEnableSnipMate = 0
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = ['ultisnips']
 nnoremap <Leader>es :UltiSnipsEdit<CR>
@@ -777,7 +747,6 @@ let g:lightline = {
       \     'gitBranch': 'lightline#gitBranch',
       \     'gitHunks': 'lightline#gitHunks',
       \     'aleStatus': 'lightline#aleStatus',
-      \     'lscStatus': 'lightline#lscStatus',
       \     'absolutepath': 'lightline#absPath'
       \   },
       \   'active': {
@@ -787,8 +756,7 @@ let g:lightline = {
       \       ['absolutepath']
       \     ],
       \     'right': [
-      \       ['aleStatus'],
-      \       ['lineinfo', 'lscStatus'],
+      \       ['lineinfo', 'aleStatus'],
       \       ['filetype', 'percent'],
       \       ['gitHunks', 'fileencoding'],
       \       ['gitBranch']
@@ -796,8 +764,7 @@ let g:lightline = {
       \   },
       \   'inactive': {
       \     'left': [
-      \       ['filename'],
-      \       ['absolutepath']
+      \       ['filename']
       \     ],
       \     'right': [
       \       ['lineinfo'],
