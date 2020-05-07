@@ -1,0 +1,381 @@
+snippet easc "extend ActiveSupport::Concern" b
+extend ActiveSupport::Concern
+$0
+endsnippet
+
+snippet included "included do ... end" b
+included do
+	$0
+end
+endsnippet
+
+snippet resp "respond_to do |format| ... end" b
+respond_to do |format|
+	$0
+end
+endsnippet
+
+snippet fm "format.xxx" b
+format.${1:html|json|js} { ${0} }
+endsnippet
+
+snippet anaf "accepts_nested_attributes_for" b
+accepts_nested_attributes_for :${1:model}
+endsnippet
+
+snippet bt "belongs_to" b
+belongs_to :${0:model}
+endsnippet
+
+snippet hm "has_many" b
+has_many :${0:models}
+endsnippet
+
+snippet hmd "has_many dependent" b
+has_many :${1:other}s, class_name: '${2:$1}', foreign_key: '${3:$1}_id', dependent: :destroy
+endsnippet
+
+snippet hmt "has_many through" b
+has_many :${1:object}, through: :${0:object}
+endsnippet
+
+snippet habtm "has_and_belongs_to_many" b
+has_and_belongs_to_many :${1:object}, join_table: '${2:table_name}', foreign_key: '${3}_id'
+endsnippet
+
+snippet ho "has_one" b
+has_one :${0:model}
+endsnippet
+
+snippet hod "has_one dependent" b
+has_one :${1:object}, dependent: :${0:destroy}
+endsnippet
+
+snippet fk "foreign_key"
+foreign_key: '${0:model}_id'
+endsnippet
+
+snippet pk "primary_key"
+primary_key: '${0:model}_id'
+endsnippet
+
+snippet ca "class_attribute" b
+class_attribute :${1:attr},
+								${2:instance_accessor: ${3:true},}
+								${4:instance_reader: ${5:true},}
+								${6:instance_writer: ${7:true},}
+								${8:instance_predicate: ${9:true},}
+								${10:default: ${11:nil}}
+endsnippet
+
+# ActiveRecord Callbacks
+snippet bv "before_validation" b
+before_validation :${0:method}
+endsnippet
+
+snippet av "after_validation" b
+after_validation :${0:method}
+endsnippet
+
+snippet bs "before_save" b
+before_save :${0:method}
+endsnippet
+
+snippet ars "around_save" b
+around_save :${0:method}
+endsnippet
+
+snippet bc "before_create" b
+before_create :${0:method}
+endsnippet
+
+snippet arc "around_create" b
+around_create :${0:method}
+endsnippet
+
+snippet ac "after_create" b
+after_create :${0:method}
+endsnippet
+
+snippet as "after_save" b
+after_save :${0:method}
+endsnippet
+
+snippet acm "after_commit" b
+after_commit :${0:method}
+endsnippet
+
+snippet ar "after_rollback" b
+after_rollback :${0:method}
+endsnippet
+
+snippet bu "before_update" b
+before_update :${0:method}
+endsnippet
+
+snippet aru "around_update" b
+around_update :${0:method}
+endsnippet
+
+snippet au "after_update" b
+after_update :${0:method}
+endsnippet
+
+snippet bd "before_destroy" b
+before_destroy :${0:method}
+endsnippet
+
+snippet ard "around_destroy" b
+around_destroy :${0:method}
+endsnippet
+
+snippet ad "after_destroy" b
+after_destroy :${0:method}
+endsnippet
+
+snippet acc "after_create_commit" b
+after_create_commit :${0:method}
+endsnippet
+
+snippet asc "after_save_commit" b
+after_save_commit :${0:method}
+endsnippet
+
+snippet auc "after_update_commit" b
+after_update_commit :${0:method}
+endsnippet
+
+snippet adc "after_destroy_commit" b
+after_destroy_commit :${0:method}
+endsnippet
+
+snippet ai "after_initialize" b
+after_initialize :${0:method}
+endsnippet
+
+snippet af "after_find" b
+after_find :${0:method}
+endsnippet
+
+snippet at "after_touch" b
+after_touch :${0:method}
+endsnippet
+
+# Action Controller Filters
+snippet ara "around_action" b
+around_action :${0:method}
+endsnippet
+
+snippet ba "before_action" b
+before_action :${0:method}
+endsnippet
+
+snippet aa "after_action" b
+after_action :${0:method}
+endsnippet
+
+snippet sara "skip_around_action" b
+skip_around_action :${0:method}
+endsnippet
+
+snippet sba "skip_before_action" b
+skip_before_action :${0:method}
+endsnippet
+
+snippet saa "skip_after_action" b
+skip_after_action :${0:method}
+endsnippet
+
+snippet para "prepend_around_action" b
+prepend_around_action :${0:method}
+endsnippet
+
+snippet pba "prepend_before_action" b
+prepend_before_action :${0:method}
+endsnippet
+
+snippet paa "prepend_after_action" b
+prepend_after_action :${0:method}
+endsnippet
+
+snippet aara "append_around_action" b
+append_around_action :${0:metho}
+endsnippet
+
+snippet aba "append_before_action" b
+append_before_action :${0:method}
+endsnippet
+
+snippet aaa "append_after_action" b
+append_after_action :${0:method}
+endsnippet
+
+# I18n
+snippet i18 "I18n.t"
+I18n.t('${1:type.key}')
+endsnippet
+
+snippet t "I18n.t" b
+I18n.t('${1:type.key}')
+endsnippet
+
+# CRUD
+snippet index "def index ; end" b
+def index
+	@${1:model} = ${2:ModelClass}.all
+
+	respond_to do |format|
+		format.html # index.html.erb
+		format.json { render json: @$1s }
+	end
+end
+endsnippet
+
+snippet show "def show ; end" b
+def show
+	@${1:model} = ${2:ModelClass}.find(params[:id])
+end
+endsnippet
+
+snippet new "def new ; end" b
+def new
+	@${1:model} = ${2:ModelClass}.new
+end
+endsnippet
+
+snippet create "def create ; end" b
+def create
+	@${1:model} = ${2:ModelClass}.new($1_params)
+	respond_to do |format|
+		if @$1.save
+			flash[:notice] = '$2 was successfully created.'
+			format.html { redirect_to(@$1) }
+			format.json { render json: @$1, status: :created, location: @$1 }
+		else
+			format.html { render action: 'new' }
+			format.json { render json: @$1.errors, status: :unprocessable_entity }
+		end
+	end
+end
+endsnippet
+
+snippet edit "def edit ; end" b
+def	edit
+	@${1:model} = ${2:ModelClass}.find(prams[:id])
+end
+endsnippet
+
+snippet update "def update ; end" b
+def update
+	@${1:model} = ${2:ModelClass}.find(params[:id])
+	respond_to do |format|
+		if @$1.update($1_params)
+			flash[:notice] = '$2 was successfully updated.'
+			format.html { redirect_to(@$1) }
+			format.json { head :ok }
+		else
+			format.html { render action: 'edit' }
+			format.json { render json: @$1.errors, status: :unprocessable_entity }
+		end
+	end
+end
+endsnippet
+
+snippet destroy "def destroy ; end" b
+def destroy
+	@${1:model} = ${2:ModelClass}.find(params[:id])
+	@$1.destroy
+
+	respond_to do |format|
+		format.html { redirect_to($1s_url) }
+		format.json { head :ok }
+	end
+end
+endsnippet
+
+snippet crud "All actions" b
+def index
+	@${1:model} = ${2:ModelClass}.all
+
+	respond_to do |format|
+		format.html # index.html.erb
+		format.json { render json: @$1s }
+	end
+end
+
+def show
+	@$1 = $2.find(params[:id])
+end
+
+def new
+	@$1 = $2.new
+end
+
+def create
+	@$1 = $2.new($1_params)
+	respond_to do |format|
+		if @$1.save
+			flash[:notice] = '$2 was successfully created.'
+			format.html { redirect_to(@$1) }
+			format.json { render json: @$1, status: :created, location: @$1 }
+		else
+			format.html { render action: 'new' }
+			format.json { render json: @$1.errors, status: :unprocessable_entity }
+		end
+	end
+end
+
+def	edit
+	@$1 = $2.find(prams[:id])
+end
+
+def update
+	@$1 = $2.find(params[:id])
+	respond_to do |format|
+		if @$1.update($1_params)
+			flash[:notice] = '$2 was successfully updated.'
+			format.html { redirect_to(@$1) }
+			format.json { head :ok }
+		else
+			format.html { render action: 'edit' }
+			format.json { render json: @$1.errors, status: :unprocessable_entity }
+		end
+	end
+end
+
+def destroy
+	@$1 = $2.find(params[:id])
+	@$1.destroy
+
+	respond_to do |format|
+		format.html { redirect_to($1s_url) }
+		format.json { head :ok }
+	end
+end
+endsnippet
+
+# logger
+snippet log "Rails.logger.verb" b
+Rails.logger.${1:debug} ${0}
+endsnippet
+
+snippet debug "logger.debug" b
+logger.debug { '${1:message}' }
+endsnippet
+
+snippet info "logger.info" b
+logger.info { '${1:message}' }
+endsnippet
+
+snippet warn "logger.warn" b
+logger.warn { '${1:message}' }
+endsnippet
+
+snippet fatal "logger.fatal" b
+logger.fatal { '${1:message}' }
+endsnippet
+
+snippet error "logger.error" b
+logger.error { '${1:message}' }
+endsnippet
+

@@ -1,0 +1,96 @@
+snippet func "Function" b
+function! ${1:name}($2) abort
+	$0
+endfunction
+endsnippet
+
+snippet try "try ... catch statement" b
+try
+	${1:${VISUAL}}
+catch ${2}
+	${0}
+endtry
+endsnippet
+
+snippet for "for ... in loop" b
+for ${1} in ${2}
+	${0:${VISUAL}}
+endfor
+endsnippet
+
+snippet forkv "for [key, value] in loop" b
+for [${1},${2}] in items(${3})
+	${0}
+	unlet $1 $2
+endfor
+endsnippet
+
+snippet while "while loop" b
+while ${1}
+	${0:${VISUAL}}
+endw
+endsnippet
+
+snippet if "if statement" b
+if ${1:condition}
+	${0:${VISUAL}}
+endif
+endsnippet
+
+snippet ife "if ... else statement" b
+if ${1}
+	${2:${VISUAL}}
+else
+	${0}
+endif
+endsnippet
+
+snippet aug "augroup ... autocmd block" b
+augroup ${1:AU_NAME}
+	autocmd!
+	autocmd ${2:BufRead,BufNewFile} ${3:*.ext,*.ext3|<buffer[=N]>} ${0}
+augroup END
+endsnippet
+
+snippet au "autocmd" b
+autocmd ${2:BufRead,BufNewFile} ${3:*.ext,*.ext3|<buffer[=N]>} ${0}
+endsnippet
+
+snippet plug "vim-plug add Plugin" b
+Plug '${0}'
+endsnippet
+
+snippet let "let"
+let ${1:variable} = ${0: value}
+endsnippet
+
+snippet set "set"
+set ${1:setting} = ${0:value}
+endsnippet
+
+snippet setl "setl"
+setlocal ${1:setting} = ${0:value}
+endsnippet
+
+snippet exe "execute"
+execute ${1}
+endsnippet
+
+snippet cmd "command!" b
+command! ${1:command_name} call s:$1()
+function! s:$1() abort
+	${2:" code}
+endfunction
+endsnippet
+
+snippet : "key:value"
+'${1:key}': '${0:value}'
+endsnippet
+
+snippet header
+" File: ${1:`!v expand('%:t')`}
+" Author: ${2:`git config --global user.name`}
+" Description: ${0: "Description}
+endsnippet
+
+# vim:ft=snippets:

@@ -55,30 +55,3 @@ function! lightline#aleStatus() abort
     endif
   endif
 endfunction
-
-function! lightline#lscStatus() abort
-  if !has_key(g:lsc_servers_by_filetype, &filetype)
-    return ''
-  endif
-
-  if !exists('*LSCServerStatus')
-    return ''
-  endif
-
-  let l:lsc_status_indicators = get(g:, 'lightline#lsc#status_indicators', {
-        \ 'disabled': 'Disabled',
-        \ 'not_started': 'Not Started',
-        \ 'starting': 'Starting',
-        \ 'running': 'Running',
-        \ 'restarting': 'Restarting',
-        \ 'exiting': 'Exiting',
-        \ 'exited': 'Exited',
-        \ 'unexpected_exit': 'UnExpected Exited',
-        \ 'failed': 'Failed'
-        \ })
-
-  let l:status = LSCServerStatus()
-
-  let l:short_status = has_key(l:lsc_status_indicators, l:status) ? l:lsc_status_indicators[l:status] : '?'
-  return '[' . l:short_status .']'
-endfunction

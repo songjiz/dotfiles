@@ -1,0 +1,48 @@
+snippet react "React functional component" b
+import React, {useState} from "react"
+
+function ${1:`!p snip.rv = snip.basename`}(${2}){
+	return(
+		<div>
+			${3:<p>Body</p>}
+		</div>
+		)
+}
+
+export default $4`!p snip.rv = snip.basename`
+endsnippet
+
+# React Hooks
+snippet useState "useState Hook" b
+const [${1}, set$1`!p snip.rv=t[1].title()`] = useState(${3:"${4}"})
+endsnippet
+
+snippet useEffect "useEffect Hook" b
+useEffect(() => {
+	${1:${0}}
+		}${2})
+endsnippet
+
+snippet useContext "useContext Hook" b
+const ${1:context} = useContext(${2})
+endsnippet
+
+snippet useReducer "useReducer Hook" b
+const [${3:state}, ${4:dispatch}] = useReducer(${5:reducer}, ${2:initial_value})
+endsnippet
+
+snippet useCallback "useCallback(fn, inputs)" b
+const ${1:callback} = useCallback((${2})) => ${3:{
+	${4}
+}}, [${5}]
+endsnippet
+
+snippet useMemo "useMemo(fn, inputs)" b
+const ${1:memorized} = useMemo(() => ${2:{
+	${3}
+}}, [${4}])
+endsnippet
+
+snippet useRef "useRef(defaultValue)" b
+const ${1:ref} = useRef(${2:null})
+endsnippet

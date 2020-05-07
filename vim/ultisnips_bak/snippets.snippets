@@ -1,0 +1,13 @@
+snippet snip "Ultisnips snippet" b
+`!p snip.rv = "snippet"` ${1:Trigger} "${2:Description}" ${3:b}
+${0:${VISUAL}}
+`!p snip.rv = "endsnippet"`
+endsnippet
+
+snippet global "Global snippet" b
+`!p snip.rv = "global"` !p
+${0:${VISUAL}}
+`!p snip.rv = "endglobal"`
+endsnippet
+
+# vim:ft=snippets:
