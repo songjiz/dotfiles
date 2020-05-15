@@ -229,7 +229,7 @@ snippet pry "binding.pry" b
 binding.pry
 endsnippet
 
-snippet lambda "Proc" b
+snippet lambda "lambda" b
 lambda { |${1:args}| ${2} }
 endsnippet
 
@@ -243,6 +243,14 @@ endsnippet
 
 snippet dds "def_delegators" b
 def_delegators :${1:accessor}, :${2:method}
+endsnippet
+
+snippet ivs "instance_variable_set"
+instance_variable_set("@${1:name}", ${0:value})
+endsnippet
+
+snippet ivg "instance_variable_get"
+instance_variable_get("@${1:name}")
 endsnippet
 
 extends rspec
