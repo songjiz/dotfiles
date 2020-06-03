@@ -10,7 +10,6 @@ endif
 call plug#begin('~/.vim/pack')
 Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'dense-analysis/ale'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
@@ -53,7 +52,6 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'glts/vim-textobj-comment'
 
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'arcticicestudio/nord-vim'
 Plug 'songjiz/vim-code-dark'
 call plug#end()
 

@@ -253,4 +253,10 @@ snippet ivg "instance_variable_get"
 instance_variable_get("@${1:name}")
 endsnippet
 
+snippet test "test ... do" b
+test '${1:name}' do
+	${0}
+end
+endsnippet
+
 extends rspec
