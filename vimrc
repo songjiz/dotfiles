@@ -30,6 +30,8 @@ set ttimeoutlen=1
 " Prefer vertical orientation
 set diffopt+=vertical
 
+set switchbuf=useopen
+
 " Auto read file when a file is changed from outside
 set autoread
 " Auto write a file when leaveing a modified buffer
@@ -90,8 +92,10 @@ set matchpairs+=‘:’
 set splitbelow
 set splitright
 
-" Status line
+" Always show tatus line and tab bar
 set laststatus=2
+set showtabline=2
+
 set ruler
 
 " Command line
@@ -103,6 +107,7 @@ set history=1000
 set wildmenu
 set wildmode=list:longest,full
 set pumheight=12
+set completeopt=menu,preview
 
 set tags=.git/tags,tags
 
@@ -209,8 +214,6 @@ let g:PaperColor_Theme_Options = {
       \ }
 let g:one_allow_italics = 1
 colorscheme codedark
-highlight clear SignColumn
-highlight SignColumn ctermbg=NONE guibg=NONE
 " }}}
 
 " Auto Commands {{{
@@ -229,8 +232,8 @@ augroup common
   autocmd InsertEnter * setlocal nolist
   autocmd InsertLeave * setlocal list nopaste
 
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set relativenumber   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set norelativenumber | endif
 
   " Delete trailing white spaces
   autocmd BufWritePre * :%s/\s\+$//e
@@ -249,8 +252,11 @@ augroup common
 
   " Close vim if the only window left open is a NERDTree
   autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
 
-  autocmd FileType * execute 'setlocal dictionary='.expand($HOME.'/.vim/dict/'.&filetype.'.dict')
+augroup colorscheme
+  autocmd!
+  autocmd ColorScheme * highlight clear SignColumn | highlight SignColumn ctermbg=NONE guibg=NONE
 augroup END
 " }}}
 
@@ -292,7 +298,7 @@ nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 " Ctrl-j/k navigation in popups
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Let mark go to column
 nnoremap ' `
@@ -306,7 +312,7 @@ set pastetoggle=<F5>
 
 " Map for Escape key
 imap jj <ESC>
-cmap jj <C-c>
+cmap jj <ESC>
 vmap v  <ESC>
 
 " In terminal mode, <C-w> is leader key
@@ -338,14 +344,9 @@ endif
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 
-" Resize windows using <Ctrl> and h,j,k,l
-nnoremap <silent> <C-h> <C-w><
-nnoremap <silent> <C-l> <C-w>>
-nnoremap <silent> <C-j> <C-W>-
-nnoremap <silent> <C-k> <C-W>+
 " zoom-in/out
 nnoremap <silent>Zi <C-w>_ \| <C-w>\|
-noremap  <silent>Zo <C-w>=
+nnoremap <silent>Zo <C-w>=
 
 " Window split
 nnoremap <silent><Leader>sh :leftabove vnew<CR>
@@ -354,25 +355,10 @@ nnoremap <silent><Leader>sk :leftabove new<CR>
 nnoremap <silent><Leader>sj :rightbelow new<CR>
 
 " Window navigation
-if has('mac')
-  nnoremap <silent>˙ <C-w>h
-  nnoremap <silent>¬ <C-w>l
-  nnoremap <silent>∆ <C-W>j
-  nnoremap <silent>˚ <C-W>k
-  inoremap <silent>˙ <C-\><C-N><C-w>h
-  inoremap <silent>∆ <C-\><C-N><C-w>j
-  inoremap <silent>˚ <C-\><C-N><C-w>k
-  inoremap <silent>¬ <C-\><C-N><C-w>l
-else
-  nnoremap <silent><A-h> <C-w>h
-  nnoremap <silent><A-l> <C-w>l
-  nnoremap <silent><A-j> <C-W>j
-  nnoremap <silent><A-k> <C-W>k
-  inoremap <silent><A-h> <C-\><C-N><C-w>h
-  inoremap <silent><A-j> <C-\><C-N><C-w>j
-  inoremap <silent><A-k> <C-\><C-N><C-w>k
-  inoremap <silent><A-l> <C-\><C-N><C-w>l
-end
+nnoremap <silent><C-h> <C-w>h
+nnoremap <silent><C-l> <C-w>l
+nnoremap <silent><C-j> <C-W>j
+nnoremap <silent><C-k> <C-W>k
 nnoremap <silent><Leader>1 :1wincmd w<CR>
 nnoremap <silent><Leader>2 :2wincmd w<CR>
 nnoremap <silent><Leader>3 :3wincmd w<CR>
@@ -498,7 +484,7 @@ nnoremap <silent> <Leader>ba :1,bd!<CR>
 nnoremap <silent> <Leader>w  :w!<CR>
 nnoremap <silent> <Leader>q  :q!<CR>
 nnoremap <silent> <Leader>x  :x!<CR>
-nnoremap <silent> <Leader>lb :ls<CR>:b<SPACE>
+nnoremap <silent> <Leader>lb :ls<CR>:buffer<SPACE>
 
 " Save file as root.
 cnoremap w!! w !sudo tee % > /dev/null<CR>
@@ -588,9 +574,6 @@ let g:fzf_action = {
       \ 'ctrl-y': { lines -> setreg('*', join(lines, "\n")) }
       \ }
 
-" TODO: (2020-04-29)
-" Status line does not update properly when fzf in popup window.
-" see: https://github.com/itchyny/lightline.vim/issues/449
 let g:fzf_layout = {
       \   'up': '80%',
       \   'window': {
@@ -721,7 +704,7 @@ nnoremap <Leader>es :UltiSnipsEdit<CR>
 " vim-test
 nnoremap <silent> t<C-n> :wa\|:TestNearest<CR>
 nnoremap <silent> t<C-f> :wa\|:TestFile<CR>
-nnoremap <silent> t<C-s> :wa\|:TestSuite<CR>
+nnoremap <silent> t<C-a> :wa\|:TestSuite<CR>
 nnoremap <silent> t<C-l> :wa\|:TestLast<CR>
 nnoremap <silent> t<C-g> :wa\|:TestVisit<CR>
 
@@ -752,8 +735,7 @@ let g:lightline = {
       \   'active': {
       \     'left': [
       \       ['mode', 'paste'],
-      \       ['readonly', 'filename'],
-      \       ['absolutepath']
+      \       ['readonly', 'filename']
       \     ],
       \     'right': [
       \       ['lineinfo', 'aleStatus'],
