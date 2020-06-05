@@ -217,7 +217,8 @@ let g:one_allow_italics = 1
 augroup colorscheme
   autocmd!
   autocmd ColorScheme * highlight clear SignColumn
-        \ | highlight SignColumn ctermbg=NONE guibg=NONE
+        \ | highlight SignColumn guibg=NONE ctermbg=NONE
+        \ | highlight VertSplit guibg=NONE ctermbg=NONE
 augroup END
 
 colorscheme jellybeans
