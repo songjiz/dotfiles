@@ -20,7 +20,6 @@ Plug 'psliwka/vim-smoothie'
 Plug 'rizzatti/dash.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'preservim/nerdtree'
-Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -53,6 +52,7 @@ Plug 'glts/vim-textobj-comment'
 
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'songjiz/vim-code-dark'
+Plug 'nanotech/jellybeans.vim'
 call plug#end()
 
 " Enable built-in matchit plugin

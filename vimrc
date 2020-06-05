@@ -213,7 +213,14 @@ let g:PaperColor_Theme_Options = {
       \   }
       \ }
 let g:one_allow_italics = 1
-colorscheme codedark
+
+augroup colorscheme
+  autocmd!
+  autocmd ColorScheme * highlight clear SignColumn
+        \ | highlight SignColumn ctermbg=NONE guibg=NONE
+augroup END
+
+colorscheme jellybeans
 " }}}
 
 " Auto Commands {{{
@@ -254,10 +261,6 @@ augroup common
   autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
-augroup colorscheme
-  autocmd!
-  autocmd ColorScheme * highlight clear SignColumn | highlight SignColumn ctermbg=NONE guibg=NONE
-augroup END
 " }}}
 
 " Key Mappings {{{
@@ -371,10 +374,6 @@ nnoremap <silent><Leader>9 :9wincmd w<CR>
 
 " qq to record, Q to replay
 nnoremap Q @q
-nmap <Leader>ms plug(macro-save)
-nmap <Leader>ml plug(macro-load)
-nmap <Leader>mr plug(macro-load)
-nmap <Leader>md plug(macro-del)
 
 " Center screen after navigation
 nnoremap }   }zz
@@ -632,10 +631,6 @@ vnoremap \v ""y:Grep <C-R>=escape(@", '/\')<CR><CR>
 nnoremap \\ :Grep<Space>
 
 nnoremap <Leader>rt :!ctags --extras=+f -R *<CR><CR>
-
-" sneak
-let g:sneak#lebel = 1
-let g:sneak#s_next = 1
 
 " dash
 nmap <silent><Leader>ds <Plug>DashSearch
