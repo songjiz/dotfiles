@@ -109,7 +109,7 @@ set wildmode=list:longest,full
 set pumheight=12
 set completeopt=menu,preview
 
-set tags=.git/tags,tags
+set tags=.git/.tags;,./.tags;,.tags
 
 " Ignore Files
 set wildignore+=.DS_Store,*.keep,*.swp,*.bak,*.log
@@ -379,10 +379,6 @@ nnoremap Q @q
 " Center screen after navigation
 nnoremap }   }zz
 nnoremap {   {zz
-nnoremap ]]  ]]zz
-nnoremap [[  [[zz
-nnoremap []  []zz
-nnoremap ][  ][zz
 
 " Recenter when jump back
 nnoremap <C-o> <C-o>zz
@@ -409,11 +405,13 @@ vnoremap gf <C-w>vgf
 nnoremap gF <C-w>vgF
 vnoremap gF <C-w>vgF
 
+" Windows resize
+noremap  <Up>    :resize +2<CR>
+noremap  <Down>  :resize -2<CR>
+noremap  <Left>  :vertical resize +2<CR>
+noremap  <Right> :vertical resize -2<CR>
+
 " Disable arrow keys
-noremap  <Up>    <NOP>
-noremap  <Down>  <NOP>
-noremap  <Left>  <NOP>
-noremap  <Right> <NOP>
 inoremap <UP>    <NOP>
 inoremap <DOWN>  <NOP>
 inoremap <LEFT>  <NOP>
