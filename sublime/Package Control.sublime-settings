@@ -6,13 +6,11 @@
 	"installed_packages":
 	[
 		"AlignTab",
-		"Babel",
 		"BracketHighlighter",
 		"Case Conversion",
 		"Color Highlight",
 		"DocBlockr",
 		"Emmet",
-		"Nord",
 		"Package Control",
 		"Ruby Slim",
 		"SCSS",

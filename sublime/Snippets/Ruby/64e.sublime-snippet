@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>64e</tabTrigger>
+  <description>Base64 encode</description>
+  <content><![CDATA[Base64.encode64($1)$0]]></content>
+  <scope>source.ruby</scope>
+</snippet>
