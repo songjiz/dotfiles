@@ -164,7 +164,7 @@ if !has('unix')
 endif
 
 " Folding
-set nofoldenable
+set foldenable
 set foldnestmax=3
 
 " Wrap
@@ -219,9 +219,21 @@ augroup colorscheme
   autocmd ColorScheme * highlight clear SignColumn
         \ | highlight SignColumn guibg=NONE ctermbg=NONE
         \ | highlight VertSplit guibg=NONE ctermbg=NONE
+        \ | highlight LineNr guibg=NONE ctermbg=NONE
+        \ | highlight GruvboxGreenSign guibg=NONE ctermbg=NONE
+        \ | highlight GruvboxAquaSign guibg=NONE ctermbg=NONE
+        \ | highlight GruvboxBlueSign guibg=NONE ctermbg=NONE
+        \ | highlight GruvboxOrangeSign guibg=NONE ctermbg=NONE
+        \ | highlight GruvboxRedSign guibg=NONE ctermbg=NONE
+        \ | highlight GruvboxYellowSign guibg=NONE ctermbg=NONE
+        \ | highlight GitGutterAdd guibg=NONE ctermbg=NONE
+        \ | highlight GitGutterChange guibg=NONE ctermbg=NONE
+        \ | highlight GitGutterDelete guibg=NONE ctermbg=NONE
+        \ | highlight GitGutterChangeDelete guibg=NONE ctermbg=NONE
 augroup END
 
-colorscheme jellybeans
+let g:gruvbox_contrast_dark = 'dark'
+colorscheme gruvbox
 " }}}
 
 " Auto Commands {{{
@@ -482,7 +494,7 @@ nnoremap <silent> <Leader>ba :1,bd!<CR>
 nnoremap <silent> <Leader>w  :w!<CR>
 nnoremap <silent> <Leader>q  :q!<CR>
 nnoremap <silent> <Leader>x  :x!<CR>
-nnoremap <silent> <Leader>lb :ls<CR>:buffer<SPACE>
+" nnoremap <silent> <Leader>lb :ls<CR>:buffer<SPACE>
 
 " Save file as root.
 cnoremap w!! w !sudo tee % > /dev/null<CR>
@@ -497,7 +509,6 @@ command! Qa qall
 command! QA qall
 command! E e
 command! W w
-command! Wq wq
 
 " folding
 noremap <silent>z0 :set foldlevel=0<CR>
@@ -521,6 +532,10 @@ silent! call mkdir(iconv(expand(g:sessions_dir), &encoding, &termencoding), 'p')
 nmap <silent><Leader>n <Plug>(rename-buf)
 
 command! FuckGFW :tabe ~/.config/clash/config.yaml
+
+" Copy file name
+nnoremap <silent><Leader>cf :let @*=expand("%:t")<CR>
+nnoremap <silent><Leader>cp :let @*=expand("%:p")<CR>
 
 " Quickfix / Localtion List
 nnoremap <silent> <Leader>cw :cwindow<CR>
@@ -556,7 +571,7 @@ endif
 
 " Plugins config {{{
 
-" FZF
+" FZF {{{
 let $FZF_DEFAULT_OPTS = "--layout=reverse --inline-info --bind ctrl-a:select-all,ctrl-d:deselect-all"
 
 " Jump to the existing window if possible
@@ -614,7 +629,6 @@ nnoremap <silent> <Leader>fg   :GFiles?<CR>
 nnoremap <silent> <Leader>fC   :Commits<CR>
 nnoremap <silent> <Leader>fc   :BCommits<CR>
 nnoremap <silent> <Leader>fb   :Buffers<CR>
-nnoremap <silent> <Leader>bb   :Buffers<CR>
 nnoremap <silent> <Leader>f;   :Commands<CR>
 nnoremap <silent> <Leader>fk   :Helptags<CR>
 nnoremap <silent> <Leader>fh   :History<CR>
@@ -624,27 +638,30 @@ nnoremap <silent> <Leader>fT   :Tags<CR>
 nnoremap <silent> <Leader>ft   :BTags<CR>
 nnoremap <silent> <Leader>fm   :Maps<CR>
 nnoremap <silent> <Leader>f'   :Marks<CR>
+nnoremap <silent> <Leader>fm   :Marks<CR>
 nnoremap <silent> <Leader>fw   :Windows<CR>
 nnoremap \w :Grep <C-r><C-w><CR>
 vnoremap \v ""y:Grep <C-R>=escape(@", '/\')<CR><CR>
 nnoremap \\ :Grep<Space>
+" }}}
 
-nnoremap <Leader>rt :!ctags --extras=+f -R *<CR><CR>
-
-" dash
+" dash {{{
 nmap <silent><Leader>ds <Plug>DashSearch
+" }}}
 
-" open-browser
+" open-browser {{{
 nmap <silent>gx <Plug>(openbrowser-smart-search)
 vmap <silent>gx <Plug>(openbrowser-smart-search)
+" }}}
 
-" NERDTree
+" NERDTree {{{
 let g:loaded_netrwPlugin = 1
 let NERDTreeMinimalUI = 1
 nnoremap <silent> <Leader>nn :NERDTreeToggle<CR>
 nnoremap <silent> - :NERDTreeFind<CR>
+" }}}
 
-" ale
+" ale {{{
 let g:ale_set_signs = 0
 let g:ale_sign_column_always = 0
 let g:ale_sign_error = ''
@@ -659,8 +676,9 @@ let g:ale_linters_explicit = 1
 let g:ale_lint_delay = 1000
 nmap <silent><Leader>aF <Plug>(ale_previous_wrap)
 nmap <silent><Leader>af <Plug>(ale_next_wrap)
+" }}}
 
-" Gitgutter
+" Gitgutter {{{
 let g:gitgutter_enabled = 1
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_signs = 1
@@ -668,8 +686,9 @@ nnoremap <silent><Leader>gg :GitGutterToggle<CR>
 nnoremap <silent><Leader>hs :GitGutterStageHunk<CR>
 nnoremap <silent><Leader>hu :GitGutterUndoHunk<CR>
 nnoremap <silent><Leader>hp :GitGutterPreviewHunk<CR>
+" }}}
 
-" fugitive
+" fugitive {{{
 nnoremap <silent><Leader>gs :Gstatus<CR>
 nnoremap <silent><Leader>gb :Gblame<CR>
 nnoremap <silent><Leader>gB :GBrowse<CR>
@@ -686,36 +705,41 @@ nnoremap <silent><Leader>ge :Gedit<CR>
 nnoremap <silent><Leader>gcl :Gclog<CR>
 nnoremap <silent><Leader>gll :Gllog<CR>
 nmap <silent><Leader>gR <Plug>(git-root)
+" }}}
 
-" UltiSnips
+" UltiSnips {{{
 let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories = ['ultisnips']
 nnoremap <Leader>es :UltiSnipsEdit<CR>
+" }}}
 
-" vim-test
+" vim-test {{{
 nnoremap <silent> t<C-n> :wa\|:TestNearest<CR>
 nnoremap <silent> t<C-f> :wa\|:TestFile<CR>
 nnoremap <silent> t<C-a> :wa\|:TestSuite<CR>
 nnoremap <silent> t<C-l> :wa\|:TestLast<CR>
 nnoremap <silent> t<C-g> :wa\|:TestVisit<CR>
+" }}}
 
-" easy-align
+" easy-align {{{
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-nmap <Leader>ga <Plug>(LiveEasyAlign)
-xmap <Leader>ga <Plug>(LiveEasyAlign)
+nmap gA <Plug>(LiveEasyAlign)
+xmap gA <Plug>(LiveEasyAlign)
+" }}}
 
-" indentLine
+" indentLine {{{
 let g:indentLine_enabled = 1
 let g:indentLine_char = '⋮'
 nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
+" }}}
 
-" lightline
+" lightline {{{
 let g:lightline = {
-      \   'colorscheme': 'aurora',
+      \   'colorscheme': 'gruvbox',
       \   'component': {
       \     'percent': '%p%%',
       \     'lineinfo': '%l,%-v',
@@ -749,6 +773,9 @@ let g:lightline = {
       \     ]
       \   }
       \ }
+" }}}
+
+" }}}
 
 " Local config {{{
 if filereadable(expand('~/.vimrc.local'))

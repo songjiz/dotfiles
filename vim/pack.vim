@@ -51,8 +51,8 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'glts/vim-textobj-comment'
 
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'songjiz/vim-code-dark'
 Plug 'nanotech/jellybeans.vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 " Enable built-in matchit plugin
