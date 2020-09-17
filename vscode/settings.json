@@ -24,5 +24,20 @@
   "workbench.editor.limit.value": 6,
   "window.autoDetectColorScheme": true,
   "window.nativeTabs": true,
-  "workbench.preferredLightColorTheme": "Default Dark+"
+  "workbench.preferredLightColorTheme": "GitHub Light",
+  "files.exclude": {
+    "**/tags": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "extensions.ignoreRecommendations": true,
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.preferredDarkColorTheme": "GitHub Light",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

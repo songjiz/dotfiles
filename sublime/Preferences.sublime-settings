@@ -1,6 +1,6 @@
 {
 	"always_show_minimap_viewport": true,
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+	"color_scheme": "Packages/User/Gruvbox Dark Hard.sublime-color-scheme",
 	"disable_custom_title_bar": true,
 	"ensure_newline_at_eof_on_save": false,
 	"font_face": "Monaco",
