@@ -164,7 +164,7 @@ if !has('unix')
 endif
 
 " Folding
-set foldenable
+set nofoldenable
 set foldnestmax=3
 
 " Wrap
@@ -232,7 +232,7 @@ augroup colorscheme
         \ | highlight GitGutterChangeDelete guibg=NONE ctermbg=NONE
 augroup END
 
-let g:gruvbox_contrast_dark = 'dark'
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 " }}}
 
@@ -310,6 +310,10 @@ nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 " ƒ <A-f>
 " ∫ <A-b>
 " “ <A-]>
+
+" Fast move current line down/up in edit mode
+" inoremap <C-k> <ESC>:move .-2<CR>==gi
+" inoremap <C-j> <ESC>:move .+1<CR>==gi
 
 " Ctrl-j/k navigation in popups
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
@@ -549,6 +553,10 @@ nnoremap [q :cprev<CR>zz
 nnoremap ]l :lnext<CR>zz
 nnoremap [l :lprev<CR>zz
 
+" }}}
+
+" Plugins config {{{
+
 "               ┌ filename
 "               │  ┌ line nr
 "               │  │  ┌ column nr
@@ -567,9 +575,6 @@ else
   let &grepprg="grep -n --with-filename -I -R "
 endif
 
-" }}}
-
-" Plugins config {{{
 
 " FZF {{{
 let $FZF_DEFAULT_OPTS = "--layout=reverse --inline-info --bind ctrl-a:select-all,ctrl-d:deselect-all"
@@ -578,6 +583,8 @@ let $FZF_DEFAULT_OPTS = "--layout=reverse --inline-info --bind ctrl-a:select-all
 let g:fzf_buffers_jump = 1
 " Command to generate tags file
 let g:fzf_tags_command = 'noglob ctags -R'
+" Disable preview window
+let g:fzf_preview_window = ''
 
 " Extra key bindings
 let g:fzf_action = {
