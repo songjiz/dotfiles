@@ -198,8 +198,6 @@ else
   set t_Co=256
 endif
 
-set background=dark
-
 let g:PaperColor_Theme_Options = {
       \   'theme': {
       \     'default.light': {
@@ -219,8 +217,10 @@ let g:gruvbox_contrast_dark = 'hard'
 
 augroup colorscheme
   autocmd!
-  autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
-        \ | highlight SignColumn guibg=NONE ctermbg=NONE
+  if !has("gui_running")
+    autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
+  end
+  autocmd ColorScheme * highlight SignColumn guibg=NONE ctermbg=NONE
         \ | highlight VertSplit guibg=NONE ctermbg=NONE
         \ | highlight LineNr guibg=NONE ctermbg=NONE
         \ | highlight GruvboxGreenSign guibg=NONE ctermbg=NONE

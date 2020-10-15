@@ -310,7 +310,23 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("rubyInterpolationDelimiter", s:orange, "", "")
 	call <SID>X("rubyConditional", s:purple, "", "")
 	call <SID>X("rubyRepeat", s:purple, "", "")
+  call <SID>X("rubyControl", s:purple, "", "")
+	call <SID>X("rubyException", s:purple, "", "")
 
+  " Crystal Highlighting
+	call <SID>X("crystalSymbol", s:green, "", "")
+	call <SID>X("crystalConstant", s:yellow, "", "")
+	call <SID>X("crystalAccess", s:yellow, "", "")
+	call <SID>X("crystalAttribute", s:blue, "", "")
+	call <SID>X("crystalInclude", s:blue, "", "")
+	call <SID>X("crystalLocalVariableOrMethod", s:orange, "", "")
+	call <SID>X("crystalCurlyBlock", s:orange, "", "")
+	call <SID>X("crystalStringDelimiter", s:green, "", "")
+	call <SID>X("crystalInterpolationDelimiter", s:orange, "", "")
+	call <SID>X("crystalConditional", s:purple, "", "")
+	call <SID>X("crystalRepeat", s:purple, "", "")
+	call <SID>X("crystalControl", s:purple, "", "")
+	call <SID>X("crystalException", s:purple, "", "")
 	" Python Highlighting
 	call <SID>X("pythonInclude", s:purple, "", "")
 	call <SID>X("pythonStatement", s:purple, "", "")
@@ -327,10 +343,17 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("goDeclaration", s:blue, "", "")
 	call <SID>X("goConstants", s:yellow, "", "")
 	call <SID>X("goBuiltins", s:orange, "", "")
+  call <SID>X("goLabel", s:purple, "", "")
+  call <SID>X("goTodo", s:yellow, "", "")
+  call <SID>X("goDeclType", s:blue, "", "")
 
 	" CoffeeScript Highlighting
 	call <SID>X("coffeeKeyword", s:purple, "", "")
 	call <SID>X("coffeeConditional", s:purple, "", "")
+  call <SID>X("coffeeRepeat", s:purple, "", "")
+	call <SID>X("coffeeConditional", s:purple, "", "")
+	call <SID>X("coffeeKeyword", s:purple, "", "")
+	call <SID>X("coffeeObject", s:yellow, "", "")
 
 	" JavaScript Highlighting
 	call <SID>X("javaScriptBraces", s:foreground, "", "")
@@ -339,6 +362,14 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("javaScriptRepeat", s:purple, "", "")
 	call <SID>X("javaScriptNumber", s:orange, "", "")
 	call <SID>X("javaScriptMember", s:orange, "", "")
+  call <SID>X("javaScriptTemplateVar", s:red, "", "")
+	call <SID>X("javaScriptTemplateDelim", s:orange, "", "")
+	call <SID>X("javaScriptTemplateString", s:green, "", "")
+	call <SID>X("javascriptNull", s:orange, "", "")
+	call <SID>X("javascriptGlobal", s:blue, "", "")
+	call <SID>X("javascriptStatement", s:red, "", "")
+  call <SID>X("javaScriptReserved", s:purple, "", "")
+  call <SID>X("javaScriptLabel", s:purple, "", "")
 
 	" HTML Highlighting
 	call <SID>X("htmlTag", s:red, "", "")
