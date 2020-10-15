@@ -8,3 +8,4 @@
 :backtrace: false
 :install: "--no-ri --no-rodc -V"
 :update: "--no-ri --no-rdoc -V"
+http_proxy: http://127.0.0.1:7890

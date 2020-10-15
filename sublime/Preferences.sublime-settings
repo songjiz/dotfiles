@@ -1,10 +1,10 @@
 {
 	"always_show_minimap_viewport": true,
-	"color_scheme": "Packages/User/Gruvbox Dark Hard.sublime-color-scheme",
-	"disable_custom_title_bar": true,
+	"color_scheme": "Packages/User/base16-tomorrow-night.tmTheme",
 	"ensure_newline_at_eof_on_save": false,
 	"font_face": "Monaco",
 	"font_size": 18,
+	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
 		"Vintage"
@@ -14,6 +14,7 @@
 		80,
 		120
 	],
+	"show_encoding": true,
 	"tab_size": 2,
 	"theme": "Default.sublime-theme",
 	"translate_tabs_to_spaces": true,

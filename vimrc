@@ -197,7 +197,9 @@ else
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set t_Co=256
 endif
+
 set background=dark
+
 let g:PaperColor_Theme_Options = {
       \   'theme': {
       \     'default.light': {
@@ -213,10 +215,11 @@ let g:PaperColor_Theme_Options = {
       \   }
       \ }
 let g:one_allow_italics = 1
+let g:gruvbox_contrast_dark = 'hard'
 
 augroup colorscheme
   autocmd!
-  autocmd ColorScheme * highlight clear SignColumn
+  autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
         \ | highlight SignColumn guibg=NONE ctermbg=NONE
         \ | highlight VertSplit guibg=NONE ctermbg=NONE
         \ | highlight LineNr guibg=NONE ctermbg=NONE
@@ -232,8 +235,7 @@ augroup colorscheme
         \ | highlight GitGutterChangeDelete guibg=NONE ctermbg=NONE
 augroup END
 
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
+colorscheme Tomorrow-Night
 " }}}
 
 " Auto Commands {{{
@@ -272,6 +274,8 @@ augroup common
 
   " Close vim if the only window left open is a NERDTree
   autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 augroup END
 
 " }}}
@@ -318,7 +322,10 @@ nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 " Ctrl-j/k navigation in popups
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
+" Tab completion
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Let mark go to column
 nnoremap ' `
@@ -668,6 +675,10 @@ nnoremap <silent> <Leader>nn :NERDTreeToggle<CR>
 nnoremap <silent> - :NERDTreeFind<CR>
 " }}}
 
+" vim-lsp {{{
+let g:lsp_signs_enabled = 0
+" }}}
+
 " ale {{{
 let g:ale_set_signs = 0
 let g:ale_sign_column_always = 0
@@ -746,10 +757,9 @@ nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
 
 " lightline {{{
 let g:lightline = {
-      \   'colorscheme': 'gruvbox',
       \   'component': {
       \     'percent': '%p%%',
-      \     'lineinfo': '%l,%-v',
+      \     'lineinfo': '%l,%-v',
       \   },
       \   'component_function': {
       \     'gitBranch': 'lightline#gitBranch',

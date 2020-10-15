@@ -14,5 +14,6 @@
   { "keys": ["alt+k", "alt+w"], "command": "convert_to_separate_words"},
   { "keys": ["alt+k", "alt+/"], "command": "convert_to_slash"},
   { "keys": ["alt+k", "alt+b"], "command": "convert_to_back_slash"},
+  { "keys": ["alt+k", "alt+t"], "command": "title_case"},
   { "keys": ["alt+k", "alt+shift+c"], "command": "toggle_snake_camel_pascal"}
 ]
