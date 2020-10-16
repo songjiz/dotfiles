@@ -235,7 +235,7 @@ augroup colorscheme
         \ | highlight GitGutterChangeDelete guibg=NONE ctermbg=NONE
 augroup END
 
-colorscheme Tomorrow-Night
+colorscheme Tomorrow
 " }}}
 
 " Auto Commands {{{
