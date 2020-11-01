@@ -235,7 +235,7 @@ augroup colorscheme
         \ | highlight GitGutterChangeDelete guibg=NONE ctermbg=NONE
 augroup END
 
-colorscheme Tomorrow
+colorscheme Tomorrow-Night-Bright
 " }}}
 
 " Auto Commands {{{
@@ -345,17 +345,20 @@ vmap v  <ESC>
 " In terminal mode, <C-w> is leader key
 tnoremap jj <C-\><C-n>
 tnoremap <C-[> <C-\><C-n>
-cmap vt vertical terminal
 if has('mac')
   tnoremap ∆ <C-w>j
   tnoremap ˚ <C-w>k
   tnoremap ˙ <C-w>h
   tnoremap ¬ <C-w>l
+  nnoremap ÷ :terminal ++close<CR>
+  nnoremap « :vertical terminal ++close<CR>
 else
   tnoremap <A-j> <C-w>j
   tnoremap <A-k> <C-w>k
   tnoremap <A-h> <C-w>h
   tnoremap <A-l> <C-w>l
+  nnoremap <A-/> :terminal ++close<CR>
+  nnoremap <A-\> :vertical terminal ++close<CR>
 endif
 
 " Insert mode navigation like terminal
@@ -382,10 +385,10 @@ nnoremap <silent><Leader>sk :leftabove new<CR>
 nnoremap <silent><Leader>sj :rightbelow new<CR>
 
 " Window navigation
-nnoremap <silent><C-h> <C-w>h
-nnoremap <silent><C-l> <C-w>l
-nnoremap <silent><C-j> <C-W>j
-nnoremap <silent><C-k> <C-W>k
+" nnoremap <silent><C-h> <C-w>h
+" nnoremap <silent><C-l> <C-w>l
+" nnoremap <silent><C-j> <C-W>j
+" nnoremap <silent><C-k> <C-W>k
 nnoremap <silent><Leader>1 :1wincmd w<CR>
 nnoremap <silent><Leader>2 :2wincmd w<CR>
 nnoremap <silent><Leader>3 :3wincmd w<CR>

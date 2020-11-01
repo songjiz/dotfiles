@@ -1,5 +1,5 @@
 [user]
-	name = zsj
+	name = songji
 	email = lekyzsj@gmail.com
 [alias]
 	a   = add
@@ -66,8 +66,13 @@
 [http "https://github.com"]
 	proxy = socks5h://127.0.0.1:7891
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesFile = ~/.gitignore
+	attributesFile = ~/.gitattributes
 [github]
 	user = songjiz
 [pull]
 	rebase = false
+[commit]
+	gpgsign = false
+[gpg]
+	program = /usr/local/bin/gpg

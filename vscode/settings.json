@@ -39,5 +39,5 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Tomorrow"
+  "workbench.colorTheme": "Tomorrow Night Bright"
 }
