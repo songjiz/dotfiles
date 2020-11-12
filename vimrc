@@ -13,7 +13,7 @@ set shortmess+=I
 syntax on
 set noshowmode
 set showmatch
-set nocursorline
+set cursorline
 set nojoinspaces
 set scrolloff=5
 
@@ -235,7 +235,7 @@ augroup colorscheme
         \ | highlight GitGutterChangeDelete guibg=NONE ctermbg=NONE
 augroup END
 
-colorscheme Tomorrow-Night-Bright
+colorscheme IntelliJ-Light
 " }}}
 
 " Auto Commands {{{
