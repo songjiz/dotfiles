@@ -1,4 +1,3 @@
-set background=light
 highlight clear
 syntax reset
 
@@ -41,8 +40,8 @@ let s:green3    = { 'gui': "#bee6be", 'cterm': '151'  }
 let s:yellow0   = { 'gui': "#c18401", 'cterm': '136'  }
 let s:yellow1   = { 'gui': "#FFE959", 'cterm': '220'  }
 let s:yellow3   = { 'gui': "#fcfaec", 'cterm': '230'  }
-let s:blue0     = { 'gui': "#0033b3", 'cterm': '25'   }
-let s:blue1     = { 'gui': "#0000ff", 'cterm': '21'   }
+let s:blue0     = { 'gui': "#0033b3", 'cterm': '12'   }
+let s:blue1     = { 'gui': "#0000ff", 'cterm': '20'   }
 let s:blue2     = { 'gui': "#1750eb", 'cterm': '27'   }
 let s:blue3     = { 'gui': "#008dde", 'cterm': '32'   }
 let s:blue4     = { 'gui': "#a6d2ff", 'cterm': '68'   }
@@ -89,7 +88,7 @@ call s:h("SpellLocal", s:yellow0, s:color0, s:undercurl)
 call s:h("SpellRare", s:yellow0, s:color0, s:none)
 call s:h("Visual", s:color0, s:blue4, s:none)
 call s:h("VisualNOS", s:color0, s:blue4, s:none)
-call s:h("ColorColumn", s:color0, s:yellow3, s:none)
+call s:h("ColorColumn", s:color0, s:gray3, s:none)
 call s:h("Conceal", s:fg, s:color0, s:none)
 call s:h("Directory", s:black0, s:color0, s:none)
 call s:h("VertSplit", s:gray2, s:bg, s:none)
@@ -149,12 +148,35 @@ call s:h('vimEnvvar', s:purple0, s:color0, s:none)
 " Ruby
 call s:h("rubyControl", s:blue0, s:color0, s:none)
 call s:h("rubyResponse", s:fg, s:color0, s:none)
+call s:h("rubyEnglishBooleanOperator", s:blue0, s:color0, s:none)
+call s:h('rubyClassNameTag', s:purple0, s:color0, s:none)
+call s:h('rubyClassName', s:purple0, s:color0, s:none)
+call s:h('rubyModuleName', s:purple0, s:color0, s:none)
+call s:h('rubyConstant', s:purple0, s:color0, s:none)
 
 " Javascript
 call s:h("javaScriptIdentifier", s:blue0, s:color0, s:none)
 call s:h("javaScriptFunction", s:blue0, s:color0, s:none)
 call s:h("javaScriptBraces", s:fg, s:color0, s:none)
 call s:h("javaScriptOperator", s:blue0, s:color0, s:none)
+call s:h("jsStorageClass", s:blue0, s:color0, s:none)
+call s:h("jsVariableDef", s:purple0, s:color0, s:none)
+call s:h("jsFuncArgs", s:fg, s:color0, s:none)
+call s:h("jsFunction", s:blue0, s:color0, s:none)
+call s:h("jsFuncName", s:fg, s:color0, s:none)
+call s:h("jsFuncCall", s:fg, s:color0, s:none)
+call s:h("jsArrowFunction", s:fg, s:color0, s:none)
+call s:h("jsThis", s:blue0, s:color0, s:none)
+call s:h("jsDecorator", s:yellow0, s:color0, s:none)
+call s:h("jsDecoratorFunction", s:yellow0, s:color0, s:none)
+call s:h("jsClassKeyword", s:blue0, s:color0, s:none)
+call s:h("jsModuleKeyword", s:blue0, s:color0, s:none)
+call s:h("jsExtendsKeyword", s:blue0, s:color0, s:none)
+call s:h("jsOperatorKeyword", s:blue0, s:color0, s:none)
+call s:h("jsExportDefault", s:blue0, s:color0, s:none)
+call s:h("jsClassDefinition", s:fg, s:color0, s:none)
+call s:h("jsGlobalNodeObjects", s:blue0, s:color0, s:none)
+call s:h("jsGlobalObjects", s:purple0, s:color0, s:none)
 
 " XML
 call s:h("xmlProcessingDelim", s:fg, s:color0, s:none)
