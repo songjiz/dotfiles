@@ -1,8 +1,8 @@
+" Auto install vim-plug
 if !filereadable(expand('~/.vim/autoload/plug.vim'))
   echo "Installing vim-plug ..."
   echo ""
-  silent !\curl -fLo ~/.vim/autoload/plug.vim
-          \ --create-dirs
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
           \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd! VimEnter * PlugInstall --sync | quit | source $MYVIMRC
 endif
@@ -67,3 +67,9 @@ if has('packages') && !has('nvim')
 else
   silent! runtime macros/matchit.vim
 endif
+
+" Auto install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|    PlugInstall --sync | quit
+  \| endif

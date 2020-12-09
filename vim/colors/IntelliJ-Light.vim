@@ -153,6 +153,7 @@ call s:h('rubyClassNameTag', s:purple0, s:color0, s:none)
 call s:h('rubyClassName', s:purple0, s:color0, s:none)
 call s:h('rubyModuleName', s:purple0, s:color0, s:none)
 call s:h('rubyConstant', s:purple0, s:color0, s:none)
+call s:h('rubyCapitalizedMethod', s:purple0, s:color0, s:none)
 
 " Javascript
 call s:h("javaScriptIdentifier", s:blue0, s:color0, s:none)
