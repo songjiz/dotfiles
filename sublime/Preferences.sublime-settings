@@ -1,14 +1,16 @@
 {
 	"always_show_minimap_viewport": true,
-	"color_scheme": "Packages/User/Tomorrow Night - Bright.sublime-color-scheme",
+	"color_scheme": "Packages/Visual Studio Code Plus Scheme/Dark+.sublime-color-scheme",
 	"ensure_newline_at_eof_on_save": false,
-	"font_face": "Monaco",
-	"font_size": 18,
+	"font_face": "Monaco Nerd Font Mono",
+	"font_size": 14,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
 	"rulers":
 	[
 		80,

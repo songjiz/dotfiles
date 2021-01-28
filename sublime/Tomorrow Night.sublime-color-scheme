@@ -43,6 +43,26 @@
     "rules":
     [
         {
+            "background": "#000000",
+            "scope": "col_gutter",
+            "foreground": "#ffffff"
+        },
+        {
+            "background": "#FDADBDFF",
+            "scope": "col_FDADBDFF",
+            "foreground": "#464646FF"
+        },
+        {
+            "background": "#B7A6FFFF",
+            "scope": "col_B7A6FFFF",
+            "foreground": "#353535FF"
+        },
+        {
+            "background": "#8FCDF3FF",
+            "scope": "col_8FCDF3FF",
+            "foreground": "#3E3E3EFF"
+        },
+        {
             "name": "Comment",
             "scope": "comment, string.quoted.double.block.python",
             "foreground": "var(grey8)"
