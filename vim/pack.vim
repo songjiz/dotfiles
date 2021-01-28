@@ -59,6 +59,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
+Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 " Enable built-in matchit plugin

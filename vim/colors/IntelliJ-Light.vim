@@ -265,7 +265,7 @@ call s:h('gitcommitBlank', s:red1, s:color0, s:none)
 call s:h('gitcommitSummary', s:fg, s:color0, s:none)
 
 " GitGutter
-call s:h("GitGutterAdd", s:green3, s:gutter_bg, s:none)
+call s:h("GitGutterAdd", s:green2, s:gutter_bg, s:none)
 call s:h("GitGutterDelete", s:gray3, s:gutter_bg, s:none)
 call s:h("GitGutterChangeDelete", s:gray3, s:gutter_bg, s:none)
 call s:h("GitGutterChange", s:blue6, s:gutter_bg, s:none)

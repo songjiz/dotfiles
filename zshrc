@@ -162,6 +162,9 @@ function ssh-key() {
 }
 
 alias rce="rails credentials:edit"
+alias rced="rails credentials:edit --environment development"
+alias rcep="rails credentials:edit --environment production"
+alias rcet="rails credentials:edit --environment test"
 function rdmd() {
   rake db:migrate:down VERSION=$@
 }
@@ -169,5 +172,9 @@ function rdmu() {
   rake db:migrate:up VERSION=$@
 }
 alias hosts="sudo vim /etc/hosts"
+alias dev="cd ~/Developer"
+alias racknerd="ssh -i ~/.ssh/racknerd root@108.166.218.82"
+alias lightsail="ssh -i ~/.ssh/aws-lightsail ubuntu@13.112.46.153"
+alias cloudcone="ssh -i ~/.ssh/cloudcone root@199.255.98.187"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
