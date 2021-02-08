@@ -1,8 +1,8 @@
 highlight clear
 syntax reset
 
-let g:colors_name = "IntelliJ-Light"
-let colors_name="IntelliJ-Light"
+let g:colors_name = "IntelliJ_Light"
+let colors_name="IntelliJ_Light"
 
 " Sets the highlighting for the given group
 fun! s:h(group, fg, bg, attr)
