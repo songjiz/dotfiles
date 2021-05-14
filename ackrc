@@ -1,0 +1,8 @@
+# Ignore
+--ignore-dir=.idea
+--ignore-dir=node_modules
+--ignore-dir=tmp
+--ignore-dir=log
+--ignore-dir=dist
+--ignore-file=is:.tags
+--ignore-file=is:tags

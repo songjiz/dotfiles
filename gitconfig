@@ -1,0 +1,78 @@
+[user]
+	name = songji
+	email = lekyzsj@gmail.com
+[alias]
+	a   = add
+	aa  = add --all
+
+	b   = branch
+	ba  = branch - a
+	bd  = branch -d
+	bD  = branch -D
+	bl  = blame -bw
+	br  = branch --remote
+	bu  = branch -u
+
+	c   = commit -v
+	ca  = commit -v -a
+	cb  = checkout -b
+	ci  = commit --interactive
+	cl  = clone --recursive
+	cm  = commit -v -m
+	co  = checkout
+	cp  = cherry-pick
+	cpa = cherry-pick --abort
+	cpc = cherry-pick --continue
+
+	d   = diff
+	dt  = diff-tree --no-commit-id --name-only -r
+	dw  = diff --word-diff
+
+	f   = fetch
+	fa  = fetch --all --prune
+	fo  = fetch origin
+
+	i   = init
+
+	l   = pull
+
+	m   = merge
+	mom = merge origin/master
+
+	p   = push
+	po  = push origin
+
+	ra  = remote add
+	rb  = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbs = rebase --skip
+	rh  = reset HEAD
+	rhh = reset HEAD --hard
+
+	s   = status
+	sb  = status -sb
+	stc = stash clear
+	std = statsh drop
+	stl = statsh list
+	stp = statsh pop
+	sts = statsh save
+	si  = submodule init
+	su  = submodule update
+
+	t   = tag
+	ts  = tag -s
+
+[http "https://github.com"]
+	proxy = socks5h://127.0.0.1:7891
+[core]
+	excludesFile = ~/.gitignore
+	attributesFile = ~/.gitattributes
+[github]
+	user = songjiz
+[pull]
+	rebase = false
+[commit]
+	gpgsign = false
+[gpg]
+	program = /usr/local/bin/gpg

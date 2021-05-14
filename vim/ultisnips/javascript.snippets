@@ -1,0 +1,239 @@
+extends 30secondsofcode
+
+snippet proto "prototype"
+${1:class_name}.prototype.${2:method_name} = function(${3}) {
+	${0:${VISUAL}}
+};
+endsnippet
+
+# ES2015
+snippet try "try { ... } catch(e) { ... }"
+try {
+	$0
+} catch (${1:e}) {
+	${2:/* handle error */}
+}
+endsnippet
+
+snippet tryf "try { ... } catch(e) { ... } finally { ... }"
+try {
+	${0:${VISUAL}}
+} catch (${1:e}) {
+	${2:/* handle error */}
+} finally {
+	${3:/* be executed regardless of the try / catch result*/}
+}
+endsnippet
+
+snippet throw "throw error"
+throw new Error('${1:error message}')
+endsnippet
+
+snippet "c(onst)?" "const" br
+const ${1} = ${2:'$1'};
+endsnippet
+
+snippet "l(et)?" "let" br
+let ${1} = ${2:'$1'};
+endsnippet
+
+snippet "i(mport|mp|m)?" "import" br
+import ${1} from '${2:./}${3:$1}';
+endsnippet
+
+snippet "e(xport|xp|x)?" "export" br
+export ${1:default };
+endsnippet
+
+snippet rt "return"
+return ${0:result;}
+endsnippet
+
+snippet "\.(map|filter|forEach|reduce)" "Array method with an arrow function" r
+.`!p snip.rv = match.group(1)`(${1:(c, i)} => {
+  return $2;
+});
+endsnippet
+
+snippet "\.(map|filter|forEach|reduce)=" "Array method with an arrow function inline" rA
+.`!p snip.rv = match.group(1)`(${1:(c, i)} => $2);
+endsnippet
+
+snippet get "Get Elements"
+getElement${1/(T)|(C)|.*/(?1:s)(?2:s)/}By${1:T}${1/(T)|(I)|(C).*/(?1:agName)(?2:d)(?3:lassName)/}('$2')
+endsnippet
+
+snippet qs "querySelector"
+${1:document}.querySelector('${0:CSS selector}')
+endsnippet
+
+snippet qsa "querySelectorAll"
+${1:document}.querySelectorAll('${0:CSS selector}')
+endsnippet
+
+snippet : "Object key: value"
+${1:key}: ${2:"${3:value}"}${4:, }
+endsnippet
+
+snippet :f "Object method"
+${1:method_name}: function (${2:attribute}) {
+	${0:${VISUAL}}
+},
+endsnippet
+
+snippet fun "function" b
+function ${1:name}(${2:argument}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet as "async" b
+async ${0:${VISUAL}}
+endsnippet
+
+snippet aw "await" b
+await ${0:${VISUAL}}
+endsnippet
+
+snippet asf "async function"
+async function ${1:function_name}(${2}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet anf "Anonymous function" w
+function(${1}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet vaf "Anonymous Function assigned to variable"
+var ${1:function_name} = function(${2}) {
+	${0:${VISUAL}}
+};
+endsnippet
+
+snippet vf "Function assigned to variable"
+var ${1:function_name} = function $1(${2}) {
+	${0:${VISUAL}}
+};
+endsnippet
+
+snippet (f "Immediate function"
+(function(${1}) {
+	${0:${VISUAL}}
+}(${2}));
+endsnippet
+
+snippet ;fe "Minify safe iife"
+;(function(${1}) {
+	${0:${VISUAL}}
+}(${2}))
+endsnippet
+
+snippet if "if (condition) { ... }"
+if (${1:true}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet ife "if (condition) { ... } else { ... }" b
+if (${1:true}) {
+	${2}
+} else {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet ? "tertiary conditional"
+${1:/* condition */} ? ${2:/* if true */} : ${0:/* if false */}
+endsnippet
+
+snippet switch
+switch (${1:expression}) {
+	case '${3:case}':
+		${4}
+		break;
+		${0}
+	default:
+		${2}
+}
+endsnippet
+
+snippet case "case 'xyz': ... break"
+case '${VISUAL}${1:case}':
+	${VISUAL}$0
+	break
+endsnippet
+
+snippet for "for (...) {...}"
+for (var ${1:i} = 0, ${2:len} = ${3:Things.length}; $1 < $2; $1++) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fori "for in loop"
+for (var ${1:prop} in ${2:object}) {
+	${0:$2[$1]}
+}
+endsnippet
+
+snippet while "while (condition) { ... }"
+while (${1:/* condition */}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet do "do { ... } while (condition)"
+do {
+	${VISUAL}$0
+} while(${1:/* condition */})
+endsnippet
+
+snippet has "hasOwnProperty"
+hasOwnProperty(${0})
+endsnippet
+
+snippet us
+'use strict';
+endsnippet
+
+snippet de "debugger"
+debugger;
+endsnippet
+
+snippet cl "console.log"
+console.log(${0});
+endsnippet
+
+snippet cd "console.debug"
+console.debug(${0});
+endsnippet
+
+snippet ce "console.error"
+console.error(${0});
+endsnippet
+
+snippet cw "console.warn"
+console.warn(${0});
+endsnippet
+
+snippet ci "console.info"
+console.info(${0});
+endsnippet
+
+snippet ct "console.trace"
+console.trace(${0:label});
+endsnippet
+
+snippet ca "console.assert"
+console.assert(${1:expression}, ${0:obj});
+endsnippet
+
+snippet timeout "setTimeout"
+setTimeout(function () {${0}}${2}, ${1:10});
+endsnippet
+
+snippet interval "setInterval"
+setInterval(function () {${0}}${2}, ${1:10});
+endsnippet

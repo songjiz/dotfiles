@@ -1,0 +1,121 @@
+snippet pry "binding.pry" b
+- binding.pry
+endsnippet
+
+snippet if "if statement" b
+- if ${1:condition}
+	${0:${VISUAL}}
+endsnippet
+
+snippet else "else statement" b
+- else
+	${0:${VISUAL}}
+endsnippet
+
+snippet ife "if else statement" b
+- if ${1:condition}
+	$2
+- else
+	$0
+endsnippet
+
+snippet each "Enumerable.each do ..." b
+- ${1:enumerable}.each do |${2}|
+	$0
+endsnippet
+
+snippet rp "render partial" b
+= render partial: '${0:path}'
+endsnippet
+
+snippet rpl "render partial with locals" b
+= render partial: '${1:path}', locals: { ${2:key}: ${3:value}$0 }
+endsnippet
+
+snippet rf "render file" b
+= render file: '${1:file}'$0
+endsnippet
+
+snippet yield "yield content block symbol" b
+= yield :${1:content_block_symbol}
+endsnippet
+
+snippet cf "content_for" b
+- content_for :${1:head} do
+	$0
+endsnippet
+
+snippet ff "form_for" b
+= form_for @${1:model} do |f|
+	$0
+endsnippet
+
+snippet fw "form_with" b
+= form_with @${1:model}, remote: ${2:true} do |f|
+	$0
+endsnippet
+
+snippet fi "f.input" b
+= ${1:f}.input :${0:attribute}
+endsnippet
+
+snippet fta "f.text_area" b
+= ${1:f}.text_area :${0:attribute}
+endsnippet
+
+snippet fcb "f.check_box" b
+= ${1:f}.check_box :${0:attribute}
+endsnippet
+
+snippet ffile "f.file_field" b
+= ${1:f}.file_field :${0:attribute}
+endsnippet
+
+snippet fhide "f.hidden_field" b
+= ${1:f}.hidden_field :${0:attribute}
+endsnippet
+
+snippet fl "f.label" b
+= ${1:f}.label :${0:attribute}
+endsnippet
+
+snippet fp "f.password_field" b
+= ${1:f}.password_field :${0:attribute}
+endsnippet
+
+snippet frb "f.radio_button" b
+= ${1:f}.radio_button :${0:attribute}
+endsnippet
+
+snippet fs "f.submit" b
+= ${1:f}.submit '${0:submit}'
+endsnippet
+
+snippet fields "fields_for" b
+= fields_for :${1:model}, @$1 do |${2:f}|
+	$0
+endsnippet
+
+snippet i18n "I18n.t" b
+I18n.t('${1:type.key}')
+endsnippet
+
+snippet it "image_tag" b
+= image_tag "${1}"${0}
+endsnippet
+
+snippet jit "javascript_include_tag" b
+= javascript_include_tag '${1:application}', cache: ${0:true}
+endsnippet
+
+snippet jpt "javascript_pack_tag" b
+= javascript_pack_tag '${1:application}'
+endsnippet
+
+snippet slt "stylesheet_link_tag" b
+= stylesheet_link_tag '${1:application}', cache: ${0:true}
+endsnippet
+
+snippet lt "link_to" b
+= link_to '${1:name}', ${0:path}
+endsnippet

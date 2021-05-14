@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>forwardable</tabTrigger>
+  <description> Extend Forwardable </description>
+  <content><![CDATA[extend Forwardable]]></content>
+  <scope>source.ruby</scope>
+</snippet>

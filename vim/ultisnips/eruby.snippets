@@ -1,0 +1,160 @@
+extends html
+
+snippet - "<% ${1} %>"
+<% ${1} %>
+endsnippet
+
+snippet -- "<%- ${1} %>"
+<%- ${1} %>
+endsnippet
+
+snippet # "<%# ${1} %>"
+<%# ${1} %>
+endsnippet
+
+snippet % "<% $0 %>"
+<% $0 %>
+endsnippet
+
+snippet = "<% $0 %>"
+<%= $0 %>
+endsnippet
+
+snippet if "if statement"
+<% if ${1:condition} %>
+	${0:${VISUAL}}
+<% end %>
+endsnippet
+
+snippet else "else statement"
+<% else %>
+	${0:${VISUAL}}
+endsnippet
+
+snippet eif "elsif statement"
+<% elsif %>
+	${0:${VISUAL}}
+endsnippet
+
+snippet ife "if else statement"
+<% if ${1:condition} %>
+	$2
+<% else %>
+	$0
+<% end %>
+endsnippet
+
+snippet end "<% end %>"
+<% end %>$0
+endsnippet
+
+snippet each "<% Enumerable.each do ... end%>"
+<% ${1:Enumerable}.each do |${2}| %>
+	$0
+<% end %>
+endsnippet
+
+# Rails
+snippet rp "render partial"
+<%= render partial: '${0:path}' %>
+endsnippet
+
+snippet rpl "render partial"
+<%= render partial: '${1:path}', locals: { ${2:name}: ${3:value}$0 } %>
+endsnippet
+
+snippet rt "render template"
+<%= render template: "${1:file}"${0} %>
+endsnippet
+
+snippet rf "render file"
+<%= render file: "${1:file}"${0} %>
+endsnippet
+
+snippet yield "yield"
+<%= yield :${1:content_block_symbol} %>
+endsnippet
+
+snippet cf "content_for"
+<% content_for :${1:head} do %>
+	${0}
+<% end %>
+endsnippet
+
+snippet ff
+<%= form_for @${1:model} do |f| %>
+	${0}
+<% end %>
+endsnippet
+
+snippet fw
+<%= form_with @${1:model}, remote: true do |f| %>
+	${0}
+<% end %>
+endsnippet
+
+snippet fi "f.input"
+<%= ${1:f}.text_field :${0:attribute} %>
+endsnippet
+
+snippet fta "f.text_area"
+<%= ${1:f}.text_area :${0:attribute} %>
+endsnippet
+
+snippet fcb "f.check_box"
+<%= ${1:f}.check_box :${0:attribute} %>
+endsnippet
+
+snippet ffile "f.file_field"
+<%= ${1:f}.file_field :${0:attribute} %>
+endsnippet
+
+snippet fhide "f.hidden_field"
+<%= ${1:f}.hidden_field :${0:attribute} %>
+endsnippet
+
+snippet fl "f.label"
+<%= ${1:f}.label :${0:attribute} %>
+endsnippet
+
+snippet fp "f.password_field"
+<%= ${1:f}.password_field :${0:password} %>
+endsnippet
+
+snippet frb "f.radio_button"
+<%= ${1:f}.radio_button :${0:attribute} %>
+endsnippet
+
+snippet fs "f.submit"
+<%= ${1:f}.submit '${0:submit}' %>
+endsnippet
+
+snippet fields "fields_for"
+<%= fields_for :${1:model}, @$1 do |${2:f}| %>
+	${0}
+<% end %>
+endsnippet
+
+snippet i18n "I18n.t()"
+	I18n.t('${1:type.key}')
+endsnippet
+
+snippet it "image_tag"
+<%= image_tag '${1}'${0} %>
+endsnippet
+
+snippet jit "javascript_include_tag"
+<%= javascript_include_tag '${0::application}' %>
+endsnippet
+
+snippet jpt "javascript_pack_tag" b
+<%= javascript_pack_tag '${1:application}' %>
+endsnippet
+
+snippet slt "stylesheet_link_tag"
+<%= stylesheet_link_tag '${1::application}', cache: ${0:true} %>
+endsnippet
+
+snippet lt "link_to"
+<%= link_to '${1:name}', ${0:dest} %>
+endsnippet

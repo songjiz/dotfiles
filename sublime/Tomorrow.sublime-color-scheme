@@ -1,0 +1,279 @@
+{
+    "name": "Tomorrow",
+    "author": "Chris Kempson",
+    "variables":
+    {
+        "blue": "#3e999f",
+        "blue2": "#4271ae",
+        "grey": "#666969",
+        "grey2": "#aeafad",
+        "grey3": "#4d4d4c",
+        "grey4": "#999999",
+        "grey5": "#d1d1d1",
+        "grey6": "#d6d6d6",
+        "orange": "#f5871f",
+        "orange2": "#c99e00",
+        "purple": "#8959a8",
+        "red": "#c82829",
+        "white": "#ffffff",
+        "white2": "#efefef",
+        "yellow": "#718c00"
+    },
+    "globals":
+    {
+        "foreground": "var(grey3)",
+        "background": "var(white)",
+        "caret": "var(grey2)",
+        "invisibles": "var(grey5)",
+        "line_highlight": "var(white2)",
+        "selection": "var(grey6)"
+    },
+    "rules":
+    [
+        {
+            "foreground": "#2E2E2EFF",
+            "scope": "col_EE82EEFF",
+            "background": "#EE82EEFF"
+        },
+        {
+            "foreground": "#0E0E0EFF",
+            "scope": "col_FF6347FF",
+            "background": "#FF6347FF"
+        },
+        {
+            "foreground": "#A5A5A5FF",
+            "scope": "col_4B0082FF",
+            "background": "#4B0082FF"
+        },
+        {
+            "foreground": "#FFFFFFFF",
+            "scope": "col_D2691EFF",
+            "background": "#D2691EFF"
+        },
+        {
+            "foreground": "#616161FF",
+            "scope": "col_FFFF00FF",
+            "background": "#FFFF00FF"
+        },
+        {
+            "foreground": "#F1F1F1FF",
+            "scope": "col_808000FF",
+            "background": "#808000FF"
+        },
+        {
+            "foreground": "#D4D4D4FF",
+            "scope": "col_DC143CFF",
+            "background": "#DC143CFF"
+        },
+        {
+            "foreground": "#222222FF",
+            "scope": "col_FA8072FF",
+            "background": "#FA8072FF"
+        },
+        {
+            "foreground": "#4A4A4AFF",
+            "scope": "col_FFD700FF",
+            "background": "#FFD700FF"
+        },
+        {
+            "foreground": "#B4B4B4FF",
+            "scope": "col_800080FF",
+            "background": "#800080FF"
+        },
+        {
+            "foreground": "#9D9D9DFF",
+            "scope": "col_0000FFFF",
+            "background": "#0000FFFF"
+        },
+        {
+            "foreground": "#7B7B7BFF",
+            "scope": "col_FFFAFAFF",
+            "background": "#FFFAFAFF"
+        },
+        {
+            "foreground": "#CBCBCBFF",
+            "scope": "col_008000FF",
+            "background": "#008000FF"
+        },
+        {
+            "foreground": "#CECECEFF",
+            "scope": "col_A52A2AFF",
+            "background": "#A52A2AFF"
+        },
+        {
+            "foreground": "#404040FF",
+            "scope": "col_C0C0C0FF",
+            "background": "#C0C0C0FF"
+        },
+        {
+            "foreground": "#1F1F1FFF",
+            "scope": "col_FF7F50FF",
+            "background": "#FF7F50FF"
+        },
+        {
+            "foreground": "#545454FF",
+            "scope": "col_FFC0CBFF",
+            "background": "#FFC0CBFF"
+        },
+        {
+            "foreground": "#1B1B1BFF",
+            "scope": "col_DA70D6FF",
+            "background": "#DA70D6FF"
+        },
+        {
+            "foreground": "#8E8E8EFF",
+            "scope": "col_000080FF",
+            "background": "#000080FF"
+        },
+        {
+            "foreground": "#2D2D2DFF",
+            "scope": "col_FFA500FF",
+            "background": "#FFA500FF"
+        },
+        {
+            "foreground": "#000000FF",
+            "scope": "col_808080FF",
+            "background": "#808080FF"
+        },
+        {
+            "foreground": "#808080FF",
+            "scope": "col_000000FF",
+            "background": "#000000FF"
+        },
+        {
+            "foreground": "#7E7E7EFF",
+            "scope": "col_FEFEFEFF",
+            "background": "#FEFEFEFF"
+        },
+        {
+            "foreground": "#F6F6F6FF",
+            "scope": "col_F44336FF",
+            "background": "#F44336FF"
+        },
+        {
+            "foreground": "#343434FF",
+            "scope": "col_7DDD72FF",
+            "background": "#7DDD72FF"
+        },
+        {
+            "foreground": "#222222FF",
+            "scope": "col_EC932FFF",
+            "background": "#EC932FFF"
+        },
+        {
+            "foreground": "#383838FF",
+            "scope": "col_7ECAFCFF",
+            "background": "#7ECAFCFF"
+        },
+        {
+            "foreground": "#FDFDFDFF",
+            "scope": "col_1F9FC8FF",
+            "background": "#1F9FC8FF"
+        },
+        {
+            "foreground": "#3E3E3EFF",
+            "scope": "col_FFB15EFF",
+            "background": "#FFB15EFF"
+        },
+        {
+            "foreground": "#ffffff",
+            "scope": "col_gutter",
+            "background": "#000000"
+        },
+        {
+            "foreground": "#CCCCCCFF",
+            "scope": "col_FF0000FF",
+            "background": "#FF0000FF"
+        },
+        {
+            "name": "Comment",
+            "scope": "comment, string.quoted.double.block.python",
+            "foreground": "var(grey4)"
+        },
+        {
+            "name": "Foreground",
+            "scope": "keyword.operator.class, constant.other, source.php.embedded.line",
+            "foreground": "var(grey)"
+        },
+        {
+            "name": "Variable, String Link, Regular Expression, Tag Name",
+            "scope": "variable, support.other.variable, string.other.link, string.regexp, entity.name.tag, entity.other.attribute-name, meta.tag, declaration.tag",
+            "foreground": "var(red)"
+        },
+        {
+            "name": "Number, Constant, Function Argument, Tag Attribute, Embedded",
+            "scope": "constant.numeric, constant.language, support.constant, constant.character, variable.parameter, punctuation.section.embedded, keyword.other.unit",
+            "foreground": "var(orange)"
+        },
+        {
+            "name": "Class, Support",
+            "scope": "entity.name.class, entity.name.type.class, support.type, support.class",
+            "foreground": "var(orange2)"
+        },
+        {
+            "name": "String, Symbols, Inherited Class, Markup Heading",
+            "scope": "string, constant.other.symbol, entity.other.inherited-class, markup.heading",
+            "foreground": "var(yellow)"
+        },
+        {
+            "name": "Operator, Misc",
+            "scope": "keyword.operator, constant.other.color",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Function, Special Method, Block Level",
+            "scope": "entity.name.function, meta.function-call, support.function, keyword.other.special-method, meta.block-level",
+            "foreground": "var(blue2)"
+        },
+        {
+            "name": "Keyword, Storage",
+            "scope": "keyword, storage, storage.type",
+            "foreground": "var(purple)"
+        },
+        {
+            "name": "Invalid",
+            "scope": "invalid",
+            "foreground": "var(white)",
+            "background": "var(red)"
+        },
+        {
+            "name": "Separator",
+            "scope": "meta.separator",
+            "foreground": "var(white)",
+            "background": "var(blue2)"
+        },
+        {
+            "name": "Deprecated",
+            "scope": "invalid.deprecated",
+            "foreground": "var(white)",
+            "background": "var(purple)"
+        },
+        {
+            "name": "Diff foreground",
+            "scope": "markup.inserted.diff, markup.deleted.diff, meta.diff.header.to-file, meta.diff.header.from-file",
+            "foreground": "var(white)"
+        },
+        {
+            "name": "Diff insertion",
+            "scope": "markup.inserted.diff, meta.diff.header.to-file",
+            "background": "var(yellow)"
+        },
+        {
+            "name": "Diff deletion",
+            "scope": "markup.deleted.diff, meta.diff.header.from-file",
+            "background": "var(red)"
+        },
+        {
+            "name": "Diff header",
+            "scope": "meta.diff.header.from-file, meta.diff.header.to-file",
+            "foreground": "var(white)",
+            "background": "var(blue2)"
+        },
+        {
+            "name": "Diff range",
+            "scope": "meta.diff.range",
+            "foreground": "var(blue)",
+            "font_style": "italic"
+        }
+    ]
+}

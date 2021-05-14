@@ -1,0 +1,56 @@
+snippet ctx "context" b
+context "${1:context}" do
+	$0
+end
+endsnippet
+
+snippet con "context" b
+context "${1:context}" do
+	$0
+end
+endsnippet
+
+snippet bef "before" b
+before(:${1:each}) do
+	$0
+end
+endsnippet
+
+snippet aft "after"
+after(${1::each}) do
+	$0
+end
+endsnippet
+
+snippet let "let" b
+let(:${1:symbol}) { $2 }
+endsnippet
+
+snippet letb "let block" b
+let :${1:symbol} do
+	$2
+end
+$0
+endsnippet
+
+snippet subj "subject"
+subject { $1 }
+endsnippet
+
+snippet tw "twice" w
+twice
+endsnippet
+
+snippet exp "expect to"
+expect do
+	$1
+end.to ${2:change {${3:subject}}.${4:from($5).to($6)}}
+endsnippet
+
+snippet rspec "RSpec spec"
+require 'spec_helper'
+
+describe ${1:Subject} do
+
+end
+endsnippet

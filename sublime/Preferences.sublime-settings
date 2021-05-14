@@ -1,0 +1,26 @@
+{
+	"always_show_minimap_viewport": true,
+	"color_scheme": "Packages/User/Tokyo-Night.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"font_face": "Monaco",
+	"font_size": 13,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"rulers":
+	[
+		80,
+		120
+	],
+	"show_encoding": true,
+	"show_git_status": false,
+	"tab_size": 2,
+	"theme": "Default.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_automatic_white_space": true
+}

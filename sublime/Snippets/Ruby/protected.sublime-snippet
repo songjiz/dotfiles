@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>prot</tabTrigger>
+  <description> protected </description>
+  <content><![CDATA[protected
+  $0]]></content>
+  <scope>source.ruby</scope>
+</snippet>

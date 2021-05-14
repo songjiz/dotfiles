@@ -1,0 +1,21 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AlignTab",
+		"Better CoffeeScript",
+		"BracketHighlighter",
+		"Case Conversion",
+		"Color Highlight",
+		"DocBlockr",
+		"Emmet",
+		"Package Control",
+		"Ruby Slim",
+		"SCSS",
+		"SideBarEnhancements",
+		"Visual Studio Code Plus Scheme"
+	]
+}

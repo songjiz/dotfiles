@@ -1,0 +1,262 @@
+# Global functions
+
+global !p
+
+def write_instance_vars(arglist, snip):
+  args = str(arglist).split(',')
+  for arg in args:
+    name = arg.strip().replace(':', ' ').split(' ', 1)[0]
+    if name:
+      snip += '  @{} = {}'.format(name, name)
+    else:
+     snip += ''
+
+endglobal
+
+# Snippets
+
+snippet "^#!" "#!/usr/bin/env ruby" r
+#!/usr/bin/env ruby
+$0
+endsnippet
+
+snippet frozen "# frozen_string_literal: true"
+# frozen_string_literal: true
+$0
+endsnippet
+
+snippet enc "# encoding"
+# encoding: utf-8
+$0
+endsnippet
+
+snippet utf8 "encoding: utf-8"
+# encoding: utf-8
+$0
+endsnippet
+
+snippet req "require"
+require '${1:lib}'
+endsnippet
+
+snippet reqr "require_relative"
+require_relative '${1:lib}'
+endsnippet
+
+snippet include "include <Module>"
+include ${0:Module}
+endsnippet
+
+snippet inc "include <Module>"
+include ${0:Module}
+endsnippet
+
+snippet ext "extend <Module>"
+extend ${0:Module}
+endsnippet
+
+snippet prep "prepend <Module>"
+prepend ${0:Module}
+endsnippet
+
+snippet fw "extend Forwardable"
+extend Forwardable
+$0
+endsnippet
+
+snippet mod "module"
+module ${1:module_name}
+	$0
+end
+endsnippet
+
+snippet class "class <class_name> def initialize ... end end"
+class ${1:class_name}
+	def initialize(${2:*args})
+		$0
+	end
+end
+endsnippet
+
+snippet rw "attr_accessor"
+attr_accessor $0
+endsnippet
+
+snippet r "attr_reader"
+attr_reader $0
+endsnippet
+
+snippet w "attr_writer"
+attr_writer $0
+endsnippet
+
+snippet alias "alias new old"
+alias ${1:new} ${2:existing}
+$0
+endsnippet
+
+snippet am "alias_method" b
+alias_method :${1:new_name}, :${2:old_name}
+$0
+endsnippet
+
+snippet ?: "Ternary Operator"
+${1:condition} ? ${2:true} : ${3:false} $0
+endsnippet
+
+snippet def "define method"
+def ${1:method_name}
+	${0}
+end
+endsnippet
+
+snippet defi "def initialize ..."
+def initialize($1)`!p write_instance_vars(t[1],snip)`$0
+end
+endsnippet
+
+snippet defr "def <name> ... rescue ..."
+def ${1:function_name}${2:(${3:*args})}
+	$4
+rescue
+	$0
+end
+endsnippet
+
+snippet deft "define test method"
+def test_${1:case_name}
+	${0}
+end
+endsnippet
+
+snippet begin "begin ... rescue ... end"
+begin
+	$0
+rescue ${1:Exception} => ${2:e}
+end
+endsnippet
+
+snippet rescue
+rescue => e
+	puts e.message
+	puts e.backtrace.inspect
+	${0:# Rescue}
+endsnippet
+
+snippet priv "private " m
+private
+
+$0
+endsnippet
+
+snippet if "if ... end"
+if ${1:condition}
+	$0
+end
+endsnippet
+
+snippet ife "if ... else ... end"
+if ${1:true}
+	$2
+else
+	$3
+end
+$0
+endsnippet
+
+snippet eif "elsif"
+elsif ${1:condition}
+		${0:${VISUAL}}
+endsnippet
+
+snippet unless
+unless ${1:condition}
+	${0:${VISUAL}}
+end
+endsnippet
+
+snippet while "while <expression> ... end"
+while ${1:expression}
+	$0
+end
+endsnippet
+
+snippet until "until <expression> ... end"
+until ${1:expression}
+	$0
+end
+endsnippet
+
+snippet 'case' "case <variable> when <expression> ... end" r
+case ${1:variable}
+when ${2:expression}
+	$0
+end
+endsnippet
+
+snippet when "when <expression>"
+when ${1:expression}
+	$0
+endsnippet
+
+snippet prot "protected" m
+protected
+
+$0
+endsnippet
+
+snippet error "Define Custom Error"
+class ${1:ErrorName} < ${2:StandardError}
+	$3
+end
+endsnippet
+
+snippet enum "include Enumerable"
+include Enumerable
+
+def each(&block)
+	$0
+end
+endsnippet
+
+snippet ###
+=begin
+	$0
+=end
+endsnippet
+
+snippet pry "binding.pry" b
+binding.pry
+endsnippet
+
+snippet lambda "lambda" b
+lambda { |${1:args}| ${2} }
+endsnippet
+
+snippet fw "extend Forwardable" b
+extend Forwardable
+endsnippet
+
+snippet dd "def_delegator" b
+def_delegator :${1:accessor}, :${2:method}
+endsnippet
+
+snippet dds "def_delegators" b
+def_delegators :${1:accessor}, :${2:method}
+endsnippet
+
+snippet ivs "instance_variable_set"
+instance_variable_set("@${1:name}", ${0:value})
+endsnippet
+
+snippet ivg "instance_variable_get"
+instance_variable_get("@${1:name}")
+endsnippet
+
+snippet test "test ... do" b
+test '${1:name}' do
+	${0}
+end
+endsnippet
+
+extends rspec

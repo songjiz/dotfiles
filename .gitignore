@@ -1,0 +1,21 @@
+.DS_Store
+.keep
+tags
+tags.*
+*.swp
+tmp/
+# vim
+plug.vim.old
+.fzf/
+plugged/
+pack/
+.netrwhist
+cache/
+
+# sublime
+*.crt
+*.cache
+*.chback
+Package Control.*
+!Package Control.sublime-settings
+

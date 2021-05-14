@@ -1,0 +1,26 @@
+
+# Datetime
+
+snippet date "YYYY-MM-DD" w
+`!v strftime("%Y-%m-%d")`
+endsnippet
+
+snippet diso "ISO format datetime" w
+`!v strftime("%Y-%m-%d %H:%M:%S%z")`
+endsnippet
+
+snippet time "hh:mm" w
+`!v strftime("%H:%M")`
+endsnippet
+
+snippet datetime "YYYY-MM-DD hh:mm:ss" w
+`!v strftime("%Y-%m-%d %H:%M:%S")`
+endsnippet
+
+snippet todo "TODO" b
+TODO: (`!v strftime("%Y-%m-%d")`) ${1}
+endsnippet
+
+snippet fix "FIXME" b
+FIXME: ${1}
+endsnippet

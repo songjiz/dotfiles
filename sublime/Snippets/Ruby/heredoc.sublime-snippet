@@ -1,0 +1,8 @@
+<snippet>
+  <tabTrigger>heredoc</tabTrigger>
+  <description> Heredoc </description>
+  <content><![CDATA[<<-${1:RUBY}
+$SELECTION$0
+$1]]></content>
+  <scope>source.ruby</scope>
+</snippet>
