@@ -80,23 +80,6 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
-export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
-export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
-
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
-export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
-export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl/lib"
-
-export LDFLAGS="-L/usr/local/opt/opencc/lib"
-export CPPFLAGS="-I/usr/local/opt/opencc/include"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8

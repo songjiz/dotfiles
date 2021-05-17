@@ -51,7 +51,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'glts/vim-textobj-comment'
 Plug 'tomasiser/vim-code-dark'
 Plug 'sainnhe/gruvbox-material'
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'songjiz/tokyonight-vim'
 call plug#end()
 
 " Enable built-in matchit plugin

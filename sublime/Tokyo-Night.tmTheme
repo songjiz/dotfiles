@@ -1322,6 +1322,28 @@
 				<string>#7aa2f7</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>scope</key>
+			<string>col_gutter</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#000000</string>
+				<key>foreground</key>
+				<string>#ffffff</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>col_11990077</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#11990077</string>
+				<key>foreground</key>
+				<string>#BDBDBDFF</string>
+			</dict>
+		</dict>
 	</array>
 	<key>uuid</key>
 	<string>06f855e3-9fb7-4fb1-b790-aef06065f34e</string>
