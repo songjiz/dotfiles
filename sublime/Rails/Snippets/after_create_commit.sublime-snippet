@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>afcc</tabTrigger>
+  <description>after_create_commit callback</description>
+  <content><![CDATA[after_create_commit $0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

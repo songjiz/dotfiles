@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>fccb</tabTrigger>
-  <description>form.collection_radio_buttons</description>
-  <content><![CDATA[<%= ${1:form}.collection_radio_buttons :${2:attribute}, ${3:collection}$0 %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

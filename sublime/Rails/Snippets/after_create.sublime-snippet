@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>afc</tabTrigger>
+  <description>after_create callback</description>
+  <content><![CDATA[after_create $0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

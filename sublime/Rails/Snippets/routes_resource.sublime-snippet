@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>res</tabTrigger>
+  <description>routes resource</description>
+  <content><![CDATA[resource :${1:name}]]></content>
+  <scope>meta.rails.routes,source.ruby.rails</scope>
+</snippet>

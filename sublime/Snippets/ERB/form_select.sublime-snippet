@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>fs</tabTrigger>
-  <description>form.select</description>
-  <content><![CDATA[<%= ${1:form}.select :${2:attribute}$0 %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

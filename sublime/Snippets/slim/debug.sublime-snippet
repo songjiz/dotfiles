@@ -1,6 +1,0 @@
-<snippet>
-  <tabTrigger>debug</tabTrigger>
-  <description>debug(object)</description>
-  <content><![CDATA[<%= debug ${1:object}$0 %>]]></content>
-  <scope>text.html.ruby</scope>
-</snippet>

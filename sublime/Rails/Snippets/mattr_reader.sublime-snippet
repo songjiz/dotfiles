@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>mar</tabTrigger>
+  <description>mattr_reader</description>
+  <content><![CDATA[mattr_reader :${0:attr_names}]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

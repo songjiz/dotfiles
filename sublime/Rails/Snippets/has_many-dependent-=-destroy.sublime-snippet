@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>hmd</tabTrigger>
+  <description>has_many dependent: :destroy</description>
+  <content><![CDATA[has_many :${1:object}s${2:, class_name: "${1/[[:alpha:]]+|(_)/(?1::\u$0)/g}", foreign_key: "${4:reference}_id"}, dependent: :destroy$0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>afdc</tabTrigger>
+  <description>after_destroy_commit callback</description>
+  <content><![CDATA[after_destroy_commit $0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

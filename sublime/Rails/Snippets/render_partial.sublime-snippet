@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>rp</tabTrigger>
+  <description>render partial</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}render partial: "${1:pathname}"${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]></content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

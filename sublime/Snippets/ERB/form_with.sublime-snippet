@@ -1,9 +1,0 @@
-<snippet>
-  <tabTrigger>fw</tabTrigger>
-  <description>form_with</description>
-  <content><![CDATA[<%= form_with ${1:record}, remote: ${2:false} do |form| %>
-  $0
-<% end %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

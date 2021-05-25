@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>afi</tabTrigger>
+  <description>after_initialize callback</description>
+  <content><![CDATA[after_initialize $0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

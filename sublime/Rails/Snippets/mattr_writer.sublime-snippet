@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>maw</tabTrigger>
+  <description>mattr_writer</description>
+  <content><![CDATA[mattr_writer :${0:attr_names}]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

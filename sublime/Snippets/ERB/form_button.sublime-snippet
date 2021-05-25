@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>fb</tabTrigger>
-  <description>form.button</description>
-  <content><![CDATA[<%= ${1:form}.button${0} %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

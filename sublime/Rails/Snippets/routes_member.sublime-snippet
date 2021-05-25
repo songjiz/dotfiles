@@ -1,0 +1,8 @@
+<snippet>
+  <tabTrigger>memb</tabTrigger>
+  <description>routes member</description>
+  <content><![CDATA[member do
+  $0
+end]]></content>
+  <scope>meta.rails.routes,source.ruby.rails</scope>
+</snippet>

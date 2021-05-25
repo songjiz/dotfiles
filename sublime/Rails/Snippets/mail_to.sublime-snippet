@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>mt</tabTrigger>
+  <description>mail_to</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}mail_to "${1:email_address}"${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]>
+  </content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

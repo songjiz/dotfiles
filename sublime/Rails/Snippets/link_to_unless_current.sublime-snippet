@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>ltunlessc</tabTrigger>
+  <description>link_to_unless_current</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to_unless_current "${1:name}", ${2:options}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]>
+  </content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

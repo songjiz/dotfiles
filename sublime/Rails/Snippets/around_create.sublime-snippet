@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>arc</tabTrigger>
+  <description>around_create callback</description>
+  <content><![CDATA[around_create $0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

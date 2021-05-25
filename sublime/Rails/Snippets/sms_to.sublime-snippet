@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>st</tabTrigger>
+  <description>sms_to</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}sms_to "${1:phone_number}"${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]>
+  </content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

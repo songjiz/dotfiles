@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>ltunless</tabTrigger>
+  <description>link_to_unless</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}link_to_unless "${1:condition}"${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]>
+  </content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

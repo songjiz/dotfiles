@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>lt</tabTrigger>
-  <description>link_to</description>
-  <content><![CDATA[<%= link_to "${1:name}", ${2:path}$0 %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

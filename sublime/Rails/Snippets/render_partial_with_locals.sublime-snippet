@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>rpl</tabTrigger>
+  <description>render partial with locals</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}render partial: "${1:pathname}", locals: { ${2:key}: ${3:value} }${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]></content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

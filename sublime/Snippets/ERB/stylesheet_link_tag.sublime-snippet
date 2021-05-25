@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>slt</tabTrigger>
-  <description>stylesheet_link_tag</description>
-  <content><![CDATA[<%= stylesheet_link_tag "${1:source}"$0 %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

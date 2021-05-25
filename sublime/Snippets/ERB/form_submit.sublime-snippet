@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>fsm</tabTrigger>
-  <description>form.submit</description>
-  <content><![CDATA[<%= ${1:form}.submit${0} %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

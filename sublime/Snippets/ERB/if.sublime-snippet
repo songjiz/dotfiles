@@ -1,8 +1,0 @@
-<snippet>
-  <tabTrigger>if</tabTrigger>
-  <description>if statement</description>
-  <content><![CDATA[<% if ${1:condition} %>
-  $0
-<% end %>]]></content>
-  <scope>text.html.ruby</scope>
-</snippet>

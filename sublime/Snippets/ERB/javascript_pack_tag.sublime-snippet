@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>jpt</tabTrigger>
-  <description>javascript_pack_tag</description>
-  <content><![CDATA[<%= javascript_pack_tag "${1:source}"$0 %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

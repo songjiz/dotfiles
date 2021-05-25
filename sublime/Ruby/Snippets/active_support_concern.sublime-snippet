@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>asc</tabTrigger>
+  <description>ActiveSupport::Concern</description>
+  <content><![CDATA[ActiveSupport::Concern]]></content>
+  <scope>source.ruby</scope>
+</snippet>

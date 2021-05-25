@@ -1,0 +1,9 @@
+<snippet>
+  <tabTrigger>fsf</tabTrigger>
+  <description>fields_for</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}fields_for :${1:record} do |${1}_form|${TM_RAILS_TEMPLATE_END_RUBY_EXPR}
+  $0
+${TM_RAILS_TEMPLATE_END_RUBY_BLOCK}]]>
+  </content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

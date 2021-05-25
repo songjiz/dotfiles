@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>fcb</tabTrigger>
-  <description>form.check_box</description>
-  <content><![CDATA[<%= ${1:form}.check_box :${2:attribute}$0 %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

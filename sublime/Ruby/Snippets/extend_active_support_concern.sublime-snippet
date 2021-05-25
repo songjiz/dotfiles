@@ -1,0 +1,8 @@
+<snippet>
+  <tabTrigger>easc</tabTrigger>
+  <content><![CDATA[
+extend ActiveSupport::Concern
+
+]]></content>
+  <scope>source.ruby</scope>
+</snippet>

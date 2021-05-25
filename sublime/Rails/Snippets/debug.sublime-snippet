@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>debug</tabTrigger>
+  <description>debug(object)</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}debug ${1:object} ${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]></content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

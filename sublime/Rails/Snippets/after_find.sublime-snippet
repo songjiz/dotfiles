@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>aff</tabTrigger>
+  <description>after_find callback</description>
+  <content><![CDATA[after_find $0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

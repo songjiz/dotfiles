@@ -1,8 +1,0 @@
-<snippet>
-  <tabTrigger>case</tabTrigger>
-  <description> Case Statment </description>
-  <content><![CDATA[<% case ${1:object} %>
-$0
-<% end %>]]></content>
-  <scope>text.html.ruby</scope>
-</snippet>

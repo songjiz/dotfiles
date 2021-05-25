@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>afsc</tabTrigger>
+  <description>after_save_commit callback</description>
+  <content><![CDATA[after_save_commit $0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

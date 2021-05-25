@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>fcs</tabTrigger>
-  <description>form.collection_select</description>
-  <content><![CDATA[<%= ${1:form}.collection_select :${2:attribute}, ${3:collection}$0 %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

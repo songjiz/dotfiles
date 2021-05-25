@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>bfu</tabTrigger>
+  <description>before_update callback</description>
+  <content><![CDATA[before_update $0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

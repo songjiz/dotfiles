@@ -1,6 +1,0 @@
-<snippet>
-  <tabTrigger>rp</tabTrigger>
-  <description>render partial</description>
-  <content><![CDATA[<%= render partial: "${1:pathname}"$0 %>]]></content>
-  <scope>text.html.ruby</scope>
-</snippet>

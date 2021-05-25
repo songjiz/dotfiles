@@ -1,0 +1,9 @@
+<snippet>
+  <tabTrigger>fw</tabTrigger>
+  <description>form_with</description>
+  <content><![CDATA[= form_with ${1:record}, remote: ${2:false} do |${3:form}|
+  $0
+  ]]>
+  </content>
+  <scope>text.slim</scope>
+</snippet>

@@ -1,6 +1,0 @@
-<snippet>
-  <tabTrigger>else</tabTrigger>
-  <description>else statement</description>
-  <content><![CDATA[<% else %>]]></content>
-  <scope>text.html.ruby</scope>
-</snippet>

@@ -1,9 +1,0 @@
-<snippet>
-  <tabTrigger>cf</tabTrigger>
-  <description>content_for</description>
-  <content><![CDATA[<%= content_for :${1:symbol} do %>
-  $0
-<% end %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

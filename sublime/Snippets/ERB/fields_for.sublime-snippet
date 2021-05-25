@@ -1,9 +1,0 @@
-<snippet>
-  <tabTrigger>fsf</tabTrigger>
-  <description>fields_for</description>
-  <content><![CDATA[<%= fields_for :${1:record} do |${1}_form| %>
-  $0
-<% end %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

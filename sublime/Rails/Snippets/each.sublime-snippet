@@ -1,0 +1,8 @@
+<snippet>
+  <tabTrigger>each</tabTrigger>
+  <description>enumerable.each do ...</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_INLINE}${1:enumerable}.each do |${2:element}|${TM_RAILS_TEMPLATE_END_RUBY_INLINE}
+  $0
+${TM_RAILS_TEMPLATE_END_RUBY_BLOCK}]]></content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>fta</tabTrigger>
-  <description>form.text_area</description>
-  <content><![CDATA[<%= ${1:form}.text_area :${2:attribute}$0 %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>

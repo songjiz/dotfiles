@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>bt</tabTrigger>
+  <description>belongs_to association</description>
+  <content><![CDATA[belongs_to :${1:object}${2:, class_name: "${3:${1/[[:alpha:]]+|(_)/(?1::\u$0)/g}}", foreign_key: "${4:${1}_id}"}]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

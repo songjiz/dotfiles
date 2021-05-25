@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>afs</tabTrigger>
+  <description>after_save callback</description>
+  <content><![CDATA[after_save $0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>afuc</tabTrigger>
+  <description>after_update_commit callback</description>
+  <content><![CDATA[after_update_commit $0]]></content>
+  <scope>source.ruby.rails</scope>
+</snippet>

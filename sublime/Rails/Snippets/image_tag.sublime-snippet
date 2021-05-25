@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>it</tabTrigger>
+  <description>image_tag</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}image_tag "${1:source}"${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]>
+  </content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

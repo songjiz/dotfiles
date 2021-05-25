@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>bt</tabTrigger>
+  <description>button_to</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}button_to "${1:name}", ${2:path}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]></content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

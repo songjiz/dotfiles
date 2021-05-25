@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>fcb</tabTrigger>
+  <description>form.check_box</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}${1:form}.check_box :${2:attribute}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]>
+  </content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

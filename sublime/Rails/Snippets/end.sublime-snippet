@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>end</tabTrigger>
+  <description>end statement</description>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_END_RUBY_BLOCK}]]></content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

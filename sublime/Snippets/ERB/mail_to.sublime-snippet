@@ -1,7 +1,0 @@
-<snippet>
-  <tabTrigger>mt</tabTrigger>
-  <description>mail_to</description>
-  <content><![CDATA[<%= mail_to "${1:email_address}"$0 %>]]>
-  </content>
-  <scope>text.html.ruby</scope>
-</snippet>
