@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>frb</tabTrigger>
+  <description>form.radio_button</description>
+  <content><![CDATA[= ${1:form}.radio_button :${2:attribute}$0]]>
+  </content>
+  <scope>text.slim</scope>
+</snippet>

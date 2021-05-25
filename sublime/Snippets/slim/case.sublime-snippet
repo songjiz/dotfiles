@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>case</tabTrigger>
+  <description>case statement</description>
+  <content><![CDATA[- case ${1:object}
+$0]]></content>
+  <scope>text.slim</scope>
+</snippet>

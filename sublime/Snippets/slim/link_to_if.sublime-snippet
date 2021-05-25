@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>ltif</tabTrigger>
+  <description>link_to_if</description>
+  <content><![CDATA[= link_to_if "${1:condition}"$0]]>
+  </content>
+  <scope>text.slim</scope>
+</snippet>

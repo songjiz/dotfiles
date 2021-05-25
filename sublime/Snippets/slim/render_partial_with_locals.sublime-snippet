@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>rpl</tabTrigger>
+  <description>render partial with locals</description>
+  <content><![CDATA[= render partial: "${1:pathname}", locals: { ${2:key}: ${3:value}$0 }]]></content>
+  <scope>text.slim</scope>
+</snippet>

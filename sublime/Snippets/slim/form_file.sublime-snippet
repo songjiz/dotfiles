@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>ffile</tabTrigger>
+  <description>form.file_field</description>
+  <content><![CDATA[= ${1:form}.file ${2:attribute}$0]]>
+  </content>
+  <scope>text.slim</scope>
+</snippet>

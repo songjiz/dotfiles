@@ -6,16 +6,17 @@
 	"installed_packages":
 	[
 		"AlignTab",
-		"Better CoffeeScript",
 		"BracketHighlighter",
 		"Case Conversion",
 		"Color Highlight",
 		"DocBlockr",
 		"Emmet",
+		"Gruvbox Material Theme",
+		"Haml",
 		"Package Control",
 		"Ruby Slim",
 		"SCSS",
 		"SideBarEnhancements",
-		"Visual Studio Code Plus Scheme"
-	]
+		"Visual Studio Code Plus Scheme",
+	],
 }

@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>pry</tabTrigger>
+  <description>binding.pry</description>
+  <content><![CDATA[- binding.pry]]></content>
+  <scope>text.slim</scope>
+</snippet>

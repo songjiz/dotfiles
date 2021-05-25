@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>yield</tabTrigger>
+  <description>yield content block symbol</description>
+  <content><![CDATA[= yield :${1:symbol}]]></content>
+  <scope>text.slim</scope>
+</snippet>

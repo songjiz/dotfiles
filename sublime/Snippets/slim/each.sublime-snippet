@@ -1,0 +1,10 @@
+<snippet>
+  <tabTrigger>each</tabTrigger>
+  <description>Enumerable.each do ...</description>
+  <content><![CDATA[
+- ${1:enumerable}.each do |${2:item}|
+  $0
+]]>
+  </content>
+  <scope>text.slim</scope>
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+  <tabTrigger>ff</tabTrigger>
+  <description>form_for</description>
+  <content><![CDATA[= form_for ${1:record} do |form|
+  $0
+  ]]>
+  </content>
+  <scope>text.slim</scope>
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+  <tabTrigger>else</tabTrigger>
+  <description>else statement</description>
+  <content><![CDATA[
+- else
+  ${0:VISUAL}
+]]></content>
+  <scope>text.slim</scope>
+</snippet>

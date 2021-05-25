@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>st</tabTrigger>
+  <description>sms_to</description>
+  <content><![CDATA[= sms_to "${1:phone_number}"$0]]>
+  </content>
+  <scope>text.slim</scope>
+</snippet>

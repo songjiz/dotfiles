@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>fhide</tabTrigger>
+  <description>form.hidden_field</description>
+  <content><![CDATA[= ${1:form}.hidden_field :${2:attribute}$0]]>
+  </content>
+  <scope>text.slim</scope>
+</snippet>

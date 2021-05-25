@@ -1,0 +1,8 @@
+<snippet>
+  <tabTrigger>unless</tabTrigger>
+  <description>unless statement</description>
+  <content><![CDATA[<% - unless ${1:condition} %>
+  $0
+<% end %>]]></content>
+  <scope>text.slim</scope>
+</snippet>

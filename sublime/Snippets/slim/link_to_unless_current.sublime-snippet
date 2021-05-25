@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>ltunlessc</tabTrigger>
+  <description>link_to_unless_current</description>
+  <content><![CDATA[= link_to_unless_current "${1:name}", ${2:options}$0]]>
+  </content>
+  <scope>text.slim</scope>
+</snippet>
