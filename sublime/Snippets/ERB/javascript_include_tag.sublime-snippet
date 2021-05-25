@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>jit</tabTrigger>
+  <description>javascript_include_tag</description>
+  <content><![CDATA[<%= javascript_include_tag "${1:source}"$0 %>]]>
+  </content>
+  <scope>text.html.ruby</scope>
+</snippet>

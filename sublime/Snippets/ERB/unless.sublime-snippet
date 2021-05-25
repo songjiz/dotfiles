@@ -1,6 +1,6 @@
 <snippet>
   <tabTrigger>unless</tabTrigger>
-  <description> Unless Statement </description>
+  <description>unless statement</description>
   <content><![CDATA[<% unless ${1:condition} %>
   $0
 <% end %>]]></content>

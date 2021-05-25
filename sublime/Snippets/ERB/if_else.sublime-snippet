@@ -1,6 +1,6 @@
 <snippet>
   <tabTrigger>ife</tabTrigger>
-  <description> If / Else Statement </description>
+  <description>if ... else ... statement</description>
   <content><![CDATA[<% if ${1:condition} %>
   $2
 <% else %>

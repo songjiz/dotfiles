@@ -1,6 +1,6 @@
 <snippet>
   <tabTrigger>elsif</tabTrigger>
-  <description> Elsif Statement </description>
+  <description>elsif statement</description>
   <content><![CDATA[<% elsif ${1:condition} %>
   $0]]></content>
   <scope>text.html.ruby</scope>

@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>rf</tabTrigger>
+  <description>render file</description>
+  <content><![CDATA[<%= render file: "${1:pathname}"$0 %>]]></content>
+  <scope>text.html.ruby</scope>
+</snippet>

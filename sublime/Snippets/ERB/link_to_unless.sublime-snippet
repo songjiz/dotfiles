@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>ltunless</tabTrigger>
+  <description>link_to_unless</description>
+  <content><![CDATA[<%= link_to_unless "${1:condition}"$0 %>]]>
+  </content>
+  <scope>text.html.ruby</scope>
+</snippet>

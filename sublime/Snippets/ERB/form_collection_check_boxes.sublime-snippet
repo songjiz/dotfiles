@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>fccb</tabTrigger>
+  <description>form.collection_check_boxes</description>
+  <content><![CDATA[<%= ${1:form}.collection_check_boxes :${2:attribute}, ${3:collection}$0 %>]]>
+  </content>
+  <scope>text.html.ruby</scope>
+</snippet>

@@ -1,6 +1,6 @@
 <snippet>
   <tabTrigger>when</tabTrigger>
-  <description> When Statement </description>
+  <description>when statement</description>
   <content><![CDATA[<% when ${1:condition} %>
   $0]]></content>
   <scope>text.html.ruby</scope>

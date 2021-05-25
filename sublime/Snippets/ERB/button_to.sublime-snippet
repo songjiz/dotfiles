@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>bt</tabTrigger>
+  <description>button_to</description>
+  <content><![CDATA[<%= button_to "${1:name}", ${2:path}$0 %>]]></content>
+  <scope>text.html.ruby</scope>
+</snippet>

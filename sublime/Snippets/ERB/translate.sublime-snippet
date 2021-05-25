@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>trans</tabTrigger>
+  <description>translate</description>
+  <content><![CDATA[<%= t "${1:key}"$0 %>]]></content>
+  <scope>text.html.ruby</scope>
+</snippet>

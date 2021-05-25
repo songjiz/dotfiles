@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>fl</tabTrigger>
+  <description>form.label</description>
+  <content><![CDATA[<%= ${1:form}.label :${2:attribute}$0 %>]]>
+  </content>
+  <scope>text.html.ruby</scope>
+</snippet>

@@ -1,6 +1,6 @@
 <snippet>
   <tabTrigger>each</tabTrigger>
-  <description>Enumerable.each do ...</description>
+  <description>enumerable.each do ...</description>
   <content><![CDATA[
 - ${1:enumerable}.each do |${2:item}|
   $0
