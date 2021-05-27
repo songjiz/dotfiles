@@ -1,6 +1,6 @@
 <snippet>
   <tabTrigger>t</tabTrigger>
   <description>translate</description>
-  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}t "${1:key}" ${TM_RAILS_TEMPLATE_END_RUBY_EXPR}$0]]></content>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_EXPR}t "${1:key}"${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]></content>
   <scope>text.html.ruby, text.haml</scope>
 </snippet>
