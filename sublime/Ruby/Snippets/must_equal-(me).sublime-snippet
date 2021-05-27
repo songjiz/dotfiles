@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>me</tabTrigger>
+  <description>must_equal Minitest</description>
+  <content><![CDATA[must_equal ${0:other}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

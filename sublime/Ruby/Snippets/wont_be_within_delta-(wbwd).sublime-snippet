@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>wbwd</tabTrigger>
+  <description>wont_be_within_delta Minitest</description>
+  <content><![CDATA[wont_be_within_delta ${1:0.1}, ${2:0.1}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

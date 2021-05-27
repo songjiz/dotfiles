@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>rfko</tabTrigger>
+  <description>refute_kind_of Minitest</description>
+  <content><![CDATA[refute_kind_of ${1:UnexpectedKind}, ${2:object}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

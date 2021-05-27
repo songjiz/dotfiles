@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>ms</tabTrigger>
+  <description>must_send Minitest</description>
+  <content><![CDATA[must_send [ ${1:object}, :${2:method}, ${3:args} ]]]></content>
+  <scope>source.ruby</scope>
+</snippet>

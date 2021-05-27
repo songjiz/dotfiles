@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>mrt</tabTrigger>
+  <description>must_respond_to Minitest</description>
+  <content><![CDATA[must_respond_to :${0:method}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

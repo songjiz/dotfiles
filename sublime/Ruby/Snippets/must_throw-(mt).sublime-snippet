@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>mt</tabTrigger>
+  <description>must_throw Minitest</description>
+  <content><![CDATA[-> { throw :${1:error} }.must_throw :${2:error}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>rfe</tabTrigger>
+  <description>refute_equal Minitest</description>
+  <content><![CDATA[refute_equal ${1:unexpected}, ${2:actual}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

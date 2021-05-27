@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>wbct</tabTrigger>
+  <description>wont_be_close_to Minitest</description>
+  <content><![CDATA[wont_be_close_to $0]]></content>
+  <scope>source.ruby</scope>
+</snippet>

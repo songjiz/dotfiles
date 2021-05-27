@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>wi</tabTrigger>
+  <description>wont_include Minitest</description>
+  <content><![CDATA[wont_include ${0:item}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

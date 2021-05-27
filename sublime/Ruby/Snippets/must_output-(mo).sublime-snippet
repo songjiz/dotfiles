@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>mo</tabTrigger>
+  <description>must_output Minitest</description>
+  <content><![CDATA[-> { ${1} }.must_output "${0}"]]></content>
+  <scope>source.ruby</scope>
+</snippet>

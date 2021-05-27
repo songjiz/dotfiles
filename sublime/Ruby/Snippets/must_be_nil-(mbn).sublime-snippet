@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>mbn</tabTrigger>
+  <description>must_be_nil Minitest</description>
+  <content><![CDATA[must_be_nil]]></content>
+  <scope>source.ruby</scope>
+</snippet>

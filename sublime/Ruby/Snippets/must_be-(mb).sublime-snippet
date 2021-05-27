@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>mb</tabTrigger>
+  <description>must_be Minitest</description>
+  <content><![CDATA[must_be $0]]></content>
+  <scope>source.ruby</scope>
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>wbio</tabTrigger>
+  <description>wont_be_instance_of Minitest</description>
+  <content><![CDATA[wont_be_instance_of ${0:Class}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>wm</tabTrigger>
+  <description>wont_match Minitest</description>
+  <content><![CDATA[wont_match /${0:regexp}/]]></content>
+  <scope>source.ruby</scope>
+</snippet>

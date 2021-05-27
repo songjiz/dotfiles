@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>rfn</tabTrigger>
+  <description>refute_nil Minitest</description>
+  <content><![CDATA[refute_nil ${1:object}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

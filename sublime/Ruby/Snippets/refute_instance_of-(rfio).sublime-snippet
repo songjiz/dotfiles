@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>rfio</tabTrigger>
+  <description>refute_instance_of Minitest</description>
+  <content><![CDATA[refute_instance_of ${1:UnexpectedClass}, ${2:actual_instance}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

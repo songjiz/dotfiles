@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>mi</tabTrigger>
+  <description>must_include Minitest</description>
+  <content><![CDATA[must_include ${0:item}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

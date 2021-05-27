@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>wrt</tabTrigger>
+  <description>wont_respond_to Minitest</description>
+  <content><![CDATA[wont_respond_to :${0:method}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

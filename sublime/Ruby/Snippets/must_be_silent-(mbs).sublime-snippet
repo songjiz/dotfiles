@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>mbs</tabTrigger>
+  <description>must_be_silent Minitest</description>
+  <content><![CDATA[-> { ${0} }.must_be_silent]]></content>
+  <scope>source.ruby</scope>
+</snippet>

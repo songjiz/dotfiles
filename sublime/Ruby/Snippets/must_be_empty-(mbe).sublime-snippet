@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>mbe</tabTrigger>
+  <description>must_be_empty Minitest</description>
+  <content><![CDATA[must_be_empty]]></content>
+  <scope>source.ruby</scope>
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>mr</tabTrigger>
+  <description>must_raise Minitest</description>
+  <content><![CDATA[-> { ${1} }.must_raise ${0:StandardError}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

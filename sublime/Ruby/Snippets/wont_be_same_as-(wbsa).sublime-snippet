@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>wbsa</tabTrigger>
+  <description>wont_be_same_as Minitest</description>
+  <content><![CDATA[wont_be_same_as ${0:other}]]></content>
+  <scope>source.ruby</scope>
+</snippet>

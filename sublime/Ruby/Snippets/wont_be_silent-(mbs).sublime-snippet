@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>wbs</tabTrigger>
+  <description>wont_be_silent Minitest</description>
+  <content><![CDATA[-> { ${0} }.wont_be_silent]]></content>
+  <scope>source.ruby</scope>
+</snippet>

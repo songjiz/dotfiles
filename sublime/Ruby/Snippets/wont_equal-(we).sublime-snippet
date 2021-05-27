@@ -1,0 +1,6 @@
+<snippet>
+  <tabTrigger>we</tabTrigger>
+  <description>wont_equal Minitest</description>
+  <content><![CDATA[wont_equal ${0:other}]]></content>
+  <scope>source.ruby</scope>
+</snippet>
