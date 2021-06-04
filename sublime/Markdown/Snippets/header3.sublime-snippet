@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>mdh3</tabTrigger>
+  <description>Markdown Header 3</description>
+  <content><![CDATA[### ${1:Header Text} ###
+$0]]></content>
+  <scope>text.html.markdown.multimarkdown, text.html.markdown</scope>
+</snippet>

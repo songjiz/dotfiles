@@ -1,0 +1,6 @@
+<snippet>
+	<tabTrigger>asn</tabTrigger>
+	<description>assert_not(object, message)</description>
+	<content><![CDATA[assert_not(${1:object}, "${2:message}")]]></content>
+	<scope>source.ruby.rails</scope>
+</snippet>

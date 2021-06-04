@@ -1,6 +1,6 @@
 {
 	"always_show_minimap_viewport": true,
-	"color_scheme": "Packages/Gruvbox Material Theme/Gruvbox Material Dark/Gruvbox Material Dark.sublime-color-scheme",
+	"color_scheme": "Packages/User/Color Schemes/GitHub Light.sublime-color-scheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Monaco",
 	"font_size": 13,
@@ -12,8 +12,6 @@
 	[
 		"Vintage",
 	],
-	/*"line_padding_bottom": 1,*/
-	/*"line_padding_top": 1,*/
 	"rulers":
 	[
 		80,
@@ -27,4 +25,7 @@
 	"trim_automatic_white_space": true,
 	"dark_theme": "Default.sublime-theme",
 	"light_theme": "Default Dark.sublime-theme",
+	"caret_style": "blink",
+	"caret_extra_top": 0,
+	"caret_extra_bottom": 0
 }

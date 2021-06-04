@@ -1,0 +1,8 @@
+<snippet>
+  <content><![CDATA[
+ruby "${1:3.0.1}"
+]]></content>
+  <description>Specify ruby version</description>
+  <tabTrigger>ruby</tabTrigger>
+  <scope>source.ruby.bundler</scope>
+</snippet>

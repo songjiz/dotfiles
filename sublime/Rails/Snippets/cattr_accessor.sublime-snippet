@@ -1,6 +1,6 @@
 <snippet>
   <tabTrigger>caa</tabTrigger>
-  <description>cattr_accesssor</description>
+  <description>cattr_accessor</description>
   <content><![CDATA[cattr_accessor :${0:attr_names}]]></content>
   <scope>source.ruby.rails</scope>
 </snippet>

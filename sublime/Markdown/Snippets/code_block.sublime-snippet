@@ -1,0 +1,8 @@
+<snippet>
+  <tabTrigger>mdc</tabTrigger>
+  <description>Markdown Code Block</description>
+  <content><![CDATA[```${1:language}
+${2:code}
+```]]></content>
+  <scope>text.html.markdown.multimarkdown, text.html.markdown</scope>
+</snippet>

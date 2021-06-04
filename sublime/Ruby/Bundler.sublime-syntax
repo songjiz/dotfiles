@@ -1,0 +1,33 @@
+%YAML 1.2
+---
+name: Bundler
+file_extensions:
+  - Gemfile
+  - Gemfile.dev
+scope: source.ruby.bundler
+contexts:
+  main:
+    - include: bundler
+    - include: "scope:source.ruby"
+
+  bundler:
+    - scope: support.function.ruby.bundler
+      match: |-
+        (?x:
+          \b
+          env|
+          eval_gemfile|
+          gem|
+          gemspec|
+          git|
+          git_source|
+          github|
+          group|
+          install_if|
+          path|
+          platforms?|
+          ruby|
+          source|
+          svn
+          \b
+        )

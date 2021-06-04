@@ -1,0 +1,8 @@
+<snippet>
+	<tabTrigger>asd</tabTrigger>
+	<description>assert_difference(expression, *args, &block)</description>
+	<content><![CDATA[assert_difference("${1:expression}"${2:, *args}) do
+	$0
+end]]></content>
+	<scope>source.ruby.rails</scope>
+</snippet>

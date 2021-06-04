@@ -1,0 +1,8 @@
+<snippet>
+  <content><![CDATA[
+source "${1:https://rubygems.org}"
+]]></content>
+  <description>Specify Source</description>
+  <tabTrigger>source</tabTrigger>
+  <scope>source.ruby.bundler</scope>
+</snippet>

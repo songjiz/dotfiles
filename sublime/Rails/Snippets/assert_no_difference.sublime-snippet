@@ -1,0 +1,8 @@
+<snippet>
+	<tabTrigger>asnd</tabTrigger>
+	<description>assert_no_difference(expression, message = nil, &block)</description>
+	<content><![CDATA[assert_no_difference("${1:expression}"${2:, "${3:message}"}) do
+	$0
+end]]></content>
+	<scope>source.ruby.rails</scope>
+</snippet>

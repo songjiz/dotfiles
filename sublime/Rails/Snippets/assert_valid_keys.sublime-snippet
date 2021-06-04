@@ -1,0 +1,6 @@
+<snippet>
+	<tabTrigger>asvk</tabTrigger>
+	<description>assert_valid_keys(*valid_keys)</description>
+	<content><![CDATA[assert_valid_keys ${0}]]></content>
+	<scope>source.ruby.rails</scope>
+</snippet>
