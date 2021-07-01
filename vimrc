@@ -201,32 +201,21 @@ endif
 augroup colorscheme
   autocmd!
   if !has("gui_running")
-    " autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
+    autocmd ColorScheme * highlight Normal ctermbg=NONE
   end
   autocmd ColorScheme * highlight SignColumn guibg=NONE ctermbg=NONE
         \ | highlight NonText guibg=NONE ctermbg=NONE
         \ | highlight VertSplit guibg=NONE ctermbg=NONE
         \ | highlight LineNr guibg=NONE ctermbg=NONE
-        \ | highlight GruvboxGreenSign guibg=NONE ctermbg=NONE
-        \ | highlight GruvboxAquaSign guibg=NONE ctermbg=NONE
-        \ | highlight GruvboxBlueSign guibg=NONE ctermbg=NONE
-        \ | highlight GruvboxOrangeSign guibg=NONE ctermbg=NONE
-        \ | highlight GruvboxRedSign guibg=NONE ctermbg=NONE
-        \ | highlight GruvboxYellowSign guibg=NONE ctermbg=NONE
         \ | highlight GitGutterAdd guibg=NONE ctermbg=NONE
         \ | highlight GitGutterChange guibg=NONE ctermbg=NONE
         \ | highlight GitGutterDelete guibg=NONE ctermbg=NONE
         \ | highlight GitGutterChangeDelete guibg=NONE ctermbg=NONE
 augroup END
 
-let g:gruvbox_material_background = 'medium'
-let g:gruvbox_material_palette = 'material'
-let g:gruvbox_material_enable_italic = 1
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1
-let g:tokyonight_transparent_background = 1
-set background=dark
-colorscheme tokyonight
+let g:monokai_term_italic = 1
+let g:monokai_gui_italic = 1
+colorscheme monokai
 " }}}
 
 " Auto Commands {{{
@@ -724,15 +713,6 @@ nnoremap <silent><Leader>glg :Git log<CR>
 nmap <silent><Leader>gR <Plug>(git-root)
 " }}}
 
-" UltiSnips {{{
-" let g:UltiSnipsExpandTrigger = "<Tab>"
-" let g:UltiSnipsJumpForwardTrigger = "<Tab>"
-" let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
-" let g:UltiSnipsEditSplit="vertical"
-" let g:UltiSnipsSnippetDirectories = ['ultisnips']
-" nnoremap <Leader>es :UltiSnipsEdit<CR>
-" }}}
-
 " vim-vsnip {{{
 " Expand or Jump forward
 imap <expr> <Tab> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<Tab>'
@@ -766,7 +746,7 @@ nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
 
 " lightline {{{
 let g:lightline = {
-      \   'colorscheme': 'tokyonight',
+      \   'colorscheme': 'powerline',
       \   'component': {
       \     'percent': '%p%%',
       \     'lineinfo': '%l,%-v',
