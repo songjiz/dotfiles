@@ -45,13 +45,10 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'slim-template/vim-slim'
 Plug 'cespare/vim-toml'
 Plug 'reedes/vim-pencil'
-
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'glts/vim-textobj-comment'
-Plug 'tomasiser/vim-code-dark'
-Plug 'sainnhe/gruvbox-material'
-Plug 'songjiz/tokyonight-vim'
+Plug 'crusoexia/vim-monokai'
 call plug#end()
 
 " Enable built-in matchit plugin
