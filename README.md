@@ -18,6 +18,7 @@ brew install fzf
 
 ```bash
 ln -s ~/.dotfiles/zsh/ohmyzsh ~/.oh-my-zsh
+ln -sf ~/.dotfiles/zsh/simple.zsh-theme ~/.oh-my-zsh/custom/themes/simple.zsh-theme
 ln -s ~/.dotfiles/zshrc ~/.zshrc
 ```
 
