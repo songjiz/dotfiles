@@ -12,15 +12,12 @@ brew install ctags
 brew install ripgrep
 # brew install the_silver_searcher
 brew install fzf
-brew install bat
 ```
 
 # zsh
 
 ```bash
-ln -s ~/.dotfiles/zsh/pure/pure.zsh /usr/local/share/zsh/site-functions/prompt_pure_setup
-ln -s ~/.dotfiles/zsh/pure/async.zsh /usr/local/share/zsh/site-functions/async
-ln -s ~/.dotfiles/zsh/oh-my-zsh ~/.oh-my-zsh
+ln -s ~/.dotfiles/zsh/ohmyzsh ~/.oh-my-zsh
 ln -s ~/.dotfiles/zshrc ~/.zshrc
 ```
 
