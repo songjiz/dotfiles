@@ -1,0 +1,7 @@
+<snippet>
+  <tabTrigger>cf?</tabTrigger>
+  <description>content_for?</description>
+  <content><![CDATA[content_for?(:${1:symbol})]]>
+  </content>
+  <scope>text.html.ruby, text.haml</scope>
+</snippet>

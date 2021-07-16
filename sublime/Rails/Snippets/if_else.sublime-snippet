@@ -1,9 +1,9 @@
 <snippet>
   <tabTrigger>ife</tabTrigger>
   <description>if ... else ... statement</description>
-  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_INLINE}if ${1:condition}${TM_RAILS_TEMPLATE_END_RUBY_INLINE}
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_INLINE}if ${1:condition}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}
   $2
-${TM_RAILS_TEMPLATE_START_RUBY_INLINE}else${TM_RAILS_TEMPLATE_END_RUBY_INLINE}
+${TM_RAILS_TEMPLATE_START_RUBY_INLINE}else${TM_RAILS_TEMPLATE_END_RUBY_EXPR}
   $0
 ${TM_RAILS_TEMPLATE_END_RUBY_BLOCK}]]></content>
   <scope>text.html.ruby, text.haml</scope>

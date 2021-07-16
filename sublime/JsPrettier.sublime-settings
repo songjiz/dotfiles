@@ -1,0 +1,5 @@
+// Settings in here override those in "/JsPrettier/JsPrettier.sublime-settings",
+
+{
+  "prettier_cli_path": "$HOME/.asdf/shims/prettier"
+}

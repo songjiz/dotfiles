@@ -664,10 +664,6 @@ nnoremap <silent> <Leader>nn :Fern . -drawer -toggle<CR>
 nnoremap <silent> - :Fern . -drawer -reveal=%<CR>
 " }}}
 
-" emmet {{{
-let g:user_emmet_leader_key = ','
-" }}}
-
 " ale {{{
 let g:ale_set_signs = 0
 let g:ale_sign_column_always = 0

@@ -1,6 +1,6 @@
 <snippet>
   <tabTrigger>elsif</tabTrigger>
   <description>elsif statement</description>
-  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_INLINE}elsif ${1:condition}${TM_RAILS_TEMPLATE_END_RUBY_INLINE}]]></content>
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_INLINE}elsif ${1:condition}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}]]></content>
   <scope>text.html.ruby, text.haml</scope>
 </snippet>

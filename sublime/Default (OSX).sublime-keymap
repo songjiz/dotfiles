@@ -5,6 +5,7 @@
   { "keys": ["super+k", "super+t"], "command": "toggle_tabs" },
   { "keys": ["super+."], "command": "goto_definition" },
   { "keys": ["ctrl+alt+p"], "command": "copy_path" },
+  { "keys": ["ctrl+alt+x"], "command": "side_bar_open_in_browser" },
   // Case conversion
   { "keys": ["alt+k", "alt+s"], "command": "convert_to_snake"},
   { "keys": ["alt+k", "alt+u"], "command": "upper_case"},

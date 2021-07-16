@@ -1,7 +1,7 @@
 <snippet>
   <tabTrigger>case</tabTrigger>
   <description> Case Statment </description>
-  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_INLINE}case ${1:object}${TM_RAILS_TEMPLATE_END_RUBY_INLINE}
+  <content><![CDATA[${TM_RAILS_TEMPLATE_START_RUBY_INLINE}case ${1:object}${TM_RAILS_TEMPLATE_END_RUBY_EXPR}
 $0
 ${TM_RAILS_TEMPLATE_END_RUBY_BLOCK}]]></content>
   <scope>text.html.ruby, text.haml</scope>

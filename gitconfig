@@ -62,9 +62,7 @@
 
 	t   = tag
 	ts  = tag -s
-
-[http "https://github.com"]
-	proxy = socks5h://127.0.0.1:7891
+	recent = branch --sort=committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 [core]
 	excludesFile = ~/.gitignore
 	attributesFile = ~/.gitattributes
