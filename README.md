@@ -41,3 +41,9 @@ ln -s ~/.dotfiles/sublime  ~/Library/Application\ Support/Sublime\ Text\ 3/Packa
 ```bash
 ln -s ~/.dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ```
+
+# asdf
+
+```bash
+ln -s ~/.dotfiles/asdfrc ~/.asdfrc
+```
