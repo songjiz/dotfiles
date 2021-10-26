@@ -6,12 +6,15 @@
 	"installed_packages":
 	[
 		"AlignTab",
+		"Babel",
+		"Better CoffeeScript",
 		"BracketHighlighter",
 		"Case Conversion",
 		"Color Highlight",
 		"DashDoc",
 		"DocBlockr",
 		"Emmet",
+		"Git",
 		"Haml",
 		"JsPrettier",
 		"Package Control",

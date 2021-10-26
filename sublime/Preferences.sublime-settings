@@ -1,6 +1,6 @@
 {
 	"always_show_minimap_viewport": true,
-	"color_scheme": "Packages/Theme - Monokai Pro/Monokai Classic.sublime-color-scheme",
+	"color_scheme": "Monokai Classic.sublime-color-scheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "SF Mono",
 	"font_size": 11,
@@ -8,15 +8,14 @@
 	"hide_new_tab_button": true,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
-	/*"highlight_modified_tabs": true,*/
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
 	"ignored_packages":
 	[
 		"Vintage",
 	],
-	"rulers": [ 100, 120],
-	"wrap_width": 120,
+	"rulers": [ 80, 100],
+	"wrap_width": 0,
 	"show_encoding": true,
 	"show_git_status": false,
 	"tab_size": 2,
@@ -25,6 +24,7 @@
 	"trim_automatic_white_space": true,
 	"dark_theme": "Default Dark.sublime-theme",
 	"light_theme": "Default.sublime-theme",
+	"shift_tab_unindent": true,
 	"caret_style": "blink",
 	"caret_extra_top": 0,
 	"caret_extra_bottom": 0,

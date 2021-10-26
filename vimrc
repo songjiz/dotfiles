@@ -279,6 +279,7 @@ omap i/ <Plug>(textobj-comment-i)
 xmap i/ <Plug>(textobj-comment-i)
 
 nnoremap gK K
+nnoremap J mzJ`z
 " J is join, K is break
 " A space is replaced with a carriage return; otherwise a carriage return is inserted.
 nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
@@ -293,13 +294,15 @@ nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 " “ <A-]>
 
 " Fast move current line down/up in edit mode
-" inoremap <C-k> <ESC>:move .-2<CR>==gi
-" inoremap <C-j> <ESC>:move .+1<CR>==gi
+inoremap <C-k> <ESC>:move .-2<CR>==gi
+inoremap <C-j> <ESC>:move .+1<CR>==gi
+vnoremap J :move '>+1<CR>gv=gv
+vnoremap K :move '<-2<CR>gv=gv
 
 " Ctrl-j/k navigation in popups
-inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr><CR>  pumvisible() ? "\<C-y>" : "\<CR>"
+" inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+" inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+" inoremap <expr><CR>  pumvisible() ? "\<C-y>" : "\<CR>"
 " Tab completion
 inoremap <expr><Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -394,13 +397,13 @@ nnoremap {   {zz
 nnoremap <C-o> <C-o>zz
 
 " Center highlighted search
-nnoremap n  nzz
-nnoremap N  Nzz
-nnoremap *  *zz
-nnoremap #  #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
-nnoremap G  Gzz
+nnoremap n  nzzzv
+nnoremap N  Nzzzv
+nnoremap *  *zzzv
+nnoremap #  #zzzv
+nnoremap g* g*zzzv
+nnoremap g# g#zzzv
+nnoremap G  Gzzzv
 
 " Do not include white space character when using $ in visual mode
 vnoremap $ g_
@@ -454,6 +457,11 @@ noremap k gk
 
 " u is undo, U is redo
 nnoremap U <C-r>
+" Undo break points
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
 
 " Fast edit files in same directory
 cabbr <expr> %% fnameescape(expand("%:p:h"))
@@ -532,7 +540,7 @@ silent! call mkdir(iconv(expand(g:sessions_dir), &encoding, &termencoding), 'p')
 
 nmap <silent><Leader>n <Plug>(rename-buf)
 
-command! FuckGFW :tabe ~/.config/clash/config.yaml
+command! FuckGFW :tabe ~/.config/Surge/Documents/Default.conf
 
 " Copy file name
 nnoremap <silent><Leader>cf :let @*=expand("%:t")<CR>
@@ -572,7 +580,8 @@ else
   let &grepprg="grep -n --with-filename -I -R "
 endif
 
-map <Leader>rt :!ctags --tag-relative=yes --extras=+f -Rf.git/tags .<CR><CR>
+command! Ctags !ctags --tag-relative=yes --extras=+f -Rf.git/tags .
+nnoremap <Leader>rt :Ctags<CR><CR>
 
 " FZF {{{
 let $FZF_DEFAULT_OPTS = "--layout=reverse --inline-info --bind ctrl-a:select-all,ctrl-d:deselect-all"
