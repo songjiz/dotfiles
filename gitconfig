@@ -74,3 +74,9 @@
 	gpgsign = false
 [gpg]
 	program = /usr/local/bin/gpg
+[http]
+	proxy = http://127.0.0.1:6152
+[https]
+	proxy = http://127.0.0.1:6152
+[init]
+	defaultBranch = main

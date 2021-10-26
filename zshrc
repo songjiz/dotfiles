@@ -73,7 +73,7 @@ ZSH_THEME="simple"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rbenv cargo rails)
+plugins=(git cargo rails asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,9 +106,9 @@ alias e="vim"
 alias v="vim"
 alias vi="vim"
 alias reload="source $HOME/.zshrc"
-alias fuckgfw="vim ~/.config/Surge/Profiles/Default.conf"
-alias export-proxy="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152;export all_proxy=socks5://127.0.0.1:6153"
-alias unset-proxy="unset https_proxy; unset https_proxy; unset all_proxy"
+alias fuckgfw="vim ~/.config/Surge/Documents/Default.conf"
+alias proxy="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152;export all_proxy=socks5://127.0.0.1:6153"
+alias noproxy="unset https_proxy; unset https_proxy; unset all_proxy"
 alias dotfiles="cd ~/.dotfiles && vim"
 
 alias cl="curl -L"
@@ -163,3 +163,5 @@ alias whatsmyipv6='curl -w "\n" -s https://api64.ipify.org'
 [ -f $HOME/.asdf/asdf.sh ] && source $HOME/.asdf/asdf.sh
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
