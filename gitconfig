@@ -1,5 +1,5 @@
 [user]
-	name = songji
+	name = songji.zeng
 	email = lekyzsj@gmail.com
 [alias]
 	a   = add
@@ -74,3 +74,7 @@
 	gpgsign = false
 [gpg]
 	program = /usr/local/bin/gpg
+[http]
+	proxy = 127.0.0.1:6152
+[init]
+	defaultBranch = main

@@ -36,6 +36,14 @@ ln -s /Applications/Sublime Text.app/Contents/SharedSupport/bin/subl /usr/local/
 ln -s ~/.dotfiles/sublime  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
 ```
 
+# Sublime Text 4
+
+```bash
+ln -s /Applications/Sublime Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+ln -s ~/.dotfiles/sublime  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+
+
+
 # vscode
 
 ```bash
