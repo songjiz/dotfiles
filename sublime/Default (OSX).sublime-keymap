@@ -20,5 +20,6 @@
   { "keys": ["alt+k", "alt+b"], "command": "convert_to_back_slash"},
   { "keys": ["alt+k", "alt+t"], "command": "title_case"},
   { "keys": ["alt+k", "alt+shift+c"], "command": "toggle_snake_camel_pascal"},
-  { "keys": ["ctrl+alt+h"], "command": "dash_doc"}
+  { "keys": ["ctrl+alt+h"], "command": "dash_doc"},
+  { "keys": ["ctrl+alt+f"], "command": "js_prettier" }
 ]

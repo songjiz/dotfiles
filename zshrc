@@ -73,7 +73,7 @@ ZSH_THEME="simple"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cargo rails asdf)
+plugins=(git rust rails asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -159,6 +159,7 @@ alias hosts="sudo vim /etc/hosts"
 alias dev="cd ~/Developer"
 alias whatsmyip='curl -w "\n" -s https://api.ipify.org'
 alias whatsmyipv6='curl -w "\n" -s https://api64.ipify.org'
+alias httpserver="python3 -m http.server"
 
 [ -f $HOME/.asdf/asdf.sh ] && source $HOME/.asdf/asdf.sh
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
