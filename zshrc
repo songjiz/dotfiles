@@ -164,5 +164,3 @@ alias httpserver="python3 -m http.server"
 [ -f $HOME/.asdf/asdf.sh ] && source $HOME/.asdf/asdf.sh
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

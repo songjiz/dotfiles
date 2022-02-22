@@ -251,6 +251,7 @@ augroup common
   autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! IndentLinesDisable | endif
 
   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+  autocmd VimResized * call ResizeWindows()
 augroup END
 
 " }}}
@@ -421,6 +422,11 @@ noremap  <Up>    :resize +2<CR>
 noremap  <Down>  :resize -2<CR>
 noremap  <Left>  :vertical resize +2<CR>
 noremap  <Right> :vertical resize -2<CR>
+function! ResizeWindows()
+  let savetab = tabpagenr()
+  tabdo wincmd =
+  execute 'tabnext' savetab
+endfunction
 
 " Disable arrow keys
 inoremap <UP>    <NOP>
