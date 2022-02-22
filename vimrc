@@ -93,8 +93,8 @@ set splitbelow
 set splitright
 
 " Always show tatus line and tab bar
-set laststatus=2
 set showtabline=2
+set laststatus=2
 
 set ruler
 
@@ -202,6 +202,7 @@ augroup colorscheme
   autocmd!
   if !has("gui_running")
     autocmd ColorScheme * highlight Normal ctermbg=NONE
+    autocmd ColorScheme * highlight TabLineSel ctermbg=NONE
   end
   autocmd ColorScheme * highlight SignColumn guibg=NONE ctermbg=NONE
         \ | highlight NonText guibg=NONE ctermbg=NONE
@@ -248,9 +249,6 @@ augroup common
   " Auto switch to insert mode when focusing on terminal window
   autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
   autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! IndentLinesDisable | endif
-
-  " IndentLine plugin bug???
-  " autocmd BufRead,BufEnter,BufNewFile * IndentLinesReset
 
   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 augroup END
@@ -669,8 +667,13 @@ vmap <silent>gx <Plug>(openbrowser-smart-search)
 " }}}
 
 " Fern {{{
+let g:fern#drawer_width=40
 nnoremap <silent> <Leader>nn :Fern . -drawer -toggle<CR>
 nnoremap <silent> - :Fern . -drawer -reveal=%<CR>
+augroup FernExplorerCustom
+  autocmd!
+  autocmd FileType fern setl nonumber
+augroup END
 " }}}
 
 " ale {{{
@@ -728,6 +731,10 @@ imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 " }}}
 
+" vim-gutentags {{{
+let g:gutentags_project_root = ['.svn', '.git', '.hg']
+" }}}
+
 " vim-test {{{
 nnoremap <silent> t<C-n> :wa\|:TestNearest<CR>
 nnoremap <silent> t<C-f> :wa\|:TestFile<CR>
@@ -743,18 +750,12 @@ nmap gA <Plug>(LiveEasyAlign)
 xmap gA <Plug>(LiveEasyAlign)
 " }}}
 
-" indentLine {{{
-let g:indentLine_enabled = 1
-let g:indentLine_char = '⋮'
-nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
-" }}}
-
 " lightline {{{
 let g:lightline = {
       \   'colorscheme': 'powerline',
       \   'component': {
       \     'percent': '%p%%',
-      \     'lineinfo': '%l,%-v',
+      \     'lineinfo': '%3l:%-2v',
       \   },
       \   'component_function': {
       \     'gitBranch': 'lightline#gitBranch',
@@ -785,6 +786,8 @@ let g:lightline = {
       \     ]
       \   }
       \ }
+
+autocmd User GitGutter,GitGutterStage call lightline#update()
 " }}}
 
 " }}}
