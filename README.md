@@ -29,6 +29,12 @@ ln -s ~/.dotfiles/vim ~/.vim
 ln -s ~/.dotfiles/vimrc ~/.vimrc
 ```
 
+# Neovim
+
+```bash
+ln -s ~/.dotfiles/nvim ~/.config/nvim
+```
+
 # Sublime Text 3
 
 ```bash
