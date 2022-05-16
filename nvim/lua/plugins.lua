@@ -1,8 +1,26 @@
-local ok, packer = pcall(require, 'config.packer')
+-- Install packer automatically
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
-if not ok then
-  return
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
+  vim.cmd [[packadd packer.nvim]]
 end
+
+local ok, packer = pcall(require, 'packer')
+if not ok then return end
+
+packer.init {
+  display = {
+    open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+    end,
+    prompt_border = 'single',
+  },
+  profile = {
+    enable = true,
+  },
+  compile_on_sync = true,
+}
 
 packer.startup(function(use)
   use { 'wbthomason/packer.nvim' }
@@ -49,6 +67,12 @@ packer.startup(function(use)
       require 'config.comment'
     end
   }
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require 'config.autopairs'
+    end
+  }
   use { 
     'nvim-lualine/lualine.nvim',
     config = function()
@@ -56,12 +80,19 @@ packer.startup(function(use)
     end
   }
   use 'machakann/vim-sandwich'
-  use { 'folke/tokyonight.nvim' }
+  use 'wellle/targets.vim'
+  use 'folke/tokyonight.nvim'
+  use 'projekt0n/github-nvim-theme'
+  use 'Mofiqul/vscode.nvim'
+
+  if PACKER_BOOTSTRAP then
+    require('packer').sync()
+  end
 end)
 
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]])

@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -22,3 +23,8 @@ end)
 vim.keymap.set('n', '<Leader>bb', function()
   require('telescope.builtin').buffers { previewer = false }
 end)
+
+vim.keymap.set('n', '<Leader>\\\\', function()
+  require('telescope.builtin').live_grep()
+end)
+

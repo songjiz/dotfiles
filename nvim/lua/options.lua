@@ -54,11 +54,15 @@ vim.opt.wildignore:append {
   '*.so,*.dll,*.swp,*.egg,*.jar,*.class,*.pyc,*.pyo,*.bin,*.dex,*.luac',
   '.bundle,node_modules,build,dist,target,tmp',
   '*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*pyc,*.o,*.gem',
-  'tags'
+  'tags,*/target/*,*/cache/*,*/tmp/*',
 }
 vim.o.diffopt = 'internal,algorithm:patience,indent-heuristic'
 
 vim.o.termguicolors = true
 vim.cmd [[filetype plugin indent on]]
 vim.g.tokyonight_style = 'night'
+vim.g.vscode_style = 'dark'
+vim.g.vscode_transparency = 1
+vim.g.vscode_italic_comment = 1
+vim.g.vscode_disable_nvimtree_bg = 1
 vim.cmd [[colorscheme tokyonight]]
