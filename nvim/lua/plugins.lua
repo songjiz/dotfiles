@@ -1,6 +1,5 @@
 -- Install packer automatically
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
   vim.cmd [[packadd packer.nvim]]
@@ -73,14 +72,17 @@ packer.startup(function(use)
       require 'config.autopairs'
     end
   }
-  use { 
+  use {
     'nvim-lualine/lualine.nvim',
     config = function()
       require 'config.lualine'
     end
   }
+
+  use 'f-person/git-blame.nvim'
   use 'machakann/vim-sandwich'
   use 'wellle/targets.vim'
+
   use 'folke/tokyonight.nvim'
   use 'projekt0n/github-nvim-theme'
   use 'Mofiqul/vscode.nvim'
@@ -96,3 +98,4 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]])
+

@@ -15,5 +15,8 @@ vim.cmd [[
 
   autocmd BufWritePre * :%s/\s\+$//e
 
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+
   autocmd VimResized * call ResizeWindows()
 ]]
