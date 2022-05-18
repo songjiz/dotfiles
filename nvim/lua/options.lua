@@ -36,6 +36,7 @@ vim.o.lazyredraw = true
 
 vim.opt.shortmess:append('c')
 vim.opt.clipboard:append('unnamed', 'unnamedplus')
+vim.opt.matchpairs:append('<:>', '《:》', '（:）', '【:】')
 
 vim.o.pumheight = 10
 vim.o.wildmode = 'list:longest,full'

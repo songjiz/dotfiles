@@ -63,6 +63,14 @@ packer.startup(function(use)
   use { 'hrsh7th/cmp-omni', after = 'nvim-cmp' }
   use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
   use { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' }
+  use {
+    'folke/which-key.nvim',
+    config = function()
+      vim.defer_fn(function()
+        require 'config.which-key'
+      end, 2000)
+    end
+  }
   use 'tpope/vim-fugitive'
   use {
     'lewis6991/gitsigns.nvim',
