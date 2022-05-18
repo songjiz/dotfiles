@@ -24,6 +24,12 @@ packer.init {
 packer.startup(function(use)
   use { 'wbthomason/packer.nvim' }
   use {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require 'config.lspconfig'
+    end
+  }
+  use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/plenary.nvim' } },
     config = function()

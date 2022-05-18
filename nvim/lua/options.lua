@@ -34,6 +34,7 @@ vim.o.timeoutlen = 400
 vim.o.updatetime = 100
 vim.o.lazyredraw = true
 
+vim.opt.shortmess:append('c')
 vim.opt.clipboard:append('unnamed', 'unnamedplus')
 
 vim.o.pumheight = 10

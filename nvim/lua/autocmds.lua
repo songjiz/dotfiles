@@ -19,4 +19,6 @@ vim.cmd [[
   autocmd CmdlineLeave /,\? :set nohlsearch
 
   autocmd VimResized * call ResizeWindows()
+
+  autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, { focus=false })
 ]]
