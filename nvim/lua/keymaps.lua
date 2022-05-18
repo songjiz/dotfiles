@@ -31,6 +31,10 @@ vim.keymap.set('n', 'g*', 'g*zzzv')
 vim.keymap.set('n', 'g#', 'g#zzzv')
 vim.keymap.set('n', 'G', 'Gzzzv')
 vim.keymap.set('n', '<C-o>', '<C-o>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-f>', '<C-f>zz')
+vim.keymap.set('n', '<C-b>', '<C-b>zz')
 
 -- Move to start of the line in insert mode
 vim.keymap.set('i', '<C-a>', '<C-o>^')

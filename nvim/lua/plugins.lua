@@ -63,7 +63,7 @@ packer.startup(function(use)
   use { 'hrsh7th/cmp-omni', after = 'nvim-cmp' }
   use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
   use { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' }
-  use { "tpope/vim-fugitive", event = "User InGitRepo" }
+  use 'tpope/vim-fugitive'
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
