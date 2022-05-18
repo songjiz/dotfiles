@@ -31,3 +31,6 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 
 local lspconfig = require('lspconfig')
 lspconfig.solargraph.setup{}
+lspconfig.rust_analyzer.setup{}
+lspconfig.tsserver.setup{}
+lspconfig.tailwindcss.setup{}
