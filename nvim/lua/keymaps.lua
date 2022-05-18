@@ -11,7 +11,7 @@ vim.keymap.set('n', '!', ':!')
 vim.keymap.set('n', 'U', '<C-r>')
 
 -- Quickly open configuration file
-vim.keymap.set('n', '<Leader>ec', ':vsplit $MYVIMRC<CR>')
+vim.keymap.set('n', '<Leader>ec', ':split $MYVIMRC<CR>')
 
 -- Save file as root user.
 vim.keymap.set('c', 'w!!', '!sudo tee % > /dev/null<CR>')

@@ -50,16 +50,20 @@ packer.startup(function(use)
       require 'config.nvim-tree'
     end
   }
+  use { 'onsails/lspkind.nvim' }
   use {
     'hrsh7th/nvim-cmp',
     config = function()
       require 'config.cmp'
     end,
   }
-  use {
-    'L3MON4D3/LuaSnip',
-    after = 'nvim-cmp'
-  }
+  use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-omni', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
+  use { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' }
+  use { "tpope/vim-fugitive", event = "User InGitRepo" }
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
@@ -80,6 +84,7 @@ packer.startup(function(use)
   }
   use {
     'nvim-lualine/lualine.nvim',
+    event = 'VimEnter',
     config = function()
       require 'config.lualine'
     end
