@@ -110,3 +110,7 @@ end)
 vim.keymap.set('n', '<Leader>df', function()
   vim.diagnostic.open_float()
 end)
+
+-- nvim-tree
+vim.keymap.set('n', '<Leader>nn', ':NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>nm', ':NvimTreeFindFileToggle<CR>', { silent = true })
