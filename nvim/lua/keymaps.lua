@@ -11,16 +11,16 @@ vim.keymap.set('n', '!', ':!')
 vim.keymap.set('n', 'U', '<C-r>')
 
 -- Quickly open configuration file
-vim.keymap.set('n', '<Leader>ec', ':split $MYVIMRC<CR>')
+vim.keymap.set('n', '<Leader>ec', '<Cmd>split $MYVIMRC<CR>')
 
 -- Save file as root user.
 vim.keymap.set('c', 'w!!', '!sudo tee % > /dev/null<CR>')
 
 -- Center screen
-vim.keymap.set('n', ']q', ':cnext<CR>zz')
-vim.keymap.set('n', '[q', ':cprev<CR>zz')
-vim.keymap.set('n', ']l', ':lnext<CR>zz')
-vim.keymap.set('n', '[l', ':lprev<CR>zz')
+vim.keymap.set('n', ']q', '<Cmd>cnext<CR>zz')
+vim.keymap.set('n', '[q', '<Cmd>cprev<CR>zz')
+vim.keymap.set('n', ']l', '<Cmd>lnext<CR>zz')
+vim.keymap.set('n', '[l', '<Cmd>lprev<CR>zz')
 vim.keymap.set('n', '}', '}zz')
 vim.keymap.set('n', '{', '{zz')
 vim.keymap.set('n', 'n', 'nzzzv')
@@ -72,21 +72,33 @@ vim.keymap.set('n', 'Q', '@q')
 vim.keymap.set('n', ';', ':')
 vim.keymap.set('n', ':', ';')
 
-vim.keymap.set('n', '<Leader>q', ':q<CR>')
-vim.keymap.set('n', '<Leader>w', ':w<CR>')
+vim.keymap.set('n', '<Leader>q', '<Cmd>q<CR>')
+vim.keymap.set('n', '<Leader>w', '<Cmd>w<CR>')
 
-vim.api.nvim_create_user_command('FuckGFW', ':tabe ~/.config/Surge/Documents/Default.conf', { bang = true })
+vim.api.nvim_create_user_command('FuckGFW', 'tabe ~/.config/Surge/Documents/Default.conf', { bang = true })
 
 -- telescope
 vim.keymap.set('n', '<Leader>ff', function()
   require('telescope.builtin').find_files { previewer = false }
 end)
 
-vim.keymap.set('n', '<Leader>bb', function()
+vim.keymap.set('n', '<Leader>fg', function()
+  require('telescope.builtin').git_files { previewer = false }
+end)
+
+vim.keymap.set('n', '<Leader>fb', function()
   require('telescope.builtin').buffers { previewer = false }
 end)
 
-vim.keymap.set('n', '<Leader>\\\\', function()
+vim.keymap.set('n', '<Leader>fs', function()
+  require('telescope.builtin').search_history { previewer = false }
+end)
+
+vim.keymap.set('n', '<Leader>ft', function()
+  require('telescope.builtin').help_tags()
+end)
+
+vim.keymap.set('n', '<Leader>fr', function()
   require('telescope.builtin').live_grep()
 end)
 
@@ -112,5 +124,5 @@ vim.keymap.set('n', '<Leader>df', function()
 end)
 
 -- nvim-tree
-vim.keymap.set('n', '<Leader>nn', ':NvimTreeToggle<CR>', { silent = true })
-vim.keymap.set('n', '<Leader>nm', ':NvimTreeFindFileToggle<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>nn', '<Cmd>NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>nm', '<Cmd>NvimTreeFindFileToggle<CR>', { silent = true })
