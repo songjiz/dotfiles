@@ -124,5 +124,11 @@ vim.keymap.set('n', '<Leader>df', function()
 end)
 
 -- nvim-tree
-vim.keymap.set('n', '<Leader>nn', '<Cmd>NvimTreeToggle<CR>', { silent = true })
-vim.keymap.set('n', '<Leader>nm', '<Cmd>NvimTreeFindFileToggle<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>nn', '<Cmd>NvimTreeToggle<CR>')
+vim.keymap.set('n', '<Leader>nm', '<Cmd>NvimTreeFindFileToggle<CR>')
+
+-- packer
+vim.keymap.set('n', '<Leader>pi', '<Cmd>PackerInstall<CR>')
+vim.keymap.set('n', '<Leader>pu', '<Cmd>PackerUpdate<CR>')
+vim.keymap.set('n', '<Leader>pc', '<Cmd>PackerClean<CR>')
+vim.keymap.set('n', '<Leader>ps', '<Cmd>PackerSync<CR>')
