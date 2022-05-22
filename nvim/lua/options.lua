@@ -40,6 +40,7 @@ vim.opt.matchpairs:append('<:>', '《:》', '（:）', '【:】')
 
 vim.o.pumheight = 10
 vim.o.wildmode = 'list:longest,full'
+vim.o.completeopt = 'menuone,noselect'
 vim.opt.wildignore:append {
   '*.git,*.svn,*.hg',
   '*.aux,*.out,*.toc',
@@ -59,6 +60,17 @@ vim.opt.wildignore:append {
   'tags,*/target/*,*/cache/*,*/tmp/*',
 }
 vim.o.diffopt = 'internal,algorithm:patience,indent-heuristic'
+
+if vim.fn.executable('rg') then
+  vim.opt.grepprg = 'rg --vimgrep --no-heading --hidden --smart-case --no-ignore-vcs'
+
+  --                      ┌ filename
+  --                      │  ┌ line nr
+  --                      │  │  ┌ column nr
+  --                      │  │  │  ┌ error message
+  --                      │  │  │  │
+  vim.opt.grepformat = { '%f:%l:%c:%m', '%f:%l:%m' }
+end
 
 vim.o.termguicolors = true
 vim.cmd [[filetype plugin indent on]]
