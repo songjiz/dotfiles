@@ -39,6 +39,9 @@ packer.startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
+    config = function()
+      require 'config.treesitter'
+    end
   }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use {
@@ -62,7 +65,13 @@ packer.startup(function(use)
   use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
   use { 'hrsh7th/cmp-omni', after = 'nvim-cmp' }
   use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
-  use { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' }
+  use {
+    'L3MON4D3/LuaSnip',
+    after = 'nvim-cmp',
+    config = function()
+      require 'config.luasnip'
+    end
+  }
   use {
     'folke/which-key.nvim',
     config = function()
