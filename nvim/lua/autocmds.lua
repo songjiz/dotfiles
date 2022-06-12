@@ -1,6 +1,13 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+autocmd('BufWritePost', {
+  desc = 'Auto update packer plugins once the plugins.lua file is changed',
+  pattern = 'plugins.lua',
+  command = 'source <afile> | PackerSync',
+  group = augroup('Packer', { clear = true })
+})
+
 -- Deletes all trailing whitespaces
 local trailingWhitespacesGrp = augroup('TrimTrailingWhitespaces', { clear = true })
 autocmd('BufWritePre', {
