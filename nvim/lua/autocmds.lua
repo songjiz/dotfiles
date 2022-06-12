@@ -22,7 +22,7 @@ autocmd({ 'CursorHold', 'CursorHoldI' }, {
 -- Toggle relativenumber
 local lineNumberGrp = augroup('LineNumber', { clear = true })
 
-autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'WinEnter' }, {
+autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'BufWinEnter' }, {
   callback = function()
     if vim.o.number then
       vim.o.relativenumber = true
@@ -32,7 +32,7 @@ autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'WinEnter' }, {
   pattern = '*'
 })
 
-autocmd({ 'BufLeave', 'FocusGained', 'InsertEnter', 'WinLeave' }, {
+autocmd({ 'BufLeave', 'FocusGained', 'InsertEnter', 'BufWinLeave' }, {
   callback = function()
     if vim.o.number then
       vim.o.relativenumber = false
@@ -45,7 +45,7 @@ autocmd({ 'BufLeave', 'FocusGained', 'InsertEnter', 'WinLeave' }, {
 -- Toggle cursor line
 local cursorlineGrp = augroup('CursorLine', { clear = true })
 
-autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'WinEnter' }, {
+autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'BufWinEnter' }, {
   callback = function()
     vim.o.cursorline = true
   end,
@@ -53,7 +53,7 @@ autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'WinEnter' }, {
   pattern = '*'
 })
 
-autocmd({ 'BufLeave', 'FocusGained', 'InsertEnter', 'WinLeave' }, {
+autocmd({ 'BufLeave', 'FocusGained', 'InsertEnter', 'BufWinLeave' }, {
   callback = function()
     vim.o.cursorline = false
   end,
