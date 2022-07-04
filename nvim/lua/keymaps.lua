@@ -36,6 +36,9 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<C-f>', '<C-f>zz')
 vim.keymap.set('n', '<C-b>', '<C-b>zz')
 
+-- <C-c> to escape in insert mode
+vim.keymap.set('i', '<C-c>', '<Esc>')
+
 -- Move to start of the line in insert mode
 vim.keymap.set('i', '<C-a>', '<C-o>^')
 -- Move to end of the line in insert mode

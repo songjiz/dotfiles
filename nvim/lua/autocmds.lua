@@ -1,6 +1,13 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+autocmd('BufWritePost', {
+  desc = 'Auto update packer plugins once the plugins.lua file is changed',
+  pattern = 'plugins.lua',
+  command = 'source <afile> | PackerSync',
+  group = augroup('Packer', { clear = true })
+})
+
 -- Deletes all trailing whitespaces
 local trailingWhitespacesGrp = augroup('TrimTrailingWhitespaces', { clear = true })
 autocmd('BufWritePre', {
@@ -22,7 +29,7 @@ autocmd({ 'CursorHold', 'CursorHoldI' }, {
 -- Toggle relativenumber
 local lineNumberGrp = augroup('LineNumber', { clear = true })
 
-autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'WinEnter' }, {
+autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'BufWinEnter' }, {
   callback = function()
     if vim.o.number then
       vim.o.relativenumber = true
@@ -32,7 +39,7 @@ autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'WinEnter' }, {
   pattern = '*'
 })
 
-autocmd({ 'BufLeave', 'FocusGained', 'InsertEnter', 'WinLeave' }, {
+autocmd({ 'BufLeave', 'FocusGained', 'InsertEnter', 'BufWinLeave' }, {
   callback = function()
     if vim.o.number then
       vim.o.relativenumber = false
@@ -45,7 +52,7 @@ autocmd({ 'BufLeave', 'FocusGained', 'InsertEnter', 'WinLeave' }, {
 -- Toggle cursor line
 local cursorlineGrp = augroup('CursorLine', { clear = true })
 
-autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'WinEnter' }, {
+autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'BufWinEnter' }, {
   callback = function()
     vim.o.cursorline = true
   end,
@@ -53,7 +60,7 @@ autocmd({ 'BufEnter', 'FocusLost', 'InsertLeave', 'WinEnter' }, {
   pattern = '*'
 })
 
-autocmd({ 'BufLeave', 'FocusGained', 'InsertEnter', 'WinLeave' }, {
+autocmd({ 'BufLeave', 'FocusGained', 'InsertEnter', 'BufWinLeave' }, {
   callback = function()
     vim.o.cursorline = false
   end,
