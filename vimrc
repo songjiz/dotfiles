@@ -173,7 +173,7 @@ set wrap
 set whichwrap+=<,>,[,]
 set textwidth=79
 set colorcolumn=100
-set listchars=tab:┊\ ,trail:∙,extends:»,precedes:«,nbsp:∅
+set listchars=leadmultispace:\┊\ ,tab:┊\ ,trail:∙,extends:»,precedes:«,nbsp:∅
 set showbreak=↪\
 " }}}
 
