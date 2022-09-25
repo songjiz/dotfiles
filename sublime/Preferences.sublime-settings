@@ -8,8 +8,8 @@
 	"hide_new_tab_button": true,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
-	"line_padding_bottom": 1,
-	"line_padding_top": 1,
+	"line_padding_bottom": 2,
+	"line_padding_top": 2,
 	"ignored_packages":
 	[
 		"Vintage",
