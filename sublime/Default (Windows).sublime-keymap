@@ -5,15 +5,10 @@
   { "keys": ["ctrl+."], "command": "goto_definition" },
   { "keys": ["ctrl+alt+p"], "command": "copy_path" },
   // Case conversion
-  { "keys": ["alt+k", "alt+s"], "command": "convert_to_snake"},
-  { "keys": ["alt+k", "alt+shift+s"], "command": "convert_to_screaming_snake"},
-  { "keys": ["alt+k", "alt+c"], "command": "convert_to_camel"},
-  { "keys": ["alt+k", "alt+p"], "command": "convert_to_pascal"},
-  { "keys": ["alt+k", "alt+d"], "command": "convert_to_dot"},
-  { "keys": ["alt+k", "alt+h"], "command": "convert_to_dash"},
-  { "keys": ["alt+k", "alt+w"], "command": "convert_to_separate_words"},
-  { "keys": ["alt+k", "alt+/"], "command": "convert_to_slash"},
-  { "keys": ["alt+k", "alt+b"], "command": "convert_to_back_slash"},
+  { "keys": ["alt+k", "alt+u"], "command": "upper_case"},
+  { "keys": ["alt+k", "alt+l"], "command": "lower_case" },
   { "keys": ["alt+k", "alt+t"], "command": "title_case"},
-  { "keys": ["alt+k", "alt+shift+c"], "command": "toggle_snake_camel_pascal"}
+  { "keys": ["alt+k", "alt+s"], "command": "convert_ident_case", "args": { "case": "lower", "separator": "_" } },
+  { "keys": ["alt+k", "alt+d"], "command": "convert_ident_case", "args": { "case": "lower", "separator": "-" } },
+  { "keys": ["alt+k", "alt+c"], "command": "convert_ident_case", "args": { "case": "title", "first_case": "lower" } },
 ]

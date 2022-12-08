@@ -1,9 +1,16 @@
 {
 	"clients":
 	{
-		"ruby":
-		{
-			"enabled": false,
-		},
+		"ruby": {
+      "command": [
+        "/Users/zsj/.asdf/shims/solargraph",
+        "stdio"
+      ],
+      "selector": "source.ruby | text.html.ruby",
+      "initializationOptions": {
+        "diagnostics": false,
+      },
+      "enabled": true,
+    },
 	},
 }

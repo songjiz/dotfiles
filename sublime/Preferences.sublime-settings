@@ -12,6 +12,7 @@
 	"line_padding_top": 2,
 	"ignored_packages":
 	[
+		"Tailwind CSS",
 		"Vintage",
 	],
 	"rulers": [ 80, 100],
@@ -29,6 +30,7 @@
 	"caret_extra_top": 0,
 	"caret_extra_bottom": 0,
 	"close_deleted_files": true,
+	"spell_check": true,
 	"folder_exclude_patterns": [
 		".Trash",
 		".Trash-*",
