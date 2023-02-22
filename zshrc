@@ -149,18 +149,12 @@ alias rce="rails credentials:edit"
 alias rced="rails credentials:edit --environment development"
 alias rcep="rails credentials:edit --environment production"
 alias rcet="rails credentials:edit --environment test"
-function rdmd() {
-  rake db:migrate:down VERSION=$@
-}
-function rdmu() {
-  rake db:migrate:up VERSION=$@
-}
 alias hosts="sudo vim /etc/hosts"
 alias dev="cd ~/Developer"
 alias whatsmyip='curl -w "\n" -s https://api.ipify.org'
 alias whatsmyipv6='curl -w "\n" -s https://api64.ipify.org'
 alias httpserver="python3 -m http.server"
 
-[ -f $HOME/.asdf/asdf.sh ] && source $HOME/.asdf/asdf.sh
+eval "$(rbenv init - zsh)"
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
