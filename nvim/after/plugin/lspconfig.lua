@@ -60,12 +60,16 @@ end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-local popup_opts = { border = 'rounded', max_width = 80 }
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, popup_opts)
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, popup_opts)
+local popup_opts = { border = "rounded", max_width = 80 }
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, popup_opts)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, popup_opts)
 
 lspconfig.solargraph.setup({ capabilities = capabilities, on_attach = on_attach })
 lspconfig.rust_analyzer.setup({ capabilities = capabilities, on_attach = on_attach })
 lspconfig.tsserver.setup({ capabilities = capabilities, on_attach = on_attach })
 lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
-lspconfig.emmet_ls.setup({ capabilities = capabilities, on_attach = on_attach, filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" } })
+lspconfig.emmet_ls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" }
+})

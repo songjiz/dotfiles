@@ -32,6 +32,9 @@ ln -s ~/.dotfiles/vimrc ~/.vimrc
 # Neovim
 
 ```bash
+brew install luarocks
+luarocks install luautf8
+
 ln -s ~/.dotfiles/nvim ~/.config/nvim
 ```
 

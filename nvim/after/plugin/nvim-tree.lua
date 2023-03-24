@@ -7,7 +7,17 @@ end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-nvimtree.setup()
+nvimtree.setup({
+  renderer = {
+    icons = {
+      show = {
+        file = false,
+        folder = false,
+        git = false
+      }
+    }
+  }
+})
 
 local keymap = vim.keymap
 

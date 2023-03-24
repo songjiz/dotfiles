@@ -104,7 +104,7 @@ autocmd("QuickFixCmdPost", {
   pattern = "l*",
 })
 
--- Teminal
+-- Terminal
 local termGrp = augroup("Terminal", { clear = true })
 
 autocmd("TermOpen", {
@@ -137,4 +137,3 @@ autocmd("TermOpen", {
   group = termGrp,
   pattern = "*",
 })
-

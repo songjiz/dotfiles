@@ -76,4 +76,3 @@ if fn.executable("rg") then
 end
 
 opt.termguicolors = true
-
