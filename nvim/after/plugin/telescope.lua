@@ -12,7 +12,7 @@ end
 
 telescope.setup({
   defaults = {
-    file_ignore_patterns = { "node_modules", ".git", ".idea", ".vscode" },
+    file_ignore_patterns = { "node_modules", "%.idea$", "%.vscode$" },
     vimgrep_arguments = {
       "rg",
       "--hidden",
@@ -55,3 +55,4 @@ keymap.set("n", "<Leader>ft", builtin.current_buffer_tags)
 keymap.set("n", "<Leader>fr", builtin.live_grep)
 keymap.set("n", "<Leader>fq", builtin.quickfix)
 keymap.set("n", "<Leader>fl", builtin.loclist)
+
