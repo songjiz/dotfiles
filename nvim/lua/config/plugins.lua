@@ -35,6 +35,7 @@ local plugins = {
   "windwp/nvim-autopairs",
   "numToStr/Comment.nvim",
   { "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
+  { "akinsho/toggleterm.nvim", version = "*", config = true },
   "folke/tokyonight.nvim",
   "Mofiqul/vscode.nvim",
   { "projekt0n/github-nvim-theme", tag = "v0.0.7" }
