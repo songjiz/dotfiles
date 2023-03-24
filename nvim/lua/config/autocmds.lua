@@ -88,19 +88,24 @@ autocmd("TermOpen", {
   pattern = "*",
 })
 
-local function set_terminal_keymaps()
-  local buffer = 0
+local function set_terminal_keymaps(bufnr)
   local opts   = { noremap = true, silent = true }
   local keymap = vim.api.nvim_buf_set_keymap
 
-  keymap(buffer, "t", "<Esc>", "<C-\\><C-n>", opts)
-  keymap(buffer, "t", "jk", "<C-\\><C-n>", opts)
-  keymap(buffer, "t", "<C-h>", "<Cmd>wincmd h<CR>", opts)
-  keymap(buffer, "t", "<C-j>", "<Cmd>wincmd j<CR>", opts)
-  keymap(buffer, "t", "<C-k>", "<Cmd>wincmd k<CR>", opts)
-  keymap(buffer, "t", "<C-l>", "<Cmd>wincmd l<CR>", opts)
-  keymap(buffer, "t", "<C-w>", "<C-\\><C-n><C-w>", opts)
+  keymap(bufnr, "t", "<Esc>", "<C-\\><C-n>", opts)
+  keymap(bufnr, "t", "jk", "<C-\\><C-n>", opts)
+  keymap(bufnr, "t", "<C-h>", "<Cmd>wincmd h<CR>", opts)
+  keymap(bufnr, "t", "<C-j>", "<Cmd>wincmd j<CR>", opts)
+  keymap(bufnr, "t", "<C-k>", "<Cmd>wincmd k<CR>", opts)
+  keymap(bufnr, "t", "<C-l>", "<Cmd>wincmd l<CR>", opts)
+  keymap(bufnr, "t", "<C-w>", "<C-\\><C-n><C-w>", opts)
 end
 
 augroup("TerminalKeymaps", { clear = true })
-autocmd("TermOpen", { callback = set_terminal_keymaps, pattern = "term://*" })
+autocmd("TermOpen", {
+  callback = function()
+    set_terminal_keymaps(vim.fn.bufnr())
+  end,
+  pattern = "term://*"
+})
+
