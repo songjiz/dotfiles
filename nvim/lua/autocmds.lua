@@ -78,27 +78,28 @@ autocmd("BufEnter", { command = "startinsert", pattern = "term://*" })
 autocmd("BufLeave", { command = "stopinsert", pattern = "term://*" })
 autocmd("TermOpen", {
   callback = function()
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
-    vim.opt_local.signcolumn = "no"
-    vim.opt_local.listchars = ""
-    vim.opt_local.cursorline = false
-    -- vim.opt_local.buflisted = false
+    local opt = vim.opt_local
+    opt.number = false
+    opt.relativenumber = false
+    opt.signcolumn = "no"
+    opt.listchars = ""
+    opt.cursorline = false
+    -- opt.buflisted = false
   end,
   pattern = "*",
 })
 
 local function set_terminal_keymaps(bufnr)
-  local opts   = { noremap = true, silent = true }
-  local keymap = vim.api.nvim_buf_set_keymap
+  local opts   = { noremap = true, silent = true, buffer = bufnr }
+  local keymap = vim.keymap
 
-  keymap(bufnr, "t", "<Esc>", "<C-\\><C-n>", opts)
-  keymap(bufnr, "t", "jk", "<C-\\><C-n>", opts)
-  keymap(bufnr, "t", "<C-h>", "<Cmd>wincmd h<CR>", opts)
-  keymap(bufnr, "t", "<C-j>", "<Cmd>wincmd j<CR>", opts)
-  keymap(bufnr, "t", "<C-k>", "<Cmd>wincmd k<CR>", opts)
-  keymap(bufnr, "t", "<C-l>", "<Cmd>wincmd l<CR>", opts)
-  keymap(bufnr, "t", "<C-w>", "<C-\\><C-n><C-w>", opts)
+  keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
+  keymap.set("t", "jk", "<C-\\><C-n>", opts)
+  keymap.set("t", "<C-h>", "<Cmd>wincmd h<CR>", opts)
+  keymap.set("t", "<C-j>", "<Cmd>wincmd j<CR>", opts)
+  keymap.set("t", "<C-k>", "<Cmd>wincmd k<CR>", opts)
+  keymap.set("t", "<C-l>", "<Cmd>wincmd l<CR>", opts)
+  keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>", opts)
 end
 
 augroup("TerminalKeymaps", { clear = true })
@@ -108,4 +109,3 @@ autocmd("TermOpen", {
   end,
   pattern = "term://*"
 })
-

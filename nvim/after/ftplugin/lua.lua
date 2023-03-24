@@ -1,3 +1,4 @@
-vim.opt_local.suffixesadd:prepend(".lua")
-vim.opt_local.path:prepend(vim.fn.stdpath("config") .. "/lua")
+local opt = vim.opt_local
 
+opt.suffixesadd:prepend(".lua")
+opt.path:prepend(vim.fn.stdpath("config") .. "/lua")

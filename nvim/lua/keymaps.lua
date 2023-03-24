@@ -62,12 +62,6 @@ keymap.set("c", "<C-b>", "<Left>")
 keymap.set("c", "<C-d>", "<Del>")
 keymap.set("c", "<C-h>", "<Backspace>")
 
- -- gf and gF open in vertical panel
--- keymap.set("n", "gf", "<C-w>vgf")
--- keymap.set("v", "gf", "<C-w>vgf")
--- keymap.set("n", "gF", "<C-w>vgF")
--- keymap.set("v", "gf", "<C-w>vgF")
-
 -- Window
 keymap.set("n", "<C-h>", "<C-w>h")
 keymap.set("n", "<C-j>", "<C-w>j")
@@ -91,16 +85,6 @@ keymap.set("n", "<Leader>q", "<Cmd>q<CR>")
 keymap.set("n", "<Leader>w", "<Cmd>w<CR>")
 
 vim.api.nvim_create_user_command("FuckGFW", "tabe ~/.config/Surge/Documents/Default.conf", { bang = true })
-
--- toggle background
--- keymap.set("n", "<Leader>bg", function()
---   local current = vim.o.background
---   if current == "dark" then
---     vim.o.background = "light"
---   else
---     vim.o.background = "dark"
---   end
--- end)
 
 -- diagnostic
 keymap.set("n", "<Leader>dn", function()

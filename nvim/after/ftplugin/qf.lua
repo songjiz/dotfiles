@@ -1,6 +1,7 @@
-vim.opt_local.relativenumber = false
-vim.opt_local.wrap = false
-vim.opt_local.number = true
+local opt = vim.opt_local
+
+opt.number = true
+opt.relativenumber = false
+opt.wrap = false
 
 vim.keymap.set("n", "gq", "<Cmd>bd<CR>", { silent = true, buffer = 0 })
-
