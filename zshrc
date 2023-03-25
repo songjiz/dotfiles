@@ -86,9 +86,9 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -155,6 +155,14 @@ alias whatsmyip='curl -w "\n" -s https://api.ipify.org'
 alias whatsmyipv6='curl -w "\n" -s https://api64.ipify.org'
 alias httpserver="python3 -m http.server"
 
-eval "$(rbenv init - zsh)"
+# rbenv
+export RBENV_HOME="$HOME/.rbenv"
+eval "$($RBENV_HOME/bin/rbenv init - zsh)"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
