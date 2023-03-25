@@ -1,6 +1,6 @@
-local ok, treesitter = pcall(require, "nvim-treesitter.configs")
+local treesitter_available, treesitter = pcall(require, "nvim-treesitter.configs")
 
-if not ok then
+if not treesitter_available then
   return
 end
 

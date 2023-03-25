@@ -1,12 +1,12 @@
-local ok, telescope = pcall(require, "telescope")
+local telescope_available, telescope = pcall(require, "telescope")
 
-if not ok then
+if not telescope_available then
   return
 end
 
-local ok, actions = pcall(require, "telescope.actions")
+local actions_available, actions = pcall(require, "telescope.actions")
 
-if not ok then
+if not actions_available then
   return
 end
 
@@ -43,8 +43,14 @@ telescope.setup({
   }
 })
 
+
+local builtin_available, builtin = pcall(require, "telescope.builtin")
+
+if not builtin_available then
+  return
+end
+
 local keymap = vim.keymap
-local builtin = require("telescope.builtin")
 
 keymap.set("n", "<C-p>", builtin.find_files)
 keymap.set("n", "<Leader>ff", builtin.find_files)

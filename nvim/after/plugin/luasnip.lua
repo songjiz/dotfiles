@@ -1,6 +1,6 @@
-local ok, luasnip = pcall(require, "luasnip")
+local luasnip_available, luasnip = pcall(require, "luasnip")
 
-if not ok then
+if not luasnip_available then
   return
 end
 

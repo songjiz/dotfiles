@@ -1,6 +1,6 @@
-local ok, vscode = pcall(require, "vscode")
+local vscode_available, vscode = pcall(require, "vscode")
 
-if ok then
+if vscode_available then
   vscode.setup({
     transparent = false,
   })

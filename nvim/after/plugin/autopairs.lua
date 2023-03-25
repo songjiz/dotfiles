@@ -1,6 +1,6 @@
-local ok, autopairs = pcall(require, "nvim-autopairs")
+local autopairs_available, autopairs = pcall(require, "nvim-autopairs")
 
-if not ok then
+if not autopairs_available then
   return
 end
 
@@ -12,15 +12,15 @@ autopairs.setup({
   },
 })
 
-local ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+local cmp_autopairs_available, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 
-if not ok then
+if not cmp_autopairs_available then
   return
 end
 
-local ok, cmp = pcall(require, "cmp")
+local cmp_available, cmp = pcall(require, "cmp")
 
-if not ok then
+if not cmp_available then
   return
 end
 

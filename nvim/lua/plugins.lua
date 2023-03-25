@@ -1,17 +1,25 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-if not vim.loop.fs_stat(lazypath) then
+if not vim.loop.fs_stat(lazy_path) then
   vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable", -- latest stable release
-    lazypath,
+    lazy_path,
   })
 end
 
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(lazy_path)
+
+local lazy_available, lazy = pcall(require, "lazy")
+
+if not lazy_available then
+  return
+end
+
+local opts = {}
 
 local plugins = {
   {
@@ -42,6 +50,4 @@ local plugins = {
   { "projekt0n/github-nvim-theme", tag = "v0.0.7" }
 }
 
-local opts = {}
-
-require("lazy").setup(plugins, opts)
+lazy.setup(plugins, opts)

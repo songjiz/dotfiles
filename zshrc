@@ -167,6 +167,5 @@ export NVM_DIR="$HOME/.nvm"
 # fzf
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
-
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
