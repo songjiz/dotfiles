@@ -32,6 +32,7 @@ local plugins = {
   "hrsh7th/cmp-nvim-lua",
   "L3MON4D3/LuaSnip",
   "lewis6991/gitsigns.nvim",
+  "tpope/vim-fugitive",
   "windwp/nvim-autopairs",
   "numToStr/Comment.nvim",
   { "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
