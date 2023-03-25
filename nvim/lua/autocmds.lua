@@ -15,22 +15,21 @@ autocmd({ "CursorHold", "CursorHoldI" }, {
 })
 
 -- Toggle relativenumber
-augroup("LineNumber", { clear = true })
-
-local function show_relativenumber()
+local function show_relative_number()
   if vim.o.number then
     vim.o.relativenumber = true
   end
 end
 
-local function hide_relativenumber()
+local function hide_relative_number()
   if vim.o.number then
     vim.o.relativenumber = false
   end
 end
 
-autocmd({ "BufEnter", "FocusLost", "InsertLeave", "BufWinEnter" }, { callback = show_relativenumber,  pattern = "*" })
-autocmd({ "BufLeave", "FocusGained", "InsertEnter", "BufWinLeave" }, { callback = hide_relativenumber, pattern = "*" })
+augroup("LineNumber", { clear = true })
+autocmd({ "BufEnter", "FocusLost", "InsertLeave", "BufWinEnter" }, { callback = show_relative_number,  pattern = "*" })
+autocmd({ "BufLeave", "FocusGained", "InsertEnter", "BufWinLeave" }, { callback = hide_relative_number, pattern = "*" })
 
 -- Toggle cursor line
 local function show_cursor_line()
@@ -60,14 +59,13 @@ autocmd("CmdlineLeave", { callback = disable_hlsearch, pattern = "/,?" })
 
 -- Highlight on yank
 local function highlight_yank()
-  vim.highlight.on_yank({ higroup = "IncSearch", timeout = "1000" })
+  vim.highlight.on_yank({ higroup = "IncSearch", timeout = "500" })
 end
-augroup("Yank", { clear = true })
+augroup("TextYank", { clear = true })
 autocmd("TextYankPost", { callback = highlight_yank, pattern = "*" })
 
 -- Automatically open quickfix window
-local qfGrp = augroup("Qf", { clear = true })
-
+augroup("Qf", { clear = true })
 autocmd("QuickFixCmdPost", { command = "cwindow", pattern = "[^l]*" })
 autocmd("QuickFixCmdPost", { command = "lwindow", pattern = "l*" })
 
