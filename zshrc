@@ -164,5 +164,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+# fzf
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+
+
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+
