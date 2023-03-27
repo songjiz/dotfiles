@@ -20,3 +20,4 @@ Package Control.*
 !Package Control.sublime-settings
 packer_compiled.lua
 lazy-lock.json
+.luarc.json

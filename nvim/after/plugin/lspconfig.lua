@@ -68,11 +68,7 @@ lspconfig.solargraph.setup({ capabilities = capabilities, on_attach = on_attach 
 lspconfig.rust_analyzer.setup({ capabilities = capabilities, on_attach = on_attach })
 lspconfig.tsserver.setup({ capabilities = capabilities, on_attach = on_attach })
 lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
-lspconfig.emmet_ls.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "eruby" }
-})
+lspconfig.emmet_ls.setup({ capabilities = capabilities, on_attach = on_attach })
 lspconfig.lua_ls.setup({
   settings = {
     Lua = {

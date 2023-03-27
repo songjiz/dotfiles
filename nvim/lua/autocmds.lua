@@ -27,9 +27,9 @@ local function hide_relative_number()
   end
 end
 
-augroup("LineNumber", { clear = true })
-autocmd({ "BufEnter", "FocusLost", "InsertLeave", "BufWinEnter" }, { callback = show_relative_number,  pattern = "*" })
-autocmd({ "BufLeave", "FocusGained", "InsertEnter", "BufWinLeave" }, { callback = hide_relative_number, pattern = "*" })
+augroup("RelativeLineNumber", { clear = true })
+autocmd({ "BufWinEnter", "BufEnter", "FocusGained", "InsertLeave" }, { callback = show_relative_number,  pattern = "*" })
+autocmd({ "BufWinLeave", "BufLeave", "FocusLost", "InsertEnter" }, { callback = hide_relative_number, pattern = "*" })
 
 -- Toggle cursor line
 local function show_cursor_line()
