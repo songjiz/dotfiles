@@ -58,11 +58,11 @@ autocmd("CmdlineEnter", { callback = enable_hlsearch, pattern = "/,?" })
 autocmd("CmdlineLeave", { callback = disable_hlsearch, pattern = "/,?" })
 
 -- Highlight on yank
-local function highlight_yank()
+local function hlyank()
   vim.highlight.on_yank({ higroup = "IncSearch", timeout = "500" })
 end
 augroup("TextYank", { clear = true })
-autocmd("TextYankPost", { callback = highlight_yank, pattern = "*" })
+autocmd("TextYankPost", { callback = hlyank, pattern = "*" })
 
 -- Automatically open quickfix window
 augroup("Qf", { clear = true })

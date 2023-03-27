@@ -68,9 +68,6 @@ keymap.set("n", "<C-j>", "<C-w>j")
 keymap.set("n", "<C-k>", "<C-w>k")
 keymap.set("n", "<C-l>", "<C-w>l")
 
--- Terminal
-keymap.set("t", "<Esc>", "<C-\\><C-n>")
-
 -- Toggle between last open buffers
 keymap.set("n", "<Leader><Space>", "<C-^>")
 
@@ -86,7 +83,7 @@ keymap.set("n", "<Leader>w", "<Cmd>w<CR>")
 
 vim.api.nvim_create_user_command("FuckGFW", "tabe ~/.config/Surge/Documents/Default.conf", { bang = true })
 
--- diagnostic
+-- Diagnostic
 keymap.set("n", "<Leader>dn", function()
   vim.diagnostic.goto_next()
 end)
