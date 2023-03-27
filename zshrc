@@ -157,7 +157,7 @@ alias httpserver="python3 -m http.server"
 
 # rbenv
 export RBENV_HOME="$HOME/.rbenv"
-eval "$($RBENV_HOME/bin/rbenv init - zsh)"
+[ -f $RBENV_HOM/bin/rbenv ] && eval "$($RBENV_HOME/bin/rbenv init - zsh)"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
