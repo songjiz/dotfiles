@@ -43,6 +43,7 @@ local plugins = {
   "tpope/vim-fugitive",
   "windwp/nvim-autopairs",
   "numToStr/Comment.nvim",
+  { "echasnovski/mini.align", version = "*" },
   { "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
   { "akinsho/toggleterm.nvim", version = "*", config = true },
   "folke/tokyonight.nvim",
