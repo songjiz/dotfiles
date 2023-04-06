@@ -38,8 +38,8 @@ lualine.setup({
     lualine_a = { "mode" },
     lualine_b = { "branch" },
     lualine_c = { "filename", "diff" },
-    lualine_x = {},
-    lualine_y = { lsp_status, lsp_progress, "encoding", "filetype" },
+    lualine_x = { lsp_status, lsp_progress },
+    lualine_y = { "encoding", "filetype" },
     lualine_z = { "progress", "location" }
   },
   inactive_sections = {
