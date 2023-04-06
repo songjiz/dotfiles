@@ -1,37 +1,43 @@
 local opt = vim.opt
 local fn  = vim.fn
 
-opt.encoding = "utf-8"
+opt.encoding      = "utf-8"
 opt.fileencodings = "utf-8"
 
-opt.autoread = true
+opt.autoread  = true
 opt.autowrite = true
 
-opt.expandtab = true
-opt.shiftround = true
+opt.expandtab   = true
+opt.shiftround  = true
 opt.smartindent = true
-opt.autoindent = true
-opt.shiftwidth = 2
-opt.tabstop = 2
+opt.autoindent  = true
+opt.shiftwidth  = 2
+opt.tabstop     = 2
 
 opt.splitbelow = true
 opt.splitright = true
 
 opt.laststatus = 3
-opt.cmdheight = 1
-opt.showcmd = true
+opt.cmdheight  = 1
+opt.showcmd    = true
 
-opt.smartcase = true
+opt.smartcase  = true
 opt.ignorecase = true
-opt.hlsearch = true
-opt.incsearch = true
+opt.hlsearch   = true
+opt.incsearch  = true
 
-opt.number = true
+opt.number         = true
 opt.relativenumber = true
+
 opt.cursorline = true
+
+-- Allow backspace on indent, end of line or insert mode start position
+opt.backspace = "indent,eol,start"
 
 opt.list = true
 opt.listchars = { tab = "┊ ", trail = "∙", extends = "»", precedes = "«", nbsp = "∅" }
+
+opt.iskeyword:append("-")
 
 opt.timeoutlen = 400
 opt.updatetime = 100
@@ -41,8 +47,8 @@ opt.shortmess:append("c")
 opt.clipboard:append("unnamed", "unnamedplus")
 opt.matchpairs:append("<:>", "《:》", "（:）", "【:】")
 
-opt.pumheight = 10
-opt.wildmode = "list:longest,full"
+opt.pumheight   = 10
+opt.wildmode    = "list:longest,full"
 opt.completeopt = "menu,menuone,noselect"
 opt.wildignore:append {
   "*.git,*.svn,*.hg",

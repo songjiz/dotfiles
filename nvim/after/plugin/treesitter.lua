@@ -18,22 +18,28 @@ treesitter.setup({
     },
   },
   textobjects = {
+    -- Define your own text objects mappings similar to ip (inner paragraph) and ap (a paragraph).
     select = {
       enable = true,
       lookahead = true,
       keymaps = {
+        ["aa"] = "@parameter.outer",
+        ["ia"] = "@parameter.inner",
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
         ["ic"] = "@class.inner",
       },
     },
+    -- Define your own mappings to jump to the next or previous text object.
     move = {
       enable = true,
       set_jumps = true,
       goto_next_start = {
         ["]m"] = "@function.outer",
         ["]]"] = "@class.outer",
+        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+        ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
       },
       goto_next_end = {
         ["]M"] = "@function.outer",
@@ -47,7 +53,23 @@ treesitter.setup({
         ["[M"] = "@function.outer",
         ["[]"] = "@class.outer",
       },
+      goto_next = {
+        ["]d"] = "@conditional.outer",
+      },
+      goto_previous = {
+        ["[d"] = "@conditional.outer",
+      }
     },
+    -- Define your own mappings to swap the node under the cursor with the next or previous one, like function parameters or arguments.
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    }
   },
   ensure_installed = {
     "bash",

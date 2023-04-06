@@ -8,6 +8,11 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 nvimtree.setup({
+  disable_netrw = true,
+  hijack_netrw = true,
+  view = {
+    side = "left"
+  },
   renderer = {
     icons = {
       show = {

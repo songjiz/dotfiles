@@ -4,33 +4,28 @@ if not telescope_available then
   return
 end
 
-local actions_available, actions = pcall(require, "telescope.actions")
-
-if not actions_available then
-  return
-end
+local actions = require("telescope.actions")
+local builtin = require("telescope.builtin")
 
 telescope.setup({
   defaults = {
     file_ignore_patterns = { "node_modules", "%.idea$", "%.vscode$" },
     vimgrep_arguments = {
       "rg",
+      "--vimgrep",
       "--hidden",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
       "--smart-case",
       "--follow",
     },
     mappings = {
       i = {
+        ["<Esc>"] = actions.close,
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-l>"] = actions.send_selected_to_loclist + actions.open_loclist
       }
-    }
+    },
   },
   pickers = {
     find_files = {
@@ -42,13 +37,6 @@ telescope.setup({
     }
   }
 })
-
-
-local builtin_available, builtin = pcall(require, "telescope.builtin")
-
-if not builtin_available then
-  return
-end
 
 local keymap = vim.keymap
 
