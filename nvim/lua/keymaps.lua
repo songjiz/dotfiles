@@ -51,6 +51,13 @@ keymap.set("i", "<C-f>", "<C-o><Right>")
 keymap.set("i", "<C-b>", "<C-o><Left>")
 keymap.set("i", "<C-d>", "<Del>")
 
+-- Move line up / down
+keymap.set("i", "<C-j>", "<Esc>:move .+1<CR>==gi")
+keymap.set("i", "<C-k>", "<Esc>:move .-2<CR>==gi")
+-- Move selected text up / down
+keymap.set("v", "<C-j>", ":move '>+1<CR>==gv")
+keymap.set("v", "<C-k>", ":move '<-2<CR>==gv")
+
 keymap.set("c", "<C-j>", "<Down>")
 keymap.set("c", "<C-k>", "<Up>")
 keymap.set("c", "<C-a>", "<Home>")
