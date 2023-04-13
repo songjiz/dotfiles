@@ -4,7 +4,9 @@ if not lualine_available then
   return
 end
 
-local function lsp_status()
+local M = {}
+
+function M.lsp_status()
   local available, lsp = pcall(require, "lsp-status")
 
   if available then
@@ -14,7 +16,7 @@ local function lsp_status()
   return ""
 end
 
-local function lsp_progress()
+function M.lsp_progress()
   local available, lsp = pcall(require, "lsp-status")
 
   if available then
@@ -38,7 +40,7 @@ lualine.setup({
     lualine_a = { "mode" },
     lualine_b = { "branch" },
     lualine_c = { "filename", "diff" },
-    lualine_x = { lsp_status, lsp_progress },
+    lualine_x = { M.lsp_status, M.lsp_progress },
     lualine_y = { "encoding", "filetype" },
     lualine_z = { "progress", "location" }
   },

@@ -51,12 +51,13 @@ keymap.set("i", "<C-f>", "<C-o><Right>")
 keymap.set("i", "<C-b>", "<C-o><Left>")
 keymap.set("i", "<C-d>", "<Del>")
 
--- Move line up / down
-keymap.set("i", "<C-j>", "<Esc>:move .+1<CR>==gi")
-keymap.set("i", "<C-k>", "<Esc>:move .-2<CR>==gi")
--- Move selected text up / down
-keymap.set("v", "<C-j>", ":move '>+1<CR>==gv")
-keymap.set("v", "<C-k>", ":move '<-2<CR>==gv")
+-- Move lines up / down with [Option/Alt + jk] (must disable "Use option as Meta key" )
+keymap.set("n", "<A-j>", "<Cmd>move .+1<cr>==", { desc = "Move down" })
+keymap.set("n", "<A-k>", "<Cmd>move .-2<cr>==", { desc = "Move up" })
+keymap.set("i", "<A-j>", "<Esc><Cmd>move .+1<CR>==gi", { desc = "Move down" })
+keymap.set("i", "<A-k>", "<Esc><Cmd>move .-2<CR>==gi", { desc = "Move Up" })
+keymap.set("v", "<A-j>", "<Cmd>move '>+1<CR>==gv", { desc = "Move down" })
+keymap.set("v", "<A-k>", "<Cmd>move '<-2<CR>==gv", { desc = "Move up" })
 
 keymap.set("c", "<C-j>", "<Down>")
 keymap.set("c", "<C-k>", "<Up>")
@@ -70,13 +71,28 @@ keymap.set("c", "<C-d>", "<Del>")
 keymap.set("c", "<C-h>", "<Backspace>")
 
 -- Window
-keymap.set("n", "<C-h>", "<C-w>h")
-keymap.set("n", "<C-j>", "<C-w>j")
-keymap.set("n", "<C-k>", "<C-w>k")
-keymap.set("n", "<C-l>", "<C-w>l")
+keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
+keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
+keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
+keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
 
--- Toggle between last open buffers
-keymap.set("n", "<Leader><Space>", "<C-^>")
+-- Buffer
+keymap.set("n", "<Leader><Space>", "<C-^>", { desc = "Toggle between last opened buffers" })
+keymap.set("n", "<Leader>bp", "<Cmd>bprevious<Cr>", { desc = "Previous buffer" })
+keymap.set("n", "<Leader>bn", "<Cmd>bnext<Cr>", { desc = "Next buffer" })
+keymap.set("n", "[b", "<Cmd>bprevious<Cr>", { desc = "Previous buffer" })
+keymap.set("n", "]b", "<Cmd>bnext<Cr>", { desc = "Next buffer" })
+keymap.set("n", "<Leader>bw", "<Cmd>w<Cr><Cmd>bdelete<Cr>", { silent = true })
+keymap.set("n", "<Leader>bd", "<Cmd>w<Cr>:bdelete!<Cr>", { silent = true })
+keymap.set("n", "<Leader>ba", "<Cmd>1,bdelete!<Cr>", { silent = true })
+
+-- Quickfix / Location list window
+keymap.set("n", "<Leader>cw", "<Cmd>cwindow<Cr>")
+keymap.set("n", "<Leader>lw", "<Cmd>lwindow<Cr>")
+keymap.set("n", "<Leader>co", "<Cmd>copen<Cr>")
+keymap.set("n", "<Leader>lo", "<Cmd>lopen<Cr>")
+keymap.set("n", "<Leader>cc", "<Cmd>cclose<Cr>")
+keymap.set("n", "<Leader>lc", "<Cmd>lclose<Cr>")
 
 -- qq to record, Q to replay
 keymap.set("n", "Q", "@q")

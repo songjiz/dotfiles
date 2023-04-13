@@ -66,7 +66,8 @@ local plugins = {
   { "akinsho/toggleterm.nvim", version = "*", config = true },
   "folke/tokyonight.nvim",
   "Mofiqul/vscode.nvim",
-  { "projekt0n/github-nvim-theme", tag = "v0.0.7" }
+  { "projekt0n/github-nvim-theme", tag = "v0.0.7" },
+  "marko-cerovac/material.nvim"
 }
 
 lazy.setup(plugins, opts)
