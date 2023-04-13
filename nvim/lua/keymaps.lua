@@ -94,6 +94,10 @@ keymap.set("n", "<Leader>lo", "<Cmd>lopen<Cr>")
 keymap.set("n", "<Leader>cc", "<Cmd>cclose<Cr>")
 keymap.set("n", "<Leader>lc", "<Cmd>lclose<Cr>")
 
+-- Add normal j/k motions to the jumplist
+keymap.set("n", "j", [[ v:count ? (v:count >= 5 ? "m'" . v:count : "") . "j" : "gj"]], { noremap = true, expr = true })
+keymap.set("n", "k", [[ v:count ? (v:count >= 5 ? "m'" . v:count : "") . "k" : "gk"]], { noremap = true, expr = true })
+
 -- qq to record, Q to replay
 keymap.set("n", "Q", "@q")
 
