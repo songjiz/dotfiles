@@ -71,14 +71,14 @@ opt.wildignore:append {
 opt.diffopt = "internal,algorithm:patience,indent-heuristic"
 
 if fn.executable("rg") then
-  opt.grepprg = "rg --vimgrep --no-heading --hidden --smart-case --no-ignore-vcs"
+  opt.grepprg = "rg --vimgrep"
 
-  --                      ┌ filename
-  --                      │  ┌ line nr
-  --                      │  │  ┌ column nr
-  --                      │  │  │  ┌ error message
-  --                      │  │  │  │
-  opt.grepformat = { "%f:%l:%c:%m", "%f:%l:%m" }
+  --                 ┌ filename
+  --                 │  ┌ line nr
+  --                 │  │  ┌ column nr
+  --                 │  │  │  ┌ error message
+  --                 │  │  │  │
+  opt.grepformat = "%f:%l:%c:%m"
 end
 
 opt.termguicolors = true
