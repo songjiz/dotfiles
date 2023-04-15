@@ -6,11 +6,27 @@ end
 
 local Terminal = require("toggleterm.terminal").Terminal
 
+local opts = {
+  direction = "float",
+  float_opts = {
+    border = "rounded",
+    winblend = 0,
+  },
+  highlights = {
+    NormalFloat = {
+      link = "Normal",
+    },
+    FloatBorder = {
+      link = "FloatBorder"
+    }
+  }
+}
+
 local irb = Terminal:new(
   vim.tbl_deep_extend(
     "force",
     { cmd = "irb --noautocomplete" },
-    { direction = "float" }
+    opts
   )
 )
 
@@ -24,7 +40,7 @@ local rails_console = Terminal:new(
   vim.tbl_deep_extend(
     "force",
     { cmd = "bundle exec rails console" },
-    { direction = "float" }
+    opts
   )
 )
 
@@ -34,12 +50,5 @@ end
 
 vim.api.nvim_create_user_command("RailsConsole", "lua toggle_rails_console()", { bang = true })
 
-toggleterm.setup({
-  open_mapping = [[<C-\>]],
-  direction = "float",
-  float_opts = {
-    border = "single",
-    winblend = 3,
-  }
-})
+toggleterm.setup(vim.tbl_deep_extend("force", { open_mapping = [[<C-\>]] }, opts))
 

@@ -29,8 +29,18 @@ cmp.setup({
     end,
   },
   window = {
-    documentation = cmp.config.window.bordered(),
-    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered {
+      border = "rounded",
+      winhighlight = "Normal:Normal,FloatBorder:CmpCompletionBorder,CursorLine:CmpCursorLine,Search:Search",
+      col_offset = -3,
+      side_padding = 1
+    },
+    completion = cmp.config.window.bordered {
+      border = "rounded",
+      winhighlight = "Normal:Normal,FloatBorder:CmpCompletionBorder,CursorLine:CmpCursorLine,Search:Search",
+      col_offset = -3,
+      side_padding = 1,
+    }
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
