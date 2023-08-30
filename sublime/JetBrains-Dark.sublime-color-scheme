@@ -1,0 +1,751 @@
+{
+  "name": "JetBrains Dark",
+  "author": "songji",
+  "colorSpaceName": "sRGB",
+  "variables": {
+    "red": "#F75464",
+    "orange": "#F49810",
+    "yellow": "#F2C55C",
+    "green": "#8BB33D",
+    "blue": "#548AF7",
+    "purple": "#B189F5",
+    "black": "#000000",
+    "white": "#FFFFFF",
+    "pink": "#C77DBB",
+    "gray": "#7A7E85",
+  },
+  "globals": {
+    "background": "#1E1F22",
+    "foreground": "#BCBEC4",
+    "invisibles": "#4B5059",
+    "caret": "#CED0D6",
+    "block_caret": "#CED0D6",
+    "guide": "#313438",
+    "stack_guide": "#313438",
+    "active_guide": "#5b595c",
+    "selection": "#214283",
+    "selection_border": "#214283",
+    "selection_border_width": "1",
+    "selection_corner_style": "round",
+    "selection_corner_radius": "2",
+    "line_highlight": "#26282E",
+    "bracket_contents_options": "underline",
+    "tags_options": "stippled_underline",
+    "gutter": "#1E1F22",
+    "gutter_foreground": "#4B5059",
+    "shadow": "#00000000",
+    "shadow_width": "0",
+    "highlight": "#808080",
+    "find_highlight": "#114957",
+    "find_highlight_foreground": "#BCBEC4",
+    "misspelling": "#F75464",
+    "fold_marker": "#CED0D6",
+    "accent": "#F2C55C",
+    "line_diff_width": "2",
+    "line_diff_added": "#294436",
+    "line_diff_modified": "#385570",
+    "line_diff_deleted": "#484A4A"
+  },
+  "rules": [
+    {
+      "name": "Comment",
+      "scope": "comment, punctuation.definition.comment",
+      "foreground": "#7A7E85"
+    },
+    {
+      "name": "String",
+      "scope": "string",
+      "foreground": "#8BB33D"
+    },
+    {
+      "name": "Number",
+      "scope": "constant.numeric",
+      "foreground": "#74A4C8"
+    },
+    {
+      "name": "Number Suffix",
+      "scope": "storage.type.numeric",
+      "font_style": "italic"
+    },
+    {
+      "name": "Punctuation",
+      "scope": "punctuation.definition - punctuation.definition.numeric.base"
+    },
+    {
+      "name": "Built-in constant",
+      "scope": "constant.language",
+      "font_style": "italic",
+      "foreground": "#FFC66D"
+    },
+    {
+      "name": "User-defined constant",
+      "scope": "constant.character, constant.other",
+      "foreground": "#FFC66D"
+    },
+    {
+      "name": "Member Variable",
+      "scope": "variable.member",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Keyword",
+      "scope": "keyword - keyword.operator, keyword.operator.word",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "Operators",
+      "scope": "keyword.operator",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "Punctuation",
+      "scope": "punctuation.separator, punctuation.terminator",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Punctuation",
+      "scope": "punctuation.section",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Accessor",
+      "scope": "punctuation.accessor",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Annotation Punctuation",
+      "scope": "punctuation.definition.annotation",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Entity name",
+      "scope": "entity.name.function",
+      "foreground": "#56A8F5"
+    },
+    {
+      "name": "Entity name",
+      "scope": "entity.name - (entity.name.section | entity.name.tag | entity.name.label)",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Inherited class",
+      "scope": "entity.other.inherited-class",
+      "foreground": "#BCBEC4",
+      "font_style": "italic"
+    },
+    {
+      "name": "Function argument",
+      "scope": "variable.parameter",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Language variable",
+      "scope": "variable.language",
+      "foreground": "#BCBEC4",
+      "font_style": "italic"
+    },
+    {
+      "name": "Tag name",
+      "scope": "entity.name.tag",
+      "foreground": "#D5B778"
+    },
+    {
+      "name": "Tag attribute",
+      "scope": "entity.other.attribute-name",
+      "foreground": "#BABABA"
+    },
+    {
+      "name": "Function call",
+      "scope": "variable.function, variable.annotation",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Library function",
+      "scope": "support.function, support.macro",
+      "foreground": "#56A8F5",
+      "font_style": "italic"
+    },
+    {
+      "name": "Library constant",
+      "scope": "support.constant",
+      "foreground": "#C77DBB",
+      "font_style": "italic"
+    },
+    {
+      "name": "Library class/type",
+      "scope": "support.type, support.class",
+      "foreground": "#BCBEC4",
+      "font_style": "italic"
+    },
+    {
+      "name": "Invalid",
+      "scope": "invalid",
+      "foreground": "#FA6675",
+    },
+    {
+      "name": "Invalid deprecated",
+      "scope": "invalid.deprecated",
+      "foreground": "#FA6675",
+    },
+    {
+      "name": "markup headings",
+      "scope": "markup.heading",
+      "font_style": "bold"
+    },
+    {
+      "name": "markup headings",
+      "scope": "markup.heading punctuation.definition.heading",
+      "foreground": "#C77DBB"
+    },
+    {
+      "name": "markup h1~h6",
+      "scope": "markup.heading.1 punctuation.definition.heading, text.html.markdown markup.heading.1.markdown entity.name.section.markdown, markup.heading.2 punctuation.definition.heading, text.html.markdown markup.heading.2.markdown entity.name.section.markdown, markup.heading.3 punctuation.definition.heading, text.html.markdown markup.heading.3.markdown entity.name.section.markdown, markup.heading.4 punctuation.definition.heading, text.html.markdown markup.heading.4.markdown entity.name.section.markdown, markup.heading.5 punctuation.definition.heading, text.html.markdown markup.heading.5.markdown entity.name.section.markdown, markup.heading.6 punctuation.definition.heading, text.html.markdown markup.heading.6.markdown entity.name.section.markdown",
+      "foreground": "#C77DBB"
+    },
+    {
+      "name": "markup links",
+      "scope": "string.other.link, markup.underline.link, text.html.markdown meta.paragraph.markdown meta.link.inet.markdown punctuation.definition.link.begin.markdown, text.html.markdown meta.paragraph.markdown meta.link.inet.markdown punctuation.definition.link.end.markdown, text.html.markdown meta.paragraph.markdown meta.link.inet.markdown markup.underline.link.markdown punctuation.separator.path.markdown, text.html.markdown meta.link.reference.def.markdown markup.underline.link.markdown punctuation.separator.path.markdown, text.html.markdown meta.paragraph.markdown meta.image.inline.metadata.markdown markup.underline.link.image.markdown punctuation.separator.path.markdown, text.html.markdown markup.heading.3.markdown entity.name.section.markdown meta.link.inline.metadata.markdown markup.underline.link.markdown punctuation.separator.path.markdown, text.html.markdown markup.heading.3.markdown entity.name.section.markdown meta.image.inline.metadata.markdown markup.underline.link.image.markdown punctuation.separator.path.markdown",
+      "foreground": "#57AAF7"
+    },
+    {
+      "name": "markup link text",
+      "scope": "text.html.markdown meta.paragraph.markdown meta.link.inline.description.markdown punctuation.definition.link.begin.markdown, text.html.markdown meta.paragraph.markdown meta.link.inline.description.markdown, text.html.markdown meta.paragraph.markdown meta.link.inline.description.markdown punctuation.definition.link.end.markdown, text.html.markdown meta.paragraph.markdown meta.image.inline.description.markdown",
+      "foreground": "#57AAF7"
+    },
+    {
+      "name": "markup link description",
+      "scope": "text.html.markdown meta.paragraph.markdown meta.link.inline.metadata.markdown markup.underline.link.markdown, text.html.markdown meta.paragraph.markdown meta.link.inline.metadata.markdown markup.underline.link.markdown punctuation.separator.path.markdown",
+      "foreground": "#57AAF7"
+    },
+    {
+      "name": "markup link reference",
+      "scope": "text.html.markdown meta.paragraph.markdown meta.link.reference.description.markdown punctuation.definition.link.begin.markdown, text.html.markdown meta.paragraph.markdown meta.link.reference.description.markdown, text.html.markdown meta.paragraph.markdown meta.link.reference.description.markdown punctuation.definition.link.end.markdown",
+      "foreground": "#57AAF7"
+    },
+    {
+      "name": "markup link reference metadata",
+      "scope": "text.html.markdown meta.paragraph.markdown meta.link.reference.metadata.markdown punctuation.definition.metadata.begin.markdown, text.html.markdown meta.paragraph.markdown meta.link.reference.metadata.markdown markup.underline.link.markdown, text.html.markdown meta.paragraph.markdown meta.link.reference.metadata.markdown punctuation.definition.metadata.end.markdown",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "markup bold",
+      "scope": "markup.bold",
+      "font_style": "bold",
+    },
+    {
+      "name": "markup bold definition",
+      "scope": "text.html.markdown meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.begin.markdown, text.html.markdown meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.end.markdown",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "markup italic",
+      "scope": "markup.italic",
+      "font_style": "italic"
+    },
+    {
+      "name": "markup italic definition",
+      "scope": "text.html.markdown meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.begin.markdown, text.html.markdown meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.end.markdown",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "markup strikethrough",
+      "scope": "markup.strikethrough",
+      "font_style": "strikethrough"
+    },
+    {
+      "name": "markup strikethrough definition",
+      "scope": "text.html.markdown meta.paragraph.markdown markup.strikethrough.markdown-gfm punctuation.definition.strikethrough.begin.markdown, text.html.markdown meta.paragraph.markdown markup.strikethrough.markdown-gfm punctuation.definition.strikethrough.end.markdown",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "markup underline",
+      "scope": "markup.underline",
+      "font_style": "underline"
+    },
+    {
+      "name": "markup bold/italic",
+      "scope": "markup.italic markup.bold | markup.bold markup.italic",
+      "font_style": "bold italic"
+    },
+    {
+      "name": "markup bold/underline",
+      "scope": "markup.underline markup.bold | markup.bold markup.underline",
+      "font_style": "bold underline"
+    },
+    {
+      "name": "markup italic/underline",
+      "scope": "markup.underline markup.italic | markup.italic markup.underline",
+      "font_style": "italic underline"
+    },
+    {
+      "name": "markup bold/italic/underline",
+      "scope": "markup.bold markup.italic markup.underline | markup.bold markup.underline markup.italic | markup.italic markup.bold markup.underline | markup.italic markup.underline markup.bold | markup.underline markup.bold markup.italic | markup.underline markup.italic markup.bold",
+      "font_style": "bold italic underline"
+    },
+    {
+      "name": "markup hr",
+      "scope": "punctuation.definition.thematic-break",
+      "foreground": "#C77DBB"
+    },
+    {
+      "name": "markup numbered list bullet",
+      "scope": "markup.list.numbered.bullet, text.html.markdown markup.list.numbered.bullet.markdown punctuation.definition.list_item.markdown",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "markup unnumbered list bullet",
+      "scope": "text.html.markdown markup.list.unnumbered.bullet.markdown punctuation.definition.list_item.markdown",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "markup blockquote",
+      "scope": "markup.quote, markup.quote punctuation.definition.blockquote, markup.list punctuation.definition.list_item, text.html.markdown markup.quote.markdown markup.paragraph.markdown meta.link.inline.metadata.markdown markup.underline.link.markdown, text.html.markdown markup.quote.markdown markup.paragraph.markdown meta.link.inline.metadata.markdown markup.underline.link.markdown punctuation.separator.path.markdown",
+      "foreground": "#6AAB73"
+    },
+    {
+      "name": "markup code",
+      "scope": "markup.raw, text.html.markdown meta.code-fence.definition.begin.text.markdown-gfm punctuation.definition.raw.code-fence.begin.markdown, text.html.markdown meta.code-fence.definition.end.text.markdown-gfm punctuation.definition.raw.code-fence.end.markdown",
+      "foreground": "#6AAB73"
+    },
+    {
+      "name": "markup code",
+      "scope": "markup.raw.inline",
+      "foreground": "#6AAB73"
+    },
+    {
+      "name": "markup punctuation",
+      "scope": "(text punctuation.definition.italic | text punctuation.definition.bold)",
+      "foreground": "#0033B3"
+    },
+    {
+      "name": "markup inline html",
+      "scope": "text.html.markdown meta.paragraph.markdown meta.tag.inline.any.html entity.name.tag.inline.any.html, text.html.markdown meta.paragraph.markdown meta.tag.structure.any.html entity.name.tag.structure.any.html, text.html.markdown meta.disable-markdown meta.tag.inline.table.html entity.name.tag.inline.table.html",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "markup table",
+      "scope": "text.html.markdown meta.table.header.markdown-gfm punctuation.separator.table-cell.markdown, text.html.markdown meta.table.header-separator.markdown-gfm punctuation.separator.table-cell.markdown, text.html.markdown meta.table.header-separator.markdown-gfm punctuation.section.table-header.markdown, text.html.markdown meta.table.markdown-gfm punctuation.separator.table-cell.markdown",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "diff.header",
+      "scope": "meta.diff, meta.diff.header",
+      "foreground": "#C77DBB"
+    },
+    {
+      "name": "diff.deleted",
+      "scope": "markup.deleted",
+      "foreground": "#484A4A"
+    },
+    {
+      "name": "diff.inserted",
+      "scope": "markup.inserted",
+      "foreground": "#294436"
+    },
+    {
+      "name": "diff.changed",
+      "scope": "markup.changed",
+      "foreground": "#385570"
+    },
+    {
+      "name": "CSS Properties",
+      "scope": "support.type.property-name",
+      "foreground": "#BABABA"
+    },
+    {
+      "scope": "constant.numeric.line-number.match",
+      "foreground": "#F75464"
+    },
+    {
+      "scope": "message.error",
+      "foreground": "#F75464"
+    },
+    {
+      "scope": "diff.deleted",
+      "background": "hsla(357, 45%, 60%, 0.15)",
+      "foreground_adjust": "l(+ 5%)"
+    },
+    {
+      "scope": "diff.deleted.char",
+      "background": "hsla(357, 60%, 60%, 0.30)",
+      "foreground_adjust": "l(+ 10%)"
+    },
+    {
+      "scope": "diff.inserted",
+      "background": "hsla(180, 45%, 60%, 0.15)",
+      "foreground_adjust": "l(+ 5%)"
+    },
+    {
+      "scope": "diff.inserted.char",
+      "background": "hsla(180, 60%, 60%, 0.30)",
+      "foreground_adjust": "l(+ 10%)"
+    },
+    {
+      "name": "Ruby class declaration",
+      "scope": "keyword.declaration.class.ruby, keyword.declaration.function.ruby, keyword.declaration.namespace.ruby",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "Ruby class / module",
+      "scope": "source.ruby meta.namespace.ruby entity.name.namespace.ruby, source.ruby meta.class.ruby entity.name.class.ruby, source.ruby meta.class.ruby entity.other.inherited-class.ruby, source.ruby meta.class.ruby entity.other.inherited-class.ruby support.other.namespace.ruby, source.ruby support.class.ruby",
+      "foreground": "#FFC66D"
+    },
+    {
+      "name": "Ruby builtin function",
+      "scope": "source.ruby support.function.builtin.ruby",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Ruby punctuation tags",
+      "scope": "punctuation.definition.group.begin.ruby, punctuation.definition.group.end.ruby",
+      "foreground": "#939293"
+    },
+    {
+      "name": "Ruby instance variables",
+      "scope": "source.ruby variable.other.readwrite.instance.ruby, source.ruby variable.other.readwrite.class.ruby",
+      "foreground": "#C77DBB"
+    },
+    {
+      "name": "Ruby global variable",
+      "scope": "source.ruby variable.other.readwrite.global.ruby, source.ruby variable.other.readwrite.global.ruby punctuation.definition.variable.ruby, source.ruby variable.other.readwrite.global.pre-defined.ruby punctuation.definition.variable.ruby",
+      "foreground": "#D0D0FF"
+    },
+    {
+      "name": "Ruby special method(e.g. require)",
+      "scope": "source.ruby meta.require.ruby keyword.control.import.ruby, source.ruby keyword.other.special-method.ruby",
+      "foreground": "#FC9800"
+    },
+    {
+      "name": "Ruby operator",
+      "scope": "source.ruby keyword.operator.assignment.ruby, source.ruby keyword.operator.arithmetic.ruby, source.ruby meta.string.ruby meta.interpolation.ruby source.ruby.embedded.ruby keyword.operator.other.ruby, source.ruby keyword.operator.comparison.ruby, source.ruby keyword.operator.logical.ruby",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Ruby symbol",
+      "scope": "source.ruby constant.other.symbol.ruby punctuation.definition.constant.ruby, source.ruby constant.other.symbol.ruby",
+      "foreground": "#89A6AF"
+    },
+    {
+      "name": "Ruby single quoted string",
+      "scope": "source.ruby meta.string.ruby string.quoted.single.ruby, source.ruby meta.string.ruby string.quoted.single.ruby punctuation.definition.string.begin.ruby",
+      "foreground": "#6AAB74"
+    },
+    {
+      "name": "Ruby double quoted string",
+      "scope": "source.ruby meta.string.ruby string.quoted.double.ruby, source.ruby meta.string.ruby string.quoted.double.ruby punctuation.definition.string.begin.ruby",
+      "foreground": "#6AAB73"
+    },
+    {
+      "name": "Ruby heredoc",
+      "scope": "source.ruby meta.string.heredoc.ruby string.unquoted.heredoc.ruby, source.ruby meta.string.heredoc.ruby meta.tag.heredoc.ruby entity.name.tag.ruby, source.ruby meta.string.heredoc.ruby punctuation.definition.heredoc.ruby",
+      "foreground": "#979E5A"
+    },
+    {
+      "name": "Ruby parameters",
+      "scope": "source.ruby meta.function.parameters.ruby variable.parameter.ruby, source.ruby meta.block.parameters.ruby variable.parameter.ruby",
+      "foreground": "#D4B01D"
+    },
+    {
+      "name": "Ruby other quoted string literal upper(e.g %W[])",
+      "scope": "source.ruby meta.string.ruby string.quoted.other.literal.upper.ruby, source.ruby meta.string.ruby string.quoted.other.literal.upper.ruby punctuation.definition.string.begin.ruby",
+      "foreground": "#979E5A"
+    },
+    {
+      "name": "Ruby constant",
+      "scope": "source.ruby variable.other.constant.ruby",
+      "foreground": "#FEFFF9"
+    },
+    {
+      "name": "Ruby regexp",
+      "scope": "source.ruby meta.string.regexp.ruby string.regexp.classic.ruby, source.ruby meta.string.regexp.ruby string.regexp.classic.ruby punctuation.definition.string.begin.ruby",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Ruby regexp definition",
+      "scope": "source.ruby meta.string.regexp.ruby string.regexp.classic.ruby punctuation.definition.string.begin.ruby, source.ruby meta.string.regexp.ruby string.regexp.classic.ruby punctuation.definition.string.end.ruby, source.ruby meta.string.regexp.ruby string.regexp.classic.ruby keyword.other.ruby",
+      "foreground": "#979E5A"
+    },
+    {
+      "name": "Ruby boolean",
+      "scope": "source.ruby constant.language.boolean.ruby",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "Ruby method name",
+      "scope": "source.ruby meta.function.ruby entity.name.function.ruby",
+      "foreground": "#FFC66D",
+      "font_style": "italic"
+    },
+    {
+      "name": "Ruby proc (->(args) {})",
+      "scope": "source.ruby meta.function.ruby keyword.declaration.function.anonymous.ruby",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "YAML comment",
+      "scope": "source.yaml comment.line.number-sign.yaml, source.yaml comment.line.number-sign.yaml punctuation.definition.comment.line.number-sign.yaml",
+      "foreground": "#5F826B"
+    },
+    {
+      "name": "YAML key",
+      "scope": "source.yaml meta.mapping.key.yaml meta.string.yaml string.unquoted.plain.out.yaml",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "YAML key value separator",
+      "scope": "source.yaml meta.mapping.yaml punctuation.separator.key-value.mapping.yaml",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "YAML double quoted string",
+      "scope": "source.yaml meta.string.yaml string.quoted.double.yaml, source.yaml meta.string.yaml string.quoted.double.yaml punctuation.definition.string.begin.yaml, source.yaml meta.string.yaml string.quoted.double.yaml punctuation.definition.string.end.yaml",
+      "foreground": "#6AAB73"
+    },
+    {
+      "name": "YAML single quoted string",
+      "scope": "source.yaml meta.string.yaml string.quoted.single.yaml, source.yaml meta.string.yaml string.quoted.single.yaml punctuation.definition.string.begin.yaml, source.yaml meta.string.yaml string.quoted.single.yaml punctuation.definition.string.end.yaml",
+      "foreground": "#6AAB73"
+    },
+    {
+      "name": "YAML anchor (e.g &default, *default)",
+      "scope": "source.yaml meta.property.yaml entity.name.other.anchor.yaml, source.yaml variable.other.alias.yaml",
+      "foreground": "#E8BF6A"
+    },
+    {
+      "name": "YAML value",
+      "scope": "source.yaml meta.string.yaml string.unquoted.plain.out.yaml, source.yaml meta.number.integer.decimal.yaml constant.numeric.value.yaml, source.yaml constant.language.boolean.yaml, source.yaml keyword.control.flow.block-scalar.literal.yaml, source.yaml keyword.control.flow.block-scalar.folded.yaml, source.yaml storage.modifier.chomping-indicator.yaml, source.yaml meta.string.yaml string.unquoted.block.yaml",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Slim tag name",
+      "scope": "text.slim meta.tag.slim entity.name.tag.slim, text.slim meta.tag.sgml.doctype.slim entity.name.tag.slim",
+      "foreground": "#CC7833"
+    },
+    {
+      "name": "Slim comment",
+      "scope": "text.slim comment.block.code.slim punctuation.definition.comment.slim, text.slim comment.block.code.slim",
+      "foreground": "#BC9458"
+    },
+    {
+      "name": "Slim tag attribute name",
+      "scope": "text.slim meta.tag.slim meta.attribute-with-value.slim entity.other.attribute-name.slim, text.slim meta.tag.slim meta.attribute-with-value.href.slim entity.other.attribute-name.slim",
+      "foreground": "#CC7833"
+    },
+    {
+      "name": "Slim tag quoted string",
+      "scope": "text.slim meta.tag.slim meta.attribute-with-value.slim meta.string.html string.quoted.double.html punctuation.definition.string.begin.html, text.slim meta.tag.slim meta.attribute-with-value.slim meta.string.html string.quoted.double.html, text.slim meta.tag.slim meta.attribute-with-value.slim meta.string.html string.quoted.double.html punctuation.definition.string.end.html",
+      "foreground": "#6A8759"
+    },
+    {
+      "name": "Slim tag unquoted string",
+      "scope": "text.slim meta.tag.sgml.doctype.slim meta.string.slim string.unquoted.slim",
+      "foreground": "#A9B7C6"
+    },
+    {
+      "name": "Slim embedded",
+      "scope": "text.slim meta.embedded.slim source.ruby.rails.embedded.slim, text.slim meta.embedded.slim source.ruby.rails.embedded.slim support.function.actionpack.rails",
+      "foreground": "#FFC66D"
+    },
+    {
+      "name": "Slim interpolation",
+      "scope": "text.slim meta.embedded.slim source.ruby.rails.embedded.slim meta.string.ruby meta.interpolation.ruby punctuation.section.interpolation.begin.ruby, text.slim meta.embedded.slim source.ruby.rails.embedded.slim meta.string.ruby meta.interpolation.ruby punctuation.section.interpolation.end.ruby",
+      "foreground": "#CC7833"
+    },
+    {
+      "name": "Slim interpolation embedded",
+      "scope": "text.slim meta.embedded.slim source.ruby.rails.embedded.slim meta.string.ruby meta.interpolation.ruby source.ruby.embedded.ruby",
+      "foreground": "#A9B7C6"
+    },
+    {
+      "name": "Slim tag class names",
+      "scope": "text.slim meta.tag.slim meta.attribute-shortcut.slim entity.name.attribute.class.slim",
+      "foreground": "#CC7833"
+    },
+    {
+      "name": "Slim tag id",
+      "scope": "text.slim meta.tag.slim meta.attribute-shortcut.slim punctuation.definition.attribute.id.slim, text.slim meta.tag.slim meta.attribute-shortcut.slim entity.name.attribute.id.slim",
+      "foreground": "#D5B778"
+    },
+    {
+      "name": "JSON keys",
+      "scope": "source.json meta.mapping.key.json string.quoted.double.json punctuation.definition.string.begin.json, source.json meta.mapping.key.json string.quoted.double.json, source.json meta.mapping.key.json string.quoted.double.json punctuation.definition.string.end.json",
+      "foreground": "#C77DBB"
+    },
+    {
+      "name": "JSON string value",
+      "scope": "source.json meta.mapping.value.json string.quoted.double.json punctuation.definition.string.begin.json, source.json meta.mapping.value.json string.quoted.double.json,source.json meta.mapping.value.json string.quoted.double.json punctuation.definition.string.end.json",
+      "foreground": "#6AAB73"
+    },
+    {
+      "name": "HTML doctype",
+      "scope": "text.html.basic meta.tag.sgml.doctype.html keyword.declaration.doctype.html",
+      "foreground": "#D5B778"
+    },
+    {
+      "name": "HTML constant",
+      "scope": "text.html.basic meta.tag.sgml.doctype.html constant.language.doctype.html, text.html.basic meta.tag.sgml.doctype.html keyword.content.external.html",
+      "foreground": "#BABABA"
+    },
+    {
+      "name": "HTML attribute name",
+      "scope": "text.html.basic meta.tag.inline.any.html meta.attribute-with-value.href.html entity.other.attribute-name.href.html",
+      "foreground": "#BABABA"
+    },
+    {
+      "name": "HTML punctuation",
+      "scope": "text.html.basic punctuation.separator.key-value.html, text.html.basic string.quoted.double.html punctuation.separator.path.html",
+      "foreground": "#6AAB73"
+    },
+    {
+      "name": "ERB comment",
+      "scope": "text.html.rails comment.block.rails punctuation.definition.comment.begin.rails, text.html.rails comment.block.rails, text.html.rails comment.block.rails punctuation.definition.comment.end.rails",
+      "foreground": "#BC9458"
+    },
+    {
+      "name": "ERB punctuation",
+      "scope": "text.html.rails meta.embedded.rails source.ruby.rails.embedded.rails punctuation.section.scope.ruby",
+      "foreground": "#BCBEC4",
+    },
+    {
+      "name": "ERB expression / scriptlet start",
+      "scope": "text.html.rails meta.embedded.rails punctuation.section.embedded.begin.rails",
+      "foreground": "#BCBEC4",
+      "font_style": "bold",
+    },
+    {
+      "name": "ERB expression / scriptlet end",
+      "scope": "text.html.rails meta.embedded.rails punctuation.section.embedded.end.rails",
+      "foreground": "#BCBEC4",
+    },
+    {
+      "name": "ERB tag",
+      "scope": "text.html.rails meta.tag.inline.any.html punctuation.definition.tag.begin.html, text.html.rails meta.tag.inline.any.html entity.name.tag.inline.any.html, text.html.rails meta.tag.inline.any.html punctuation.definition.tag.end.html",
+      "foreground": "#D5B778"
+    },
+    {
+      "name": "HAML doctype",
+      "scope": "text.haml meta.doctype.haml punctuation.definition.doctype.haml, text.haml meta.doctype.haml constant.language.doctype.haml",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "HAML tag definition",
+      "scope": "text.haml meta.tag.haml punctuation.definition.tag.haml",
+      "foreground": "#E8BF6A"
+    },
+    {
+      "name": "HAML tag",
+      "scope": "text.haml meta.tag.haml entity.name.tag.haml",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "HAML whitespace removal",
+      "scope": "text.haml keyword.operator.whitespace.haml",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "HAML embedded",
+      "scope": "text.haml meta.line.ruby.haml meta.embedded.haml punctuation.section.embedded.haml",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "HAML embedded variable",
+      "scope": "text.haml meta.line.ruby.haml meta.embedded.haml source.ruby.rails.embedded.haml variable.other.readwrite.instance.ruby punctuation.definition.variable.ruby, text.haml meta.line.ruby.haml meta.embedded.haml source.ruby.rails.embedded.haml variable.other.readwrite.instance.ruby",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "HAML embedded symbol",
+      "scope": "text.haml meta.tag.attributes.haml meta.braces.haml source.ruby.rails.embedded.haml constant.other.symbol.ruby punctuation.definition.constant.ruby, text.haml meta.tag.attributes.haml meta.braces.haml source.ruby.rails.embedded.haml constant.other.symbol.ruby",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "HAML filter",
+      "scope": "text.haml meta.filter.definition.haml constant.other.language-name.plain.haml",
+      "font_style": "underline"
+    },
+    {
+      "name": "Javascript block comment",
+      "scope": "source.js comment.block.documentation.js punctuation.definition.comment.begin.js, source.js comment.block.documentation.js punctuation.definition.comment.end.js, source.js comment.block.documentation.js, source.js comment.block.documentation.js punctuation.definition.comment.js",
+      "foreground": "#5F826B"
+    },
+    {
+      "name": "Javascript block comment attribute",
+      "scope": "source.js comment.block.documentation.js entity.other.attribute-name.documentation.js",
+      "foreground": "#67A37C"
+    },
+    {
+      "name": "Javascript line comment",
+      "scope": "source.js meta.function.js meta.block.js comment.block.js punctuation.definition.comment.begin.js, source.js meta.function.js meta.block.js comment.block.js, source.js meta.function.js meta.block.js comment.block.js punctuation.definition.comment.end.js, source.js meta.function.js meta.block.js comment.line.double-slash.js punctuation.definition.comment.js, source.js meta.function.js meta.block.js comment.line.double-slash.js",
+      "foreground": "#7A7E85"
+    },
+    {
+      "name": "Javascript parameter",
+      "scope": "source.js meta.function.parameters.js meta.binding.name.js variable.parameter.function.js, source.js meta.function.js meta.block.js meta.function-call.method.js variable.other.readwrite.js, source.js meta.function.js meta.block.js variable.other.readwrite.js, source.js meta.function.js meta.block.js meta.function-call.method.js variable.function.js",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Javascript local function",
+      "scope": "source.js meta.function.js meta.block.js meta.function.js entity.name.function.js",
+      "foreground": "#56A8F5"
+    },
+    {
+      "name": "Javascript keywords",
+      "scope": "keyword.declaration.js, keyword.declaration.function.js, source.js meta.class.js keyword.declaration.class.js, source.js meta.function.js meta.block.js variable.language.this.js, source.js meta.function.js meta.block.js keyword.operator.word.new.js, source.js variable.other.readwrite.js, source.js support.constant.node.js, source.js meta.block.js keyword.operator.js",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "Javascript instance member variable",
+      "scope": "source.js meta.function.js meta.block.js meta.property.object.js",
+      "foreground": "#C77DBB"
+    },
+    {
+      "name": "Javascript global function / class",
+      "scope": "source.js meta.function.js entity.name.function.js, source.js meta.class.js entity.name.class.js, source.js variable.other.constant.js, source.js meta.function.js meta.block.js meta.function-call.constructor.js support.class.dom.js",
+      "foreground": "#56A8F5"
+    },
+    {
+      "name": "Javascript global variable",
+      "scope": "source.js meta.binding.name.js variable.other.readwrite.js, source.js meta.function.js meta.block.js meta.sequence.js variable.other.readwrite.js",
+      "foreground": "#C77DBA"
+    },
+    {
+      "name": "Javascript local variable",
+      "scope": "source.js meta.function.js meta.block.js meta.binding.name.js variable.other.readwrite.js",
+      "foreground": "#A9B7C6"
+    },
+    {
+      "name": "Javascript string escape",
+      "scope": "source.js meta.function.js meta.block.js meta.string.js string.quoted.double.js constant.character.escape.js",
+      "foreground": "#CF8E6D"
+    },
+    {
+      "name": "Javascript instance member function",
+      "scope": "source.js meta.function.js meta.block.js meta.function-call.js variable.function.js",
+      "foreground": "#7A7A43"
+    },
+    {
+      "name": "Javascript decorator",
+      "scope": "source.js meta.annotation.js punctuation.definition.annotation.js,source.js meta.annotation.js meta.function-call.js variable.function.js",
+      "foreground": "#B3AE60"
+    },
+    {
+      "name": "Javascript regexp",
+      "scope": "source.js meta.function.js meta.block.js meta.function-call.method.js meta.group.js meta.string.js string.regexp.js keyword.control.anchor.regexp, source.js meta.function.js meta.block.js meta.function-call.method.js meta.group.js meta.string.js string.regexp.js punctuation.definition.string.begin.js, source.js meta.function.js meta.block.js meta.function-call.method.js meta.group.js meta.string.js string.regexp.js keyword.operator.quantifier.regexp, source.js meta.function.js meta.block.js meta.function-call.method.js meta.group.js meta.string.js string.regexp.js constant.other.character-class.escape.backslash.regexp, source.js meta.function.js meta.block.js meta.function-call.method.js meta.group.js meta.string.js string.regexp.js meta.group.regexp punctuation.definition.group.begin.regexp, source.js meta.function.js meta.block.js meta.function-call.method.js meta.group.js meta.string.js string.regexp.js meta.group.regexp punctuation.definition.group.end.regexp, source.js meta.function.js meta.block.js meta.function-call.method.js meta.group.js meta.string.js string.regexp.js punctuation.definition.string.end.js",
+      "foreground": "#42C3D4"
+    },
+    {
+      "name": "Javascript function arrow",
+      "scope": "source.js meta.function.js meta.block.js meta.function.js keyword.declaration.function.arrow.js",
+      "foreground": "#BCBEC4"
+    },
+    {
+      "name": "Javascript function call",
+      "scope": "source.js meta.function.js meta.block.js meta.function.js meta.block.js meta.function-call.method.js support.type.object.console.js, source.js meta.function.js meta.block.js meta.function.js meta.block.js meta.function-call.method.js support.function.console.js",
+      "foreground": "#A9B7C6"
+    },
+    {
+      "name": "JavaScript Dollar",
+      "scope": "variable.other.dollar.only.js, variable.other.object.dollar.only.js, variable.type.dollar.only.js, support.class.dollar.only.js",
+      "foreground": "#BCBEC4"
+    }
+  ]
+}
