@@ -14,6 +14,7 @@
     "red08": "#FE7277",
     "red09": "#FCA4A7",
     "red10": "#FFCCCC",
+
     "yellow00": "#A66F00",
     "yellow01": "#9E880D",
     "yellow02": "#C37522",
@@ -25,6 +26,7 @@
     "yellow08": "#FFE055",
     "yellow09": "#F7E79F",
     "yellow10": "#F7E2CB",
+
     "green00": "#067D17",
     "green01": "#7A7A43",
     "green02": "#16B42C",
@@ -36,6 +38,7 @@
     "green08": "#BEE6BE",
     "green09": "#CFEFC6",
     "green10": "#EDFCED",
+
     "blue00": "#0000EE",
     "blue01": "#0033B3",
     "blue02": "#0037A6",
@@ -52,6 +55,7 @@
     "blue13": "#C2D8F2",
     "blue14": "#C4DBFA",
     "blue15": "#F5F8FE",
+
     "megenta00": "#800080",
     "magenta01": "#871094",
     "magenta02": "#B309B3",
@@ -62,12 +66,15 @@
     "magenta07": "#FBACFB",
     "magenta08": "#CCCCFF",
     "magenta09": "#F3D2F3",
+
     "black00": "#000000",
     "black01": "#080808",
     "black02": "#656565",
+
     "white00": "#FFFFFF",
     "white01": "#C9C9C9",
     "white02": "#EBECF0",
+
     "gray00": "#555555",
     "gray01": "#656565",
     "gray02": "#8C8C8C",
@@ -77,6 +84,7 @@
     "gray06": "#C8C8C8",
     "gray07": "#D6D6D6",
     "gray08": "#E6E6E6",
+    
     "cyan00": "#00627A",
     "cyan01": "#008080",
     "cyan02": "#028E8E",
@@ -175,13 +183,28 @@
       "foreground": "var(magenta01)"
     },
     {
-      "name": "Member Variable",
+      "name": "Variable",
+      "scope": "variable",
+      "foreground": "var(magenta01)"
+    },
+    {
+      "name": "Variable member",
       "scope": "variable.member",
-      "foreground": "var(black00)"
+      "foreground": "var(magenta01)"
+    },
+    {
+      "name": "Variable Language",
+      "scope": "variable.language",
+      "foreground": "var(magenta01)"
     },
     {
       "name": "Keyword",
       "scope": "keyword - keyword.operator, keyword.operator.word",
+      "foreground": "var(blue01)"
+    },
+    {
+      "name": "Import",
+      "scope": "meta.import keyword, keyword.control.import, keyword.control.import.from, keyword.other.import, keyword.control.at-rule.include, keyword.control.at-rule.import",
       "foreground": "var(blue01)"
     },
     {
@@ -218,6 +241,11 @@
       "name": "Entity name",
       "scope": "entity.name - (entity.name.section | entity.name.tag | entity.name.label)",
       "foreground": "var(black00)"
+    },
+    {
+      "name": "Class",
+      "scope": "keyword.control.class, entity.name, entity.name.class, entity.name.type.class",
+      "foreground": "var(magenta01)"
     },
     {
       "name": "Inherited class",
@@ -445,9 +473,29 @@
       "foreground": "var(blue10)"
     },
     {
-      "name": "CSS Properties",
+      "name": "Property name",
       "scope": "support.type.property-name",
-      "foreground": "var(gray04)"
+      "foreground": "var(blue03)"
+    },
+    {
+      "name": "CSS property value",
+      "scope": "source.css meta.at-rule.font-face.css meta.property-list.css meta.block.css meta.property-value.css meta.string.css string.unquoted.css",
+      "foreground": "var(green00)"
+    },
+    {
+      "name": "CSS function",
+      "scope": "source.css meta.property-list.css meta.block.css meta.property-value.css meta.function-call.identifier.css support.function.url.css, source.css meta.property-list.css meta.block.css meta.property-value.css meta.function-call.identifier.css support.function.color.css",
+      "foreground": "var(blue01)"
+    },
+    {
+      "name": "CSS color",
+      "scope": "source.css meta.property-list.css meta.block.css meta.property-value.css support.constant.color.w3c.standard.css, source.css meta.property-list.css meta.block.css meta.property-value.css constant.other.color.rgb-value.css punctuation.definition.constant.css",
+      "foreground": "var(magenta01)"
+    },
+    {
+      "name": "CSS pseudo",
+      "scope": "source.css meta.selector.css entity.other.pseudo-element.css, source.css meta.selector.css meta.function-call.identifier.css entity.other.pseudo-class.css",
+      "foreground": "var(blue03)"
     },
     {
       "scope": "constant.numeric.line-number.match",

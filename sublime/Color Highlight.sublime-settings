@@ -3,6 +3,6 @@
 */
 {
   "user": {
-    "highlight_values": false
+    "highlight_values": true
   }
 }

@@ -14,6 +14,7 @@
 	"line_padding_top": 2,
 	"ignored_packages":
 	[
+		"SCSS",
 		"Tailwind CSS",
 		"Vintage",
 	],
@@ -102,6 +103,4 @@
 		"tags",
 		"tmp/**"
 	],
-	/*"dark_color_scheme": "Mariana.sublime-color-scheme",*/
-	/*"light_color_scheme": "Mariana.sublime-color-scheme",*/
 }
