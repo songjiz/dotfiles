@@ -31,7 +31,7 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "BufEnter"
   },
-  "nvim-lualine/lualine.nvim",
+  -- "nvim-lualine/lualine.nvim",
   "nvim-lua/lsp-status.nvim",
   "nvim-tree/nvim-tree.lua",
   "neovim/nvim-lspconfig",

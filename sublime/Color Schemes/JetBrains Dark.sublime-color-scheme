@@ -774,7 +774,7 @@
     {
       "name": "Javascript global function",
       "scope": "source.js meta.class.js entity.name.class.js, source.js variable.other.constant.js, source.js meta.function.js meta.block.js meta.function-call.constructor.js support.class.dom.js",
-      "foreground": "56A8F5"
+      "foreground": "var(blue04)"
     },
     {
       "name": "Javascript class",
