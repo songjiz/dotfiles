@@ -86,7 +86,7 @@
     "selection_border": "var(blue00)",
     "selection_border_width": "1",
     "selection_corner_style": "round",
-    "selection_corner_radius": "2",
+    "selection_corner_radius": "4",
     "line_highlight": "var(black02)",
     "bracket_contents_options": "underline",
     "tags_options": "stippled_underline",
@@ -109,7 +109,8 @@
     {
       "name": "Comment",
       "scope": "comment, punctuation.definition.comment",
-      "foreground": "var(gray02)"
+      "foreground": "var(gray02)",
+      "font_style": "italic"
     },
     {
       "name": "String",
@@ -481,7 +482,7 @@
     },
     {
       "name": "Ruby global variable",
-      "scope": "source.ruby variable.other.readwrite.global.ruby, source.ruby variable.other.readwrite.global.ruby punctuation.definition.variable.ruby, source.ruby variable.other.readwrite.global.pre-defined.ruby punctuation.definition.variable.ruby",
+      "scope": "source.ruby variable.other.readwrite.global.ruby, source.ruby variable.other.readwrite.global.ruby punctuation.definition.variable.ruby, source.ruby variable.other.readwrite.global.pre-defined.ruby punctuation.definition.variable.ruby, source.ruby variable.other.readwrite.global.pre-defined.ruby",
       "foreground": "var(megenta02)"
     },
     {
@@ -515,6 +516,12 @@
       "foreground": "var(green07)"
     },
     {
+      "name": "Ruby heredoc definition",
+      "scope": "source.ruby meta.string.heredoc.ruby punctuation.definition.heredoc.ruby, source.ruby meta.string.heredoc.ruby meta.tag.heredoc.ruby punctuation.definition.tag.begin.ruby, source.ruby meta.string.heredoc.ruby meta.tag.heredoc.ruby entity.name.tag.ruby, source.ruby meta.string.heredoc.ruby meta.tag.heredoc.ruby punctuation.definition.tag.end.ruby",
+      "foreground": "var(green07)",
+      "font_style": "bold underline"
+    },
+    {
       "name": "Ruby parameters",
       "scope": "source.ruby meta.function.parameters.ruby variable.parameter.ruby, source.ruby meta.block.parameters.ruby variable.parameter.ruby",
       "foreground": "var(yellow06)"
@@ -527,7 +534,8 @@
     {
       "name": "Ruby constant",
       "scope": "source.ruby variable.other.constant.ruby, source.ruby meta.constant.ruby entity.name.constant.ruby",
-      "foreground": "var(yellow10)"
+      "foreground": "var(yellow10)",
+      "font_style": "italic"
     },
     {
       "name": "Ruby regexp",

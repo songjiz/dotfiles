@@ -6,7 +6,7 @@
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "SF Mono",
 	"font_size": 12,
-	"font_options": ["no_bold"],
+	"font_options": [],
 	"hide_new_tab_button": true,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
