@@ -57,9 +57,9 @@
     "cyan08": "#89A6AF",
     "cyan09": "#72D6D6",
 
-    "megenta00": "#C77DBB",
-    "megenta01": "#B189F5",
-    "megenta02": "#D0D0FF",
+    "magenta00": "#C77DBB",
+    "magenta01": "#B189F5",
+    "magenta02": "#D0D0FF",
 
     "yellow00": "#CC7833",
     "yellow01": "#BC9458",
@@ -100,7 +100,7 @@
     "misspelling": "var(red03)",
     "fold_marker": "var(gray03)",
     "accent": "var(blue01)",
-    "line_diff_width": "2",
+    "line_diff_width": "3",
     "line_diff_added": "var(green02)",
     "line_diff_modified": "var(blue01)",
     "line_diff_deleted": "var(gray03)"
@@ -150,12 +150,12 @@
       "name": "Built-in constant",
       "scope": "constant.language",
       "font_style": "italic",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "User-defined constant",
       "scope": "constant.character, constant.other",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "Member Variable",
@@ -243,7 +243,7 @@
     {
       "name": "Library constant",
       "scope": "support.constant",
-      "foreground": "var(megenta00)",
+      "foreground": "var(magenta00)",
       "font_style": "italic"
     },
     {
@@ -270,12 +270,12 @@
     {
       "name": "markup headings",
       "scope": "markup.heading punctuation.definition.heading",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "markup h1~h6",
       "scope": "markup.heading.1 punctuation.definition.heading, text.html.markdown markup.heading.1.markdown entity.name.section.markdown, markup.heading.2 punctuation.definition.heading, text.html.markdown markup.heading.2.markdown entity.name.section.markdown, markup.heading.3 punctuation.definition.heading, text.html.markdown markup.heading.3.markdown entity.name.section.markdown, markup.heading.4 punctuation.definition.heading, text.html.markdown markup.heading.4.markdown entity.name.section.markdown, markup.heading.5 punctuation.definition.heading, text.html.markdown markup.heading.5.markdown entity.name.section.markdown, markup.heading.6 punctuation.definition.heading, text.html.markdown markup.heading.6.markdown entity.name.section.markdown",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "markup links",
@@ -360,7 +360,7 @@
     {
       "name": "markup hr",
       "scope": "punctuation.definition.thematic-break",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "markup numbered list bullet",
@@ -405,7 +405,7 @@
     {
       "name": "diff.header",
       "scope": "meta.diff, meta.diff.header",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "diff.deleted",
@@ -478,12 +478,12 @@
     {
       "name": "Ruby instance variables",
       "scope": "source.ruby variable.other.readwrite.instance.ruby, source.ruby variable.other.readwrite.class.ruby",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "Ruby global variable",
       "scope": "source.ruby variable.other.readwrite.global.ruby, source.ruby variable.other.readwrite.global.ruby punctuation.definition.variable.ruby, source.ruby variable.other.readwrite.global.pre-defined.ruby punctuation.definition.variable.ruby, source.ruby variable.other.readwrite.global.pre-defined.ruby",
-      "foreground": "var(megenta02)"
+      "foreground": "var(magenta02)"
     },
     {
       "name": "Ruby special method(e.g. require)",
@@ -651,7 +651,7 @@
     {
       "name": "JSON keys",
       "scope": "source.json meta.mapping.key.json string.quoted.double.json punctuation.definition.string.begin.json, source.json meta.mapping.key.json string.quoted.double.json, source.json meta.mapping.key.json string.quoted.double.json punctuation.definition.string.end.json",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "JSON string value",
@@ -777,7 +777,7 @@
     {
       "name": "Javascript instance member variable",
       "scope": "source.js meta.function.js meta.block.js meta.property.object.js",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "Javascript global function",
@@ -787,12 +787,12 @@
     {
       "name": "Javascript class",
       "scope": "source.js support.class.js, source.js meta.function-call.method.js support.class.js",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "Javascript global variable",
       "scope": "source.js meta.binding.name.js variable.other.readwrite.js, source.js meta.function.js meta.block.js meta.sequence.js variable.other.readwrite.js",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "Javascript local variable",
@@ -832,7 +832,7 @@
     {
       "name": "Javascript dom object (e.g. window, document)",
       "scope": "source.js meta.function.js meta.block.js meta.conditional.js meta.block.js meta.function-call.method.js support.type.object.dom.js",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "JavaScript Dollar",

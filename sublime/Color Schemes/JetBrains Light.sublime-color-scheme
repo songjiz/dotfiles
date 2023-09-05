@@ -56,12 +56,12 @@
     "blue14": "#C4DBFA",
     "blue15": "#F5F8FE",
 
-    "megenta00": "#800080",
+    "magenta00": "#800080",
     "magenta01": "#871094",
     "magenta02": "#B309B3",
     "magenta03": "#E617E6",
     "magenta04": "#8E8EB2",
-    "megenta05": "#830091",
+    "magenta05": "#830091",
     "magenta06": "#C77DBB",
     "magenta07": "#FBACFB",
     "magenta08": "#CCCCFF",
@@ -120,8 +120,8 @@
     "find_highlight_foreground": "var(black00)",
     "misspelling": "var(red07)",
     "fold_marker": "var(yellow07)",
-    "line_diff_width": "2",
     "accent": "var(blue10)",
+    "line_diff_width": "3",
     "line_diff_added": "var(green04)",
     "line_diff_modified": "var(blue10)",
     "line_diff_deleted": "var(gray06)"
@@ -752,7 +752,7 @@
     {
       "name": "Slim tag id",
       "scope": "text.slim meta.tag.slim meta.attribute-shortcut.slim punctuation.definition.attribute.id.slim, text.slim meta.tag.slim meta.attribute-shortcut.slim entity.name.attribute.id.slim",
-      "foreground": "var(megenta00)",
+      "foreground": "var(magenta00)",
       "font_style": "bold"
     },
     {
@@ -889,12 +889,12 @@
     {
       "name": "Javascript class",
       "scope": "source.js support.class.js, source.js meta.function-call.method.js support.class.js",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "Javascript global variable",
       "scope": "source.js meta.binding.name.js variable.other.readwrite.js, source.js meta.function.js meta.block.js meta.sequence.js variable.other.readwrite.js",
-      "foreground": "var(megenta04)"
+      "foreground": "var(magenta04)"
     },
     {
       "name": "Javascript local variable",
@@ -939,7 +939,7 @@
     {
       "name": "Javascript dom object (e.g. window, document)",
       "scope": "source.js meta.function.js meta.block.js meta.conditional.js meta.block.js meta.function-call.method.js support.type.object.dom.js",
-      "foreground": "var(megenta00)"
+      "foreground": "var(magenta00)"
     },
     {
       "name": "XML namespace prefix",
