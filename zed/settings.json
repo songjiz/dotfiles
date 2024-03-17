@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "theme": "One Dark",
   "buffer_font_size": 12,
   "buffer_font_family": "Comic Code",
   "ui_font_family": "Comic Code",
@@ -14,6 +15,21 @@
   "format_on_save": "off",
   "relative_line_numbers": true,
   "tab_size": 2,
+  "scrollbar": {
+    "show": "never"
+  },
+  "terminal": {
+    "dock": "right"
+  },
+  "assistant": {
+    "button": false
+  },
+  "features": {
+    "copilot": false
+  },
+  "project_panel": {
+    "dock": "right"
+  },
   "languages": {
     "Ruby": {
       "tab_size": 2
