@@ -168,5 +168,8 @@ alias httpserver="python3 -m http.server"
 # fzf
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
+# mise
+[ -x $HOME/.local/bin/mise ] && eval "$($HOME/.local/bin/mise activate zsh)"
+
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
