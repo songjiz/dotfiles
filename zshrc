@@ -73,7 +73,7 @@ ZSH_THEME="simple"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rust rails asdf)
+plugins=(git rust rails)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -156,13 +156,14 @@ alias whatsmyipv6='curl -w "\n" -s https://api64.ipify.org'
 alias httpserver="python3 -m http.server"
 
 # rbenv
-export RBENV_HOME="$HOME/.rbenv"
-[ -x $RBENV_HOME/bin/rbenv ] && eval "$($RBENV_HOME/bin/rbenv init - zsh)"
+# [ -x $HOME/.rbenv/bin/rbenv ] && eval "$($HOME/.rbenv/bin/rbenv init - zsh)"
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# [ -s "$HOME/.nvm/nvm.sh" ] && \. "$HOME/.nvm/nvm.sh"
+# [ -s "$HOME/.nvm/bash_completion" ] && \. "$HOME/.nvm/bash_completion"
+
+# nodenv
+# [ -x $HOME/.nodenv/bin/nodenv ] && eval "$($HOME/.nodenv/bin/nodenv init -)"
 
 # fzf
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
