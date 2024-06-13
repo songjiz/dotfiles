@@ -141,7 +141,6 @@ keybinds clear-defaults=true {
     bind "j" "Down" { MoveFocus "Down"; }
     bind "k" "Up" { MoveFocus "Up"; }
     bind "d" { NewPane "Down"; SwitchToMode "Locked"; }
-    bind "r" { NewPane "Right"; SwitchToMode "Locked"; }
     bind "n" { NewPane "Right"; SwitchToMode "Locked"; }
     bind "x" { CloseFocus; SwitchToMode "Locked"; }
     bind "f" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
@@ -149,6 +148,7 @@ keybinds clear-defaults=true {
     bind "w" { ToggleFloatingPanes; SwitchToMode "Locked"; }
     bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Locked"; }
     bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0; }
+    bind "r" { SwitchToMode "RenamePane"; PaneNameInput 0; }
   }
 
   resize {
