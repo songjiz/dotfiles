@@ -15,6 +15,9 @@
   "format_on_save": "off",
   "relative_line_numbers": true,
   "tab_size": 2,
+  "tab_bar": {
+     "show_nav_history_buttons": true
+   },
   "scrollbar": {
     "show": "never"
   },
@@ -22,6 +25,7 @@
     "dock": "right"
   },
   "assistant": {
+    "version": "1",
     "button": false
   },
   "features": {
@@ -32,7 +36,8 @@
   },
   "languages": {
     "Ruby": {
-      "tab_size": 2
+      "tab_size": 2,
+      "language_servers": [ "ruby-lsp", "!solargraph", "..." ]
     },
     "JavaScript": {
       "tab_size": 2
