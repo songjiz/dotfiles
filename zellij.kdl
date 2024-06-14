@@ -12,6 +12,7 @@ themes {
         white 192 202 245
         orange 255 158 100
     }
+
     gruvbox {
         fg "#D5C4A1"
         bg "#282828"
@@ -25,6 +26,7 @@ themes {
         white "#FBF1C7"
         orange "#D65D0E"
     }
+
     jetbrains-dark {
       fg "#BCBDC3"
       bg "#1E1E21"
@@ -228,3 +230,4 @@ keybinds clear-defaults=true {
 
 theme "jetbrains-dark"
 default_layout "compact"
+default_mode "locked"
