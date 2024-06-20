@@ -1,0 +1,11 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+      "alt-shift-j": "editor::SelectLargerSyntaxNode",
+      "alt-shift-k": "editor::SelectSmallerSyntaxNode"
+    }
+  }
+]
