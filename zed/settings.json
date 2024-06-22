@@ -26,7 +26,7 @@
     "show": "never"
   },
   "terminal": {
-    "dock": "right"
+    "dock": "bottom"
   },
   "assistant": {
     "version": "1",

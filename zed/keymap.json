@@ -7,5 +7,18 @@
       "alt-shift-j": "editor::SelectLargerSyntaxNode",
       "alt-shift-k": "editor::SelectSmallerSyntaxNode"
     }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-k up": "pane::SplitUp",
+      "cmd-k down": "pane::SplitDown",
+      "cmd-k left": "pane::SplitLeft",
+      "cmd-k right": "pane::SplitRight",
+      "cmd-k k": "pane::SplitUp",
+      "cmd-k j": "pane::SplitDown",
+      "cmd-k h": "pane::SplitLeft",
+      "cmd-k l": "pane::SplitRight"
+    }
   }
 ]
