@@ -16,12 +16,11 @@
   "buffer_font_family": "Comic Code",
   "ui_font_family": "Comic Code",
   "ui_font_size": 14,
-  "format_on_save": "off",
-  "relative_line_numbers": true,
+  "format_on_save": "on",
   "tab_size": 2,
   "tab_bar": {
-     "show_nav_history_buttons": true
-   },
+    "show_nav_history_buttons": true
+  },
   "scrollbar": {
     "show": "never"
   },
@@ -41,7 +40,7 @@
   "languages": {
     "Ruby": {
       "tab_size": 2,
-      "language_servers": [ "ruby-lsp", "!solargraph", "..." ]
+      "language_servers": ["ruby-lsp", "!solargraph", "..."]
     },
     "JavaScript": {
       "tab_size": 2

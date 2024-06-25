@@ -1,0 +1,240 @@
+{
+  "if": {
+    "prefix": "if",
+    "body": ["if ${1:condition}", "\t$0", "end"]
+  },
+  "if else": {
+    "prefix": "ife",
+    "body": ["if ${1:condition}", "\t$2", "else", "\t$0", "end"]
+  },
+  "if elsif": {
+    "prefix": "ifei",
+    "body": ["if ${1:condition}", "\t$2", "elsif ${3:condition}", "\t$0", "end"]
+  },
+  "if elsif else": {
+    "prefix": "ifee",
+    "body": [
+      "if ${1:condition}",
+      "\t$2",
+      "elsif ${3:condition}",
+      "\t$4",
+      "else",
+      "\t$0",
+      "end"
+    ]
+  },
+  "module definition": {
+    "prefix": "module",
+    "body": ["module ${1:ModuleName}", "\t$0", "end"]
+  },
+  "require": {
+    "prefix": "req",
+    "body": "require \"${1}\"$0"
+  },
+  "require relative": {
+    "prefix": "reqr",
+    "body": "require_relative \"${1}\"$0"
+  },
+  "extend module": {
+    "prefix": "ext",
+    "body": "extend ${1:ModuleName}"
+  },
+  "include module": {
+    "prefix": "inc",
+    "body": "include ${1:ModuleName}"
+  },
+  "prepend module": {
+    "prefix": "prep",
+    "body": "prepend ${1:ModuleName}"
+  },
+  "method definition": {
+    "prefix": "def",
+    "body": ["def ${1:method_name}", "\t$0", "end"]
+  },
+  "class method definition": {
+    "prefix": "defs",
+    "body": ["def self.${1:method_name}", "\t$0", "end"]
+  },
+  "initialize method definition": {
+    "prefix": "defi",
+    "body": ["def initialize(${1:args})", "\t$0", "end"]
+  },
+  "attribute reader": {
+    "prefix": "ar",
+    "body": "attr_reader :${0:name}"
+  },
+  "attribute writer": {
+    "prefix": "aw",
+    "body": "attr_writer :${0:name}"
+  },
+  "attribute accessor": {
+    "prefix": "aa",
+    "body": "attr_accessor :${0:name}"
+  },
+  "heredoc": {
+    "prefix": "heredoc",
+    "body": ["<<-${1:RUBY}", "$0", "${1:RUBY}"]
+  },
+  "alias": {
+    "prefix": "alias",
+    "body": "alias ${1:new} ${2:original}"
+  },
+  "alias method": {
+    "prefix": "aliasm",
+    "body": "alias_method :${1:new}, :${2:original}"
+  },
+  "extend ActiveSupport::Concern": {
+    "prefix": "easc",
+    "body": "extend ActiveSupport::Concern"
+  },
+  "include ActiveModel::Model": {
+    "prefix": "iamm",
+    "body": "include ActiveModel::Model",
+    "description": "implementing models similar to ActiveRecord::Base"
+  },
+  "include ActiveModel::Attributes": {
+    "prefix": "iama",
+    "body": "include ActiveModel::Attributes",
+    "description": "Defines a model attributes"
+  },
+  "after_commit": {
+    "prefix": "afc",
+    "body": "after_commit ${1:callback}"
+  },
+  "after_create_commit": {
+    "prefix": "afcc",
+    "body": "after_create_commit ${1:callback}"
+  },
+  "after_update_commit": {
+    "prefix": "afuc",
+    "body": "after_update_commit ${1:callback}"
+  },
+  "after_destroy_commit": {
+    "prefix": "afdc",
+    "body": "after_destroy_commit ${1:callback}"
+  },
+  "before_save": {
+    "prefix": "bfs",
+    "body": "before_save ${1:callback}"
+  },
+  "before_create": {
+    "prefix": "bfc",
+    "body": "before_create ${1:callback}"
+  },
+  "before_update": {
+    "prefix": "bfu",
+    "body": "before_update ${1:callback}"
+  },
+  "before_destroy": {
+    "prefix": "bfd",
+    "body": "before_destroy ${1:callback}"
+  },
+  "around_save": {
+    "prefix": "ars",
+    "body": "around_save ${1:callback}"
+  },
+  "around_create": {
+    "prefix": "arc",
+    "body": "around_create ${1:callback}"
+  },
+  "around_update": {
+    "prefix": "aru",
+    "body": "around_update ${1:callback}"
+  },
+  "around_destroy": {
+    "prefix": "ard",
+    "body": "around_destroy ${1:callback}"
+  },
+  "after_save": {
+    "prefix": "afs",
+    "body": "after_save ${1:callback}"
+  },
+  "after_create": {
+    "prefix": "afc",
+    "body": "after_create ${1:callback}"
+  },
+  "after_update": {
+    "prefix": "afu",
+    "body": "after_update ${1:callback}"
+  },
+  "after_destroy": {
+    "prefix": "afd",
+    "body": "after_destroy ${1:callback}"
+  },
+  "after_touch": {
+    "prefix": "aft",
+    "body": "after_touch ${1:callback}"
+  },
+  "after_find": {
+    "prefix": "aff",
+    "body": "after_find ${1:callback}"
+  },
+  "after_initialize": {
+    "prefix": "afi",
+    "body": "after_initialize ${1:callback}"
+  },
+  "before_validation": {
+    "prefix": "bfv",
+    "body": "before_validation ${1:callback}"
+  },
+  "after_validation": {
+    "prefix": "afv",
+    "body": "after_validation ${1:callback}"
+  },
+  "before_action": {
+    "prefix": "bfa",
+    "body": "before_action ${1:callback}"
+  },
+  "after_action": {
+    "prefix": "afa",
+    "body": "after_action ${1:callback}"
+  },
+  "around_action": {
+    "prefix": "ara",
+    "body": "around_action ${1:callback}"
+  },
+  "append_before_action": {
+    "prefix": "abfa",
+    "body": "append_before_action ${1:callback}"
+  },
+  "append_after_action": {
+    "prefix": "aafa",
+    "body": "append_after_action ${1:callback}"
+  },
+  "append_around_action": {
+    "prefix": "aara",
+    "body": "append_around_action ${1:callback}"
+  },
+  "prepend_before_action": {
+    "prefix": "pbfa",
+    "body": "prepend_before_action ${1:callback}"
+  },
+  "prepend_after_action": {
+    "prefix": "pafa",
+    "body": "prepend_after_action ${1:callback}"
+  },
+  "prepend_around_action": {
+    "prefix": "para",
+    "body": "prepend_around_action ${1:callback}"
+  },
+  "skip_before_action": {
+    "prefix": "skbfa",
+    "body": "skip_before_action ${1:callback}"
+  },
+  "skip_after_action": {
+    "prefix": "skafa",
+    "body": "skip_after_action ${1:callback}"
+  },
+  "skip_around_action": {
+    "prefix": "skara",
+    "body": "skip_around_action ${1:callback}"
+  },
+  "skip_forgery_protection": {
+    "prefix": "skfp",
+    "body": "skip_forgery_protection"
+  },
+  "scope": {
+    "prefix": "scope",
+    "body": "scope :${1:name}, ->${2:(args)} { $3 }$0"
+  }
+}
