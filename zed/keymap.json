@@ -33,5 +33,11 @@
       "cmd-k h": "pane::SplitLeft",
       "cmd-k l": "pane::SplitRight"
     }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-n": "workspace::NewTerminal"
+    }
   }
 ]
