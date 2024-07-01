@@ -1,5 +1,18 @@
 [
   {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-k cmd-left": ["workspace::ActivatePaneInDirection", "Left"],
+      "cmd-k cmd-right": ["workspace::ActivatePaneInDirection", "Right"],
+      "cmd-k cmd-up": ["workspace::ActivatePaneInDirection", "Up"],
+      "cmd-k cmd-down": ["workspace::ActivatePaneInDirection", "Down"],
+      "cmd-k cmd-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "cmd-k cmd-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "cmd-k cmd-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "cmd-k cmd-k": ["workspace::ActivatePaneInDirection", "Up"]
+    }
+  },
+  {
     "context": "Editor",
     "bindings": {
       "alt-j": "editor::MoveLineDown",

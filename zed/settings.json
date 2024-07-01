@@ -17,6 +17,7 @@
   "ui_font_family": "Comic Code",
   "ui_font_size": 14,
   "format_on_save": "on",
+  "relative_line_numbers": true,
   "tab_size": 2,
   "tab_bar": {
     "show_nav_history_buttons": true
@@ -43,7 +44,8 @@
       "language_servers": ["ruby-lsp", "!solargraph", "..."]
     },
     "JavaScript": {
-      "tab_size": 2
+      "tab_size": 2,
+      "format_on_save": "off"
     }
   },
   "telemetry": {
