@@ -394,7 +394,7 @@
           "type": {
             "color": "#ffc66dff",
             "font_style": null,
-            "font_weight": null
+            "font_weight": 700
           },
           "variable": {
             "color": "#d4b01dff",
@@ -813,7 +813,7 @@
           "type": {
             "color": "#660e7aff",
             "font_style": null,
-            "font_weight": null
+            "font_weight": 700
           },
           "variable": {
             "color": "#c37522ff",
