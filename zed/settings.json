@@ -9,8 +9,8 @@
 {
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
+    "light": "Jetbrains Light",
+    "dark": "Jetbrains Dark"
   },
   "buffer_font_size": 12,
   "buffer_font_family": "Comic Code",

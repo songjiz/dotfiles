@@ -1,0 +1,6 @@
+name = "Jetbrains Theme"
+version = "0.0.1"
+scheme_version = 1
+authors = [ "Songji Zeng <songji.zeng@outlook.com>" ]
+description = "Jetbrains theme for zed"
+repository = "https://github.com/songjiz/zed-jetbrains-theme"
