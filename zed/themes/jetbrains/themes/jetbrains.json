@@ -611,22 +611,22 @@
             "font_weight": null
           },
           "comment": {
-            "color": "#7a7e85ff",
+            "color": "#808080ff",
             "font_style": "italic",
             "font_weight": null
           },
           "comment.doc": {
-            "color": "#7a7e85ff",
+            "color": "#808080ff",
             "font_style": "italic",
             "font_weight": null
           },
           "constant": {
-            "color": "#dfc184ff",
+            "color": "#660e7aff",
             "font_style": null,
             "font_weight": null
           },
           "constant.builtin": {
-            "color": "#cc7832ff",
+            "color": "#660e7aff",
             "font_style": null,
             "font_weight": null
           },
@@ -706,12 +706,12 @@
             "font_weight": null
           },
           "link_text": {
-            "color": "#287bdeff",
+            "color": "#0000ffff",
             "font_style": null,
             "font_weight": null
           },
           "link_uri": {
-            "color": "#287bdeff",
+            "color": "#0000ffff",
             "font_style": "italic",
             "font_weight": null
           },
@@ -721,7 +721,7 @@
             "font_weight": null
           },
           "operator": {
-            "color": "#bcbec4ff",
+            "color": "#000000ff",
             "font_style": null,
             "font_weight": null
           },
@@ -826,7 +826,7 @@
             "font_weight": null
           },
           "variable.special": {
-            "color": "#cc7832ff",
+            "color": "#000080ff",
             "font_style": null,
             "font_weight": null
           },
