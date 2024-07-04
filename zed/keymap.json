@@ -9,7 +9,8 @@
       "cmd-k cmd-h": ["workspace::ActivatePaneInDirection", "Left"],
       "cmd-k cmd-l": ["workspace::ActivatePaneInDirection", "Right"],
       "cmd-k cmd-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "cmd-k cmd-k": ["workspace::ActivatePaneInDirection", "Up"]
+      "cmd-k cmd-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "shift shift": "file_finder::Toggle"
     }
   },
   {
