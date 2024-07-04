@@ -207,7 +207,7 @@
             "font_weight": 700
           },
           "constant.builtin": {
-            "color": "#cc7832ff",
+            "color": "#dfc184ff",
             "font_style": null,
             "font_weight": 700
           },
@@ -608,7 +608,7 @@
             "font_weight": null
           },
           "boolean": {
-            "color": "#cf8e6dff",
+            "color": "#0033b3ff",
             "font_style": null,
             "font_weight": null
           },
@@ -638,7 +638,7 @@
             "font_weight": null
           },
           "embedded": {
-            "color": "#00b8bbff",
+            "color": "#c37522ff",
             "font_style": null,
             "font_weight": null
           },
