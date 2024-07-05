@@ -1,5 +1,11 @@
 {
-  "Close Sessions On End" : true,
+  "Ansi 12 Color (Light)" : {
+    "Red Component" : 0.36078431372549019,
+    "Color Space" : "P3",
+    "Blue Component" : 0.88627450980392153,
+    "Alpha Component" : 1,
+    "Green Component" : 0.47058823529411764
+  },
   "Ansi 15 Color (Dark)" : {
     "Red Component" : 1,
     "Color Space" : "P3",
@@ -7,12 +13,12 @@
     "Alpha Component" : 1,
     "Green Component" : 1
   },
-  "Ansi 12 Color (Light)" : {
-    "Red Component" : 0.36078431372549019,
+  "Foreground Color (Dark)" : {
+    "Red Component" : 0.73725490196078436,
     "Color Space" : "P3",
-    "Blue Component" : 0.88627450980392153,
+    "Blue Component" : 0.7686274509803922,
     "Alpha Component" : 1,
-    "Green Component" : 0.47058823529411764
+    "Green Component" : 0.74509803921568629
   },
   "Cursor Text Color" : {
     "Red Component" : 1,
@@ -48,7 +54,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.12941176470588237
   },
-  "Guid" : "FC8D8ED4-703A-4AB0-A916-48C4DFC7601A",
+  "Guid" : "3D8569BF-307D-4288-A9E2-0895FED01E7B",
   "Cursor Color (Dark)" : {
     "Red Component" : 0.99997633695602417,
     "Color Space" : "sRGB",
@@ -295,6 +301,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.55686274509803924
   },
+  "Set Local Environment Vars" : 2,
   "Faint Text Alpha (Dark)" : 0.5,
   "Rows" : 40,
   "Background Color (Light)" : {
@@ -432,6 +439,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.28627450980392155
   },
+  "Custom Locale" : "en_US.UTF-8",
   "Ansi 15 Color" : {
     "Red Component" : 0.5725490196078431,
     "Color Space" : "sRGB",
@@ -806,12 +814,6 @@
     "Blue Component" : 0,
     "Red Component" : 0
   },
-  "Non-ASCII Anti Aliased" : true,
-  "Foreground Color (Dark)" : {
-    "Red Component" : 0.73725490196078436,
-    "Color Space" : "P3",
-    "Blue Component" : 0.7686274509803922,
-    "Alpha Component" : 1,
-    "Green Component" : 0.74509803921568629
-  }
+  "Close Sessions On End" : true,
+  "Non-ASCII Anti Aliased" : true
 }
