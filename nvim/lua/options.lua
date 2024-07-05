@@ -48,7 +48,7 @@ opt.clipboard:append("unnamed", "unnamedplus")
 opt.matchpairs:append("<:>", "《:》", "（:）", "【:】")
 
 opt.pumheight   = 10
-opt.wildmode    = "list:longest,full"
+opt.wildmode    = "list:longest,list:full"
 opt.completeopt = "menu,menuone,noselect"
 opt.wildignore:append {
   "*.git,*.svn,*.hg",
