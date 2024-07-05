@@ -10,13 +10,13 @@
 	bd  = branch -d
 	bD  = branch -D
 	bl  = blame -bw
-	br  = branch --remote
+	br  = branch
 	bu  = branch -u
 
 	c   = commit -v
 	ca  = commit -v -a
 	cb  = checkout -b
-	ci  = commit --interactive
+	ci  = commit
 	cl  = clone --recursive
 	cm  = commit -v -m
 	co  = checkout
@@ -63,13 +63,14 @@
 	t   = tag
 	ts  = tag -s
 	recent = branch --sort=committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
+	st = status
 [core]
 	excludesFile = ~/.gitignore
 	attributesFile = ~/.gitattributes
 [github]
 	user = songjiz
 [pull]
-	rebase = false
+	rebase = true
 [commit]
 	gpgsign = false
 [gpg]

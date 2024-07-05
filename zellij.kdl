@@ -28,16 +28,30 @@ themes {
     }
 
     jetbrains-dark {
-      fg "#BCBDC3"
-      bg "#1E1E21"
+      fg "#bcbec4"
+      bg "#202123"
       black "#000000"
-      red "#E45F67"
-      green "#78A978"
-      yellow "#DABC71"
-      blue "#6AA6EE"
-      magenta "#9F73BA"
-      cyan "#4D9697"
-      white "#BCBDC3"
+      red "#f0524f"
+      green "#5c962c"
+      yellow "#a68a0d"
+      blue "#3993d4"
+      magenta "#a771bf"
+      cyan "#00a3a3"
+      white "#808080"
+      orange "#FF9E64"
+    }
+
+    jetbrains-light {
+      fg "#383a41"
+      bg "#fafafa"
+      black "#fafafa"
+      red "#d36151"
+      green "#669f59"
+      yellow "#dec184"
+      blue "#5c78e2"
+      magenta "#984ea5"
+      cyan "#3a82b7"
+      white "#383a41"
       orange "#FF9E64"
     }
 }
