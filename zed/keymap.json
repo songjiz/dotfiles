@@ -19,7 +19,8 @@
       "alt-j": "editor::MoveLineDown",
       "alt-k": "editor::MoveLineUp",
       "alt-shift-j": "editor::SelectLargerSyntaxNode",
-      "alt-shift-k": "editor::SelectSmallerSyntaxNode"
+      "alt-shift-k": "editor::SelectSmallerSyntaxNode",
+      "cmd-shift-d": "editor::DuplicateLineDown"
     }
   },
   {
@@ -32,7 +33,9 @@
       "cmd-k k": "pane::SplitUp",
       "cmd-k j": "pane::SplitDown",
       "cmd-k h": "pane::SplitLeft",
-      "cmd-k l": "pane::SplitRight"
+      "cmd-k l": "pane::SplitRight",
+      "ctrl-o": "pane::ActivatePrevItem",
+      "ctrl-i": "pane::ActivateNextItem"
     }
   },
   {

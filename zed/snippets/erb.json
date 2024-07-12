@@ -66,5 +66,13 @@
   "link_to": {
     "prefix": ["link_to", "lt"],
     "body": "<%= link_to \"${1:name}\", ${2:route} %>"
+  },
+  "content_for": {
+    "prefix": "cf",
+    "body": "<% content_for :${1:name}, ${2:content} %>"
+  },
+  "provide": {
+    "prefix": "pv",
+    "body": "<% provide :${1:name}, ${2:content} %>"
   }
 }
