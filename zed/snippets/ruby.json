@@ -236,5 +236,13 @@
   "scope": {
     "prefix": "scope",
     "body": "scope :${1:name}, ->${2:(args)} { $3 }$0"
+  },
+  "inspect": {
+    "prefix": "insp",
+    "body": [
+      "def inspect",
+      "\t\"<#{self.class}:0x#{(object_id << 1).to_s(16)}>$0\"",
+      "end"
+    ]
   }
 }

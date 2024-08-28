@@ -9,10 +9,10 @@
 {
   "theme": {
     "mode": "system",
-    "light": "Jetbrains Light",
-    "dark": "Jetbrains Dark"
+    "light": "One Light",
+    "dark": "One Dark"
   },
-  "buffer_font_size": 12,
+  "buffer_font_size": 13,
   "buffer_font_family": "Comic Code",
   "ui_font_family": "Comic Code",
   "ui_font_size": 14,
@@ -20,37 +20,75 @@
   "relative_line_numbers": true,
   "tab_size": 2,
   "tab_bar": {
-    "show": false,
+    "show": true,
     "show_nav_history_buttons": true
   },
+  "tabs": { "file_icons": true },
   "scrollbar": {
     "show": "never"
   },
   "terminal": {
-    "dock": "bottom"
-  },
-  "assistant": {
-    "version": "1",
+    "dock": "bottom",
     "button": false
   },
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620"
+    },
+    "version": "2",
+    "button": true
+  },
   "features": {
+    "inline_completion_provider": "none",
     "copilot": false
   },
-  "project_panel": {
-    "dock": "right"
+  "chat_panel": {
+    "button": false
   },
-  "languages": {
-    "Ruby": {
-      "tab_size": 2,
-      "language_servers": ["ruby-lsp", "!solargraph", "..."]
-    },
-    "JavaScript": {
-      "tab_size": 2,
-      "format_on_save": "off"
+  "collaboration_panel": {
+    "button": false
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "outline_panel": {
+    "button": false
+  },
+  "project_panel": {
+    "dock": "right",
+    "button": false,
+    "scrollbar": {
+      "show": "never"
     }
   },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
+  },
+  "languages": {
+    "Ruby": {
+      "tab_size": 2,
+      "language_servers": ["ruby-lsp", "!solargraph", "..."],
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "./bin/rubocop",
+          "arguments": [
+            "--fail-level",
+            "error",
+            "--auto-correct",
+            "--stdin",
+            "{buffer_path}",
+            "--stderr",
+            "--server"
+          ]
+        }
+      }
+    },
+    "JavaScript": {
+      "tab_size": 2,
+      "format_on_save": "off"
+    }
   }
 }
