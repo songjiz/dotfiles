@@ -86,9 +86,9 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR="nvim"
 else
-  export EDITOR='vim'
+  export EDITOR="nvim"
 fi
 
 # Compilation flags
@@ -106,7 +106,7 @@ alias e="vim"
 alias v="vim"
 alias vi="vim"
 alias reload="source $HOME/.zshrc"
-alias fuckgfw="vim ~/.config/Surge/Documents/Default.conf"
+alias fuckgfw="nvim ~/.config/Surge/Documents/Default.conf"
 alias proxy="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152;export all_proxy=socks5://127.0.0.1:6153"
 alias noproxy="unset https_proxy; unset https_proxy; unset all_proxy"
 alias dotfiles="cd ~/.dotfiles && vim"

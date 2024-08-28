@@ -69,8 +69,6 @@
 	attributesFile = ~/.gitattributes
 [github]
 	user = songjiz
-[pull]
-	rebase = true
 [commit]
 	gpgsign = false
 [gpg]
