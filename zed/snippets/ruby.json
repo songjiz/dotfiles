@@ -61,15 +61,18 @@
   },
   "attribute reader": {
     "prefix": "ar",
-    "body": "attr_reader :${0:name}"
+    "body": "attr_reader :${0:name}",
+    "description": "attr_reader"
   },
   "attribute writer": {
     "prefix": "aw",
-    "body": "attr_writer :${0:name}"
+    "body": "attr_writer :${0:name}",
+    "description": "attr_writer"
   },
   "attribute accessor": {
     "prefix": "aa",
-    "body": "attr_accessor :${0:name}"
+    "body": "attr_accessor :${0:name}",
+    "description": "attr_accessor"
   },
   "heredoc": {
     "prefix": "heredoc",
@@ -85,7 +88,8 @@
   },
   "extend ActiveSupport::Concern": {
     "prefix": "easc",
-    "body": "extend ActiveSupport::Concern"
+    "body": "extend ActiveSupport::Concern",
+    "description": "extend ActiveSupport::Concern"
   },
   "include ActiveModel::Model": {
     "prefix": "iamm",
@@ -99,123 +103,158 @@
   },
   "after_commit": {
     "prefix": "afc",
-    "body": "after_commit ${1:callback}"
+    "body": "after_commit ${1:callback}",
+    "desciption": "after_commit"
   },
   "after_create_commit": {
     "prefix": "afcc",
-    "body": "after_create_commit ${1:callback}"
+    "body": "after_create_commit ${1:callback}",
+    "desciption": "after_create_commit"
   },
   "after_update_commit": {
     "prefix": "afuc",
-    "body": "after_update_commit ${1:callback}"
+    "body": "after_update_commit ${1:callback}",
+    "desciption": "after_update_commit"
   },
   "after_destroy_commit": {
     "prefix": "afdc",
-    "body": "after_destroy_commit ${1:callback}"
+    "body": "after_destroy_commit ${1:callback}",
+    "desciption": "after_destroy_commit"
   },
   "before_save": {
     "prefix": "bfs",
-    "body": "before_save ${1:callback}"
+    "body": "before_save ${1:callback}",
+    "desciption": "before_save"
   },
   "before_create": {
     "prefix": "bfc",
-    "body": "before_create ${1:callback}"
+    "body": "before_create ${1:callback}",
+    "desciption": "before_create"
   },
   "before_update": {
     "prefix": "bfu",
-    "body": "before_update ${1:callback}"
+    "body": "before_update ${1:callback}",
+    "desciption": "before_update"
   },
   "before_destroy": {
     "prefix": "bfd",
-    "body": "before_destroy ${1:callback}"
+    "body": "before_destroy ${1:callback}",
+    "desciption": "before_destroy"
   },
   "around_save": {
     "prefix": "ars",
-    "body": "around_save ${1:callback}"
+    "body": "around_save ${1:callback}",
+    "desciption": "around_save"
   },
   "around_create": {
     "prefix": "arc",
-    "body": "around_create ${1:callback}"
+    "body": "around_create ${1:callback}",
+    "desciption": "around_create"
   },
   "around_update": {
     "prefix": "aru",
-    "body": "around_update ${1:callback}"
+    "body": "around_update ${1:callback}",
+    "desciption": "around_update"
   },
   "around_destroy": {
     "prefix": "ard",
-    "body": "around_destroy ${1:callback}"
+    "body": "around_destroy ${1:callback}",
+    "desciption": "around_destroy"
   },
   "after_save": {
     "prefix": "afs",
-    "body": "after_save ${1:callback}"
+    "body": "after_save ${1:callback}",
+    "desciption": "after_save"
   },
   "after_create": {
     "prefix": "afc",
-    "body": "after_create ${1:callback}"
+    "body": "after_create ${1:callback}",
+    "desciption": "after_create"
   },
   "after_update": {
     "prefix": "afu",
-    "body": "after_update ${1:callback}"
+    "body": "after_update ${1:callback}",
+    "desciption": "after_update"
   },
   "after_destroy": {
     "prefix": "afd",
-    "body": "after_destroy ${1:callback}"
+    "body": "after_destroy ${1:callback}",
+    "desciption": "after_destroy"
   },
   "after_touch": {
     "prefix": "aft",
-    "body": "after_touch ${1:callback}"
+    "body": "after_touch ${1:callback}",
+    "desciption": "after_touch"
   },
   "after_find": {
     "prefix": "aff",
-    "body": "after_find ${1:callback}"
+    "body": "after_find ${1:callback}",
+    "desciption": "after_find"
   },
   "after_initialize": {
     "prefix": "afi",
-    "body": "after_initialize ${1:callback}"
+    "body": "after_initialize ${1:callback}",
+    "desciption": "after_initialize"
   },
   "before_validation": {
     "prefix": "bfv",
-    "body": "before_validation ${1:callback}"
+    "body": "before_validation ${1:callback}",
+    "desciption": "before_validation"
   },
   "after_validation": {
     "prefix": "afv",
-    "body": "after_validation ${1:callback}"
+    "body": "after_validation ${1:callback}",
+    "desciption": "after_validation"
   },
   "before_action": {
     "prefix": "bfa",
-    "body": "before_action ${1:callback}"
+    "body": "before_action ${1:callback}",
+    "desciption": "before_action"
   },
   "after_action": {
     "prefix": "afa",
-    "body": "after_action ${1:callback}"
+    "body": "after_action ${1:callback}",
+    "desciption": "after_action"
   },
   "around_action": {
     "prefix": "ara",
-    "body": "around_action ${1:callback}"
+    "body": "around_action ${1:callback}",
+    "desciption": "around_action"
   },
   "append_before_action": {
     "prefix": "abfa",
-    "body": "append_before_action ${1:callback}"
+    "body": "append_before_action ${1:callback}",
+    "description": "append_before_action"
   },
   "append_after_action": {
     "prefix": "aafa",
-    "body": "append_after_action ${1:callback}"
+    "body": "append_after_action ${1:callback}",
+    "description": "append_after_action"
   },
   "append_around_action": {
     "prefix": "aara",
-    "body": "append_around_action ${1:callback}"
+    "body": "append_around_action ${1:callback}",
+    "description": "append_around_action"
   },
   "prepend_before_action": {
     "prefix": "pbfa",
-    "body": "prepend_before_action ${1:callback}"
+    "body": "prepend_before_action ${1:callback}",
+    "description": "prepend_before_action"
   },
   "prepend_after_action": {
     "prefix": "pafa",
-    "body": "prepend_after_action ${1:callback}"
+    "body": "prepend_after_action ${1:callback}",
+    "description": "prepend_after_action"
   },
   "prepend_around_action": {
     "prefix": "para",
-    "body": "prepend_around_action ${1:callback}"
+    "body": "prepend_around_action ${1:callback}",
+    "description": "prepend_around_action"
+  },
+  "protect_from_forgery": {
+    "prefix": "pff",
+    "body": "protect_from_forgery",
+    "description": "protect_from_forgery"
   },
   "skip_before_action": {
     "prefix": "skbfa",
@@ -223,15 +262,23 @@
   },
   "skip_after_action": {
     "prefix": "skafa",
-    "body": "skip_after_action ${1:callback}"
+    "body": "skip_after_action ${1:callback}",
+    "description": "skip_after_action"
   },
   "skip_around_action": {
     "prefix": "skara",
-    "body": "skip_around_action ${1:callback}"
+    "body": "skip_around_action ${1:callback}",
+    "description": "skip_around_action"
   },
   "skip_forgery_protection": {
     "prefix": "skfp",
-    "body": "skip_forgery_protection"
+    "body": "skip_forgery_protection",
+    "description": "skip_forgery_protection"
+  },
+  "rate_limit": {
+    "prefix": "ratel",
+    "body": "rate_limit to: ${1:10}, within: ${0:1.minutes}",
+    "description": "rate_limit"
   },
   "scope": {
     "prefix": "scope",
@@ -243,6 +290,7 @@
       "def inspect",
       "\t\"<#{self.class}:0x#{(object_id << 1).to_s(16)}>$0\"",
       "end"
-    ]
+    ],
+    "description": "define inspect method"
   }
 }

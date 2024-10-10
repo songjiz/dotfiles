@@ -17,7 +17,7 @@
   "ui_font_family": "Comic Code",
   "ui_font_size": 14,
   "format_on_save": "on",
-  "relative_line_numbers": true,
+  "relative_line_numbers": false,
   "tab_size": 2,
   "tab_bar": {
     "show": true,
@@ -29,7 +29,8 @@
   },
   "terminal": {
     "dock": "bottom",
-    "button": false
+    "button": false,
+    "font_size": 12
   },
   "assistant": {
     "default_model": {
