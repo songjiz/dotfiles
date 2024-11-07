@@ -1,30 +1,16 @@
 themes {
-  tokyo-night {
-    fg 169 177 214
-    bg 26 27 38
-    black 56 62 90
-    red 249 51 87
-    green 158 206 106
-    yellow 224 175 104
-    blue 122 162 247
-    magenta 187 154 247
-    cyan 42 195 222
-    white 192 202 245
-    orange 255 158 100
-  }
-
-  gruvbox {
-    fg "#D5C4A1"
-    bg "#282828"
-    black "#3C3836"
-    red "#CC241D"
-    green "#98971A"
-    yellow "#D79921"
-    blue "#3C8588"
-    magenta "#B16286"
-    cyan "#689D6A"
-    white "#FBF1C7"
-    orange "#D65D0E"
+  gruvbox-material-dark {
+    fg "#d0be9c"
+    bg "#272727"
+    black "#44403d"
+    red "#da7066"
+    green "#abb56f"
+    yellow "#d0a763"
+    blue "#87aca3"
+    magenta "#c8899a"
+    cyan "#91b286"
+    white "#d0be9c"
+    orange "#e78a4e"
   }
 
   jetbrains-dark {
@@ -62,8 +48,9 @@ keybinds clear-defaults=true {
     bind "Ctrl q" { Quit; }
   }
   shared_except "normal" "locked" {
-    bind "Enter" "Esc" { SwitchToMode "Normal"; }
+    bind "Esc" { SwitchToMode "Normal"; }
     bind "Ctrl n" { SwitchToMode "Normal"; }
+    bind "Ctrl c" { SwitchToMode "Normal"; }
   }
   shared_except "pane" "locked" {
     bind "Ctrl p" { SwitchToMode "Pane"; }
@@ -243,15 +230,24 @@ keybinds clear-defaults=true {
   }
 }
 
+
 plugins {
-  tab-bar { path "tab-bar"; }
-  status-bar { path "status-bar"; }
-  strider { path "strider"; }
-  compact-bar { path "compact-bar"; }
-  session-manager { path "session-manager"; }
+  tab-bar location="zellij:tab-bar"
+  status-bar location="zellij:status-bar"
+  strider location="zellij:strider"
+  compact-bar location="zellij:compact-bar"
+  session-manager location="zellij:session-manager"
+  welcome-screen location="zellij:session-manager" {
+    welcome_screen true
+  }
+  filepicker location="zellij:strider" {
+    cwd "/"
+  }
+  configuration location="zellij:configuration"
+  plugin-manager location="zellij:plugin-manager"
 }
 
-theme "jetbrains-dark"
+theme "gruvbox-material-dark"
 default_layout "compact"
 default_mode "locked"
 ui {
