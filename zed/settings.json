@@ -8,11 +8,15 @@
 // from the command palette or from `Zed` application menu.
 {
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
     "dark": "One Dark"
   },
-  "buffer_font_size": 13,
+  "active_pane_modifiers": {
+    "magnification": 1,
+    "inactive_opacity": 0.5
+  },
+  "buffer_font_size": 14,
   "buffer_font_family": "Comic Code",
   "ui_font_family": "Comic Code",
   "ui_font_size": 14,
@@ -30,12 +34,12 @@
   "terminal": {
     "dock": "bottom",
     "button": false,
-    "font_size": 12
+    "font_size": 14
   },
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620"
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2",
     "button": true
@@ -70,8 +74,8 @@
   "languages": {
     "Ruby": {
       "tab_size": 2,
-      "language_servers": ["ruby-lsp", "!solargraph", "..."],
       "format_on_save": "on",
+      "language_servers": ["ruby-lsp", "!solargraph", "..."],
       "formatter": {
         "external": {
           "command": "./bin/rubocop",
