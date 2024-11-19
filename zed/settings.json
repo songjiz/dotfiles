@@ -63,6 +63,9 @@
   "project_panel": {
     "dock": "right",
     "button": false,
+    "indent_guides": {
+      "show": "never"
+    },
     "scrollbar": {
       "show": "never"
     }

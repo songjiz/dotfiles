@@ -263,13 +263,14 @@ plugins {
   plugin-manager location="zellij:plugin-manager"
 }
 
-theme "gruvbox-material-dark"
-default_layout "compact"
-default_mode "locked"
 ui {
   pane_frames {
     rounded_corners true
-    hide_session_name true
+    hide_session_name false
   }
 }
+
+default_layout "compact"
+default_mode "locked"
+theme "gruvbox-material-dark"
 
