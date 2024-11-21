@@ -107,6 +107,7 @@ keybinds clear-defaults=true {
     bind "s" { SwitchToMode "Scroll"; }
     bind "t" { SwitchToMode "Tab"; }
     bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+    bind "Tab" { ToggleTab; }
     bind "Ctrl g" { SwitchToMode "locked"; }
   }
 
@@ -151,6 +152,8 @@ keybinds clear-defaults=true {
     bind "]" { BreakPaneRight; SwitchToMode "Locked"; }
     bind "[" { BreakPaneLeft; SwitchToMode "Locked"; }
     bind "Tab" { ToggleTab; }
+    bind "Alt Left" "Alt h" { MoveTab "Left"; }
+    bind "Alt Right" "Alt l" { MoveTab "Right"; }
   }
 
   pane {
